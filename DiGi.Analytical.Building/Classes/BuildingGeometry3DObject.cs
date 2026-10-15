@@ -81,6 +81,20 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="BuildingGeometry3DObject{T}"/> class with the specified unique identifier and 3D geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the object.</param>
+        /// <param name="geometry">The 3D geometry to assign to this object. The provided geometry is cloned if it is not null.</param>
+        public BuildingGeometry3DObject(System.Guid guid, T? geometry)
+            : base(guid)
+        {
+            if (geometry != null)
+            {
+                this.geometry = geometry.Clone<T>();
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="BuildingGeometry3DObject"/> class using the specified JSON object.
         /// </summary>
         /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data to initialize the object. This value can be null.</param>

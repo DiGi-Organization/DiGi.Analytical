@@ -778,6 +778,49 @@ The building model to check\.
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') when the building model is non\-null and all components carry finite plane normals; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
 
+<a name='DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double)'></a>
+
+## Query\.IsValidHost\(this IPhysicalComponent, IOpening, IOpeningConstruction, double\) Method
+
+Checks whether the specified physical component can host the opening with the given construction\.
+
+The host surface ([Surface3D\(this IComponent\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IComponent) 'DiGi\.Analytical\.Building\.Query\.Surface3D\(this DiGi\.Analytical\.Building\.Interfaces\.IComponent\)')) and the opening outline ([Surface3D\(this IOpening, IOpeningConstruction\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction) 'DiGi\.Analytical\.Building\.Query\.Surface3D\(this DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction\)')) must both be [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonalface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D'), they must be coplanar within [tolerance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).tolerance 'DiGi\.Analytical\.Building\.Query\.IsValidHost\(this DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, double\)\.tolerance'), and the opening outline must lie inside the host face: every point of its external edge lies inside or on the boundary of the host face (touching the host edge is allowed, crossing it or entering a hole is not), and no hole of the host face lies inside the opening.
+
+Overlap with other openings already hosted on the component is NOT checked.
+
+```csharp
+public static bool IsValidHost(this DiGi.Analytical.Building.Interfaces.IPhysicalComponent? physicalComponent, DiGi.Analytical.Building.Interfaces.IOpening? opening, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).physicalComponent'></a>
+
+`physicalComponent` [IPhysicalComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponent 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent')
+
+The physical component to host the opening\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).opening'></a>
+
+`opening` [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')
+
+The opening providing the placement plane\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The opening construction providing the 2D outline of the opening\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used for the coplanarity and containment checks\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the opening lies on and inside the host face; false otherwise, including when any argument is null or a geometry is not polygonal\.
+
 <a name='DiGi.Analytical.Building.Query.Mesh3D(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double)'></a>
 
 ## Query\.Mesh3D\(this IBuildingGeometry3DObject, double\) Method
@@ -950,6 +993,35 @@ The building component\. This value can be null\.
 #### Returns
 [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')  
 The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') representing the component, or null if the component has no supported surface geometry\.
+
+<a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction)'></a>
+
+## Query\.Surface3D\(this IOpening, IOpeningConstruction\) Method
+
+Creates the 3D outline of the specified opening by mapping the 2D outline of its construction onto the placement plane of the opening\.
+
+The outline ([Geometry](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IGeometry2DConstruction_TConstructable,TGeometry2D_.Geometry 'DiGi\.Analytical\.Building\.Interfaces\.IGeometry2DConstruction\<TConstructable,TGeometry2D\>\.Geometry') of the construction) is expressed in the local 2D coordinates of the opening's [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane'), whose origin is the insertion point of the opening.
+
+```csharp
+public static DiGi.Geometry.Spatial.Interfaces.ISurface3D? Surface3D(this DiGi.Analytical.Building.Interfaces.IOpening? opening, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction).opening'></a>
+
+`opening` [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')
+
+The opening providing the placement plane\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The opening construction providing the 2D outline\. This value can be null\.
+
+#### Returns
+[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')  
+The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') outline of the opening, or null if either argument is null, has no geometry, or the outline cannot be mapped onto a 3D surface\.
 
 <a name='DiGi.Analytical.Building.Query.Triangulate(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double)'></a>
 

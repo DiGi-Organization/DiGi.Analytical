@@ -309,8 +309,10 @@ Derived
 ↳ [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')  
 ↳ [Component](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Component 'DiGi\.Analytical\.Building\.Classes\.Component')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 ↳ [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [PhysicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent')  
 ↳ [PhysicalComponent&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent\<T\>')  
 ↳ [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')  
@@ -324,6 +326,7 @@ Derived
 ↳ [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')  
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent')  
 ↳ [IAbstractComponent&lt;TGeometry3D&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')  
 ↳ [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir')  
@@ -415,8 +418,10 @@ Derived
 ↳ [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')  
 ↳ [Component](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Component 'DiGi\.Analytical\.Building\.Classes\.Component')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 ↳ [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [PhysicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent')  
 ↳ [PhysicalComponent&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent\<T\>')  
 ↳ [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')  
@@ -430,6 +435,7 @@ Derived
 ↳ [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')  
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent')  
 ↳ [IAbstractComponent&lt;TGeometry3D&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')  
 ↳ [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir')  
@@ -497,7 +503,9 @@ Derived
 ↳ [BuildingGeometry2DObject&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry2DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry2DObject\<T\>')  
 ↳ [BuildingGeometry3DObject&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [PhysicalComponent&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent\<T\>')  
 ↳ [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')  
 ↳ [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain')  
@@ -509,6 +517,7 @@ Derived
 ↳ [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')  
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [IAbstractComponent&lt;TGeometry3D&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')  
 ↳ [IAir&lt;TGeometry3D&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>')  
 ↳ [IBuildingFaceObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingFaceObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingFaceObject')  
@@ -559,11 +568,13 @@ Derived
 ↳ [Component](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Component 'DiGi\.Analytical\.Building\.Classes\.Component')  
 ↳ [ComponentConstruction&lt;TConstructable&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ComponentConstruction_TConstructable_ 'DiGi\.Analytical\.Building\.Classes\.ComponentConstruction\<TConstructable\>')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [DoorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.DoorConstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 ↳ [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')  
 ↳ [FloorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FloorConstruction 'DiGi\.Analytical\.Building\.Classes\.FloorConstruction')  
 ↳ [InternalCondition](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.InternalCondition 'DiGi\.Analytical\.Building\.Classes\.InternalCondition')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [OpeningConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstruction 'DiGi\.Analytical\.Building\.Classes\.OpeningConstruction')  
 ↳ [OpeningConstruction&lt;TOpening&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstruction_TOpening_ 'DiGi\.Analytical\.Building\.Classes\.OpeningConstruction\<TOpening\>')  
 ↳ [PhysicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent')  
@@ -582,6 +593,7 @@ Derived
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
 ↳ [WallConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WallConstruction 'DiGi\.Analytical\.Building\.Classes\.WallConstruction')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [WindowConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WindowConstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction')  
 ↳ [Zone](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Zone 'DiGi\.Analytical\.Building\.Classes\.Zone')  
 ↳ [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent')  
@@ -718,12 +730,14 @@ Derived
 ↳ [ConstructionRelationCluster](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster')  
 ↳ [ConstructionStructureLayersRelation&lt;TConstruction&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionStructureLayersRelation_TConstruction_ 'DiGi\.Analytical\.Building\.Classes\.ConstructionStructureLayersRelation\<TConstruction\>')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [DoorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.DoorConstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 ↳ [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')  
 ↳ [FloorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FloorConstruction 'DiGi\.Analytical\.Building\.Classes\.FloorConstruction')  
 ↳ [InternalCondition](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.InternalCondition 'DiGi\.Analytical\.Building\.Classes\.InternalCondition')  
 ↳ [MaterialStructureLayerRelation](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.MaterialStructureLayerRelation 'DiGi\.Analytical\.Building\.Classes\.MaterialStructureLayerRelation')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [OpeningConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstruction 'DiGi\.Analytical\.Building\.Classes\.OpeningConstruction')  
 ↳ [OpeningConstruction&lt;TOpening&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstruction_TOpening_ 'DiGi\.Analytical\.Building\.Classes\.OpeningConstruction\<TOpening\>')  
 ↳ [OpeningConstructionRelation](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstructionRelation 'DiGi\.Analytical\.Building\.Classes\.OpeningConstructionRelation')  
@@ -749,6 +763,7 @@ Derived
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
 ↳ [WallConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WallConstruction 'DiGi\.Analytical\.Building\.Classes\.WallConstruction')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [WindowConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WindowConstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction')  
 ↳ [Zone](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Zone 'DiGi\.Analytical\.Building\.Classes\.Zone')  
 ↳ [ZoneRelation](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ZoneRelation 'DiGi\.Analytical\.Building\.Classes\.ZoneRelation')  
@@ -833,7 +848,10 @@ public interface IBuildingPlaneObject : DiGi.Analytical.Building.Interfaces.IBui
 ```
 
 Derived  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [IDoor](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IDoor 'DiGi\.Analytical\.Building\.Interfaces\.IDoor')  
 ↳ [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')  
 ↳ [IPlaneTerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPlaneTerrain 'DiGi\.Analytical\.Building\.Interfaces\.IPlaneTerrain')  
@@ -901,11 +919,13 @@ Derived
 ↳ [Component](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Component 'DiGi\.Analytical\.Building\.Classes\.Component')  
 ↳ [ComponentConstruction&lt;TConstructable&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ComponentConstruction_TConstructable_ 'DiGi\.Analytical\.Building\.Classes\.ComponentConstruction\<TConstructable\>')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [DoorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.DoorConstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 ↳ [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')  
 ↳ [FloorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FloorConstruction 'DiGi\.Analytical\.Building\.Classes\.FloorConstruction')  
 ↳ [InternalCondition](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.InternalCondition 'DiGi\.Analytical\.Building\.Classes\.InternalCondition')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [OpeningConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstruction 'DiGi\.Analytical\.Building\.Classes\.OpeningConstruction')  
 ↳ [OpeningConstruction&lt;TOpening&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.OpeningConstruction_TOpening_ 'DiGi\.Analytical\.Building\.Classes\.OpeningConstruction\<TOpening\>')  
 ↳ [PhysicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent')  
@@ -925,6 +945,7 @@ Derived
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
 ↳ [WallConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WallConstruction 'DiGi\.Analytical\.Building\.Classes\.WallConstruction')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [WindowConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WindowConstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction')  
 ↳ [Zone](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Zone 'DiGi\.Analytical\.Building\.Classes\.Zone')  
 ↳ [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent')  
@@ -1105,8 +1126,10 @@ Derived
 ↳ [Air&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_ 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>')  
 ↳ [Component](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Component 'DiGi\.Analytical\.Building\.Classes\.Component')  
 ↳ [CurveWall&lt;TCurve3D&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall_TCurve3D_ 'DiGi\.Analytical\.Building\.Classes\.CurveWall\<TCurve3D\>')  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
 ↳ [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 ↳ [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [PhysicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent')  
 ↳ [PhysicalComponent&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent\<T\>')  
 ↳ [Roof&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Roof_T_ 'DiGi\.Analytical\.Building\.Classes\.Roof\<T\>')  
@@ -1114,6 +1137,7 @@ Derived
 ↳ [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof')  
 ↳ [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')  
 ↳ [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent')  
 ↳ [IAbstractComponent&lt;TGeometry3D&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')  
 ↳ [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir')  
@@ -1257,6 +1281,9 @@ Interface for door building elements\.
 ```csharp
 public interface IDoor : DiGi.Analytical.Building.Interfaces.IOpening, DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IConstructable
 ```
+
+Derived  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')
 
 Implements [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening'), [IBuildingPlaneObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingPlaneObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable')
 
@@ -1464,6 +1491,9 @@ public interface IOpening : DiGi.Analytical.Building.Interfaces.IBuildingPlaneOb
 ```
 
 Derived  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')  
 ↳ [IDoor](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IDoor 'DiGi\.Analytical\.Building\.Interfaces\.IDoor')  
 ↳ [IWindow](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindow 'DiGi\.Analytical\.Building\.Interfaces\.IWindow')
 
@@ -2064,6 +2094,9 @@ Interface for window building elements\.
 ```csharp
 public interface IWindow : DiGi.Analytical.Building.Interfaces.IOpening, DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IConstructable
 ```
+
+Derived  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')
 
 Implements [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening'), [IBuildingPlaneObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingPlaneObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable')
 

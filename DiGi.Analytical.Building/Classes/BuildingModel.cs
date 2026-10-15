@@ -1,4 +1,4 @@
-using DiGi.Analytical.Building.Enums;
+﻿using DiGi.Analytical.Building.Enums;
 using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core;
@@ -1663,7 +1663,10 @@ namespace DiGi.Analytical.Building.Classes
         /// <param name="component">The component to host the opening.</param>
         /// <param name="opening">The opening to be hosted on the component.</param>
         /// <returns>True if the opening was successfully hosted on the component; otherwise, false.</returns>
+        /// <remarks>This method does NOT validate the host: any component (including an air) and any opening geometry are accepted. Use the validated overloads to host a window or a door on a physical component.</remarks>
         /// <seealso cref="Unassign(IComponent, IOpening)"/>
+        /// <seealso cref="Assign(IPhysicalComponent, IWindow, IWindowConstruction, double)"/>
+        /// <seealso cref="Assign(IPhysicalComponent, IDoor, IDoorConstruction, double)"/>
         public bool Assign(IComponent? component, IOpening? opening)
         {
             if (component == null || opening == null)
@@ -1705,7 +1708,73 @@ namespace DiGi.Analytical.Building.Classes
             return openingRelation_Component.Add(RelationSide.To, guidReference);
         }
 
-        private TOpeningConstruction? GetOpeningConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
+        /// <summary>
+        /// Hosts the specified window on the physical component and assigns its construction, after validating the placement.
+        /// <para>The placement is validated with <see cref="Query.IsValidHost(IPhysicalComponent, IOpening, IOpeningConstruction, double)"/> BEFORE anything is stored: the window outline must be coplanar with the host face and lie inside it. When the validation fails the model is left unchanged. Overlap with openings already hosted on the component is not checked.</para>
+        /// <para>When the window was hosted on another component before, it is moved to <paramref name="physicalComponent"/>, see <see cref="Assign(IComponent, IOpening)"/>.</para>
+        /// </summary>
+        /// <param name="physicalComponent">The physical component (wall, roof, floor) to host the window. This value can be null.</param>
+        /// <param name="window">The window to be hosted. This value can be null.</param>
+        /// <param name="windowConstruction">The window construction providing the outline of the window. This value can be null.</param>
+        /// <param name="tolerance">The distance tolerance used to validate the placement.</param>
+        /// <returns>True if the placement is valid and the window was hosted and assigned its construction; otherwise, false.</returns>
+        public bool Assign(IPhysicalComponent? physicalComponent, IWindow? window, IWindowConstruction? windowConstruction, double tolerance = Core.Constants.Tolerance.Distance)
+        {
+            if (physicalComponent == null || window == null || windowConstruction == null)
+            {
+                return false;
+            }
+
+            if (!physicalComponent.IsValidHost(window, windowConstruction, tolerance))
+            {
+                return false;
+            }
+
+            if (!Assign(window, windowConstruction))
+            {
+                return false;
+            }
+
+            return Assign((IComponent)physicalComponent, window);
+        }
+
+        /// <summary>
+        /// Hosts the specified door on the physical component and assigns its construction, after validating the placement.
+        /// <para>The placement is validated with <see cref="Query.IsValidHost(IPhysicalComponent, IOpening, IOpeningConstruction, double)"/> BEFORE anything is stored: the door outline must be coplanar with the host face and lie inside it. When the validation fails the model is left unchanged. Overlap with openings already hosted on the component is not checked.</para>
+        /// <para>When the door was hosted on another component before, it is moved to <paramref name="physicalComponent"/>, see <see cref="Assign(IComponent, IOpening)"/>.</para>
+        /// </summary>
+        /// <param name="physicalComponent">The physical component (wall, roof, floor) to host the door. This value can be null.</param>
+        /// <param name="door">The door to be hosted. This value can be null.</param>
+        /// <param name="doorConstruction">The door construction providing the outline of the door. This value can be null.</param>
+        /// <param name="tolerance">The distance tolerance used to validate the placement.</param>
+        /// <returns>True if the placement is valid and the door was hosted and assigned its construction; otherwise, false.</returns>
+        public bool Assign(IPhysicalComponent? physicalComponent, IDoor? door, IDoorConstruction? doorConstruction, double tolerance = Core.Constants.Tolerance.Distance)
+        {
+            if (physicalComponent == null || door == null || doorConstruction == null)
+            {
+                return false;
+            }
+
+            if (!physicalComponent.IsValidHost(door, doorConstruction, tolerance))
+            {
+                return false;
+            }
+
+            if (!Assign(door, doorConstruction))
+            {
+                return false;
+            }
+
+            return Assign((IComponent)physicalComponent, door);
+        }
+
+        /// <summary>
+        /// Gets the construction assigned to the specified opening.
+        /// </summary>
+        /// <typeparam name="TOpeningConstruction">The type of opening construction to retrieve, which must implement <see cref="IOpeningConstruction"/>.</typeparam>
+        /// <param name="opening">The opening whose construction is retrieved. This value can be null.</param>
+        /// <returns>A CLONE of the construction assigned to the opening if it is of type <typeparamref name="TOpeningConstruction"/>; otherwise, the default value.</returns>
+        public TOpeningConstruction? GetOpeningConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
         {
             if (opening == null)
             {

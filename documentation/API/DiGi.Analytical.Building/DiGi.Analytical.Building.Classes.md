@@ -767,6 +767,7 @@ The type of the 3D geometry, which must implement [DiGi\.Geometry\.Spatial\.Inte
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → BuildingGeometry3DObject\<T\>
 
 Derived  
+↳ [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')  
 ↳ [Shade&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Shade_T_ 'DiGi\.Analytical\.Building\.Classes\.Shade\<T\>')  
 ↳ [Space](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Space 'DiGi\.Analytical\.Building\.Classes\.Space')  
 ↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')
@@ -813,6 +814,29 @@ The unique identifier for the object\.
 `buildingGeometry3DObject` [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.T 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')
 
 An optional existing building geometry 3D object to copy data from\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.BuildingGeometry3DObject(System.Guid,T)'></a>
+
+## BuildingGeometry3DObject\(Guid, T\) Constructor
+
+Initializes a new instance of the [BuildingGeometry3DObject&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') class with the specified unique identifier and 3D geometry\.
+
+```csharp
+public BuildingGeometry3DObject(System.Guid guid, T? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.BuildingGeometry3DObject(System.Guid,T).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the object\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.BuildingGeometry3DObject(System.Guid,T).geometry'></a>
+
+`geometry` [T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.T 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>\.T')
+
+The 3D geometry to assign to this object\. The provided geometry is cloned if it is not null\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.BuildingGeometry3DObject(System.Text.Json.Nodes.JsonObject)'></a>
 
@@ -1064,8 +1088,13 @@ The opening to be hosted on the component\.
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the opening was successfully hosted on the component; otherwise, false\.
 
+### Remarks
+This method does NOT validate the host: any component \(including an air\) and any opening geometry are accepted\. Use the validated overloads to host a window or a door on a physical component\.
+
 ### See Also
 - [Unassign\(IComponent, IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Unassign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Unassign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening\)')
+- [Assign\(IPhysicalComponent, IWindow, IWindowConstruction, double\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IWindow, DiGi\.Analytical\.Building\.Interfaces\.IWindowConstruction, double\)')
+- [Assign\(IPhysicalComponent, IDoor, IDoorConstruction, double\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IDoor, DiGi\.Analytical\.Building\.Interfaces\.IDoorConstruction, double\)')
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
@@ -1158,6 +1187,92 @@ The floor construction object to be assigned\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the assignment was successful; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double)'></a>
+
+## BuildingModel\.Assign\(IPhysicalComponent, IDoor, IDoorConstruction, double\) Method
+
+Hosts the specified door on the physical component and assigns its construction, after validating the placement\.
+
+The placement is validated with [IsValidHost\(this IPhysicalComponent, IOpening, IOpeningConstruction, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double) 'DiGi\.Analytical\.Building\.Query\.IsValidHost\(this DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, double\)') BEFORE anything is stored: the door outline must be coplanar with the host face and lie inside it. When the validation fails the model is left unchanged. Overlap with openings already hosted on the component is not checked.
+
+When the door was hosted on another component before, it is moved to [physicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double).physicalComponent 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IDoor, DiGi\.Analytical\.Building\.Interfaces\.IDoorConstruction, double\)\.physicalComponent'), see [Assign\(IComponent, IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening\)').
+
+```csharp
+public bool Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent? physicalComponent, DiGi.Analytical.Building.Interfaces.IDoor? door, DiGi.Analytical.Building.Interfaces.IDoorConstruction? doorConstruction, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double).physicalComponent'></a>
+
+`physicalComponent` [IPhysicalComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponent 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent')
+
+The physical component \(wall, roof, floor\) to host the door\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double).door'></a>
+
+`door` [IDoor](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IDoor 'DiGi\.Analytical\.Building\.Interfaces\.IDoor')
+
+The door to be hosted\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double).doorConstruction'></a>
+
+`doorConstruction` [IDoorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IDoorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IDoorConstruction')
+
+The door construction providing the outline of the door\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used to validate the placement\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the placement is valid and the door was hosted and assigned its construction; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double)'></a>
+
+## BuildingModel\.Assign\(IPhysicalComponent, IWindow, IWindowConstruction, double\) Method
+
+Hosts the specified window on the physical component and assigns its construction, after validating the placement\.
+
+The placement is validated with [IsValidHost\(this IPhysicalComponent, IOpening, IOpeningConstruction, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.IsValidHost(thisDiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,double) 'DiGi\.Analytical\.Building\.Query\.IsValidHost\(this DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, double\)') BEFORE anything is stored: the window outline must be coplanar with the host face and lie inside it. When the validation fails the model is left unchanged. Overlap with openings already hosted on the component is not checked.
+
+When the window was hosted on another component before, it is moved to [physicalComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double).physicalComponent 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent, DiGi\.Analytical\.Building\.Interfaces\.IWindow, DiGi\.Analytical\.Building\.Interfaces\.IWindowConstruction, double\)\.physicalComponent'), see [Assign\(IComponent, IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening\)').
+
+```csharp
+public bool Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent? physicalComponent, DiGi.Analytical.Building.Interfaces.IWindow? window, DiGi.Analytical.Building.Interfaces.IWindowConstruction? windowConstruction, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double).physicalComponent'></a>
+
+`physicalComponent` [IPhysicalComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponent 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent')
+
+The physical component \(wall, roof, floor\) to host the window\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double).window'></a>
+
+`window` [IWindow](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindow 'DiGi\.Analytical\.Building\.Interfaces\.IWindow')
+
+The window to be hosted\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double).windowConstruction'></a>
+
+`windowConstruction` [IWindowConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindowConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWindowConstruction')
+
+The window construction providing the outline of the window\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IPhysicalComponent,DiGi.Analytical.Building.Interfaces.IWindow,DiGi.Analytical.Building.Interfaces.IWindowConstruction,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used to validate the placement\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the placement is valid and the window was hosted and assigned its construction; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IRoof,DiGi.Analytical.Building.Interfaces.IRoofConstruction)'></a>
 
@@ -1822,6 +1937,35 @@ The building relation used to identify the associated objects\. Can be null\.
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TBuildingGuidObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetObjects_TBuildingGuidObject_(DiGi.Analytical.Building.Interfaces.IBuildingRelation).TBuildingGuidObject 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetObjects\<TBuildingGuidObject\>\(DiGi\.Analytical\.Building\.Interfaces\.IBuildingRelation\)\.TBuildingGuidObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of objects of type [TBuildingGuidObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetObjects_TBuildingGuidObject_(DiGi.Analytical.Building.Interfaces.IBuildingRelation).TBuildingGuidObject 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetObjects\<TBuildingGuidObject\>\(DiGi\.Analytical\.Building\.Interfaces\.IBuildingRelation\)\.TBuildingGuidObject') if found; otherwise, null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetOpeningConstruction_TOpeningConstruction_(DiGi.Analytical.Building.Interfaces.IOpening)'></a>
+
+## BuildingModel\.GetOpeningConstruction\<TOpeningConstruction\>\(IOpening\) Method
+
+Gets the construction assigned to the specified opening\.
+
+```csharp
+public TOpeningConstruction? GetOpeningConstruction<TOpeningConstruction>(DiGi.Analytical.Building.Interfaces.IOpening? opening)
+    where TOpeningConstruction : DiGi.Analytical.Building.Interfaces.IOpeningConstruction;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetOpeningConstruction_TOpeningConstruction_(DiGi.Analytical.Building.Interfaces.IOpening).TOpeningConstruction'></a>
+
+`TOpeningConstruction`
+
+The type of opening construction to retrieve, which must implement [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')\.
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetOpeningConstruction_TOpeningConstruction_(DiGi.Analytical.Building.Interfaces.IOpening).opening'></a>
+
+`opening` [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')
+
+The opening whose construction is retrieved\. This value can be null\.
+
+#### Returns
+[TOpeningConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetOpeningConstruction_TOpeningConstruction_(DiGi.Analytical.Building.Interfaces.IOpening).TOpeningConstruction 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetOpeningConstruction\<TOpeningConstruction\>\(DiGi\.Analytical\.Building\.Interfaces\.IOpening\)\.TOpeningConstruction')  
+A CLONE of the construction assigned to the opening if it is of type [TOpeningConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetOpeningConstruction_TOpeningConstruction_(DiGi.Analytical.Building.Interfaces.IOpening).TOpeningConstruction 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetOpeningConstruction\<TOpeningConstruction\>\(DiGi\.Analytical\.Building\.Interfaces\.IOpening\)\.TOpeningConstruction'); otherwise, the default value\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetOpenings_TOpening_(DiGi.Analytical.Building.Interfaces.IComponent)'></a>
 
@@ -5387,6 +5531,118 @@ public DiGi.Geometry.Spatial.Interfaces.ISurface3D? GetSurface3D();
 [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')  
 The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') representing the wall's surface if it can be determined; otherwise, `null`\.
 
+<a name='DiGi.Analytical.Building.Classes.Door'></a>
+
+## Door Class
+
+Represents a door hosted on a physical component of a building\. Its outline is defined by the assigned [IDoorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IDoorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IDoorConstruction')\.
+
+```csharp
+public class Door : DiGi.Analytical.Building.Classes.Opening, DiGi.Analytical.Building.Interfaces.IDoor, DiGi.Analytical.Building.Interfaces.IOpening, DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IConstructable
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') → [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') → Door
+
+Implements [IDoor](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IDoor 'DiGi\.Analytical\.Building\.Interfaces\.IDoor'), [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening'), [IBuildingPlaneObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingPlaneObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(DiGi.Analytical.Building.Classes.Door)'></a>
+
+## Door\(Door\) Constructor
+
+Initializes a new instance of the [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') class by copying an existing door\.
+
+```csharp
+public Door(DiGi.Analytical.Building.Classes.Door? door);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(DiGi.Analytical.Building.Classes.Door).door'></a>
+
+`door` [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')
+
+The source [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## Door\(Plane\) Constructor
+
+Initializes a new instance of the [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') class with the specified placement plane\.
+
+```csharp
+public Door(DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The placement plane of the door\. The provided plane is cloned if it is not null\.
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Guid,DiGi.Analytical.Building.Classes.Door)'></a>
+
+## Door\(Guid, Door\) Constructor
+
+Initializes a new instance of the [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') class with the specified unique identifier by copying an existing door\.
+
+```csharp
+public Door(System.Guid guid, DiGi.Analytical.Building.Classes.Door? door);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Guid,DiGi.Analytical.Building.Classes.Door).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the door\.
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Guid,DiGi.Analytical.Building.Classes.Door).door'></a>
+
+`door` [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')
+
+The source [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Guid,DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## Door\(Guid, Plane\) Constructor
+
+Initializes a new instance of the [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') class with the specified unique identifier and placement plane\.
+
+```csharp
+public Door(System.Guid guid, DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Guid,DiGi.Geometry.Spatial.Classes.Plane).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the door\.
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Guid,DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The placement plane of the door\. The provided plane is cloned if it is not null\.
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Text.Json.Nodes.JsonObject)'></a>
+
+## Door\(JsonObject\) Constructor
+
+Initializes a new instance of the [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door') class from the specified JSON object\.
+
+```csharp
+public Door(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Door.Door(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
 <a name='DiGi.Analytical.Building.Classes.DoorConstruction'></a>
 
 ## DoorConstruction Class
@@ -6232,6 +6488,124 @@ public MaterialStructureLayerRelation(System.Text.Json.Nodes.JsonObject? jsonObj
 `jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
 
 The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize the relation\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening'></a>
+
+## Opening Class
+
+Represents an abstract base class for openings \(windows, doors\) hosted on a physical component of a building\.
+
+The [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane') geometry is the placement of the opening: its origin is the insertion point and its axes define the local 2D coordinate system in which the outline of the opening construction ([IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')) is expressed. Use [Surface3D\(this IOpening, IOpeningConstruction\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction) 'DiGi\.Analytical\.Building\.Query\.Surface3D\(this DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction\)') to obtain the 3D outline.
+
+```csharp
+public abstract class Opening : DiGi.Analytical.Building.Classes.BuildingGeometry3DObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IOpening, DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IConstructable
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') → Opening
+
+Derived  
+↳ [Door](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Door 'DiGi\.Analytical\.Building\.Classes\.Door')  
+↳ [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')
+
+Implements [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening'), [IBuildingPlaneObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingPlaneObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(DiGi.Analytical.Building.Classes.Opening)'></a>
+
+## Opening\(Opening\) Constructor
+
+Initializes a new instance of the [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') class by copying an existing opening\.
+
+```csharp
+public Opening(DiGi.Analytical.Building.Classes.Opening? opening);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(DiGi.Analytical.Building.Classes.Opening).opening'></a>
+
+`opening` [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')
+
+The source [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## Opening\(Plane\) Constructor
+
+Initializes a new instance of the [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') class with the specified placement plane\.
+
+```csharp
+public Opening(DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The placement plane of the opening\. The provided plane is cloned if it is not null\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Guid,DiGi.Analytical.Building.Classes.Opening)'></a>
+
+## Opening\(Guid, Opening\) Constructor
+
+Initializes a new instance of the [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') class with the specified unique identifier by copying an existing opening\.
+
+```csharp
+public Opening(System.Guid guid, DiGi.Analytical.Building.Classes.Opening? opening);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Guid,DiGi.Analytical.Building.Classes.Opening).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the opening\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Guid,DiGi.Analytical.Building.Classes.Opening).opening'></a>
+
+`opening` [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening')
+
+The source [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Guid,DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## Opening\(Guid, Plane\) Constructor
+
+Initializes a new instance of the [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') class with the specified unique identifier and placement plane\.
+
+```csharp
+public Opening(System.Guid guid, DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Guid,DiGi.Geometry.Spatial.Classes.Plane).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the opening\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Guid,DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The placement plane of the opening\. The provided plane is cloned if it is not null\.
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Text.Json.Nodes.JsonObject)'></a>
+
+## Opening\(JsonObject\) Constructor
+
+Initializes a new instance of the [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') class from the specified JSON object\.
+
+```csharp
+public Opening(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Opening.Opening(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
 
 <a name='DiGi.Analytical.Building.Classes.OpeningConstruction'></a>
 
@@ -9305,6 +9679,118 @@ public WallConstruction(System.Text.Json.Nodes.JsonObject? jsonObject);
 `jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
 
 The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize the wall construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.Window'></a>
+
+## Window Class
+
+Represents a window hosted on a physical component of a building\. Its outline is defined by the assigned [IWindowConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindowConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWindowConstruction')\.
+
+```csharp
+public class Window : DiGi.Analytical.Building.Classes.Opening, DiGi.Analytical.Building.Interfaces.IWindow, DiGi.Analytical.Building.Interfaces.IOpening, DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IConstructable
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') → [Opening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Opening 'DiGi\.Analytical\.Building\.Classes\.Opening') → Window
+
+Implements [IWindow](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindow 'DiGi\.Analytical\.Building\.Interfaces\.IWindow'), [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening'), [IBuildingPlaneObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingPlaneObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(DiGi.Analytical.Building.Classes.Window)'></a>
+
+## Window\(Window\) Constructor
+
+Initializes a new instance of the [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') class by copying an existing window\.
+
+```csharp
+public Window(DiGi.Analytical.Building.Classes.Window? window);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(DiGi.Analytical.Building.Classes.Window).window'></a>
+
+`window` [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')
+
+The source [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## Window\(Plane\) Constructor
+
+Initializes a new instance of the [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') class with the specified placement plane\.
+
+```csharp
+public Window(DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The placement plane of the window\. The provided plane is cloned if it is not null\.
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Guid,DiGi.Analytical.Building.Classes.Window)'></a>
+
+## Window\(Guid, Window\) Constructor
+
+Initializes a new instance of the [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') class with the specified unique identifier by copying an existing window\.
+
+```csharp
+public Window(System.Guid guid, DiGi.Analytical.Building.Classes.Window? window);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Guid,DiGi.Analytical.Building.Classes.Window).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the window\.
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Guid,DiGi.Analytical.Building.Classes.Window).window'></a>
+
+`window` [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window')
+
+The source [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Guid,DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## Window\(Guid, Plane\) Constructor
+
+Initializes a new instance of the [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') class with the specified unique identifier and placement plane\.
+
+```csharp
+public Window(System.Guid guid, DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Guid,DiGi.Geometry.Spatial.Classes.Plane).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the window\.
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Guid,DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The placement plane of the window\. The provided plane is cloned if it is not null\.
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Text.Json.Nodes.JsonObject)'></a>
+
+## Window\(JsonObject\) Constructor
+
+Initializes a new instance of the [Window](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Window 'DiGi\.Analytical\.Building\.Classes\.Window') class from the specified JSON object\.
+
+```csharp
+public Window(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Window.Window(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
 
 <a name='DiGi.Analytical.Building.Classes.WindowConstruction'></a>
 

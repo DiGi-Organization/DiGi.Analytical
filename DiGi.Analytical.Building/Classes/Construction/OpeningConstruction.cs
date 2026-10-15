@@ -11,10 +11,10 @@ namespace DiGi.Analytical.Building.Classes
     /// </summary>
     public abstract class OpeningConstruction : BuildingGeometry2DObject<ISurface2D>, IOpeningConstruction
     {
-        [JsonInclude, JsonPropertyName("Description"), Description("Description")]
+        [JsonInclude, JsonPropertyName(nameof(Description)), Description("Description")]
         private string? description;
 
-        [JsonInclude, JsonPropertyName("Name")]
+        [JsonInclude, JsonPropertyName(nameof(Name)), Description("Name")]
         private string? name;
 
         /// <summary>
@@ -37,6 +37,8 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (openingConstruction != null)
             {
+                name = openingConstruction.name;
+                description = openingConstruction.description;
             }
         }
 
@@ -50,6 +52,8 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (openingConstruction != null)
             {
+                name = openingConstruction.name;
+                description = openingConstruction.description;
             }
         }
 
