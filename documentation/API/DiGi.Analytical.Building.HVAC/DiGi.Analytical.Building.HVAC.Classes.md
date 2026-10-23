@@ -778,6 +778,35 @@ The date and time used to determine the active regulated heat transfer coefficie
 [IRegulatedHeatTransferCoefficients](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients')  
 The [IRegulatedHeatTransferCoefficients](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients') corresponding to the provided date, or `null` if no applicable coefficients are found\.
 
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.GetRegulatedHeatTransferCoefficients(System.DateTime,bool)'></a>
+
+## RegulatedHeatTransferCoefficientsManager\.GetRegulatedHeatTransferCoefficients\(DateTime, bool\) Method
+
+Retrieves the regulated heat transfer coefficients applicable for the specified date and time, for a building of a public authority or for any other building\.
+
+The coefficients that apply are those with the latest date on or before [dateTime](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.GetRegulatedHeatTransferCoefficients(System.DateTime,bool).dateTime 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager\.GetRegulatedHeatTransferCoefficients\(System\.DateTime, bool\)\.dateTime'). For a public-authority building that date is the act's [PublicAuthorityEffectiveDate](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct.PublicAuthorityEffectiveDate 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct\.PublicAuthorityEffectiveDate') where the act sets one, so the last stage of the U-value limits applies to it from 1 January 2019 instead of 31 December 2020 (DiGi-Organization/DiGi.Analytical#11).
+
+```csharp
+public DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients? GetRegulatedHeatTransferCoefficients(System.DateTime dateTime, bool publicAuthority);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.GetRegulatedHeatTransferCoefficients(System.DateTime,bool).dateTime'></a>
+
+`dateTime` [System\.DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime 'System\.DateTime')
+
+The date and time used to determine the active regulated heat transfer coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.GetRegulatedHeatTransferCoefficients(System.DateTime,bool).publicAuthority'></a>
+
+`publicAuthority` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+Whether the building is occupied and owned by a judicial body, a prosecutor's office or a public administration body\.
+
+#### Returns
+[IRegulatedHeatTransferCoefficients](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients')  
+The [IRegulatedHeatTransferCoefficients](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients') corresponding to the provided date, or `null` if no applicable coefficients are found\.
+
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.RegulatedHeatTransferCoefficients_TRegulatedHeatTransferCoefficients_()'></a>
 
 ## RegulatedHeatTransferCoefficientsManager\.RegulatedHeatTransferCoefficients\<TRegulatedHeatTransferCoefficients\>\(\) Method
@@ -1065,6 +1094,53 @@ The name of the regulation act\.
 
 The description of the regulation act\.
 
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string)'></a>
+
+## RegulationAct\(DateTime, DateTime, Nullable\<DateTime\>, string, string, string\) Constructor
+
+Initializes a new instance of the [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct') class whose requirements apply earlier to buildings of public authorities\.
+
+```csharp
+public RegulationAct(System.DateTime publicationDate, System.DateTime effectiveDate, System.Nullable<System.DateTime> publicAuthorityEffectiveDate, string? reference, string? name, string? descriprion);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string).publicationDate'></a>
+
+`publicationDate` [System\.DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime 'System\.DateTime')
+
+The date when the regulation act was published\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string).effectiveDate'></a>
+
+`effectiveDate` [System\.DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime 'System\.DateTime')
+
+The date from which the requirements apply\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string).publicAuthorityEffectiveDate'></a>
+
+`publicAuthorityEffectiveDate` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime 'System\.DateTime')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+The earlier date from which the requirements apply to a building occupied and owned by a public authority, or null when the act sets none\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string).reference'></a>
+
+`reference` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The reference identifier for the regulation act\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the regulation act\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.DateTime,System.DateTime,System.Nullable_System.DateTime_,string,string,string).descriprion'></a>
+
+`descriprion` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The description of the regulation act\.
+
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.RegulationAct(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## RegulationAct\(JsonObject\) Constructor
@@ -1102,7 +1178,9 @@ Implements [Description](https://learn.microsoft.com/en-us/dotnet/api/digi.core.
 
 ## RegulationAct\.EffectiveDate Property
 
-Gets the effective date of the regulation act\.
+Gets the date from which the requirements of the regulation act apply\.
+
+For an act that sets its requirements in stages this is the date of the stage, not the date the act came into force: the 2017 U-value limits of Dz.U. 2013 poz. 926 apply from 1 January 2017 (DiGi-Organization/DiGi.Analytical#11).
 
 ```csharp
 public System.DateTime EffectiveDate { get; }
@@ -1138,6 +1216,21 @@ public System.DateTime PublicationDate { get; }
 
 #### Property Value
 [System\.DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime 'System\.DateTime')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.PublicAuthorityEffectiveDate'></a>
+
+## RegulationAct\.PublicAuthorityEffectiveDate Property
+
+Gets the earlier date from which the requirements apply to a building occupied and owned by a public authority, or null when the act sets none\.
+
+The last stage of the U-value limits applies from 31 December 2020, but from 1 January 2019 to a building occupied and owned by a judicial body, a prosecutor's office or a public administration body (Dz.U. 2017 poz. 2285, Annex 2).
+
+```csharp
+public System.Nullable<System.DateTime> PublicAuthorityEffectiveDate { get; }
+```
+
+#### Property Value
+[System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime 'System\.DateTime')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
 
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulationAct.Reference'></a>
 

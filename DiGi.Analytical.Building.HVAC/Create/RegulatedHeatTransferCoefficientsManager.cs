@@ -76,31 +76,36 @@ namespace DiGi.Analytical.Building.HVAC
 
             result.Add(regulatedHeatTransferCoefficients_2014);
 
-            regulationAct = new(new DateTime(2017, 12, 08), new DateTime(2018, 01, 01), "Dz.U. 2017 poz. 2285", "Rozporządzenie Ministra Infrastruktury i Budownictwa z dnia 14 listopada 2017 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
+            // The 2013 amendment set its limits in stages written into the act itself; each stage applies from its own date,
+            // not from the date of a later act (DiGi-Organization/DiGi.Analytical#11).
+            regulationAct = new(new DateTime(2013, 08, 13), new DateTime(2017, 01, 01), "Dz.U. 2013 poz. 926", "Rozporządzenie Ministra Transportu, Budownictwa i Gospodarki Morskiej z dnia 5 lipca 2013 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", "Annex 2, stage from 1 January 2017");
 
-            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2018 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Wall] = 0.23;
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Roof] = 0.18;
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Floor] = 0.3;
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Window] = 1.1;
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Window_Skylight] = 1.3;
-            regulatedHeatTransferCoefficients_2018[ExternalPartitionType_2014.Door] = 1.5;
+            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2017 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Wall] = 0.23;
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Roof] = 0.18;
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Floor] = 0.3;
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Window] = 1.1;
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Window_Skylight] = 1.3;
+            regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Door] = 1.5;
 
-            result.Add(regulatedHeatTransferCoefficients_2018);
+            result.Add(regulatedHeatTransferCoefficients_2017);
 
-            regulationAct = new(new DateTime(2022, 06, 09), new DateTime(2022, 06, 23), "Dz.U. 2022 poz. 1225", "Obwieszczenie Ministra Rozwoju i Technologii z dnia 15 kwietnia 2022 r. w sprawie ogłoszenia jednolitego tekstu rozporządzenia Ministra Infrastruktury w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
+            // The 2017 amendment replaced Annex 2 and moved the last stage to 31 December 2020, and to 1 January 2019 for a building
+            // occupied and owned by a judicial body, a prosecutor's office or a public administration body. The 2022 consolidated text
+            // (Dz.U. 2022 poz. 1225) sets no new limits.
+            regulationAct = new(new DateTime(2017, 12, 08), new DateTime(2020, 12, 31), new DateTime(2019, 01, 01), "Dz.U. 2017 poz. 2285", "Rozporządzenie Ministra Infrastruktury i Budownictwa z dnia 14 listopada 2017 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", "Annex 2, stage from 31 December 2020 (from 1 January 2019 for public-authority buildings)");
 
-            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2022 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Wall] = 0.20;
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Roof] = 0.15;
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Floor] = 0.3;
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Window] = 0.9;
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Window_Skylight] = 1.1;
-            regulatedHeatTransferCoefficients_2022[ExternalPartitionType_2014.Door] = 1.5;
+            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2021 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Wall] = 0.20;
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Roof] = 0.15;
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Floor] = 0.3;
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Window] = 0.9;
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Window_Skylight] = 1.1;
+            regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Door] = 1.3;
 
-            result.Add(regulatedHeatTransferCoefficients_2022);
+            result.Add(regulatedHeatTransferCoefficients_2021);
 
             return result;
         }

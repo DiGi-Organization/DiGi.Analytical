@@ -72,37 +72,46 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         /// <returns>The <see cref="IRegulatedHeatTransferCoefficients"/> corresponding to the provided date, or <c>null</c> if no applicable coefficients are found.</returns>
         public IRegulatedHeatTransferCoefficients? GetRegulatedHeatTransferCoefficients(DateTime dateTime)
         {
+            return GetRegulatedHeatTransferCoefficients(dateTime, false);
+        }
+
+        /// <summary>
+        /// Retrieves the regulated heat transfer coefficients applicable for the specified date and time, for a building of a public authority or for any other building.
+        /// <para>The coefficients that apply are those with the latest date on or before <paramref name="dateTime"/>. For a public-authority building that date is the act's <see cref="RegulationAct.PublicAuthorityEffectiveDate"/> where the act sets one, so the last stage of the U-value limits applies to it from 1 January 2019 instead of 31 December 2020 (DiGi-Organization/DiGi.Analytical#11).</para>
+        /// </summary>
+        /// <param name="dateTime">The date and time used to determine the active regulated heat transfer coefficients.</param>
+        /// <param name="publicAuthority">Whether the building is occupied and owned by a judicial body, a prosecutor's office or a public administration body.</param>
+        /// <returns>The <see cref="IRegulatedHeatTransferCoefficients"/> corresponding to the provided date, or <c>null</c> if no applicable coefficients are found.</returns>
+        public IRegulatedHeatTransferCoefficients? GetRegulatedHeatTransferCoefficients(DateTime dateTime, bool publicAuthority)
+        {
             if (values is null || values.Count == 0)
             {
                 return null;
             }
 
-            if (dateTime < values.Keys.First())
+            IRegulatedHeatTransferCoefficients? result = null;
+            DateTime dateTime_Result = DateTime.MinValue;
+            foreach (KeyValuePair<DateTime, IRegulatedHeatTransferCoefficients> keyValuePair in values)
             {
-                return null;
-            }
-
-            if (values.Count == 1)
-            {
-                return values.Values.First();
-            }
-
-            if (dateTime >= values.Keys.Last())
-            {
-                return values.Values.Last();
-            }
-
-            List<DateTime> dateTimes = [.. values.Keys];
-
-            for (int i = 1; i < dateTimes.Count; i++)
-            {
-                if (dateTimes[i] > dateTime)
+                DateTime dateTime_Applicable = keyValuePair.Key;
+                if (publicAuthority && keyValuePair.Value?.RegulationAct?.PublicAuthorityEffectiveDate is DateTime publicAuthorityEffectiveDate && publicAuthorityEffectiveDate < dateTime_Applicable)
                 {
-                    return values[dateTimes[i - 1]];
+                    dateTime_Applicable = publicAuthorityEffectiveDate;
+                }
+
+                if (dateTime_Applicable > dateTime)
+                {
+                    continue;
+                }
+
+                if (result is null || dateTime_Applicable >= dateTime_Result)
+                {
+                    result = keyValuePair.Value;
+                    dateTime_Result = dateTime_Applicable;
                 }
             }
 
-            return null;
+            return result;
         }
 
         /// <summary>
