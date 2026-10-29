@@ -1900,6 +1900,8 @@ Implements [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Ana
 
 Gets the position index of this layer within the parent structure\.
 
+Layers are ordered from the outside inwards: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8).
+
 ```csharp
 int Index { get; }
 ```
@@ -1911,7 +1913,7 @@ int Index { get; }
 
 ## IStructureLayer\.Thickness Property
 
-Gets the thickness of the structure layer\.
+Gets the thickness of the structure layer \[m\]\.
 
 ```csharp
 double Thickness { get; }

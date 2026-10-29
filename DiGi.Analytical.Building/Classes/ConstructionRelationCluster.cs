@@ -167,10 +167,10 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
-        /// Retrieves the list of structure layers associated with the specified physical component construction.
+        /// Retrieves the list of structure layers associated with the specified physical component construction, ordered by <see cref="IStructureLayer.Index"/> - from the outside (index 0) inwards.
         /// </summary>
         /// <param name="physicalComponentConstruction">The physical component construction for which to retrieve the associated structure layers.</param>
-        /// <returns>A list of <see cref="IStructureLayer"/> objects if found; otherwise, null.</returns>
+        /// <returns>A list of <see cref="IStructureLayer"/> objects ordered by index if found; otherwise, null.</returns>
         public List<IStructureLayer>? GetStructureLayers(IPhysicalComponentConstruction? physicalComponentConstruction)
         {
             if (physicalComponentConstruction is null)
@@ -178,13 +178,35 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            PhysicalComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = GetRelation<PhysicalComponentConstructionStructureLayersRelation>(new GuidReference(physicalComponentConstruction));
-            if (componentConstructionStructureLayersRelation is null)
+            return GetStructureLayers(GetRelation<PhysicalComponentConstructionStructureLayersRelation>(new GuidReference(physicalComponentConstruction)));
+        }
+
+        /// <summary>
+        /// Retrieves the list of structure layers of the specified part (pane or frame) of an opening construction, ordered by <see cref="IStructureLayer.Index"/> - from the outside (index 0) inwards.
+        /// </summary>
+        /// <param name="openingConstruction">The opening construction for which to retrieve the associated structure layers.</param>
+        /// <param name="openingConstructionPart">The part of the opening construction whose layers are retrieved.</param>
+        /// <returns>A list of <see cref="IStructureLayer"/> objects ordered by index if found; otherwise, null, also when <paramref name="openingConstructionPart"/> is <see cref="OpeningConstructionPart.Undefined"/>.</returns>
+        public List<IStructureLayer>? GetStructureLayers(IOpeningConstruction? openingConstruction, OpeningConstructionPart openingConstructionPart)
+        {
+            if (openingConstruction is null)
             {
                 return null;
             }
 
-            if (componentConstructionStructureLayersRelation.UniqueReferences_To is not List<IUniqueReference> uniqueReferences)
+            GuidReference guidReference = new(openingConstruction);
+
+            return openingConstructionPart switch
+            {
+                OpeningConstructionPart.Pane => GetStructureLayers(GetRelation<PaneOpeningConstructionStructureLayersRelation>(guidReference)),
+                OpeningConstructionPart.Frame => GetStructureLayers(GetRelation<FrameOpeningConstructionStructureLayersRelation>(guidReference)),
+                _ => null,
+            };
+        }
+
+        private List<IStructureLayer>? GetStructureLayers<TConstruction>(ConstructionStructureLayersRelation<TConstruction>? constructionStructureLayersRelation) where TConstruction : IConstruction
+        {
+            if (constructionStructureLayersRelation?.UniqueReferences_To is not List<IUniqueReference> uniqueReferences)
             {
                 return null;
             }
@@ -199,6 +221,8 @@ namespace DiGi.Analytical.Building.Classes
 
                 result.Add(structureLayer);
             }
+
+            result.Sort((structureLayer_1, structureLayer_2) => structureLayer_1.Index.CompareTo(structureLayer_2.Index));
 
             return result;
         }

@@ -1,6 +1,7 @@
 ﻿using DiGi.Analytical.Building.Enums;
 using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
+using DiGi.Analytical.Interfaces;
 using DiGi.Core;
 using DiGi.Core.Classes;
 using DiGi.Core.Interfaces;
@@ -1163,6 +1164,37 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Gets the material of the specified structure layer (DiGi-Organization/DiGi.Analytical#8).
+        /// </summary>
+        /// <param name="structureLayer">The structure layer whose material is retrieved. This value can be null.</param>
+        /// <returns>A CLONE of the <see cref="IMaterial"/> of the layer, or <see langword="null"/> if the layer has none or is null.</returns>
+        public IMaterial? GetMaterial(IStructureLayer? structureLayer)
+        {
+            return buildingRelationCluster.GetMaterial(structureLayer)?.Clone<IMaterial>();
+        }
+
+        /// <summary>
+        /// Gets the structure layers of the specified wall, roof or floor construction, ordered from the outside (index 0) inwards (DiGi-Organization/DiGi.Analytical#8).
+        /// </summary>
+        /// <param name="physicalComponentConstruction">The construction whose layers are retrieved. This value can be null.</param>
+        /// <returns>CLONES of the construction's <see cref="IStructureLayer"/>s ordered by index, or <see langword="null"/> if the construction has none or is null.</returns>
+        public List<IStructureLayer>? GetStructureLayers(IPhysicalComponentConstruction? physicalComponentConstruction)
+        {
+            return buildingRelationCluster.GetStructureLayers(physicalComponentConstruction)?.CloneAndFilterNulls();
+        }
+
+        /// <summary>
+        /// Gets the structure layers of the specified part (pane or frame) of an opening construction, ordered from the outside (index 0) inwards (DiGi-Organization/DiGi.Analytical#8).
+        /// </summary>
+        /// <param name="openingConstruction">The opening construction whose layers are retrieved. This value can be null.</param>
+        /// <param name="openingConstructionPart">The part of the opening construction whose layers are retrieved.</param>
+        /// <returns>CLONES of the part's <see cref="IStructureLayer"/>s ordered by index, or <see langword="null"/> if the part has none, is <see cref="OpeningConstructionPart.Undefined"/> or the construction is null.</returns>
+        public List<IStructureLayer>? GetStructureLayers(IOpeningConstruction? openingConstruction, OpeningConstructionPart openingConstructionPart)
+        {
+            return buildingRelationCluster.GetStructureLayers(openingConstruction, openingConstructionPart)?.CloneAndFilterNulls();
+        }
+
+        /// <summary>
         /// Gets the wall construction for the specified wall.
         /// <para>The construction is the one established by <see cref="Assign(IWall, IWallConstruction)"/> for the identifier of the given wall, which is why a component rebuilt under the same identifier keeps its construction.</para>
         /// </summary>
@@ -1476,6 +1508,99 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return buildingRelationCluster.Add(construction.Clone<IConstruction>());
+        }
+
+        /// <summary>
+        /// Updates the building model with a layered construction taken from a construction relation cluster - a construction library, for instance (DiGi-Organization/DiGi.Analytical#8).
+        /// <para>The construction, its structure layers (both the pane and the frame layers of an opening construction) and their materials are copied with their identifiers. Re-importing the same construction replaces it: its existing layers are removed first, so layers are never duplicated. A material is shared by its identifier, so importing two constructions of one library keeps a single copy of a common material. A layer without a material is copied without one.</para>
+        /// </summary>
+        /// <param name="constructionRelationCluster">The cluster holding the construction, its layers and their materials. This value can be null.</param>
+        /// <param name="construction">The construction to copy. Its layers are read from <paramref name="constructionRelationCluster"/> by its identifier. This value can be null.</param>
+        /// <returns>True if the construction and every layer were added; otherwise, false.</returns>
+        public bool Update(ConstructionRelationCluster? constructionRelationCluster, IConstruction? construction)
+        {
+            if (constructionRelationCluster is null || construction is null)
+            {
+                return false;
+            }
+
+            // A wall, roof or floor construction has one list of layers; an opening construction has one per part.
+            OpeningConstructionPart[] openingConstructionParts = construction is IOpeningConstruction ? [OpeningConstructionPart.Pane, OpeningConstructionPart.Frame] : [OpeningConstructionPart.Undefined];
+
+            List<IStructureLayer>? StructureLayers(ConstructionRelationCluster constructionRelationCluster_Temp, OpeningConstructionPart openingConstructionPart)
+            {
+                return construction switch
+                {
+                    IPhysicalComponentConstruction physicalComponentConstruction => constructionRelationCluster_Temp.GetStructureLayers(physicalComponentConstruction),
+                    IOpeningConstruction openingConstruction => constructionRelationCluster_Temp.GetStructureLayers(openingConstruction, openingConstructionPart),
+                    _ => null,
+                };
+            }
+
+            foreach (OpeningConstructionPart openingConstructionPart in openingConstructionParts)
+            {
+                List<IStructureLayer>? structureLayers_Existing = StructureLayers(buildingRelationCluster, openingConstructionPart);
+                if (structureLayers_Existing is null)
+                {
+                    continue;
+                }
+
+                foreach (IStructureLayer structureLayer_Existing in structureLayers_Existing)
+                {
+                    buildingRelationCluster.Remove(structureLayer_Existing);
+                }
+            }
+
+            if (!buildingRelationCluster.Add(construction.Clone<IConstruction>()))
+            {
+                return false;
+            }
+
+            bool result = true;
+            foreach (OpeningConstructionPart openingConstructionPart in openingConstructionParts)
+            {
+                List<IStructureLayer>? structureLayers = StructureLayers(constructionRelationCluster, openingConstructionPart);
+                if (structureLayers is null)
+                {
+                    continue;
+                }
+
+                foreach (IStructureLayer structureLayer in structureLayers)
+                {
+                    IStructureLayer? structureLayer_Clone = structureLayer.Clone<IStructureLayer>();
+                    if (structureLayer_Clone is null || !buildingRelationCluster.Add(structureLayer_Clone))
+                    {
+                        result = false;
+                        continue;
+                    }
+
+                    bool related = construction switch
+                    {
+                        IPhysicalComponentConstruction physicalComponentConstruction => buildingRelationCluster.AddRelation(physicalComponentConstruction, structureLayer_Clone) is not null,
+                        IOpeningConstruction openingConstruction => buildingRelationCluster.AddRelation(openingConstruction, openingConstructionPart, structureLayer_Clone) is not null,
+                        _ => false,
+                    };
+
+                    if (!related)
+                    {
+                        result = false;
+                        continue;
+                    }
+
+                    IMaterial? material = constructionRelationCluster.GetMaterial(structureLayer)?.Clone<IMaterial>();
+                    if (material is null)
+                    {
+                        continue;
+                    }
+
+                    if (!buildingRelationCluster.Add(material) || buildingRelationCluster.AddRelation(material, structureLayer_Clone) is null)
+                    {
+                        result = false;
+                    }
+                }
+            }
+
+            return result;
         }
 
         /// <summary>

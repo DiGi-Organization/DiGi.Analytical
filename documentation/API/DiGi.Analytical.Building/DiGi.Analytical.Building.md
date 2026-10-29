@@ -140,6 +140,8 @@ A new [FaceFloor\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#D
 
 Creates a new structure layer and associates it with an opening construction part and a material within the specified relation cluster\.
 
+The layer is appended after the part's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.
+
 ```csharp
 public static DiGi.Analytical.Classes.StructureLayer? StructureLayer(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openinigConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart, DiGi.Analytical.Interfaces.IMaterial? material, double thickness);
 ```
@@ -184,6 +186,8 @@ The created [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.
 ## Create\.StructureLayer\(this ConstructionRelationCluster, IPhysicalComponentConstruction, IMaterial, double\) Method
 
 Creates and adds a new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') to the specified construction relation cluster\.
+
+The layer is appended after the construction's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.
 
 ```csharp
 public static DiGi.Analytical.Classes.StructureLayer? StructureLayer(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction? physicalComponentConstruction, DiGi.Analytical.Interfaces.IMaterial? material, double thickness);

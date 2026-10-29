@@ -10,6 +10,7 @@ namespace DiGi.Analytical.Building
     {
         /// <summary>
         /// Creates and adds a new <see cref="T:DiGi.Analytical.Building.Classes.StructureLayer"/> to the specified construction relation cluster.
+        /// <para>The layer is appended after the construction's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.</para>
         /// </summary>
         /// <param name="constructionRelationCluster">The construction relation cluster where the structure layer will be created and stored.</param>
         /// <param name="physicalComponentConstruction">The physical component construction associated with the structure layer.</param>
@@ -57,6 +58,7 @@ namespace DiGi.Analytical.Building
 
         /// <summary>
         /// Creates a new structure layer and associates it with an opening construction part and a material within the specified relation cluster.
+        /// <para>The layer is appended after the part's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.</para>
         /// </summary>
         /// <param name="constructionRelationCluster">The construction relation cluster to which the structure layer and its relations are added.</param>
         /// <param name="openinigConstruction">The opening construction associated with the new structure layer.</param>
@@ -82,7 +84,13 @@ namespace DiGi.Analytical.Building
                 return null;
             }
 
+            // The layer itself must be held by the cluster, as for a physical component construction; without it the
+            // relations point at an object the cluster cannot return (DiGi-Organization/DiGi.Analytical#8).
             StructureLayer result = new(index, thickness);
+            if (!constructionRelationCluster.Add(result))
+            {
+                return null;
+            }
 
             OpeningConstructionStructureLayersRelation? openingConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(openinigConstruction, openingConstructionPart, result);
             if (openingConstructionStructureLayersRelation is null)

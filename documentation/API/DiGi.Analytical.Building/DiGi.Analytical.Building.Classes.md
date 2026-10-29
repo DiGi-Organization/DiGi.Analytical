@@ -1851,6 +1851,27 @@ The space for which to retrieve the internal conditions\.
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TInternalCondition](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetInternalConditions_TInternalCondition_(DiGi.Analytical.Building.Interfaces.ISpace).TInternalCondition 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetInternalConditions\<TInternalCondition\>\(DiGi\.Analytical\.Building\.Interfaces\.ISpace\)\.TInternalCondition')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of internal conditions of type [TInternalCondition](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetInternalConditions_TInternalCondition_(DiGi.Analytical.Building.Interfaces.ISpace).TInternalCondition 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetInternalConditions\<TInternalCondition\>\(DiGi\.Analytical\.Building\.Interfaces\.ISpace\)\.TInternalCondition') associated with the specified space, or null if no such conditions are found or if the input is null\.
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetMaterial(DiGi.Analytical.Building.Interfaces.IStructureLayer)'></a>
+
+## BuildingModel\.GetMaterial\(IStructureLayer\) Method
+
+Gets the material of the specified structure layer \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+```csharp
+public DiGi.Analytical.Interfaces.IMaterial? GetMaterial(DiGi.Analytical.Building.Interfaces.IStructureLayer? structureLayer);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetMaterial(DiGi.Analytical.Building.Interfaces.IStructureLayer).structureLayer'></a>
+
+`structureLayer` [IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')
+
+The structure layer whose material is retrieved\. This value can be null\.
+
+#### Returns
+[DiGi\.Analytical\.Interfaces\.IMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.imaterial 'DiGi\.Analytical\.Interfaces\.IMaterial')  
+A CLONE of the [DiGi\.Analytical\.Interfaces\.IMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.imaterial 'DiGi\.Analytical\.Interfaces\.IMaterial') of the layer, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if the layer has none or is null\.
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetObject_TBuildingGuidObject_(DiGi.Analytical.Building.Interfaces.IBuildingRelation)'></a>
 
 ## BuildingModel\.GetObject\<TBuildingGuidObject\>\(IBuildingRelation\) Method
@@ -2467,6 +2488,54 @@ The internal condition for which to retrieve associated spaces\.
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetSpaces_TSpace_(DiGi.Analytical.Building.Interfaces.IInternalCondition).TSpace 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetSpaces\<TSpace\>\(DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition\)\.TSpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of spaces of type [TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetSpaces_TSpace_(DiGi.Analytical.Building.Interfaces.IInternalCondition).TSpace 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetSpaces\<TSpace\>\(DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition\)\.TSpace'), or null if no relations are found\.
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart)'></a>
+
+## BuildingModel\.GetStructureLayers\(IOpeningConstruction, OpeningConstructionPart\) Method
+
+Gets the structure layers of the specified part \(pane or frame\) of an opening construction, ordered from the outside \(index 0\) inwards \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+```csharp
+public System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.IStructureLayer>? GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The opening construction whose layers are retrieved\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstructionPart'></a>
+
+`openingConstructionPart` [OpeningConstructionPart](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart')
+
+The part of the opening construction whose layers are retrieved\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+CLONES of the part's [IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')s ordered by index, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if the part has none, is [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Undefined 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Undefined') or the construction is null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction)'></a>
+
+## BuildingModel\.GetStructureLayers\(IPhysicalComponentConstruction\) Method
+
+Gets the structure layers of the specified wall, roof or floor construction, ordered from the outside \(index 0\) inwards \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+```csharp
+public System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.IStructureLayer>? GetStructureLayers(DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction? physicalComponentConstruction);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).physicalComponentConstruction'></a>
+
+`physicalComponentConstruction` [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
+
+The construction whose layers are retrieved\. This value can be null\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+CLONES of the construction's [IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')s ordered by index, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if the construction has none or is null\.
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetTerrains_TTerrain_()'></a>
 
 ## BuildingModel\.GetTerrains\<TTerrain\>\(\) Method
@@ -2900,6 +2969,35 @@ The space to be removed from the zone's association\. Can be null\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the space was successfully unassigned from the zone; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IConstruction)'></a>
+
+## BuildingModel\.Update\(ConstructionRelationCluster, IConstruction\) Method
+
+Updates the building model with a layered construction taken from a construction relation cluster \- a construction library, for instance \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+The construction, its structure layers (both the pane and the frame layers of an opening construction) and their materials are copied with their identifiers. Re-importing the same construction replaces it: its existing layers are removed first, so layers are never duplicated. A material is shared by its identifier, so importing two constructions of one library keeps a single copy of a common material. A layer without a material is copied without one.
+
+```csharp
+public bool Update(DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IConstruction? construction);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IConstruction).constructionRelationCluster'></a>
+
+`constructionRelationCluster` [ConstructionRelationCluster](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster')
+
+The cluster holding the construction, its layers and their materials\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IConstruction).construction'></a>
+
+`construction` [IConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IConstruction')
+
+The construction to copy\. Its layers are read from [constructionRelationCluster](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IConstruction).constructionRelationCluster 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IConstruction\)\.constructionRelationCluster') by its identifier\. This value can be null\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the construction and every layer were added; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IComponent)'></a>
 
@@ -4971,11 +5069,38 @@ The structure layer for which to retrieve the associated material\.
 [DiGi\.Analytical\.Interfaces\.IMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.imaterial 'DiGi\.Analytical\.Interfaces\.IMaterial')  
 The [DiGi\.Analytical\.Interfaces\.IMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.imaterial 'DiGi\.Analytical\.Interfaces\.IMaterial') associated with the provided structure layer, or `null` if no relation exists or the [structureLayer](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster.GetMaterial(DiGi.Analytical.Building.Interfaces.IStructureLayer).structureLayer 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster\.GetMaterial\(DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer\)\.structureLayer') is null\.
 
+<a name='DiGi.Analytical.Building.Classes.ConstructionRelationCluster.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart)'></a>
+
+## ConstructionRelationCluster\.GetStructureLayers\(IOpeningConstruction, OpeningConstructionPart\) Method
+
+Retrieves the list of structure layers of the specified part \(pane or frame\) of an opening construction, ordered by [Index](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer.Index 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer\.Index') \- from the outside \(index 0\) inwards\.
+
+```csharp
+public System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.IStructureLayer>? GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.ConstructionRelationCluster.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The opening construction for which to retrieve the associated structure layers\.
+
+<a name='DiGi.Analytical.Building.Classes.ConstructionRelationCluster.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstructionPart'></a>
+
+`openingConstructionPart` [OpeningConstructionPart](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart')
+
+The part of the opening construction whose layers are retrieved\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list of [IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer') objects ordered by index if found; otherwise, null, also when [openingConstructionPart](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstructionPart 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster\.GetStructureLayers\(DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\)\.openingConstructionPart') is [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Undefined 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Undefined')\.
+
 <a name='DiGi.Analytical.Building.Classes.ConstructionRelationCluster.GetStructureLayers(DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction)'></a>
 
 ## ConstructionRelationCluster\.GetStructureLayers\(IPhysicalComponentConstruction\) Method
 
-Retrieves the list of structure layers associated with the specified physical component construction\.
+Retrieves the list of structure layers associated with the specified physical component construction, ordered by [Index](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer.Index 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer\.Index') \- from the outside \(index 0\) inwards\.
 
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.IStructureLayer>? GetStructureLayers(DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction? physicalComponentConstruction);
@@ -4990,7 +5115,7 @@ The physical component construction for which to retrieve the associated structu
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of [IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer') objects if found; otherwise, null\.
+A list of [IStructureLayer](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IStructureLayer 'DiGi\.Analytical\.Building\.Interfaces\.IStructureLayer') objects ordered by index if found; otherwise, null\.
 
 <a name='DiGi.Analytical.Building.Classes.ConstructionStructureLayersRelation_TConstruction_'></a>
 
