@@ -15,10 +15,25 @@ namespace DiGi.Analytical.Building.HVAC.Interfaces
         RegulationAct? RegulationAct { get; }
 
         /// <summary>
+        /// Gets the list of the names of all minimum thermal resistances R(min) [(m2K)/W] defined in this regulation.
+        /// <para>These partitions are limited by a resistance, not by a heat transfer coefficient, so they are not listed by <see cref="GetNames"/>.</para>
+        /// </summary>
+        /// <returns>A list of minimum thermal resistance names.</returns>
+        List<string> GetMinimumThermalResistanceNames();
+
+        /// <summary>
         /// Gets the list of all coefficient names defined in this regulation.
         /// </summary>
         /// <returns>A list of coefficient names.</returns>
         List<string> GetNames();
+
+        /// <summary>
+        /// Attempts to retrieve the minimum thermal resistance R(min) [(m2K)/W] for the specified name.
+        /// </summary>
+        /// <param name="name">The name of the minimum thermal resistance to retrieve.</param>
+        /// <param name="value">When this method returns, contains the minimum thermal resistance if found; otherwise, <see cref="double.NaN"/>.</param>
+        /// <returns><see langword="true"/> if the minimum thermal resistance was found; otherwise, <see langword="false"/>.</returns>
+        bool TryGetMinimumThermalResistance(string name, out double value);
 
         /// <summary>
         /// Attempts to retrieve the heat transfer coefficient value for the specified name.

@@ -5,6 +5,8 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 {
     /// <summary>
     /// Represents the regulated heat transfer coefficients according to the 2002 regulation standards for external partition types.
+    /// <para>Annex 2 of the regulation (Dz.U. 2002 nr 75 poz. 690) sets the wall, roof and basement ceiling limits of a residential building in the single-family building table only. A multi-family or collective-residence building has no wall or roof U(max): it meets the regulation by its seasonal heat demand indicator E not exceeding E0 (§ 329). The window and door limits apply to every residential building.</para>
+    /// <para>A floor on ground is limited by a minimum sum of thermal resistances R(min) of 1.5 (m2K)/W at ti &gt; 16 °C (point 1.4), not by a heat transfer coefficient; it is held as a minimum thermal resistance (DiGi-Organization/DiGi.Analytical#12).</para>
     /// </summary>
     public class RegulatedHeatTransferCoefficients_2002 : RegulatedHeatTransferCoefficients<ExternalPartitionType_2002>
     {

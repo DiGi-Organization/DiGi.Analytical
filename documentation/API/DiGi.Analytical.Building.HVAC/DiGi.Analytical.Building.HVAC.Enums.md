@@ -18,31 +18,31 @@ public enum ExternalPartitionType_2002
 
 `ResidentialBuilding_Wall_Multilayer` 0
 
-Represents a residential building multilayer wall\.
+Represents a multilayer wall of a single\-family residential building; the regulation sets no wall limit for a multi\-family building\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002.ResidentialBuilding_Wall_Solid'></a>
 
 `ResidentialBuilding_Wall_Solid` 1
 
-Residential building solid wall\.
+Represents a solid wall of a single\-family residential building; the regulation sets no wall limit for a multi\-family building\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002.ResidentialBuilding_Roof'></a>
 
 `ResidentialBuilding_Roof` 2
 
-Residential building roof over heated rooms\.
+Represents a roof over heated rooms of a single\-family residential building; the regulation sets no roof limit for a multi\-family building\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002.ResidentialBuilding_Floor_OverUnheatedSpaces'></a>
 
 `ResidentialBuilding_Floor_OverUnheatedSpaces` 3
 
-Represents a residential building floor located over unheated spaces\.
+Represents a floor over unheated spaces of a single\-family residential building; the regulation sets no limit for it in a multi\-family building\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002.ResidentialBuilding_Floor'></a>
 
 `ResidentialBuilding_Floor` 4
 
-Represents a residential building floor on ground\.
+Represents a residential building floor on ground, limited by a minimum thermal resistance rather than a heat transfer coefficient\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002.ResidentialBuilding_Window_ZoneA'></a>
 
@@ -102,7 +102,7 @@ Represents a public building floor located over unheated spaces\.
 
 `PublicBuilding_Floor` 14
 
-Represents a public building floor on ground\.
+Represents a public building floor on ground, limited by a minimum thermal resistance rather than a heat transfer coefficient\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002.PublicBuilding_Window'></a>
 

@@ -8,27 +8,27 @@ namespace DiGi.Analytical.Building.HVAC.Enums
     public enum ExternalPartitionType_2002
     {
         /// <summary>
-        /// Represents a residential building multilayer wall.
+        /// Represents a multilayer wall of a single-family residential building; the regulation sets no wall limit for a multi-family building.
         /// </summary>
-        [Description("Residential building multilayer wall")] ResidentialBuilding_Wall_Multilayer,
+        [Description("Residential building (single-family) multilayer wall")] ResidentialBuilding_Wall_Multilayer,
 
         /// <summary>
-        /// Residential building solid wall.
+        /// Represents a solid wall of a single-family residential building; the regulation sets no wall limit for a multi-family building.
         /// </summary>
-        [Description("Residential building solid wall")] ResidentialBuilding_Wall_Solid,
+        [Description("Residential building (single-family) solid wall")] ResidentialBuilding_Wall_Solid,
 
         /// <summary>
-        /// Residential building roof over heated rooms.
+        /// Represents a roof over heated rooms of a single-family residential building; the regulation sets no roof limit for a multi-family building.
         /// </summary>
-        [Description("Residential building roof over heated rooms")] ResidentialBuilding_Roof,
+        [Description("Residential building (single-family) roof over heated rooms")] ResidentialBuilding_Roof,
 
         /// <summary>
-        /// Represents a residential building floor located over unheated spaces.
+        /// Represents a floor over unheated spaces of a single-family residential building; the regulation sets no limit for it in a multi-family building.
         /// </summary>
-        [Description("Residential building floor over unheated spaces")] ResidentialBuilding_Floor_OverUnheatedSpaces,
+        [Description("Residential building (single-family) floor over unheated spaces")] ResidentialBuilding_Floor_OverUnheatedSpaces,
 
         /// <summary>
-        /// Represents a residential building floor on ground.
+        /// Represents a residential building floor on ground, limited by a minimum thermal resistance rather than a heat transfer coefficient.
         /// </summary>
         [Description("Residential building floor on ground")] ResidentialBuilding_Floor,
 
@@ -78,7 +78,7 @@ namespace DiGi.Analytical.Building.HVAC.Enums
         [Description("Public building floor over unheated spaces")] PublicBuilding_Floor_OverUnheatedSpaces,
 
         /// <summary>
-        /// Represents a public building floor on ground.
+        /// Represents a public building floor on ground, limited by a minimum thermal resistance rather than a heat transfer coefficient.
         /// </summary>
         [Description("Public building floor on ground")] PublicBuilding_Floor,
 

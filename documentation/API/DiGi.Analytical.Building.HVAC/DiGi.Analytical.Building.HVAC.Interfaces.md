@@ -72,6 +72,22 @@ DiGi.Analytical.Building.HVAC.Classes.RegulationAct? RegulationAct { get; }
 [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct')
 ### Methods
 
+<a name='DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.GetMinimumThermalResistanceNames()'></a>
+
+## IRegulatedHeatTransferCoefficients\.GetMinimumThermalResistanceNames\(\) Method
+
+Gets the list of the names of all minimum thermal resistances R\(min\) \[\(m2K\)/W\] defined in this regulation\.
+
+These partitions are limited by a resistance, not by a heat transfer coefficient, so they are not listed by [GetNames\(\)](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.GetNames() 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients\.GetNames\(\)').
+
+```csharp
+System.Collections.Generic.List<string> GetMinimumThermalResistanceNames();
+```
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list of minimum thermal resistance names\.
+
 <a name='DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.GetNames()'></a>
 
 ## IRegulatedHeatTransferCoefficients\.GetNames\(\) Method
@@ -85,6 +101,33 @@ System.Collections.Generic.List<string> GetNames();
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of coefficient names\.
+
+<a name='DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.TryGetMinimumThermalResistance(string,double)'></a>
+
+## IRegulatedHeatTransferCoefficients\.TryGetMinimumThermalResistance\(string, double\) Method
+
+Attempts to retrieve the minimum thermal resistance R\(min\) \[\(m2K\)/W\] for the specified name\.
+
+```csharp
+bool TryGetMinimumThermalResistance(string name, out double value);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.TryGetMinimumThermalResistance(string,double).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the minimum thermal resistance to retrieve\.
+
+<a name='DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.TryGetMinimumThermalResistance(string,double).value'></a>
+
+`value` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+When this method returns, contains the minimum thermal resistance if found; otherwise, [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN')\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') if the minimum thermal resistance was found; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
 
 <a name='DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.TryGetValue(string,double)'></a>
 

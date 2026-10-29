@@ -9,10 +9,14 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 {
     /// <summary>
     /// Provides an abstract base implementation for regulated heat transfer coefficients, associating specific regulatory categories with their corresponding numerical values.
+    /// <para>Besides the maximum heat transfer coefficients U(max) [W/(m2K)], a regulation may limit a partition by a minimum thermal resistance R(min) [(m2K)/W] instead - the 2002 regulation does so for floors on ground. The two are kept apart, so a resistance is never read or displayed as a heat transfer coefficient (DiGi-Organization/DiGi.Analytical#12).</para>
     /// </summary>
     /// <typeparam name="TEnum">The enumeration type used to define the keys for the heat transfer coefficient values.</typeparam>
     public abstract class RegulatedHeatTransferCoefficients<TEnum> : SerializableObject, IRegulatedHeatTransferCoefficients where TEnum : Enum
     {
+        [JsonInclude, JsonPropertyName("MinimumThermalResistances")]
+        private readonly Dictionary<TEnum, double> minimumThermalResistances = [];
+
         [JsonInclude, JsonPropertyName(nameof(RegulationAct))]
         private readonly RegulationAct? regulationAct;
 
@@ -41,7 +45,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         /// <summary>
         /// Initializes a new instance of the <see cref="RegulatedHeatTransferCoefficients{TEnum}"/> class by copying the values from an existing instance.
         /// </summary>
-        /// <param name="regulatedHeatTransferCoefficients">The source instance to copy heat transfer coefficients and regulation act from.</param>
+        /// <param name="regulatedHeatTransferCoefficients">The source instance to copy heat transfer coefficients, minimum thermal resistances and regulation act from.</param>
         public RegulatedHeatTransferCoefficients(RegulatedHeatTransferCoefficients<TEnum> regulatedHeatTransferCoefficients)
             : base(regulatedHeatTransferCoefficients)
         {
@@ -51,6 +55,11 @@ namespace DiGi.Analytical.Building.HVAC.Classes
                 foreach (KeyValuePair<TEnum, double> keyValuePair in regulatedHeatTransferCoefficients.values)
                 {
                     SetValue(keyValuePair.Key, keyValuePair.Value);
+                }
+
+                foreach (KeyValuePair<TEnum, double> keyValuePair in regulatedHeatTransferCoefficients.minimumThermalResistances)
+                {
+                    SetMinimumThermalResistance(keyValuePair.Key, keyValuePair.Value);
                 }
             }
         }
@@ -95,6 +104,22 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         }
 
         /// <summary>
+        /// Retrieves a list of names or descriptions for the regulated minimum thermal resistances.
+        /// </summary>
+        /// <returns>A list of strings representing the names of the minimum thermal resistances.</returns>
+        public List<string> GetMinimumThermalResistanceNames()
+        {
+            List<string> result = [];
+
+            foreach (TEnum @enum in minimumThermalResistances.Keys)
+            {
+                result.Add(Core.Query.Description(@enum) ?? @enum.ToString());
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Retrieves a list of names or descriptions for the regulated heat transfer coefficients.
         /// </summary>
         /// <returns>A list of strings representing the names of the coefficients.</returns>
@@ -108,6 +133,23 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Sets the minimum thermal resistance R(min) [(m2K)/W] for the specified enumeration member.
+        /// </summary>
+        /// <param name="enum">The enumeration member identifying the partition the minimum thermal resistance applies to.</param>
+        /// <param name="value">The minimum thermal resistance [(m2K)/W].</param>
+        /// <returns>True if the value was successfully set; false if the provided value is <see cref="System.Double.NaN"/>.</returns>
+        public bool SetMinimumThermalResistance(TEnum @enum, double value)
+        {
+            if (double.IsNaN(value))
+            {
+                return false;
+            }
+
+            minimumThermalResistances[@enum] = value;
+            return true;
         }
 
         /// <summary>
@@ -125,6 +167,50 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
             values[@enum] = value;
             return true;
+        }
+
+        /// <summary>
+        /// Attempts to retrieve the minimum thermal resistance R(min) [(m2K)/W] associated with the specified enumeration member.
+        /// </summary>
+        /// <param name="enum">The enumeration member used as the key for retrieval.</param>
+        /// <param name="value">When this method returns, contains the retrieved value if successful; otherwise, <see cref="double.NaN"/>.</param>
+        /// <returns>True if the value was successfully retrieved; otherwise, false.</returns>
+        public bool TryGetMinimumThermalResistance(TEnum @enum, out double value)
+        {
+            if (!minimumThermalResistances.TryGetValue(@enum, out value))
+            {
+                value = double.NaN;
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Attempts to retrieve the minimum thermal resistance R(min) [(m2K)/W] associated with the specified name.
+        /// </summary>
+        /// <param name="name">The name of the minimum thermal resistance to retrieve, matching either the enum description or its string representation.</param>
+        /// <param name="value">When this method returns, contains the retrieved value if successful; otherwise, <see cref="double.NaN"/>.</param>
+        /// <returns>True if the value was successfully retrieved; otherwise, false.</returns>
+        public bool TryGetMinimumThermalResistance(string name, out double value)
+        {
+            value = double.NaN;
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return false;
+            }
+
+            foreach (KeyValuePair<TEnum, double> keyValuePair in minimumThermalResistances)
+            {
+                if (name == (Core.Query.Description(keyValuePair.Key) ?? keyValuePair.Key.ToString()))
+                {
+                    value = keyValuePair.Value;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>

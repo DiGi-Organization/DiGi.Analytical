@@ -453,6 +453,8 @@ The type of the internal gain profile to retrieve or set\.
 
 Provides an abstract base implementation for regulated heat transfer coefficients, associating specific regulatory categories with their corresponding numerical values\.
 
+Besides the maximum heat transfer coefficients U(max) [W/(m2K)], a regulation may limit a partition by a minimum thermal resistance R(min) [(m2K)/W] instead - the 2002 regulation does so for floors on ground. The two are kept apart, so a resistance is never read or displayed as a heat transfer coefficient (DiGi-Organization/DiGi.Analytical#12).
+
 ```csharp
 public abstract class RegulatedHeatTransferCoefficients<TEnum> : DiGi.Core.Classes.SerializableObject, DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject
     where TEnum : System.Enum
@@ -490,7 +492,7 @@ public RegulatedHeatTransferCoefficients(DiGi.Analytical.Building.HVAC.Classes.R
 
 `regulatedHeatTransferCoefficients` [DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients&lt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')[TEnum](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TEnum 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>\.TEnum')[&gt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')
 
-The source instance to copy heat transfer coefficients and regulation act from\.
+The source instance to copy heat transfer coefficients, minimum thermal resistances and regulation act from\.
 
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.RegulatedHeatTransferCoefficients(DiGi.Analytical.Building.HVAC.Classes.RegulationAct)'></a>
 
@@ -577,6 +579,22 @@ public System.Collections.Generic.List<TEnum> GetEnums();
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TEnum](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TEnum 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>\.TEnum')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A [System\.Collections\.Generic\.List&lt;&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1') containing all the enumeration values currently defined in the coefficients collection\.
 
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.GetMinimumThermalResistanceNames()'></a>
+
+## RegulatedHeatTransferCoefficients\<TEnum\>\.GetMinimumThermalResistanceNames\(\) Method
+
+Retrieves a list of names or descriptions for the regulated minimum thermal resistances\.
+
+```csharp
+public System.Collections.Generic.List<string> GetMinimumThermalResistanceNames();
+```
+
+Implements [GetMinimumThermalResistanceNames\(\)](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.GetMinimumThermalResistanceNames() 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients\.GetMinimumThermalResistanceNames\(\)')
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list of strings representing the names of the minimum thermal resistances\.
+
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.GetNames()'></a>
 
 ## RegulatedHeatTransferCoefficients\<TEnum\>\.GetNames\(\) Method
@@ -592,6 +610,33 @@ Implements [GetNames\(\)](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analy
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of strings representing the names of the coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.SetMinimumThermalResistance(TEnum,double)'></a>
+
+## RegulatedHeatTransferCoefficients\<TEnum\>\.SetMinimumThermalResistance\(TEnum, double\) Method
+
+Sets the minimum thermal resistance R\(min\) \[\(m2K\)/W\] for the specified enumeration member\.
+
+```csharp
+public bool SetMinimumThermalResistance(TEnum @enum, double value);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.SetMinimumThermalResistance(TEnum,double).enum'></a>
+
+`enum` [TEnum](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TEnum 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>\.TEnum')
+
+The enumeration member identifying the partition the minimum thermal resistance applies to\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.SetMinimumThermalResistance(TEnum,double).value'></a>
+
+`value` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The minimum thermal resistance \[\(m2K\)/W\]\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the value was successfully set; false if the provided value is [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN')\.
 
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.SetValue(TEnum,double)'></a>
 
@@ -619,6 +664,62 @@ The numeric value to assign to the coefficient\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the value was successfully set; false if the provided value is [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN')\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetMinimumThermalResistance(string,double)'></a>
+
+## RegulatedHeatTransferCoefficients\<TEnum\>\.TryGetMinimumThermalResistance\(string, double\) Method
+
+Attempts to retrieve the minimum thermal resistance R\(min\) \[\(m2K\)/W\] associated with the specified name\.
+
+```csharp
+public bool TryGetMinimumThermalResistance(string name, out double value);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetMinimumThermalResistance(string,double).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the minimum thermal resistance to retrieve, matching either the enum description or its string representation\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetMinimumThermalResistance(string,double).value'></a>
+
+`value` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+When this method returns, contains the retrieved value if successful; otherwise, [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN')\.
+
+Implements [TryGetMinimumThermalResistance\(string, double\)](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients.TryGetMinimumThermalResistance(string,double) 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients\.TryGetMinimumThermalResistance\(string, double\)')
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the value was successfully retrieved; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetMinimumThermalResistance(TEnum,double)'></a>
+
+## RegulatedHeatTransferCoefficients\<TEnum\>\.TryGetMinimumThermalResistance\(TEnum, double\) Method
+
+Attempts to retrieve the minimum thermal resistance R\(min\) \[\(m2K\)/W\] associated with the specified enumeration member\.
+
+```csharp
+public bool TryGetMinimumThermalResistance(TEnum @enum, out double value);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetMinimumThermalResistance(TEnum,double).enum'></a>
+
+`enum` [TEnum](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TEnum 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>\.TEnum')
+
+The enumeration member used as the key for retrieval\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetMinimumThermalResistance(TEnum,double).value'></a>
+
+`value` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+When this method returns, contains the retrieved value if successful; otherwise, [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN')\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the value was successfully retrieved; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_.TryGetValue(string,double)'></a>
 
@@ -834,6 +935,10 @@ A list of all instances that match the specified type [TRegulatedHeatTransferCoe
 ## RegulatedHeatTransferCoefficients\_2002 Class
 
 Represents the regulated heat transfer coefficients according to the 2002 regulation standards for external partition types\.
+
+Annex 2 of the regulation (Dz.U. 2002 nr 75 poz. 690) sets the wall, roof and basement ceiling limits of a residential building in the single-family building table only. A multi-family or collective-residence building has no wall or roof U(max): it meets the regulation by its seasonal heat demand indicator E not exceeding E0 (§ 329). The window and door limits apply to every residential building.
+
+A floor on ground is limited by a minimum sum of thermal resistances R(min) of 1.5 (m2K)/W at ti > 16 °C (point 1.4), not by a heat transfer coefficient; it is held as a minimum thermal resistance (DiGi-Organization/DiGi.Analytical#12).
 
 ```csharp
 public class RegulatedHeatTransferCoefficients_2002 : DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients<DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002>
