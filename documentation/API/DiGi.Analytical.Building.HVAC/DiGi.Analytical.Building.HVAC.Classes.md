@@ -818,7 +818,7 @@ public RegulatedHeatTransferCoefficientsManager(DiGi.Analytical.Building.HVAC.Cl
 
 `regulatedHeatTransferCoefficientsManager` [RegulatedHeatTransferCoefficientsManager](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager')
 
-The source [RegulatedHeatTransferCoefficientsManager](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager') instance to copy from\.
+The source [RegulatedHeatTransferCoefficientsManager](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager') instance to copy from; each of its regulated heat transfer coefficients is cloned\.
 
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.RegulatedHeatTransferCoefficientsManager(System.Text.Json.Nodes.JsonObject)'></a>
 

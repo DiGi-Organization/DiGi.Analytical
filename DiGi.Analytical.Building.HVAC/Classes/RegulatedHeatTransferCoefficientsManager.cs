@@ -36,15 +36,16 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         /// <summary>
         /// Initializes a new instance of the <see cref="RegulatedHeatTransferCoefficientsManager"/> class by copying the specified instance.
         /// </summary>
-        /// <param name="regulatedHeatTransferCoefficientsManager">The source <see cref="RegulatedHeatTransferCoefficientsManager"/> instance to copy from.</param>
+        /// <param name="regulatedHeatTransferCoefficientsManager">The source <see cref="RegulatedHeatTransferCoefficientsManager"/> instance to copy from; each of its regulated heat transfer coefficients is cloned.</param>
         public RegulatedHeatTransferCoefficientsManager(RegulatedHeatTransferCoefficientsManager regulatedHeatTransferCoefficientsManager)
             : base(regulatedHeatTransferCoefficientsManager)
         {
             if (regulatedHeatTransferCoefficientsManager is not null)
             {
-                foreach (IRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients in values.Values)
+                // The source's values, not this instance's, which are still empty here (DiGi-Organization/DiGi.Analytical#13).
+                foreach (IRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients in regulatedHeatTransferCoefficientsManager.values.Values)
                 {
-                    Add(regulatedHeatTransferCoefficients);
+                    Add(Core.Query.Clone(regulatedHeatTransferCoefficients));
                 }
             }
         }
