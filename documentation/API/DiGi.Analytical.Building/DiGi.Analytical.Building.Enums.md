@@ -24,6 +24,43 @@ Each component \(wall, roof, floor, window\) becomes a separate selectable node\
 
 All components are merged into a single node per building, making the building selectable as a whole\.
 
+<a name='DiGi.Analytical.Building.Enums.HeatFlowDirection'></a>
+
+## HeatFlowDirection Enum
+
+Specifies the direction of the heat flow through a construction, which decides its surface and air\-layer resistances \(PN\-EN ISO 6946; DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+A heat flow within ±30° of the horizontal plane is horizontal. Where the direction is not fixed or a value independent of it is required, the standard recommends the horizontal values.
+
+```csharp
+public enum HeatFlowDirection
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Enums.HeatFlowDirection.Undefined'></a>
+
+`Undefined` 0
+
+The direction is not known; surface and air\-layer resistances are not available\.
+
+<a name='DiGi.Analytical.Building.Enums.HeatFlowDirection.Upward'></a>
+
+`Upward` 1
+
+Upward heat flow \- a roof or a ceiling heated from below\.
+
+<a name='DiGi.Analytical.Building.Enums.HeatFlowDirection.Horizontal'></a>
+
+`Horizontal` 2
+
+Horizontal heat flow \- a wall\.
+
+<a name='DiGi.Analytical.Building.Enums.HeatFlowDirection.Downward'></a>
+
+`Downward` 3
+
+Downward heat flow \- a floor over an unheated or outside space\.
+
 <a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter'></a>
 
 ## OpeningConstructionParameter Enum

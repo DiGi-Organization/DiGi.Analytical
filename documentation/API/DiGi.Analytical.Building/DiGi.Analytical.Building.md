@@ -107,6 +107,47 @@ The distance tolerance used for geometric validation\.
 [CurveWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall 'DiGi\.Analytical\.Building\.Classes\.CurveWall')  
 A new [CurveWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall 'DiGi\.Analytical\.Building\.Classes\.CurveWall') instance if the creation is successful; otherwise, `null`\.
 
+<a name='DiGi.Analytical.Building.Create.DoorConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double)'></a>
+
+## Create\.DoorConstruction\(string, IPolygonal2D, IEnumerable\<IPolygonal2D\>, double\) Method
+
+Creates a door construction whose outline is a face with its glazing panes, if any, as holes and the frame and leaf as the remainder \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+The outline is validated by [OpeningPolygonalFace2D\(IPolygonal2D, IEnumerable&lt;IPolygonal2D&gt;, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double) 'DiGi\.Analytical\.Building\.Create\.OpeningPolygonalFace2D\(DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D, System\.Collections\.Generic\.IEnumerable\<DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D\>, double\)'), which is why this factory, not the [DoorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.DoorConstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction') constructor, is the way to build one from panes. Without panes the door is opaque.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.DoorConstruction? DoorConstruction(string? name, DiGi.Geometry.Planar.Interfaces.IPolygonal2D? outline, System.Collections.Generic.IEnumerable<DiGi.Geometry.Planar.Interfaces.IPolygonal2D>? panes=null, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.DoorConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.DoorConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).outline'></a>
+
+`outline` [DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.interfaces.ipolygonal2d 'DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D')
+
+The outline of the structural opening, in the local 2D coordinates of the opening\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.DoorConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).panes'></a>
+
+`panes` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.interfaces.ipolygonal2d 'DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The outlines of the glazing panes, or null or empty for an opaque door\.
+
+<a name='DiGi.Analytical.Building.Create.DoorConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[DoorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.DoorConstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction')  
+The [DoorConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.DoorConstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the outline is null or a pane is not inside it or overlaps another pane\.
+
 <a name='DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
 
 ## Create\.FaceFloor\(this IPolygonalFace3D, double\) Method
@@ -133,6 +174,41 @@ The minimum area threshold required to create the face floor\. Defaults to [DiGi
 #### Returns
 [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
 A new [FaceFloor\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.FaceFloor\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') instance if the face is not null and its area is greater than or equal to the tolerance; otherwise, `null`\.
+
+<a name='DiGi.Analytical.Building.Create.OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double)'></a>
+
+## Create\.OpeningPolygonalFace2D\(IPolygonal2D, IEnumerable\<IPolygonal2D\>, double\) Method
+
+Creates the outline of a window or door construction: a face whose holes are the glazing panes and whose remainder is the frame \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+Every pane must lie inside the outline, and no two panes may touch, cross or contain each other: between two panes there is always frame. [DiGi\.Geometry\.Planar\.Create\.PolygonalFace2D\(DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D,System\.Collections\.Generic\.IEnumerable\{DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D\},System\.Double\)](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.create.polygonalface2d#digi-geometry-planar-create-polygonalface2d(digi-geometry-planar-interfaces-ipolygonal2d-system-collections-generic-ienumerable{digi-geometry-planar-interfaces-ipolygonal2d}-system-double) 'DiGi\.Geometry\.Planar\.Create\.PolygonalFace2D\(DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D,System\.Collections\.Generic\.IEnumerable\{DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D\},System\.Double\)') silently drops a hole that is outside the outline or inside another hole, which would leave a frame with the wrong area; this factory returns [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') instead.
+
+```csharp
+public static DiGi.Geometry.Planar.Classes.PolygonalFace2D? OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D? outline, System.Collections.Generic.IEnumerable<DiGi.Geometry.Planar.Interfaces.IPolygonal2D>? panes=null, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).outline'></a>
+
+`outline` [DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.interfaces.ipolygonal2d 'DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D')
+
+The outline of the structural opening, in the local 2D coordinates of the opening\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).panes'></a>
+
+`panes` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.interfaces.ipolygonal2d 'DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The outlines of the glazing panes, or null or empty for a construction without glazing \(an opaque door\)\.
+
+<a name='DiGi.Analytical.Building.Create.OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D')  
+The [DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the outline is null or a pane is not inside it or overlaps another pane\.
 
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double)'></a>
 
@@ -302,6 +378,47 @@ The minimum area threshold required to create the surface wall\. Defaults to [Di
 #### Returns
 [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')  
 A new [SurfaceWall\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.SurfaceWall(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.SurfaceWall\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') instance if the face is not null and its area is greater than or equal to the tolerance; otherwise, `null`\.
+
+<a name='DiGi.Analytical.Building.Create.WindowConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double)'></a>
+
+## Create\.WindowConstruction\(string, IPolygonal2D, IEnumerable\<IPolygonal2D\>, double\) Method
+
+Creates a window construction whose outline is a face with the glazing panes as holes and the frame as the remainder \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+The outline is validated by [OpeningPolygonalFace2D\(IPolygonal2D, IEnumerable&lt;IPolygonal2D&gt;, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.OpeningPolygonalFace2D(DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double) 'DiGi\.Analytical\.Building\.Create\.OpeningPolygonalFace2D\(DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D, System\.Collections\.Generic\.IEnumerable\<DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D\>, double\)'), which is why this factory, not the [WindowConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WindowConstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction') constructor, is the way to build one from panes. The frame and glazing areas and the glazing perimeter then follow from the geometry ([ThermalTransmittance\(this IOpeningConstruction\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction) 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(this DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction\)')).
+
+```csharp
+public static DiGi.Analytical.Building.Classes.WindowConstruction? WindowConstruction(string? name, DiGi.Geometry.Planar.Interfaces.IPolygonal2D? outline, System.Collections.Generic.IEnumerable<DiGi.Geometry.Planar.Interfaces.IPolygonal2D>? panes, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.WindowConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.WindowConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).outline'></a>
+
+`outline` [DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.interfaces.ipolygonal2d 'DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D')
+
+The outline of the structural opening, in the local 2D coordinates of the opening\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.WindowConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).panes'></a>
+
+`panes` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.interfaces.ipolygonal2d 'DiGi\.Geometry\.Planar\.Interfaces\.IPolygonal2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The outlines of the glazing panes\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.WindowConstruction(string,DiGi.Geometry.Planar.Interfaces.IPolygonal2D,System.Collections.Generic.IEnumerable_DiGi.Geometry.Planar.Interfaces.IPolygonal2D_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[WindowConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WindowConstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction')  
+The [WindowConstruction](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.WindowConstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the outline is null or a pane is not inside it or overlaps another pane\.
 
 <a name='DiGi.Analytical.Building.Modify'></a>
 
@@ -506,6 +623,37 @@ public static class Query
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Query
 ### Methods
+
+<a name='DiGi.Analytical.Building.Query.AirLayerThermalResistance(double,DiGi.Analytical.Building.Enums.HeatFlowDirection)'></a>
+
+## Query\.AirLayerThermalResistance\(double, HeatFlowDirection\) Method
+
+Gets the design thermal resistance of an unventilated air layer with high\-emissivity faces, per PN\-EN ISO 6946 \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+The tabulated values for 0, 5, 7, 10, 15, 25, 50, 100 and 300 mm are [(m2K)/W]: upward 0, 0.11, 0.13, 0.15, 0.16, 0.16, 0.16, 0.16, 0.16; horizontal 0, 0.11, 0.13, 0.15, 0.17, 0.18, 0.18, 0.18, 0.18; downward 0, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21, 0.22, 0.23. Intermediate thicknesses are interpolated linearly, as the standard allows. Source: the table of PN-EN ISO 6946:2008 as quoted in ProAkademia, "Opór cieplny warstw powietrza", Table 9.3.1/2.
+
+The standard does not give a single value for an air layer thicker than 0.3 m, which is why none is returned for it.
+
+```csharp
+public static double AirLayerThermalResistance(double thickness, DiGi.Analytical.Building.Enums.HeatFlowDirection heatFlowDirection);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.AirLayerThermalResistance(double,DiGi.Analytical.Building.Enums.HeatFlowDirection).thickness'></a>
+
+`thickness` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The thickness of the air layer in the direction of the heat flow \[m\]\.
+
+<a name='DiGi.Analytical.Building.Query.AirLayerThermalResistance(double,DiGi.Analytical.Building.Enums.HeatFlowDirection).heatFlowDirection'></a>
+
+`heatFlowDirection` [HeatFlowDirection](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection')
+
+The direction of the heat flow\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal resistance \[\(m2K\)/W\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when the thickness is NaN, negative or above 0\.3 m, or [heatFlowDirection](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.AirLayerThermalResistance(double,DiGi.Analytical.Building.Enums.HeatFlowDirection).heatFlowDirection 'DiGi\.Analytical\.Building\.Query\.AirLayerThermalResistance\(double, DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection\)\.heatFlowDirection') is [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection.Undefined 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection\.Undefined')\.
 
 <a name='DiGi.Analytical.Building.Query.Footprints(thisDiGi.Analytical.Building.Classes.BuildingModel,double)'></a>
 
@@ -1006,6 +1154,8 @@ Creates the 3D outline of the specified opening by mapping the 2D outline of its
 
 The outline ([Geometry](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IGeometry2DConstruction_TConstructable,TGeometry2D_.Geometry 'DiGi\.Analytical\.Building\.Interfaces\.IGeometry2DConstruction\<TConstructable,TGeometry2D\>\.Geometry') of the construction) is expressed in the local 2D coordinates of the opening's [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane'), whose origin is the insertion point of the opening.
 
+The outline of a window or door construction may be a face whose holes are the glazing (DiGi-Organization/DiGi.Analytical#8). The holes are left out here: this is the whole opening, frame and glazing together, as hosting and display need it. [Surface3Ds\(this IOpening, IOpeningConstruction, OpeningConstructionPart\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Surface3Ds(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart) 'DiGi\.Analytical\.Building\.Query\.Surface3Ds\(this DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\)') returns the frame or the panes.
+
 ```csharp
 public static DiGi.Geometry.Spatial.Interfaces.ISurface3D? Surface3D(this DiGi.Analytical.Building.Interfaces.IOpening? opening, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction);
 ```
@@ -1026,6 +1176,177 @@ The opening construction providing the 2D outline\. This value can be null\.
 #### Returns
 [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')  
 The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') outline of the opening, or null if either argument is null, has no geometry, or the outline cannot be mapped onto a 3D surface\.
+
+<a name='DiGi.Analytical.Building.Query.Surface3Ds(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart)'></a>
+
+## Query\.Surface3Ds\(this IOpening, IOpeningConstruction, OpeningConstructionPart\) Method
+
+Creates the 3D surfaces of a part of the specified opening by mapping the 2D outline of its construction onto the placement plane of the opening \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+The outline of a window or door construction is a face whose holes are the glazing and whose remainder is the frame. [Frame](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Frame 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Frame') returns that face with its holes, [Pane](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Pane 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane') one face per hole, and [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Undefined 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Undefined') the whole outline ([Surface3D\(this IOpening, IOpeningConstruction\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction) 'DiGi\.Analytical\.Building\.Query\.Surface3D\(this DiGi\.Analytical\.Building\.Interfaces\.IOpening, DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction\)')). An outline without holes has no glazing: its frame is the whole outline and it has no panes.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Geometry.Spatial.Interfaces.ISurface3D>? Surface3Ds(this DiGi.Analytical.Building.Interfaces.IOpening? opening, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Surface3Ds(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).opening'></a>
+
+`opening` [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')
+
+The opening providing the placement plane\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.Surface3Ds(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The opening construction providing the 2D outline\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.Surface3Ds(thisDiGi.Analytical.Building.Interfaces.IOpening,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstructionPart'></a>
+
+`openingConstructionPart` [OpeningConstructionPart](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart')
+
+The part of the opening whose surfaces are created\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')s of the part \(empty when the part has none\), or null if either argument is null, has no geometry, or the outline cannot be mapped onto a 3D surface\.
+
+<a name='DiGi.Analytical.Building.Query.SurfaceResistance(thisDiGi.Analytical.Building.Enums.HeatFlowDirection,bool)'></a>
+
+## Query\.SurfaceResistance\(this HeatFlowDirection, bool\) Method
+
+Gets the design surface resistance of a construction face in contact with air, per PN\-EN ISO 6946 \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+Internal (Rsi): 0.10 upward, 0.13 horizontal, 0.17 downward [(m2K)/W]. External (Rse): 0.04 for every direction. A face in contact with another material or with the ground has no surface resistance; that is for the caller to decide.
+
+```csharp
+public static double SurfaceResistance(this DiGi.Analytical.Building.Enums.HeatFlowDirection heatFlowDirection, bool @internal);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.SurfaceResistance(thisDiGi.Analytical.Building.Enums.HeatFlowDirection,bool).heatFlowDirection'></a>
+
+`heatFlowDirection` [HeatFlowDirection](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection')
+
+The direction of the heat flow\.
+
+<a name='DiGi.Analytical.Building.Query.SurfaceResistance(thisDiGi.Analytical.Building.Enums.HeatFlowDirection,bool).internal'></a>
+
+`internal` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+True for the internal surface resistance Rsi, false for the external one Rse\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The surface resistance \[\(m2K\)/W\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when [heatFlowDirection](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.SurfaceResistance(thisDiGi.Analytical.Building.Enums.HeatFlowDirection,bool).heatFlowDirection 'DiGi\.Analytical\.Building\.Query\.SurfaceResistance\(this DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection, bool\)\.heatFlowDirection') is [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection.Undefined 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection\.Undefined')\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool)'></a>
+
+## Query\.ThermalTransmittance\(this BuildingModel, IPhysicalComponentConstruction, HeatFlowDirection, bool\) Method
+
+Determines the thermal transmittance U of a wall, roof or floor construction held by a building model \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+A declared [ThermalTransmittance](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentConstructionParameter.ThermalTransmittance 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentConstructionParameter\.ThermalTransmittance') is returned as it stands. Otherwise U is calculated from the construction's layers and their materials in the model per PN-EN ISO 6946.
+
+```csharp
+public static double ThermalTransmittance(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction? physicalComponentConstruction, DiGi.Analytical.Building.Enums.HeatFlowDirection heatFlowDirection, bool groundContact=false);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model holding the construction's layers and materials\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).physicalComponentConstruction'></a>
+
+`physicalComponentConstruction` [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
+
+The construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).heatFlowDirection'></a>
+
+`heatFlowDirection` [HeatFlowDirection](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection')
+
+The direction of the heat flow through the construction\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).groundContact'></a>
+
+`groundContact` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+True when the external face is in contact with the ground, so that it has no surface resistance\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal transmittance U \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool)'></a>
+
+## Query\.ThermalTransmittance\(this ConstructionRelationCluster, IPhysicalComponentConstruction, HeatFlowDirection, bool\) Method
+
+Determines the thermal transmittance U of a wall, roof or floor construction held by a construction relation cluster \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+A declared [ThermalTransmittance](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentConstructionParameter.ThermalTransmittance 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentConstructionParameter\.ThermalTransmittance') is returned as it stands. Otherwise U is calculated from the construction's layers and their materials per PN-EN ISO 6946.
+
+```csharp
+public static double ThermalTransmittance(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction? physicalComponentConstruction, DiGi.Analytical.Building.Enums.HeatFlowDirection heatFlowDirection, bool groundContact=false);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).constructionRelationCluster'></a>
+
+`constructionRelationCluster` [ConstructionRelationCluster](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster')
+
+The cluster holding the construction's layers and materials\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).physicalComponentConstruction'></a>
+
+`physicalComponentConstruction` [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
+
+The construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).heatFlowDirection'></a>
+
+`heatFlowDirection` [HeatFlowDirection](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection')
+
+The direction of the heat flow through the construction\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool).groundContact'></a>
+
+`groundContact` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+True when the external face is in contact with the ground, so that it has no surface resistance\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal transmittance U \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction)'></a>
+
+## Query\.ThermalTransmittance\(this IOpeningConstruction\) Method
+
+Determines the thermal transmittance Uw of a window or door construction \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+The outline of the construction is a face whose holes are the glazing and whose remainder is the frame. When it has at least one hole and the glazing Ug, frame Uf and glazing-edge Ψg values are declared ([OpeningConstructionParameter](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionParameter 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionParameter')), Uw = (Ag·Ug + Af·Uf + lg·Ψg) / (Ag + Af) per PN-EN ISO 10077-1, with Ag the area of the holes, Af the rest of the outline and lg the perimeter of the holes. The value follows the geometry, so a construction cloned to another size keeps a correct Uw.
+
+Otherwise the declared [ThermalTransmittance](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionParameter.ThermalTransmittance 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionParameter\.ThermalTransmittance') is returned, and [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when there is none.
+
+```csharp
+public static double ThermalTransmittance(this DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The window or door construction\. This value can be null\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal transmittance Uw \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
 
 <a name='DiGi.Analytical.Building.Query.Triangulate(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double)'></a>
 

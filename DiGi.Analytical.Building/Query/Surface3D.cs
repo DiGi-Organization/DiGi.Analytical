@@ -38,6 +38,7 @@ namespace DiGi.Analytical.Building
         /// <summary>
         /// Creates the 3D outline of the specified opening by mapping the 2D outline of its construction onto the placement plane of the opening.
         /// <para>The outline (<see cref="IGeometry2DConstruction{TConstructable, TGeometry2D}.Geometry"/> of the construction) is expressed in the local 2D coordinates of the opening's <see cref="Plane"/>, whose origin is the insertion point of the opening.</para>
+        /// <para>The outline of a window or door construction may be a face whose holes are the glazing (DiGi-Organization/DiGi.Analytical#8). The holes are left out here: this is the whole opening, frame and glazing together, as hosting and display need it. <see cref="Surface3Ds(IOpening?, IOpeningConstruction?, Enums.OpeningConstructionPart)"/> returns the frame or the panes.</para>
         /// </summary>
         /// <param name="opening">The opening providing the placement plane. This value can be null.</param>
         /// <param name="openingConstruction">The opening construction providing the 2D outline. This value can be null.</param>
@@ -58,6 +59,16 @@ namespace DiGi.Analytical.Building
             if (surface2D == null)
             {
                 return null;
+            }
+
+            // The glazing holes are part of the opening.
+            if (surface2D is IPolygonalFace2D polygonalFace2D && polygonalFace2D.InternalEdges is { Count: > 0 })
+            {
+                surface2D = Geometry.Planar.Create.PolygonalFace2D(polygonalFace2D.ExternalEdge);
+                if (surface2D == null)
+                {
+                    return null;
+                }
             }
 
             return plane.Convert(surface2D) as ISurface3D;
