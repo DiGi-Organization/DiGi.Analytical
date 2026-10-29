@@ -16,6 +16,33 @@ namespace DiGi.Analytical.Building.HVAC
 
             RegulatedHeatTransferCoefficientsManager result = new();
 
+            // The 1997 amendment of the 1994 technical conditions added the first k(max) annex, for single-family and public buildings only;
+            // published 28 October 1997 and in force six months later (§ 3) (DiGi-Organization/DiGi.Analytical#14).
+            regulationAct = new(new DateTime(1997, 10, 28), new DateTime(1998, 04, 29), "Dz.U. 1997 nr 132 poz. 878", "Rozporządzenie Ministra Spraw Wewnętrznych i Administracji z dnia 30 września 1997 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
+
+            RegulatedHeatTransferCoefficients_1997 regulatedHeatTransferCoefficients_1997 = new RegulatedHeatTransferCoefficients_1997(regulationAct);
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Wall_Multilayer] = 0.3;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Wall_Solid] = 0.5;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Roof] = 0.3;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Floor_OverUnheatedSpaces] = 0.6;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Window_ZoneA] = 2.6;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Window_ZoneB] = 2.0;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Door] = 2.6;
+
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Wall_Solid] = 0.45;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Wall_WithWindowAndDoor] = 0.55;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Wall_WithBalconyBrackets] = 0.65;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Roof] = 0.3;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Floor_OverUnheatedSpaces] = 0.6;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Window] = 2.3;
+            regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.PublicBuilding_Door] = 2.6;
+
+            // A floor on ground is limited by the minimum sum of thermal resistances of point 1.4 (ti > 16 °C), not by a k(max).
+            regulatedHeatTransferCoefficients_1997.SetMinimumThermalResistance(ExternalPartitionType_1997.ResidentialBuilding_Floor, 1.5);
+            regulatedHeatTransferCoefficients_1997.SetMinimumThermalResistance(ExternalPartitionType_1997.PublicBuilding_Floor, 1.5);
+
+            result.Add(regulatedHeatTransferCoefficients_1997);
+
             // Published 15 June 2002, in force six months later (§ 332) (DiGi-Organization/DiGi.Analytical#12).
             regulationAct = new(new DateTime(2002, 06, 15), new DateTime(2002, 12, 16), "Dz.U. 2002 nr 75 poz. 690", "Rozporządzenie Ministra Infrastruktury z dnia 12 kwietnia 2002 r. w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 

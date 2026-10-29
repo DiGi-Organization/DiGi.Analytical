@@ -3,6 +3,115 @@
 ## DiGi\.Analytical\.Building\.HVAC\.Enums Namespace
 ### Enums
 
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997'></a>
+
+## ExternalPartitionType\_1997 Enum
+
+Specifies the types of external partition elements for single\-family residential and public buildings according to the 1997 amendment of the technical conditions \(Dz\.U\. 1997 nr 132 poz\. 878\)\.
+
+The annex has no table for a multi-family or collective-residence building, which meets the regulation by its seasonal heat demand indicator E alone.
+
+```csharp
+public enum ExternalPartitionType_1997
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Wall_Multilayer'></a>
+
+`ResidentialBuilding_Wall_Multilayer` 0
+
+Represents a multilayer wall, with insulation of conductivity not above 0\.05 W/\(mK\), of a single\-family residential building, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Wall_Solid'></a>
+
+`ResidentialBuilding_Wall_Solid` 1
+
+Represents any other external wall of a single\-family residential building, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Roof'></a>
+
+`ResidentialBuilding_Roof` 2
+
+Represents a flat roof or a ceiling under an unheated attic or over a passage of a single\-family residential building, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Floor_OverUnheatedSpaces'></a>
+
+`ResidentialBuilding_Floor_OverUnheatedSpaces` 3
+
+Represents a ceiling over an unheated basement or a closed underfloor space of a single\-family residential building\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Floor'></a>
+
+`ResidentialBuilding_Floor` 4
+
+Represents a floor on ground of a single\-family residential building, limited by a minimum thermal resistance rather than a heat transfer coefficient\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Window_ZoneA'></a>
+
+`ResidentialBuilding_Window_ZoneA` 5
+
+Represents a window \(roof windows included\), balcony door or fixed glazing of a single\-family residential building in climatic zones I, II and III, at ti ≥ 20 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Window_ZoneB'></a>
+
+`ResidentialBuilding_Window_ZoneB` 6
+
+Represents a window \(roof windows included\), balcony door or fixed glazing of a single\-family residential building in climatic zones IV and V, at ti ≥ 20 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.ResidentialBuilding_Door'></a>
+
+`ResidentialBuilding_Door` 7
+
+Represents an external entrance door of a single\-family residential building\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Wall_Solid'></a>
+
+`PublicBuilding_Wall_Solid` 8
+
+Represents a solid external wall of a public building, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Wall_WithWindowAndDoor'></a>
+
+`PublicBuilding_Wall_WithWindowAndDoor` 9
+
+Represents an external wall with window and door openings of a public building, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Wall_WithBalconyBrackets'></a>
+
+`PublicBuilding_Wall_WithBalconyBrackets` 10
+
+Represents an external wall of a public building with balcony brackets penetrating it, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Roof'></a>
+
+`PublicBuilding_Roof` 11
+
+Represents a flat roof or a ceiling under an unheated attic or over a passage of a public building, at ti \> 16 °C\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Floor_OverUnheatedSpaces'></a>
+
+`PublicBuilding_Floor_OverUnheatedSpaces` 12
+
+Represents a ceiling over an unheated basement or a closed underfloor space of a public building\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Floor'></a>
+
+`PublicBuilding_Floor` 13
+
+Represents a floor on ground of a public building, limited by a minimum thermal resistance rather than a heat transfer coefficient\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Window'></a>
+
+`PublicBuilding_Window` 14
+
+Represents a window or balcony door of a public building, at ti ≥ 20 °C \(no requirement below 20 °C\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997.PublicBuilding_Door'></a>
+
+`PublicBuilding_Door` 15
+
+Represents an external entrance door of a public building\.
+
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_2002'></a>
 
 ## ExternalPartitionType\_2002 Enum
