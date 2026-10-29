@@ -22,10 +22,10 @@ namespace DiGi.Analytical.Classes
         private double vapourDiffusionFactor;
 
         [JsonInclude, JsonPropertyName("SolarReflectance"), Description("Solar Reflectance")]
-        private readonly SurfaceValue? solarReflectance;
+        private SurfaceValue? solarReflectance;
 
         [JsonInclude, JsonPropertyName("LightReflectance"), Description("Light Reflectance")]
-        private readonly SurfaceValue? lightReflectance;
+        private SurfaceValue? lightReflectance;
 
         [JsonInclude, JsonPropertyName("Emissivity"), Description("Emissivity")]
         private SurfaceValue? emissivity;
@@ -132,6 +132,40 @@ namespace DiGi.Analytical.Classes
             set
             {
                 vapourDiffusionFactor = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the light reflectance of the external (<see cref="SurfaceValue.External"/>) and internal (<see cref="SurfaceValue.Internal"/>) faces of the opaque material.
+        /// </summary>
+        [JsonIgnore]
+        public SurfaceValue? LightReflectance
+        {
+            get
+            {
+                return lightReflectance;
+            }
+
+            set
+            {
+                lightReflectance = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the solar reflectance of the external (<see cref="SurfaceValue.External"/>) and internal (<see cref="SurfaceValue.Internal"/>) faces of the opaque material.
+        /// </summary>
+        [JsonIgnore]
+        public SurfaceValue? SolarReflectance
+        {
+            get
+            {
+                return solarReflectance;
+            }
+
+            set
+            {
+                solarReflectance = value;
             }
         }
 

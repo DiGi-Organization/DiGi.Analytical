@@ -726,6 +726,8 @@ The distance tolerance used for geometric calculations during face splitting\.
 
 Represents a material with fluid\-specific properties, extending the functionality of the base [Material](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.Material 'DiGi\.Analytical\.Classes\.Material') class\.
 
+Describes a gas filling a cavity, such as the air or argon of a glazing unit or an air layer in a wall. A property that is not set is 0 (DiGi-Organization/DiGi.Analytical#8).
+
 ```csharp
 public class FluidMaterial : DiGi.Analytical.Classes.Material
 ```
@@ -783,6 +785,59 @@ public FluidMaterial(System.Text.Json.Nodes.JsonObject? jsonObject);
 `jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
 
 The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the material properties to initialize the instance\.
+### Properties
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.Conductivity'></a>
+
+## FluidMaterial\.Conductivity Property
+
+Gets or sets the thermal conductivity of the fluid \[W/\(mK\)\]\.
+
+```csharp
+public double Conductivity { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.Density'></a>
+
+## FluidMaterial\.Density Property
+
+Gets or sets the density of the fluid \[kg/m3\]\.
+
+```csharp
+public double Density { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.DynamicViscosity'></a>
+
+## FluidMaterial\.DynamicViscosity Property
+
+Gets or sets the dynamic viscosity of the fluid \[kg/\(ms\)\]\.
+
+```csharp
+public double DynamicViscosity { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.SpecificHeat'></a>
+
+## FluidMaterial\.SpecificHeat Property
+
+Gets or sets the specific heat capacity of the fluid \[J/\(kgK\)\]\.
+
+```csharp
+public double SpecificHeat { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 <a name='DiGi.Analytical.Classes.HourRange'></a>
 
@@ -1193,6 +1248,32 @@ Gets or sets the emissivity of the opaque material\.
 
 ```csharp
 public DiGi.Analytical.Classes.SurfaceValue? Emissivity { get; set; }
+```
+
+#### Property Value
+[SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue')
+
+<a name='DiGi.Analytical.Classes.OpaqueMaterial.LightReflectance'></a>
+
+## OpaqueMaterial\.LightReflectance Property
+
+Gets or sets the light reflectance of the external \([External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External')\) and internal \([Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal')\) faces of the opaque material\.
+
+```csharp
+public DiGi.Analytical.Classes.SurfaceValue? LightReflectance { get; set; }
+```
+
+#### Property Value
+[SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue')
+
+<a name='DiGi.Analytical.Classes.OpaqueMaterial.SolarReflectance'></a>
+
+## OpaqueMaterial\.SolarReflectance Property
+
+Gets or sets the solar reflectance of the external \([External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External')\) and internal \([Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal')\) faces of the opaque material\.
+
+```csharp
+public DiGi.Analytical.Classes.SurfaceValue? SolarReflectance { get; set; }
 ```
 
 #### Property Value
@@ -1908,6 +1989,8 @@ public double Internal { get; set; }
 
 Represents a material that possesses transparency characteristics, extending the base functionality of a solid material\.
 
+The optical properties of a glazing layer are described for its two faces as a [SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue'): [External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External') is the front face (towards the outside), [Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal') the back face. A property that is not set is 0 (DiGi-Organization/DiGi.Analytical#8).
+
 ```csharp
 public class TransparentMaterial : DiGi.Analytical.Classes.SolidMaterial
 ```
@@ -1965,3 +2048,82 @@ public TransparentMaterial(System.Text.Json.Nodes.JsonObject? jsonObject);
 `jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
 
 The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize the material properties\. This value can be null\.
+### Properties
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.Conductivity'></a>
+
+## TransparentMaterial\.Conductivity Property
+
+Gets or sets the thermal conductivity of the transparent material \[W/\(mK\)\]\.
+
+```csharp
+public double Conductivity { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.Emissivity'></a>
+
+## TransparentMaterial\.Emissivity Property
+
+Gets or sets the hemispherical emissivity of the front \([External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External')\) and back \([Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal')\) faces\.
+
+```csharp
+public DiGi.Analytical.Classes.SurfaceValue? Emissivity { get; set; }
+```
+
+#### Property Value
+[SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue')
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.LightReflectance'></a>
+
+## TransparentMaterial\.LightReflectance Property
+
+Gets or sets the light reflectance of the front \([External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External')\) and back \([Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal')\) faces\.
+
+```csharp
+public DiGi.Analytical.Classes.SurfaceValue? LightReflectance { get; set; }
+```
+
+#### Property Value
+[SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue')
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.LightTransmittance'></a>
+
+## TransparentMaterial\.LightTransmittance Property
+
+Gets or sets the light \(visible\) transmittance at normal incidence, between 0 and 1\.
+
+```csharp
+public double LightTransmittance { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.SolarReflectance'></a>
+
+## TransparentMaterial\.SolarReflectance Property
+
+Gets or sets the solar reflectance of the front \([External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External')\) and back \([Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal')\) faces\.
+
+```csharp
+public DiGi.Analytical.Classes.SurfaceValue? SolarReflectance { get; set; }
+```
+
+#### Property Value
+[SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue')
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.SolarTransmittance'></a>
+
+## TransparentMaterial\.SolarTransmittance Property
+
+Gets or sets the solar transmittance at normal incidence, between 0 and 1\.
+
+```csharp
+public double SolarTransmittance { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
