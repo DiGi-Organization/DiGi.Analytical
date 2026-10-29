@@ -24,6 +24,49 @@ Each component \(wall, roof, floor, window\) becomes a separate selectable node\
 
 All components are merged into a single node per building, making the building selectable as a whole\.
 
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter'></a>
+
+## OpeningConstructionParameter Enum
+
+Defines the declared thermal and solar values of an opening construction \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+Historical windows and doors are known by their declared values rather than by a layer build-up. The frame and glazing areas and the glazing perimeter are not declared: they come from the construction's outline, a face whose holes are the glazing and whose remainder is the frame.
+
+```csharp
+public enum OpeningConstructionParameter
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter.ThermalTransmittance'></a>
+
+`ThermalTransmittance` 0
+
+The declared thermal transmittance of the whole window or door, Uw \[W/\(m2K\)\]\.
+
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter.GlazingThermalTransmittance'></a>
+
+`GlazingThermalTransmittance` 1
+
+The thermal transmittance of the glazing in its centre, Ug \[W/\(m2K\)\]\.
+
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter.FrameThermalTransmittance'></a>
+
+`FrameThermalTransmittance` 2
+
+The thermal transmittance of the frame, Uf \[W/\(m2K\)\]\.
+
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter.GlazingLinearThermalTransmittance'></a>
+
+`GlazingLinearThermalTransmittance` 3
+
+The linear thermal transmittance of the junction between glazing and frame \(spacer\), Ψg \[W/\(mK\)\]\.
+
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter.TotalSolarEnergyTransmittance'></a>
+
+`TotalSolarEnergyTransmittance` 4
+
+The total solar energy transmittance of the glazing at normal incidence, g \[\-\]\.
+
 <a name='DiGi.Analytical.Building.Enums.OpeningConstructionPart'></a>
 
 ## OpeningConstructionPart Enum
@@ -52,6 +95,23 @@ Represents the pane part of an opening construction\.
 `Frame` 2
 
 Represents the frame part of the opening construction\.
+
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentConstructionParameter'></a>
+
+## PhysicalComponentConstructionParameter Enum
+
+Defines the declared values of a wall, roof or floor construction \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+```csharp
+public enum PhysicalComponentConstructionParameter
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentConstructionParameter.ThermalTransmittance'></a>
+
+`ThermalTransmittance` 0
+
+The declared thermal transmittance U \[W/\(m2K\)\], for a construction known by its U rather than by its layers \- a floor on ground, or a historical assembly\. When set it takes precedence over the value computed from the layers\.
 
 <a name='DiGi.Analytical.Building.Enums.PhysicalComponentType'></a>
 
