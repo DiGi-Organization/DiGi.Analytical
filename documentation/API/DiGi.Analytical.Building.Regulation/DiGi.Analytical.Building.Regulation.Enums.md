@@ -369,6 +369,35 @@ A door between heated and unheated spaces\.
 
 A garage door or gate\.
 
+<a name='DiGi.Analytical.Building.Regulation.Enums.FloorBoundary'></a>
+
+## FloorBoundary Enum
+
+Specifies what the lowest floor of a typology building borders, as TABULA records it \(code\_constructionborder\_floor\) \(DiGi\-Organization/DiGi\.Analytical\#17\)\.
+
+```csharp
+public enum FloorBoundary
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.FloorBoundary.Undefined'></a>
+
+`Undefined` 0
+
+Undefined floor boundary\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.FloorBoundary.Soil'></a>
+
+`Soil` 1
+
+The floor lies on the ground \(TABULA "Soil"\)\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.FloorBoundary.Cellar'></a>
+
+`Cellar` 2
+
+The floor lies over an unheated cellar \(TABULA "Cellar"\); the cellar adds [AdditionalFloorResistance](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData.AdditionalFloorResistance 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData\.AdditionalFloorResistance')\.
+
 <a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind'></a>
 
 ## OpeningKind Enum
@@ -435,6 +464,35 @@ Door to an unheated space \(cellar, garage, attic\)\.
 `GarageDoor` 8
 
 Garage door\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoofType'></a>
+
+## RoofType Enum
+
+Specifies the roof type of a typology building, as TABULA records it \(code\_rooftype\) \(DiGi\-Organization/DiGi\.Analytical\#17\)\.
+
+```csharp
+public enum RoofType
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoofType.Undefined'></a>
+
+`Undefined` 0
+
+Undefined roof type\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoofType.Pitched'></a>
+
+`Pitched` 1
+
+A pitched roof \(TABULA "TR"\)\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoofType.Flat'></a>
+
+`Flat` 2
+
+A flat roof \(TABULA "FR"\)\.
 
 <a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse'></a>
 

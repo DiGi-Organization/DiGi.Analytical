@@ -36,6 +36,9 @@ namespace DiGi.Analytical.Building.Regulation.Classes
         [JsonInclude, JsonPropertyName(nameof(StartDate))]
         private readonly DateTimeOffset startDate;
 
+        [JsonInclude, JsonPropertyName(nameof(TypologyData))]
+        private readonly TypologyData? typologyData;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ConstructionSet"/> class.
         /// </summary>
@@ -45,7 +48,8 @@ namespace DiGi.Analytical.Building.Regulation.Classes
         /// <param name="startDate">The first date the set applies to.</param>
         /// <param name="endDate">The first date the set no longer applies to, or null when it still applies.</param>
         /// <param name="source">The source of the set's constructions (norm, Dz.U. text, TABULA / NAPE). This value can be null.</param>
-        public ConstructionSet(ConstructionFlavour constructionFlavour, BuildingType buildingType, ClimateZone? climateZone, DateTimeOffset startDate, DateTimeOffset? endDate, string? source)
+        /// <param name="typologyData">The non-construction inputs of the typology building the set describes, or null for a set that describes none (<see cref="ConstructionFlavour.Regulation"/>).</param>
+        public ConstructionSet(ConstructionFlavour constructionFlavour, BuildingType buildingType, ClimateZone? climateZone, DateTimeOffset startDate, DateTimeOffset? endDate, string? source, TypologyData? typologyData)
         {
             this.constructionFlavour = constructionFlavour;
             this.buildingType = buildingType;
@@ -53,6 +57,7 @@ namespace DiGi.Analytical.Building.Regulation.Classes
             this.startDate = startDate;
             this.endDate = endDate;
             this.source = source;
+            this.typologyData = typologyData;
         }
 
         /// <summary>
@@ -70,6 +75,7 @@ namespace DiGi.Analytical.Building.Regulation.Classes
                 startDate = constructionSet.startDate;
                 endDate = constructionSet.endDate;
                 source = constructionSet.source;
+                typologyData = Core.Query.Clone(constructionSet.typologyData);
 
                 foreach (KeyValuePair<ConstructionRole, GuidReference> keyValuePair in constructionSet.constructions)
                 {
@@ -159,6 +165,18 @@ namespace DiGi.Analytical.Building.Regulation.Classes
             get
             {
                 return startDate;
+            }
+        }
+
+        /// <summary>
+        /// Gets a CLONE of the non-construction inputs of the typology building the set describes (frame area fraction, thermal bridging, floor boundary and the TABULA balance factors), or null when the set describes no typology building (DiGi-Organization/DiGi.Analytical#17).
+        /// </summary>
+        [JsonIgnore]
+        public TypologyData? TypologyData
+        {
+            get
+            {
+                return Core.Query.Clone(typologyData);
             }
         }
 

@@ -397,52 +397,58 @@ public ConstructionSet(DiGi.Analytical.Building.Regulation.Classes.ConstructionS
 
 The source [ConstructionSet](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionSet 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionSet') to copy from\. This value can be null\.
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string)'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData)'></a>
 
-## ConstructionSet\(ConstructionFlavour, BuildingType, Nullable\<ClimateZone\>, DateTimeOffset, Nullable\<DateTimeOffset\>, string\) Constructor
+## ConstructionSet\(ConstructionFlavour, BuildingType, Nullable\<ClimateZone\>, DateTimeOffset, Nullable\<DateTimeOffset\>, string, TypologyData\) Constructor
 
 Initializes a new instance of the [ConstructionSet](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionSet 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionSet') class\.
 
 ```csharp
-public ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour constructionFlavour, DiGi.Analytical.Building.Regulation.Enums.BuildingType buildingType, System.Nullable<DiGi.Analytical.Building.Regulation.Enums.ClimateZone> climateZone, System.DateTimeOffset startDate, System.Nullable<System.DateTimeOffset> endDate, string? source);
+public ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour constructionFlavour, DiGi.Analytical.Building.Regulation.Enums.BuildingType buildingType, System.Nullable<DiGi.Analytical.Building.Regulation.Enums.ClimateZone> climateZone, System.DateTimeOffset startDate, System.Nullable<System.DateTimeOffset> endDate, string? source, DiGi.Analytical.Building.Regulation.Classes.TypologyData? typologyData);
 ```
 #### Parameters
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string).constructionFlavour'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).constructionFlavour'></a>
 
 `constructionFlavour` [ConstructionFlavour](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionFlavour')
 
 The kind of constructions the set describes\.
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string).buildingType'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).buildingType'></a>
 
 `buildingType` [BuildingType](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.BuildingType 'DiGi\.Analytical\.Building\.Regulation\.Enums\.BuildingType')
 
 The building type the set applies to\.
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string).climateZone'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).climateZone'></a>
 
 `climateZone` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[ClimateZone](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ClimateZone 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
 
 The climatic zone the set applies to, or null for every zone\.
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string).startDate'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).startDate'></a>
 
 `startDate` [System\.DateTimeOffset](https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset 'System\.DateTimeOffset')
 
 The first date the set applies to\.
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string).endDate'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).endDate'></a>
 
 `endDate` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.DateTimeOffset](https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset 'System\.DateTimeOffset')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
 
 The first date the set no longer applies to, or null when it still applies\.
 
-<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string).source'></a>
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).source'></a>
 
 `source` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 The source of the set's constructions \(norm, Dz\.U\. text, TABULA / NAPE\)\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour,DiGi.Analytical.Building.Regulation.Enums.BuildingType,System.Nullable_DiGi.Analytical.Building.Regulation.Enums.ClimateZone_,System.DateTimeOffset,System.Nullable_System.DateTimeOffset_,string,DiGi.Analytical.Building.Regulation.Classes.TypologyData).typologyData'></a>
+
+`typologyData` [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData')
+
+The non\-construction inputs of the typology building the set describes, or null for a set that describes none \([Regulation](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour.Regulation 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionFlavour\.Regulation')\)\.
 
 <a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.ConstructionSet(System.Text.Json.Nodes.JsonObject)'></a>
 
@@ -539,6 +545,19 @@ public System.DateTimeOffset StartDate { get; }
 
 #### Property Value
 [System\.DateTimeOffset](https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset 'System\.DateTimeOffset')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.TypologyData'></a>
+
+## ConstructionSet\.TypologyData Property
+
+Gets a CLONE of the non\-construction inputs of the typology building the set describes \(frame area fraction, thermal bridging, floor boundary and the TABULA balance factors\), or null when the set describes no typology building \(DiGi\-Organization/DiGi\.Analytical\#17\)\.
+
+```csharp
+public DiGi.Analytical.Building.Regulation.Classes.TypologyData? TypologyData { get; }
+```
+
+#### Property Value
+[TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData')
 ### Methods
 
 <a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionSet.GetConstructionReference(DiGi.Analytical.Building.Regulation.Enums.ConstructionRole)'></a>
@@ -1395,3 +1414,237 @@ The date built\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the set applies to the date; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData'></a>
+
+## TypologyData Class
+
+Represents the inputs of a TABULA typology building that are not constructions: the frame area fraction, the thermal bridging surcharge, the floor boundary and the factors the TABULA energy balance applies to them \(DiGi\-Organization/DiGi\.Analytical\#17\)\.
+
+A [TypicalAsBuilt](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour.TypicalAsBuilt 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionFlavour\.TypicalAsBuilt')[ConstructionSet](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionSet 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionSet') carries one, read from the building's TABULA record, so that a heat-demand calculation (DiGi-Organization/DiGi.Analytical#10) applies them once. The floor construction of a set carries the construction's own U: the resistance of an unheated cellar is [AdditionalFloorResistance](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData.AdditionalFloorResistance 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData\.AdditionalFloorResistance'), not part of that U.
+
+```csharp
+public class TypologyData : DiGi.Core.Classes.SerializableObject, DiGi.Analytical.Building.Regulation.Interfaces.IRegulationSerializableObject, DiGi.Analytical.Building.Regulation.Interfaces.IRegulationObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → TypologyData
+
+Implements [IRegulationSerializableObject](DiGi.Analytical.Building.Regulation.Interfaces.md#DiGi.Analytical.Building.Regulation.Interfaces.IRegulationSerializableObject 'DiGi\.Analytical\.Building\.Regulation\.Interfaces\.IRegulationSerializableObject'), [IRegulationObject](DiGi.Analytical.Building.Regulation.Interfaces.md#DiGi.Analytical.Building.Regulation.Interfaces.IRegulationObject 'DiGi\.Analytical\.Building\.Regulation\.Interfaces\.IRegulationObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.ibuildingobject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(DiGi.Analytical.Building.Regulation.Classes.TypologyData)'></a>
+
+## TypologyData\(TypologyData\) Constructor
+
+Initializes a new instance of the [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData') class by copying an existing instance\.
+
+```csharp
+public TypologyData(DiGi.Analytical.Building.Regulation.Classes.TypologyData? typologyData);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(DiGi.Analytical.Building.Regulation.Classes.TypologyData).typologyData'></a>
+
+`typologyData` [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData')
+
+The [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData') to copy\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string)'></a>
+
+## TypologyData\(double, double, FloorBoundary, double, RoofType, double, double, int, string\) Constructor
+
+Initializes a new instance of the [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData') class\.
+
+```csharp
+public TypologyData(double frameAreaFraction, double thermalBridgingSurcharge, DiGi.Analytical.Building.Regulation.Enums.FloorBoundary floorBoundary, double additionalFloorResistance, DiGi.Analytical.Building.Regulation.Enums.RoofType roofType, double floorTemperatureReductionFactor, double nonPerpendicularIncidenceFactor, int attachedNeighbours, string? source);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).frameAreaFraction'></a>
+
+`frameAreaFraction` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The frame area fraction of the windows, F\_f \[\-\]\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).thermalBridgingSurcharge'></a>
+
+`thermalBridgingSurcharge` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The thermal bridging surcharge on the envelope U\-values, ΔU\_tb \[W/\(m2K\)\]\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).floorBoundary'></a>
+
+`floorBoundary` [FloorBoundary](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.FloorBoundary 'DiGi\.Analytical\.Building\.Regulation\.Enums\.FloorBoundary')
+
+What the lowest floor borders\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).additionalFloorResistance'></a>
+
+`additionalFloorResistance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The additional thermal resistance of the unheated space below the floor, R \[m2K/W\]; 0 on soil\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).roofType'></a>
+
+`roofType` [RoofType](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.RoofType 'DiGi\.Analytical\.Building\.Regulation\.Enums\.RoofType')
+
+The roof type\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).floorTemperatureReductionFactor'></a>
+
+`floorTemperatureReductionFactor` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The temperature reduction factor of the floor's heat transfer, b\_tr,floor \[\-\]\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).nonPerpendicularIncidenceFactor'></a>
+
+`nonPerpendicularIncidenceFactor` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The correction of the window solar transmittance for non\-perpendicular incidence, F\_w \[\-\]\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).attachedNeighbours'></a>
+
+`attachedNeighbours` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The number of attached neighbouring buildings: TABULA B\_Alone is 0, B\_N1 is 1, B\_N2 is 2\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(double,double,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double,DiGi.Analytical.Building.Regulation.Enums.RoofType,double,double,int,string).source'></a>
+
+`source` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The TABULA record the values were read from\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(System.Text.Json.Nodes.JsonObject)'></a>
+
+## TypologyData\(JsonObject\) Constructor
+
+Initializes a new instance of the [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData') class from a JSON object\.
+
+```csharp
+public TypologyData(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.TypologyData(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The JSON object containing the data\. This value can be null\.
+### Properties
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.AdditionalFloorResistance'></a>
+
+## TypologyData\.AdditionalFloorResistance Property
+
+Gets the additional thermal resistance of the unheated space below the floor, R \[m2K/W\]; 0 on soil\.
+
+```csharp
+public double AdditionalFloorResistance { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.AttachedNeighbours'></a>
+
+## TypologyData\.AttachedNeighbours Property
+
+Gets the number of attached neighbouring buildings: TABULA B\_Alone is 0, B\_N1 is 1, B\_N2 is 2\.
+
+```csharp
+public int AttachedNeighbours { get; }
+```
+
+#### Property Value
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.FloorBoundary'></a>
+
+## TypologyData\.FloorBoundary Property
+
+Gets what the lowest floor borders\.
+
+```csharp
+public DiGi.Analytical.Building.Regulation.Enums.FloorBoundary FloorBoundary { get; }
+```
+
+#### Property Value
+[FloorBoundary](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.FloorBoundary 'DiGi\.Analytical\.Building\.Regulation\.Enums\.FloorBoundary')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.FloorTemperatureReductionFactor'></a>
+
+## TypologyData\.FloorTemperatureReductionFactor Property
+
+Gets the temperature reduction factor of the floor's heat transfer, b\_tr,floor \[\-\]\.
+
+```csharp
+public double FloorTemperatureReductionFactor { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.FrameAreaFraction'></a>
+
+## TypologyData\.FrameAreaFraction Property
+
+Gets the frame area fraction of the windows, F\_f \[\-\]\.
+
+```csharp
+public double FrameAreaFraction { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.NonPerpendicularIncidenceFactor'></a>
+
+## TypologyData\.NonPerpendicularIncidenceFactor Property
+
+Gets the correction of the window solar transmittance for non\-perpendicular incidence, F\_w \[\-\]\.
+
+```csharp
+public double NonPerpendicularIncidenceFactor { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.RoofType'></a>
+
+## TypologyData\.RoofType Property
+
+Gets the roof type\.
+
+```csharp
+public DiGi.Analytical.Building.Regulation.Enums.RoofType RoofType { get; }
+```
+
+#### Property Value
+[RoofType](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.RoofType 'DiGi\.Analytical\.Building\.Regulation\.Enums\.RoofType')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.Source'></a>
+
+## TypologyData\.Source Property
+
+Gets the TABULA record the values were read from\.
+
+```csharp
+public string? Source { get; }
+```
+
+#### Property Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.TypologyData.ThermalBridgingSurcharge'></a>
+
+## TypologyData\.ThermalBridgingSurcharge Property
+
+Gets the thermal bridging surcharge on the envelope U\-values, ΔU\_tb \[W/\(m2K\)\]\.
+
+```csharp
+public double ThermalBridgingSurcharge { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
