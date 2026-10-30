@@ -12,7 +12,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="internalCondition">The internal condition instance to modify.</param>
         /// <param name="coolingEmitter">The cooling emitter to assign to the internal condition.</param>
         /// <returns>True if the cooling emitter was successfully set; otherwise, false.</returns>
-        public static bool SetHeatingEmitter(this InternalCondition? internalCondition, CoolingEmitter? coolingEmitter)
+        public static bool SetCoolingEmitter(this InternalCondition? internalCondition, CoolingEmitter? coolingEmitter)
         {
             if (internalCondition == null)
             {

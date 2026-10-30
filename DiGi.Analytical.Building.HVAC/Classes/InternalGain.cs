@@ -94,11 +94,17 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             {
                 Name = internalGain.Name;
                 Description = internalGain.Description;
+                LightingRadiantProportion = internalGain.LightingRadiantProportion;
+                OccupantRadiantProportion = internalGain.OccupantRadiantProportion;
+                EquipmentRadiantProportion = internalGain.EquipmentRadiantProportion;
+                LightingViewCoefficient = internalGain.LightingViewCoefficient;
+                OccupantViewCoefficient = internalGain.OccupantViewCoefficient;
+                EquipmentViewCoefficient = internalGain.EquipmentViewCoefficient;
 
                 if (internalGain.profiles != null)
                 {
                     profiles = [];
-                    foreach (KeyValuePair<InternalGainProfileType, IProfile> keyValuePair in profiles)
+                    foreach (KeyValuePair<InternalGainProfileType, IProfile> keyValuePair in internalGain.profiles)
                     {
                         if (Core.Query.Clone(keyValuePair.Value) is IProfile profile)
                         {

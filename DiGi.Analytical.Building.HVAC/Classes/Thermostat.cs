@@ -59,7 +59,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
                 if (thermostat.profiles != null)
                 {
                     profiles = [];
-                    foreach (KeyValuePair<ThermostatProfileType, IProfile> keyValuePair in profiles)
+                    foreach (KeyValuePair<ThermostatProfileType, IProfile> keyValuePair in thermostat.profiles)
                     {
                         if (Core.Query.Clone(keyValuePair.Value) is IProfile profile)
                         {

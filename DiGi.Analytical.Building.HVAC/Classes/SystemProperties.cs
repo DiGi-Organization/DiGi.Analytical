@@ -30,6 +30,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public double OutsideAir { get; set; }
 
         /// <summary>
+        /// Gets or sets the outside air flow rate per square meter of floor area [l/(s m2)] (DiGi-Organization/DiGi.Analytical#9).
+        /// <para>The Polish energy-certificate methodology sets the basic outside airflow per area of the heated zone (V_ve,1,s, Dz.U. 2015 poz. 376, Annex 1, Tables 23-25, in m3/(s m2)); this property holds it in l/(s m2), that value times 1000.</para>
+        /// </summary>
+        [JsonInclude, JsonPropertyName("OutsideAirPerArea"), Description("Outside air per area [l/(s m2)]")]
+        public double OutsideAirPerArea { get; set; }
+
+        /// <summary>
         /// Gets or sets the target illuminance [lx].
         /// </summary>
         [JsonInclude, JsonPropertyName("TargetIlluminance"), Description("Target illuminance [lx]")]
@@ -64,6 +71,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
                 MetabolicRate = systemProperties.MetabolicRate;
                 DomesticHotWater = systemProperties.DomesticHotWater;
                 OutsideAir = systemProperties.OutsideAir;
+                OutsideAirPerArea = systemProperties.OutsideAirPerArea;
                 TargetIlluminance = systemProperties.TargetIlluminance;
             }
         }

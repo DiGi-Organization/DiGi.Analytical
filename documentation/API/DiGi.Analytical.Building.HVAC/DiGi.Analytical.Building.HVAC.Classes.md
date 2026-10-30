@@ -1518,6 +1518,21 @@ public double OutsideAir { get; set; }
 #### Property Value
 [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
+<a name='DiGi.Analytical.Building.HVAC.Classes.SystemProperties.OutsideAirPerArea'></a>
+
+## SystemProperties\.OutsideAirPerArea Property
+
+Gets or sets the outside air flow rate per square meter of floor area \[l/\(s m2\)\] \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+The Polish energy-certificate methodology sets the basic outside airflow per area of the heated zone (V_ve,1,s, Dz.U. 2015 poz. 376, Annex 1, Tables 23-25, in m3/(s m2)); this property holds it in l/(s m2), that value times 1000.
+
+```csharp
+public double OutsideAirPerArea { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
 <a name='DiGi.Analytical.Building.HVAC.Classes.SystemProperties.TargetIlluminance'></a>
 
 ## SystemProperties\.TargetIlluminance Property
@@ -1638,3 +1653,317 @@ The type of the thermostat profile to retrieve or assign\.
 
 #### Property Value
 [DiGi\.Analytical\.Building\.Interfaces\.IProfile](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iprofile 'DiGi\.Analytical\.Building\.Interfaces\.IProfile')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile'></a>
+
+## UsageProfile Class
+
+Represents the standard use of a building of one usage type: heating set\-point, internal gains, outside airflow and hot water per area, with the source of every value \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+Created by `Create.UsageProfile`, which holds the data and does the calculation; the constructor only assigns and copies. `Create.InternalCondition` turns a usage profile into an [DiGi\.Analytical\.Building\.Classes\.InternalCondition](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.internalcondition 'DiGi\.Analytical\.Building\.Classes\.InternalCondition') for a building.
+
+Every value has a source tag in [Sources](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.Sources 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.Sources'), keyed by the property name: `PL-376` (Dz.U. 2015 poz. 376, Annex 1), `PL-WT` (Dz.U. 2022 poz. 1225, § 134), `ASHRAE-90.1` (ASHRAE Standard 90.1-1989 and addenda, via the Seattle Energy Code 2018, Appendix B) or `DEFAULT` (uncited, to be replaced), each followed by the table it comes from.
+
+```csharp
+public class UsageProfile : DiGi.Core.Classes.SerializableObject, DiGi.Analytical.Building.HVAC.Interfaces.IHVACObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → UsageProfile
+
+Implements [IHVACObject](DiGi.Analytical.Building.HVAC.Interfaces.md#DiGi.Analytical.Building.HVAC.Interfaces.IHVACObject 'DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IHVACObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.ibuildingobject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject')
+### Constructors
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Classes.UsageProfile)'></a>
+
+## UsageProfile\(UsageProfile\) Constructor
+
+Initializes a new instance of the [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile') class by copying an existing instance\.
+
+```csharp
+public UsageProfile(DiGi.Analytical.Building.HVAC.Classes.UsageProfile? usageProfile);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Classes.UsageProfile).usageProfile'></a>
+
+`usageProfile` [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile')
+
+The [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile') to copy\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string)'></a>
+
+## UsageProfile\(UsageType, double, double, IEnumerable\<double\>, double, double, double, double, double, double, double, IDictionary\<string,string\>, string\) Constructor
+
+Initializes a new instance of the [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile') class\.
+
+The values are assigned as given and the profile and the sources are copied; `Create.UsageProfile` computes them.
+
+```csharp
+public UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType usageType, double heatingSetPoint, double internalHeatGain, System.Collections.Generic.IEnumerable<double>? internalHeatGainProfile, double outsideAirPerArea, double domesticHotWater, double domesticHotWaterCorrection, double floorAreaPerPerson, double personGain, double personLatentGain, double beta, System.Collections.Generic.IDictionary<string,string>? sources, string? source);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).usageType'></a>
+
+`usageType` [UsageType](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.UsageType 'DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType')
+
+The usage type\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).heatingSetPoint'></a>
+
+`heatingSetPoint` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The heating set\-point \[°C\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).internalHeatGain'></a>
+
+`internalHeatGain` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The mean internal heat gain q\_int \[W/m2\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).internalHeatGainProfile'></a>
+
+`internalHeatGainProfile` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The weekly profile of the internal heat gain \[W/m2\], 168 values from Monday 0:00, whose mean is [internalHeatGain](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).internalHeatGain 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.UsageProfile\(DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType, double, double, System\.Collections\.Generic\.IEnumerable\<double\>, double, double, double, double, double, double, double, System\.Collections\.Generic\.IDictionary\<string,string\>, string\)\.internalHeatGain'); null when the gain is constant\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).outsideAirPerArea'></a>
+
+`outsideAirPerArea` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The basic outside airflow during use \[l/\(s m2\)\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).domesticHotWater'></a>
+
+`domesticHotWater` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The unit daily hot water demand V\_Wi \[dm3/\(m2 d\)\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).domesticHotWaterCorrection'></a>
+
+`domesticHotWaterCorrection` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The correction for breaks in hot water use k\_R \[\-\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).floorAreaPerPerson'></a>
+
+`floorAreaPerPerson` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The floor area per person of the standard occupancy \[m2/person\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).personGain'></a>
+
+`personGain` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The sensible heat gain per person \[W/person\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).personLatentGain'></a>
+
+`personLatentGain` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The latent heat gain per person \[W/person\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).beta'></a>
+
+`beta` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The share of the time the building is in use, β \[\-\]; NaN when the internal gain does not depend on it\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).sources'></a>
+
+`sources` [System\.Collections\.Generic\.IDictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2 'System\.Collections\.Generic\.IDictionary\`2')
+
+The source tag of every value, keyed by property name\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(DiGi.Analytical.Building.HVAC.Enums.UsageType,double,double,System.Collections.Generic.IEnumerable_double_,double,double,double,double,double,double,double,System.Collections.Generic.IDictionary_string,string_,string).source'></a>
+
+`source` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The sources as text\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(System.Text.Json.Nodes.JsonObject)'></a>
+
+## UsageProfile\(JsonObject\) Constructor
+
+Initializes a new instance of the [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile') class from a JSON object\.
+
+```csharp
+public UsageProfile(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageProfile(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The JSON object containing the data\. This value can be null\.
+### Properties
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.Beta'></a>
+
+## UsageProfile\.Beta Property
+
+Gets the share of the time the building is in use, β \[\-\]; NaN when the internal gain does not depend on it\.
+
+```csharp
+public double Beta { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.DomesticHotWater'></a>
+
+## UsageProfile\.DomesticHotWater Property
+
+Gets the unit daily hot water demand V\_Wi \[dm3/\(m2 d\)\]\.
+
+```csharp
+public double DomesticHotWater { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.DomesticHotWaterCorrection'></a>
+
+## UsageProfile\.DomesticHotWaterCorrection Property
+
+Gets the correction for breaks in hot water use k\_R \[\-\]\.
+
+```csharp
+public double DomesticHotWaterCorrection { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.FloorAreaPerPerson'></a>
+
+## UsageProfile\.FloorAreaPerPerson Property
+
+Gets the floor area per person of the standard occupancy \[m2/person\] \- the occupancy the per\-area values stand for\.
+
+```csharp
+public double FloorAreaPerPerson { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.HeatingSetPoint'></a>
+
+## UsageProfile\.HeatingSetPoint Property
+
+Gets the heating set\-point \[°C\]\.
+
+```csharp
+public double HeatingSetPoint { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.InternalHeatGain'></a>
+
+## UsageProfile\.InternalHeatGain Property
+
+Gets the mean internal heat gain q\_int \[W/m2\]: people, lighting and equipment together\.
+
+```csharp
+public double InternalHeatGain { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.InternalHeatGainProfile'></a>
+
+## UsageProfile\.InternalHeatGainProfile Property
+
+Gets a copy of the weekly profile of the internal heat gain \[W/m2\], 168 values from Monday 0:00 whose mean is [InternalHeatGain](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.InternalHeatGain 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.InternalHeatGain'), or null when the gain is constant\.
+
+```csharp
+public System.Collections.Generic.List<double>? InternalHeatGainProfile { get; }
+```
+
+#### Property Value
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.OutsideAirPerArea'></a>
+
+## UsageProfile\.OutsideAirPerArea Property
+
+Gets the basic outside airflow during use \[l/\(s m2\)\]\.
+
+```csharp
+public double OutsideAirPerArea { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.PersonGain'></a>
+
+## UsageProfile\.PersonGain Property
+
+Gets the sensible heat gain per person \[W/person\]\.
+
+```csharp
+public double PersonGain { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.PersonLatentGain'></a>
+
+## UsageProfile\.PersonLatentGain Property
+
+Gets the latent heat gain per person \[W/person\]\.
+
+```csharp
+public double PersonLatentGain { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.Source'></a>
+
+## UsageProfile\.Source Property
+
+Gets the sources of the values as text\.
+
+```csharp
+public string? Source { get; }
+```
+
+#### Property Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.Sources'></a>
+
+## UsageProfile\.Sources Property
+
+Gets a copy of the source tag of every value, keyed by property name, or null\.
+
+```csharp
+public System.Collections.Generic.Dictionary<string,string>? Sources { get; }
+```
+
+#### Property Value
+[System\.Collections\.Generic\.Dictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.UsageProfile.UsageType'></a>
+
+## UsageProfile\.UsageType Property
+
+Gets the usage type\.
+
+```csharp
+public DiGi.Analytical.Building.HVAC.Enums.UsageType UsageType { get; }
+```
+
+#### Property Value
+[UsageType](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.UsageType 'DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType')

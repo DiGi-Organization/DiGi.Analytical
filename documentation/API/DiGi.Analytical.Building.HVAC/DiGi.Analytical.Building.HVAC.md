@@ -12,7 +12,111 @@ public static class Create
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Create
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_ASHRAE'></a>
+
+## Create\.UsageProfileSource\_ASHRAE Field
+
+The source tag of a value from ASHRAE Standard 90\.1\-1989 and addenda, as published in the Seattle Energy Code 2018, Appendix B \(Tables B102 and B103\)\.
+
+```csharp
+public const string UsageProfileSource_ASHRAE = "ASHRAE-90.1";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_Default'></a>
+
+## Create\.UsageProfileSource\_Default Field
+
+The source tag of an uncited value, to be replaced by a cited one\.
+
+```csharp
+public const string UsageProfileSource_Default = "DEFAULT";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_PL376'></a>
+
+## Create\.UsageProfileSource\_PL376 Field
+
+The source tag of a value from the Polish energy\-certificate methodology, Dz\.U\. 2015 poz\. 376, Annex 1 \(amended by Dz\.U\. 2017 poz\. 22, 2019 poz\. 1829 and 2023 poz\. 697, none of which changes Tables 23\-27\)\.
+
+```csharp
+public const string UsageProfileSource_PL376 = "PL-376";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_PLWT'></a>
+
+## Create\.UsageProfileSource\_PLWT Field
+
+The source tag of a value from the technical conditions, Dz\.U\. 2022 poz\. 1225 \(consolidated text\), § 134 ust\. 2\.
+
+```csharp
+public const string UsageProfileSource_PLWT = "PL-WT";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 ### Methods
+
+<a name='DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string)'></a>
+
+## Create\.InternalCondition\(this UsageProfile, Nullable\<int\>, Nullable\<double\>, Nullable\<double\>, string\) Method
+
+Creates the internal condition of a building from its usage profile \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+It holds a thermostat lower limit at [HeatingSetPoint](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.HeatingSetPoint 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.HeatingSetPoint') (continuous heating: neither source gives a set-back), a [TotalInternalGain](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.TotalInternalGain 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalGainProfileType\.TotalInternalGain') profile [W/m2] - constant, or the weekly profile when the usage profile has one - and an [Infiltration](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.Infiltration 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalGainProfileType\.Infiltration') profile [1/h] of 0.2 for a building erected after 1995 and 0.3 otherwise or when unknown (Dz.U. 2015 poz. 376, Annex 1, eq. 70). [SystemProperties](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.SystemProperties 'DiGi\.Analytical\.Building\.HVAC\.Classes\.SystemProperties') holds the hot water V_Wi · k_R [l/(d m2)], the outside airflow per area [l/(s m2)] and the sensible gain per person as the metabolic rate; ventilation stays per area, as converting it to air changes needs the volume of each space.
+
+<b>Occupancy scaling.</b> With [occupancy](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).occupancy 'DiGi\.Analytical\.Building\.HVAC\.Create\.InternalCondition\(this DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile, System\.Nullable\<int\>, System\.Nullable\<double\>, System\.Nullable\<double\>, string\)\.occupancy') and [floorArea](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).floorArea 'DiGi\.Analytical\.Building\.HVAC\.Create\.InternalCondition\(this DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile, System\.Nullable\<int\>, System\.Nullable\<double\>, System\.Nullable\<double\>, string\)\.floorArea') both positive, the people share of the values follows the actual persons instead of the standard occupancy of [FloorAreaPerPerson](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.FloorAreaPerPerson 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.FloorAreaPerPerson'): the hot water is multiplied by persons · a_std / A, and the internal gain is shifted by (persons / A - 1 / a_std) · [PersonGain](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.PersonGain 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.PersonGain'), never below 0. This departs from the per-area values of the methodology, so [OccupancyScaled](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.OccupancyScaled 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.OccupancyScaled') records it.
+
+<b>Provenance.</b> The name is the usage type, the description and [UsageSource](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.UsageSource 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.UsageSource') carry [Source](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.Source 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.Source'), and [UsageType](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.UsageType 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.UsageType'), [Occupancy](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.Occupancy 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.Occupancy'), [OccupancySource](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.OccupancySource 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.OccupancySource') and [OccupancyScaled](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.OccupancyScaled 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.OccupancyScaled') are set.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.InternalCondition? InternalCondition(this DiGi.Analytical.Building.HVAC.Classes.UsageProfile? usageProfile, System.Nullable<int> yearBuilt=null, System.Nullable<double> occupancy=null, System.Nullable<double> floorArea=null, string? occupancySource=null);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).usageProfile'></a>
+
+`usageProfile` [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile')
+
+The usage profile, from [UsageProfile\(this UsageType, Nullable&lt;double&gt;, Nullable&lt;double&gt;, bool, bool\)](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool) 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfile\(this DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType, System\.Nullable\<double\>, System\.Nullable\<double\>, bool, bool\)')\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).yearBuilt'></a>
+
+`yearBuilt` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+The year the building was erected \(or its windows replaced\); null when unknown\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).occupancy'></a>
+
+`occupancy` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+The number of persons in the building; null when unknown\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).floorArea'></a>
+
+`floorArea` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+The heated floor area of the building \[m2\], the area the persons share; null when unknown\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).occupancySource'></a>
+
+`occupancySource` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+Where [occupancy](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).occupancy 'DiGi\.Analytical\.Building\.HVAC\.Create\.InternalCondition\(this DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile, System\.Nullable\<int\>, System\.Nullable\<double\>, System\.Nullable\<double\>, string\)\.occupancy') comes from\. This value can be null\.
+
+#### Returns
+[DiGi\.Analytical\.Building\.Classes\.InternalCondition](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.internalcondition 'DiGi\.Analytical\.Building\.Classes\.InternalCondition')  
+The internal condition, or null when [usageProfile](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string).usageProfile 'DiGi\.Analytical\.Building\.HVAC\.Create\.InternalCondition\(this DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile, System\.Nullable\<int\>, System\.Nullable\<double\>, System\.Nullable\<double\>, string\)\.usageProfile') is null\.
 
 <a name='DiGi.Analytical.Building.HVAC.Create.RegulatedHeatTransferCoefficientsManager()'></a>
 
@@ -27,6 +131,61 @@ public static DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoeffic
 #### Returns
 [RegulatedHeatTransferCoefficientsManager](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager')  
 A configured instance of [RegulatedHeatTransferCoefficientsManager\(\)](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.RegulatedHeatTransferCoefficientsManager() 'DiGi\.Analytical\.Building\.HVAC\.Create\.RegulatedHeatTransferCoefficientsManager\(\)')\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool)'></a>
+
+## Create\.UsageProfile\(this UsageType, Nullable\<double\>, Nullable\<double\>, bool, bool\) Method
+
+Creates the standard\-use profile of a building of the given usage type: heating set\-point, internal gains, outside airflow and hot water per area, each value with its source \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+<b>Sources, in order of precedence.</b> A value is taken from the first source that has it: the Polish energy-certificate methodology ([UsageProfileSource\_PL376](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_PL376 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfileSource\_PL376'): q_int Table 26, k_R and V_Wi Table 27, outside airflow Tables 23-25), the technical conditions ([UsageProfileSource\_PLWT](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_PLWT 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfileSource\_PLWT'): the heating temperatures of § 134 ust. 2), ASHRAE 90.1 ([UsageProfileSource\_ASHRAE](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_ASHRAE 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfileSource\_ASHRAE'): occupancy densities and heat per person of Table B102, occupancy schedules of Tables B103), and only then an uncited default ([UsageProfileSource\_Default](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_Default 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfileSource\_Default')). Every value carries its tag in [Sources](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.Sources 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.Sources').
+
+<b>β, the share of the time in use</b>, which the internal gains of most non-residential types depend on (Table 26): the methodology's standard office (P1 = 0.6, β = 0.3); for every other type the ASHRAE occupancy hours per week divided by 168 - the ASHRAE office gives 48.6 / 168 = 0.29 against the methodology's 0.3, which is what this rule rests on. A given [beta](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).beta 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfile\(this DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType, System\.Nullable\<double\>, System\.Nullable\<double\>, bool, bool\)\.beta') overrides it.
+
+<b>Production</b> has no values in the methodology ("individually"): the internal gains and hot water come from ASHRAE light manufacturing (people, receptacles and service hot water of Table B102 weighted by the weekly hours of Table B103(4); lighting is excluded, the document gives no lighting power density), the ventilation is the storage row as a stand-in ([UsageProfileSource\_Default](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfileSource_Default 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfileSource\_Default')).
+
+<b>Residential floor area per person</b> has no source - ASHRAE 90.1 has no residential row - and is a 30 m2 default.
+
+With [hourly](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).hourly 'DiGi\.Analytical\.Building\.HVAC\.Create\.UsageProfile\(this DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType, System\.Nullable\<double\>, System\.Nullable\<double\>, bool, bool\)\.hourly') a weekly 168-hour internal gain profile is added for the types whose gain depends on β: q(h) = q_off + (q_use - q_off) · f(h), with f the ASHRAE occupancy fraction scaled so that its mean is β, so the mean of the profile is exactly [InternalHeatGain](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile.InternalHeatGain 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile\.InternalHeatGain'). The other types stay constant.
+
+```csharp
+public static DiGi.Analytical.Building.HVAC.Classes.UsageProfile? UsageProfile(this DiGi.Analytical.Building.HVAC.Enums.UsageType usageType, System.Nullable<double> beta=null, System.Nullable<double> officeShare=null, bool meteredHotWater=false, bool hourly=false);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).usageType'></a>
+
+`usageType` [UsageType](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.UsageType 'DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType')
+
+The usage type\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).beta'></a>
+
+`beta` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+The share of the time the building is in use, β \[\-\], overriding the default; ignored for types whose gain does not depend on it\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).officeShare'></a>
+
+`officeShare` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+The share P1 of office rooms in the floor area of an office building \[\-\], overriding the standard 0\.6\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).meteredHotWater'></a>
+
+`meteredHotWater` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+True for a multi\-family building with hot water billed by individual metering \(1\.60 instead of 2\.00 dm3/\(m2 d\)\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Create.UsageProfile(thisDiGi.Analytical.Building.HVAC.Enums.UsageType,System.Nullable_double_,System.Nullable_double_,bool,bool).hourly'></a>
+
+`hourly` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+True to add the weekly 168\-hour internal gain profile\.
+
+#### Returns
+[UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile')  
+The [UsageProfile](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.UsageProfile 'DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile'), or null for [Undefined](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.UsageType.Undefined 'DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType\.Undefined')\.
 
 <a name='DiGi.Analytical.Building.HVAC.Modify'></a>
 
@@ -78,24 +237,57 @@ An optional identifier shared by every relation created in one assignment \- a g
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the internal condition was successfully assigned; otherwise, false\.
 
-<a name='DiGi.Analytical.Building.HVAC.Modify.SetHeatingEmitter(thisDiGi.Analytical.Building.Classes.InternalCondition,DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter)'></a>
+<a name='DiGi.Analytical.Building.HVAC.Modify.AssignInternalCondition(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IInternalCondition,string)'></a>
 
-## Modify\.SetHeatingEmitter\(this InternalCondition, CoolingEmitter\) Method
+## Modify\.AssignInternalCondition\(this BuildingModel, IInternalCondition, string\) Method
+
+Assigns an internal condition to every space of a building model, over the hours of its longest profile, as [Assign\(this BuildingModel, ISpace, IInternalCondition, string\)](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Modify.Assign(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.IInternalCondition,string) 'DiGi\.Analytical\.Building\.HVAC\.Modify\.Assign\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.ISpace, DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition, string\)') does for one space \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+```csharp
+public static bool AssignInternalCondition(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, DiGi.Analytical.Building.Interfaces.IInternalCondition? internalCondition, string? id=null);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Modify.AssignInternalCondition(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IInternalCondition,string).buildingModel'></a>
+
+`buildingModel` [DiGi\.Analytical\.Building\.Classes\.BuildingModel](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.buildingmodel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model\.
+
+<a name='DiGi.Analytical.Building.HVAC.Modify.AssignInternalCondition(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IInternalCondition,string).internalCondition'></a>
+
+`internalCondition` [DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iinternalcondition 'DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition')
+
+The internal condition, for example from [InternalCondition\(this UsageProfile, Nullable&lt;int&gt;, Nullable&lt;double&gt;, Nullable&lt;double&gt;, string\)](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.InternalCondition(thisDiGi.Analytical.Building.HVAC.Classes.UsageProfile,System.Nullable_int_,System.Nullable_double_,System.Nullable_double_,string) 'DiGi\.Analytical\.Building\.HVAC\.Create\.InternalCondition\(this DiGi\.Analytical\.Building\.HVAC\.Classes\.UsageProfile, System\.Nullable\<int\>, System\.Nullable\<double\>, System\.Nullable\<double\>, string\)')\.
+
+<a name='DiGi.Analytical.Building.HVAC.Modify.AssignInternalCondition(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IInternalCondition,string).id'></a>
+
+`id` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+An optional identifier shared by every relation created, which the HVAC IndexedDoubles query filters by\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True when the model has spaces and every one was assigned; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.HVAC.Modify.SetCoolingEmitter(thisDiGi.Analytical.Building.Classes.InternalCondition,DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter)'></a>
+
+## Modify\.SetCoolingEmitter\(this InternalCondition, CoolingEmitter\) Method
 
 Sets the cooling emitter for the specified internal condition\.
 
 ```csharp
-public static bool SetHeatingEmitter(this DiGi.Analytical.Building.Classes.InternalCondition? internalCondition, DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter? coolingEmitter);
+public static bool SetCoolingEmitter(this DiGi.Analytical.Building.Classes.InternalCondition? internalCondition, DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter? coolingEmitter);
 ```
 #### Parameters
 
-<a name='DiGi.Analytical.Building.HVAC.Modify.SetHeatingEmitter(thisDiGi.Analytical.Building.Classes.InternalCondition,DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter).internalCondition'></a>
+<a name='DiGi.Analytical.Building.HVAC.Modify.SetCoolingEmitter(thisDiGi.Analytical.Building.Classes.InternalCondition,DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter).internalCondition'></a>
 
 `internalCondition` [DiGi\.Analytical\.Building\.Classes\.InternalCondition](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.internalcondition 'DiGi\.Analytical\.Building\.Classes\.InternalCondition')
 
 The internal condition instance to modify\.
 
-<a name='DiGi.Analytical.Building.HVAC.Modify.SetHeatingEmitter(thisDiGi.Analytical.Building.Classes.InternalCondition,DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter).coolingEmitter'></a>
+<a name='DiGi.Analytical.Building.HVAC.Modify.SetCoolingEmitter(thisDiGi.Analytical.Building.Classes.InternalCondition,DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter).coolingEmitter'></a>
 
 `coolingEmitter` [CoolingEmitter](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.CoolingEmitter 'DiGi\.Analytical\.Building\.HVAC\.Classes\.CoolingEmitter')
 

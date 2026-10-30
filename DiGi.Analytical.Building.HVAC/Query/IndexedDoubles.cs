@@ -69,7 +69,8 @@ namespace DiGi.Analytical.Building.HVAC
                 double[]? values_Profile = profile?.Values;
                 if (values_Profile == null || values_Profile.Length == 0)
                 {
-                    for (int j = range_Profile.Min; j >= range_Profile.Max; j++)
+                    // No values for this condition: its hours are NaN rather than missing.
+                    for (int j = range_Profile.Min; j <= range_Profile.Max; j++)
                     {
                         result[j] = double.NaN;
                     }

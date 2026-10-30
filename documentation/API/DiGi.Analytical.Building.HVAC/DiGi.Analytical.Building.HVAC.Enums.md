@@ -426,11 +426,43 @@ Represents the cooling emitter internal condition parameter\.
 
 Represents the system properties parameter for the internal condition\.
 
+<a name='DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.UsageType'></a>
+
+`UsageType` 5
+
+Represents the usage type of the usage profile the internal condition was created from, as the name of a [UsageType](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.UsageType 'DiGi\.Analytical\.Building\.HVAC\.Enums\.UsageType') value \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.UsageSource'></a>
+
+`UsageSource` 6
+
+Represents the sources of the values of the internal condition: the source tag of every value, and whether the usage type was a fallback\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.Occupancy'></a>
+
+`Occupancy` 7
+
+Represents the number of persons the internal condition was scaled to\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.OccupancySource'></a>
+
+`OccupancySource` 8
+
+Represents where the number of persons came from \(for example the occupancy estimate of a building\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.OccupancyScaled'></a>
+
+`OccupancyScaled` 9
+
+Represents whether the internal gains and hot water of the internal condition were scaled to [Occupancy](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.InternalConditionParameter.Occupancy 'DiGi\.Analytical\.Building\.HVAC\.Enums\.InternalConditionParameter\.Occupancy'); false when the standard per\-area values apply\.
+
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType'></a>
 
 ## InternalGainProfileType Enum
 
 Specifies the type of internal gain profile used in HVAC analytical calculations\.
+
+The values of a profile follow the Tas internal-condition convention the TIC importer keeps: gains in W/m2 of floor area, infiltration and ventilation in air changes per hour [1/h], pollutant generation in g/(h m2). A profile's values repeat over the hours it is assigned to, so one value is a constant and 24 or 168 values a daily or weekly cycle.
 
 ```csharp
 public enum InternalGainProfileType
@@ -447,49 +479,57 @@ Undefined internal gain profile type\.
 
 `Infiltration` 1
 
-Represents the internal gain profile type for infiltration\.
+Represents the internal gain profile type for infiltration \[1/h\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.Ventilation'></a>
 
 `Ventilation` 2
 
-Represents an internal gain profile type associated with ventilation\.
+Represents an internal gain profile type associated with ventilation \[1/h\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.LightingGain'></a>
 
 `LightingGain` 3
 
-Represents the internal heat gain profile associated with lighting\.
+Represents the internal heat gain profile associated with lighting \[W/m2\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.OccupancySensibleGain'></a>
 
 `OccupancySensibleGain` 4
 
-Represents the internal gain profile type for occupancy sensible heat gain\.
+Represents the internal gain profile type for occupancy sensible heat gain \[W/m2\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.OccupancyLatentGain'></a>
 
 `OccupancyLatentGain` 5
 
-Represents the internal gain profile type for occupancy latent gain\.
+Represents the internal gain profile type for occupancy latent gain \[W/m2\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.EquipmentSensibleGain'></a>
 
 `EquipmentSensibleGain` 6
 
-Represents an internal gain profile type for equipment sensible gain\.
+Represents an internal gain profile type for equipment sensible gain \[W/m2\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.EquipmentLatentGain'></a>
 
 `EquipmentLatentGain` 7
 
-Represents the internal gain profile type for equipment latent gain\.
+Represents the internal gain profile type for equipment latent gain \[W/m2\]\.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.PollutantGeneration'></a>
 
 `PollutantGeneration` 8
 
-Represents an internal gain profile type associated with pollutant generation\.
+Represents an internal gain profile type associated with pollutant generation \[g/\(h m2\)\]\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.InternalGainProfileType.TotalInternalGain'></a>
+
+`TotalInternalGain` 9
+
+Represents the total internal heat gain \[W/m2\] \- people, lighting and equipment together, not split into their own profiles \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+The Polish energy-certificate methodology gives only this total (q_int, Dz.U. 2015 poz. 376, Annex 1, Table 26), and a monthly balance needs nothing more. It is not added to the occupancy, lighting or equipment profiles: a condition carries either the total or the split, never both.
 
 <a name='DiGi.Analytical.Building.HVAC.Enums.ThermostatProfileType'></a>
 
@@ -531,3 +571,88 @@ Represents the upper limit for humidity within the thermostat profile\.
 `HumidityLowerLimit` 4
 
 Represents the humidity lower limit thermostat profile type\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType'></a>
+
+## UsageType Enum
+
+Specifies how a building is used, as the Polish energy\-certificate methodology distinguishes it \(Dz\.U\. 2015 poz\. 376, Annex 1, Tables 23\-27\) \(DiGi\-Organization/DiGi\.Analytical\#9\)\.
+
+Each value is one row of those tables, so a usage type selects the internal gains, outside airflow and hot water of a usage profile.
+
+```csharp
+public enum UsageType
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Undefined'></a>
+
+`Undefined` 0
+
+Undefined usage type\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.SingleFamily'></a>
+
+`SingleFamily` 1
+
+Single\-family residential building \(budynek mieszkalny jednorodzinny\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.MultiFamily'></a>
+
+`MultiFamily` 2
+
+Multi\-family residential building \(budynek mieszkalny wielorodzinny\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.CollectiveResidence'></a>
+
+`CollectiveResidence` 3
+
+Collective residence \(budynek zamieszkania zbiorowego\): dormitories, care homes, hostels\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Office'></a>
+
+`Office` 4
+
+Office building \(budynek biurowy\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Education'></a>
+
+`Education` 5
+
+Building for education, higher education and science \(oświata, szkolnictwo wyższe, nauka\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Healthcare'></a>
+
+`Healthcare` 6
+
+Building for healthcare \(opieka zdrowotna\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Gastronomy'></a>
+
+`Gastronomy` 7
+
+Building for gastronomy \(gastronomia\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Sport'></a>
+
+`Sport` 8
+
+Building for sport \(sport\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Retail'></a>
+
+`Retail` 9
+
+Building for retail and services \(handel, usługi\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Storage'></a>
+
+`Storage` 10
+
+Storage building \(budynek magazynowy\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.UsageType.Production'></a>
+
+`Production` 11
+
+Production building \(budynek produkcyjny\)\. The methodology sets its values "individually"; the usage profile fills them from ASHRAE 90\.1 light manufacturing\.
