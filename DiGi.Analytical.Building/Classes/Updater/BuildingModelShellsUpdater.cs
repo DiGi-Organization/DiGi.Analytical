@@ -114,6 +114,35 @@ namespace DiGi.Analytical.Building.Classes
                 spaces.Add(space);
             }
 
+            // A component rebuilt under the identifier of its source but as another type - a CurveWall of an extruded model rebuilt
+            // as a SurfaceWall - would otherwise stay beside its source, because the model keys its components by type and identifier.
+            // The source is removed only once every shell is written, as the later fragments of a split still resolve it by its
+            // reference, and its openings move to the component that keeps its identifier.
+            foreach (KeyValuePair<IUniqueReference, List<Tuple<Point3D, IComponent>>> keyValuePair in UpdatedComponents)
+            {
+                if (keyValuePair.Key is not GuidReference guidReference_Source || Value.GetObject<IComponent>(guidReference_Source) is not IComponent component_Source)
+                {
+                    continue;
+                }
+
+                IComponent? component_Kept = keyValuePair.Value.Find(x => x.Item2 is not null && x.Item2.Guid == component_Source.Guid)?.Item2;
+                if (component_Kept is null || component_Kept.GetType() == component_Source.GetType())
+                {
+                    continue;
+                }
+
+                List<IOpening>? openings = Value.GetOpenings<IOpening>(component_Source);
+                Value.Remove(component_Source);
+
+                if (openings is not null)
+                {
+                    foreach (IOpening opening in openings)
+                    {
+                        Value.Assign(component_Kept, opening);
+                    }
+                }
+            }
+
             return spaces != null && spaces.Count > 0;
         }
     }

@@ -210,6 +210,81 @@ The distance tolerance\.
 [DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D')  
 The [DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the outline is null or a pane is not inside it or overlaps another pane\.
 
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double)'></a>
+
+## Create\.PartyWallResult\(this IWall, Vector3D, BuildingModel, IWall, Vector3D, double, double, double, double\) Method
+
+Creates the result describing the part of a wall shared with a wall of an adjacent building \(DiGi\-Organization/DiGi\.GIS\.Analytical\#4\)\.
+
+The two walls share a part when their planar faces are parallel within [maxAngle](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).maxAngle 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.maxAngle'), face each other, and every vertex of the neighbour face lies within [maxDistance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).maxDistance 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.maxDistance') of the plane of the wall. The neighbour face is then converted into the plane of the wall and intersected with the wall face; the shared part is that intersection. Because the real faces are compared, a gable, a lower or a shifted neighbour gives only the part both walls cover.
+
+The walls face each other when their outward normals point in opposite directions, so the two buildings lie on opposite sides of the shared plane. The stored face normals are not oriented, so the outward normals are passed in - `Query.PartyWalls` reads them from each model's external envelope. A coplanar wall on the same side, as two overlapping footprints give, is then no party wall. When either outward normal is unknown the test is not made.
+
+Pieces of the intersection smaller than the square of [tolerance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).tolerance 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.tolerance') are dropped as slivers, and no result is created when the remaining area is below [minArea](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).minArea 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.minArea'): two walls meeting along an edge only, such as two facades in one street front, share nothing.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.PartyWallResult? PartyWallResult(this DiGi.Analytical.Building.Interfaces.IWall? wall, DiGi.Geometry.Spatial.Classes.Vector3D? normal_Outward, DiGi.Analytical.Building.Classes.BuildingModel? neighbourBuildingModel, DiGi.Analytical.Building.Interfaces.IWall? wall_Neighbour, DiGi.Geometry.Spatial.Classes.Vector3D? normal_Outward_Neighbour, double maxDistance=0.2, double maxAngle=System.Math.PI/36.0, double minArea=0.1, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).wall'></a>
+
+`wall` [IWall](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWall 'DiGi\.Analytical\.Building\.Interfaces\.IWall')
+
+The wall of the building examined\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).normal_Outward'></a>
+
+`normal_Outward` [DiGi\.Geometry\.Spatial\.Classes\.Vector3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.vector3d 'DiGi\.Geometry\.Spatial\.Classes\.Vector3D')
+
+The outward normal of [wall](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).wall 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.wall'), or null when it is not known\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).neighbourBuildingModel'></a>
+
+`neighbourBuildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model of the adjacent building\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).wall_Neighbour'></a>
+
+`wall_Neighbour` [IWall](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWall 'DiGi\.Analytical\.Building\.Interfaces\.IWall')
+
+The wall of the adjacent building\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).normal_Outward_Neighbour'></a>
+
+`normal_Outward_Neighbour` [DiGi\.Geometry\.Spatial\.Classes\.Vector3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.vector3d 'DiGi\.Geometry\.Spatial\.Classes\.Vector3D')
+
+The outward normal of [wall\_Neighbour](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).wall_Neighbour 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.wall\_Neighbour'), or null when it is not known\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).maxDistance'></a>
+
+`maxDistance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The largest distance \[m\] between the two wall planes, measured at the vertices of the neighbour face, at which the walls still count as one party wall\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).maxAngle'></a>
+
+`maxAngle` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The largest angle \[rad\] between the two wall planes at which they still count as parallel\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).minArea'></a>
+
+`minArea` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The smallest shared area \[m2\] that makes a party wall\.
+
+<a name='DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult')  
+The [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult'), or null when either wall has no planar face, the walls are not parallel, facing each other or close enough, or they share less than [minArea](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double).minArea 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)\.minArea')\.
+
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double)'></a>
 
 ## Create\.StructureLayer\(this ConstructionRelationCluster, IOpeningConstruction, OpeningConstructionPart, IMaterial, double\) Method
@@ -489,6 +564,46 @@ The returned components are the CLONES returned by [ConvertAir\(IAir, PhysicalCo
 
 ### See Also
 - [PhysicalComponentType\(this IComponent, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double) 'DiGi\.Analytical\.Building\.Query\.PhysicalComponentType\(this DiGi\.Analytical\.Building\.Interfaces\.IComponent, double\)')
+
+<a name='DiGi.Analytical.Building.Modify.SplitPartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.PartyWallResult_,double)'></a>
+
+## Modify\.SplitPartyWalls\(this BuildingModel, IEnumerable\<PartyWallResult\>, double\) Method
+
+Splits every wall of a building model into the parts it shares with adjacent buildings and the rest, and marks the shared parts as party walls \(DiGi\-Organization/DiGi\.GIS\.Analytical\#4\)\.
+
+For each space bounded by a wall named in [partyWallResults](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.SplitPartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.PartyWallResult_,double).partyWallResults 'DiGi\.Analytical\.Building\.Modify\.SplitPartyWalls\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Classes\.PartyWallResult\>, double\)\.partyWallResults'), the shell of the space is rebuilt with the face of that wall replaced by its pieces - first the part no neighbour shares, then one piece per shared part - all carrying the reference of the wall, and written back with [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater'). The first piece keeps the identifier of the wall, so the wall keeps its identity on its external part, or on its first shared part when it is shared whole; the other pieces become walls of the same type and construction. Every shared piece gets [PartyWall](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.ComponentParameter.PartyWall 'DiGi\.Analytical\.Building\.Enums\.ComponentParameter\.PartyWall'), the identifier of the neighbour's building model. A shared part overlapping one already taken for the same wall is reduced to the part not yet taken, so the pieces never overlap.
+
+The split is opt-in and is not applied to stored models: the pieces meet the edges of the roof, the floor and the other walls in T-junctions, and an envelope whose edges must pair up to close (`ClosingTolerance`) may no longer close. Areas by party wall can be had without a split, from [PartyWalls\(this BuildingModel, IEnumerable&lt;BuildingModel&gt;, double, double, double, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double) 'DiGi\.Analytical\.Building\.Query\.PartyWalls\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Classes\.BuildingModel\>, double, double, double, double\)').
+
+```csharp
+public static bool SplitPartyWalls(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Classes.PartyWallResult?>? partyWallResults, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Modify.SplitPartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.PartyWallResult_,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model to split, in place\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Modify.SplitPartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.PartyWallResult_,double).partyWallResults'></a>
+
+`partyWallResults` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The party walls of the model, as returned by [PartyWalls\(this BuildingModel, IEnumerable&lt;BuildingModel&gt;, double, double, double, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double) 'DiGi\.Analytical\.Building\.Query\.PartyWalls\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Classes\.BuildingModel\>, double, double, double, double\)')\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Modify.SplitPartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.PartyWallResult_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if at least one wall was split or marked; otherwise, false\.
+
+### Remarks
+Openings hosted by a split wall stay assigned to the piece that keeps the identifier of the wall, as in [TrySplit\(this BuildingModel, double, double, IFloorConstruction, IEnumerable&lt;ISpace&gt;, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double) 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, double, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)'); they are not moved to the piece that contains them\.
 
 <a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double)'></a>
 
@@ -1059,6 +1174,63 @@ The physical component construction for which the next structure layer index is 
 #### Returns
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The maximum structure layer index found; 0 if no associated structure layers exist; or \-1 if either the [constructionRelationCluster](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).constructionRelationCluster 'DiGi\.Analytical\.Building\.Query\.NextStructureLayerIndex\(this DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction\)\.constructionRelationCluster') or [physicalComponentConstruction](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).physicalComponentConstruction 'DiGi\.Analytical\.Building\.Query\.NextStructureLayerIndex\(this DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction\)\.physicalComponentConstruction') is null\.
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double)'></a>
+
+## Query\.PartyWalls\(this BuildingModel, IEnumerable\<BuildingModel\>, double, double, double, double\) Method
+
+Gets the parts of the walls of a building model shared with the walls of adjacent buildings: its party walls \(DiGi\-Organization/DiGi\.GIS\.Analytical\#4\)\.
+
+Every wall of the model is compared with every wall of every neighbour whose bounding box comes within [maxDistance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).maxDistance 'DiGi\.Analytical\.Building\.Query\.PartyWalls\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Classes\.BuildingModel\>, double, double, double, double\)\.maxDistance') of it; each pair of walls sharing a part gives one [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult') (see [PartyWallResult\(this IWall, Vector3D, BuildingModel, IWall, Vector3D, double, double, double, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.PartyWallResult(thisDiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IWall,DiGi.Geometry.Spatial.Classes.Vector3D,double,double,double,double) 'DiGi\.Analytical\.Building\.Create\.PartyWallResult\(this DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double, double, double, double\)') for the test). A wall shared with two neighbours, or with two walls of one neighbour, gives one result per pair.
+
+The outward normal of every wall is read from the external envelope of its model ([GetExternalShell\(Nullable&lt;Side&gt;, Nullable&lt;Orientation&gt;, Nullable&lt;Orientation&gt;, double\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetExternalShell(System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetExternalShell\(System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Side\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, double\)')), so only walls facing each other are compared; a wall the envelope does not carry is compared without that test.
+
+The model itself is not changed. A neighbour with the identifier of the model is skipped, so the model may be passed in its own neighbour list.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Analytical.Building.Classes.PartyWallResult>? PartyWalls(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Classes.BuildingModel?>? buildingModels_Neighbour, double maxDistance=0.2, double maxAngle=System.Math.PI/36.0, double minArea=0.1, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model examined\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).buildingModels_Neighbour'></a>
+
+`buildingModels_Neighbour` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The building models of the adjacent buildings\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).maxDistance'></a>
+
+`maxDistance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The largest distance \[m\] between two wall planes at which the walls still count as one party wall\.
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).maxAngle'></a>
+
+`maxAngle` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The largest angle \[rad\] between two wall planes at which they still count as parallel\.
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).minArea'></a>
+
+`minArea` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The smallest shared area \[m2\] that makes a party wall\.
+
+<a name='DiGi.Analytical.Building.Query.PartyWalls(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double,double,double,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The party walls of the model, an empty list when it has none, or null when the model is null\.
 
 <a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double)'></a>
 

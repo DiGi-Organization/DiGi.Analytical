@@ -7325,6 +7325,166 @@ public PaneOpeningConstructionStructureLayersRelation(System.Text.Json.Nodes.Jso
 
 The JSON object from which to initialize the relation\.
 
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult'></a>
+
+## PartyWallResult Class
+
+Represents the part of a wall that is shared with a wall of an adjacent building: a party wall \(DiGi\-Organization/DiGi\.GIS\.Analytical\#4\)\.
+
+The shared part lies in the plane of the wall and is what the two coplanar wall faces have in common, so it already reflects any difference in height or plan between the two buildings. Created by `Create.PartyWallResult`, which does the geometry; the constructor only assigns and clones.
+
+```csharp
+public class PartyWallResult : DiGi.Core.Classes.SerializableResult, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Classes\.SerializableResult](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableresult 'DiGi\.Core\.Classes\.SerializableResult') → PartyWallResult
+
+Implements [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Analytical.Building.Classes.PartyWallResult)'></a>
+
+## PartyWallResult\(PartyWallResult\) Constructor
+
+Initializes a new instance of the [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult') class by copying an existing instance\.
+
+```csharp
+public PartyWallResult(DiGi.Analytical.Building.Classes.PartyWallResult? partyWallResult);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Analytical.Building.Classes.PartyWallResult).partyWallResult'></a>
+
+`partyWallResult` [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult')
+
+The [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult') to copy\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,System.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.PolygonalFace3D_,double)'></a>
+
+## PartyWallResult\(GuidReference, GuidReference, GuidReference, IEnumerable\<PolygonalFace3D\>, double\) Constructor
+
+Initializes a new instance of the [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult') class\.
+
+The values are assigned and the faces cloned, null faces skipped; the area is taken as given. `Create.PartyWallResult` computes the faces and their area.
+
+```csharp
+public PartyWallResult(DiGi.Core.Classes.GuidReference? component, DiGi.Core.Classes.GuidReference? neighbourBuildingModel, DiGi.Core.Classes.GuidReference? neighbourComponent, System.Collections.Generic.IEnumerable<DiGi.Geometry.Spatial.Classes.PolygonalFace3D?>? polygonalFace3Ds, double area);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,System.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.PolygonalFace3D_,double).component'></a>
+
+`component` [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference')
+
+The reference of the wall the shared part belongs to\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,System.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.PolygonalFace3D_,double).neighbourBuildingModel'></a>
+
+`neighbourBuildingModel` [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference')
+
+The reference of the building model of the adjacent building\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,System.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.PolygonalFace3D_,double).neighbourComponent'></a>
+
+`neighbourComponent` [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference')
+
+The reference of the wall of the adjacent building the part is shared with\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,System.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.PolygonalFace3D_,double).polygonalFace3Ds'></a>
+
+`polygonalFace3Ds` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.polygonalface3d 'DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The shared parts, in the plane of the wall\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,DiGi.Core.Classes.GuidReference,System.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.PolygonalFace3D_,double).area'></a>
+
+`area` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The total area of the shared parts \[m2\]\.
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(System.Text.Json.Nodes.JsonObject)'></a>
+
+## PartyWallResult\(JsonObject\) Constructor
+
+Initializes a new instance of the [PartyWallResult](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PartyWallResult 'DiGi\.Analytical\.Building\.Classes\.PartyWallResult') class from a JSON object\.
+
+```csharp
+public PartyWallResult(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PartyWallResult(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The JSON object containing the result data\. This value can be null\.
+### Properties
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.Area'></a>
+
+## PartyWallResult\.Area Property
+
+Gets the total area of the shared parts \[m2\]\.
+
+```csharp
+public double Area { get; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.Component'></a>
+
+## PartyWallResult\.Component Property
+
+Gets a clone of the reference of the wall the shared part belongs to\.
+
+```csharp
+public DiGi.Core.Classes.GuidReference? Component { get; }
+```
+
+#### Property Value
+[DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference')
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.NeighbourBuildingModel'></a>
+
+## PartyWallResult\.NeighbourBuildingModel Property
+
+Gets a clone of the reference of the building model of the adjacent building\.
+
+```csharp
+public DiGi.Core.Classes.GuidReference? NeighbourBuildingModel { get; }
+```
+
+#### Property Value
+[DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference')
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.NeighbourComponent'></a>
+
+## PartyWallResult\.NeighbourComponent Property
+
+Gets a clone of the reference of the wall of the adjacent building the part is shared with\.
+
+```csharp
+public DiGi.Core.Classes.GuidReference? NeighbourComponent { get; }
+```
+
+#### Property Value
+[DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference')
+
+<a name='DiGi.Analytical.Building.Classes.PartyWallResult.PolygonalFace3Ds'></a>
+
+## PartyWallResult\.PolygonalFace3Ds Property
+
+Gets clones of the shared parts, in the plane of the wall, or null\.
+
+```csharp
+public System.Collections.Generic.List<DiGi.Geometry.Spatial.Classes.PolygonalFace3D>? PolygonalFace3Ds { get; }
+```
+
+#### Property Value
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.polygonalface3d 'DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')
+
 <a name='DiGi.Analytical.Building.Classes.PhysicalComponent'></a>
 
 ## PhysicalComponent Class

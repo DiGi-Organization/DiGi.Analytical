@@ -24,6 +24,25 @@ Each component \(wall, roof, floor, window\) becomes a separate selectable node\
 
 All components are merged into a single node per building, making the building selectable as a whole\.
 
+<a name='DiGi.Analytical.Building.Enums.ComponentParameter'></a>
+
+## ComponentParameter Enum
+
+Defines the set of parameters associated with a component in the analytical building model\.
+
+```csharp
+public enum ComponentParameter
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Enums.ComponentParameter.PartyWall'></a>
+
+`PartyWall` 0
+
+Represents the identifier of the building model of the adjacent building the component is shared with: the component is a party wall, adiabatic in the heat\-loss area and no host for openings \(DiGi\-Organization/DiGi\.GIS\.Analytical\#4\)\.
+
+Set by `Modify.SplitPartyWalls` on the shared parts of a wall; not set on a component that is not shared.
+
 <a name='DiGi.Analytical.Building.Enums.HeatFlowDirection'></a>
 
 ## HeatFlowDirection Enum
