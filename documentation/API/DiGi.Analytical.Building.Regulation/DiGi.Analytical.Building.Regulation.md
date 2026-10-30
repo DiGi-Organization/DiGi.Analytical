@@ -39,6 +39,136 @@ public const string ConstructionLibrary_PL_Version = "1.0.0";
 
 #### Field Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeLibrary_PL_RetrievalDate'></a>
+
+## Create\.OpeningSizeLibrary\_PL\_RetrievalDate Field
+
+The date the sources of [OpeningSizeLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeLibrary\_PL\(\)') were read\.
+
+```csharp
+public const string OpeningSizeLibrary_PL_RetrievalDate = "2026-10-30";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeLibrary_PL_Version'></a>
+
+## Create\.OpeningSizeLibrary\_PL\_Version Field
+
+The version of the library [OpeningSizeLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeLibrary\_PL\(\)') creates\. Raise it whenever a value changes\.
+
+```csharp
+public const string OpeningSizeLibrary_PL_Version = "1.0.0";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_1928'></a>
+
+## Create\.OpeningSizeSource\_1928 Field
+
+The source tag of a value from the building regulation of 1928, Dz\.U\. 1928 nr 23 poz\. 202 \(consolidated text Dz\.U\. 1939 nr 34 poz\. 216\), in force until 1961: windows of at least 1/10 of the floor area, as cited by DiGi\-Organization/DiGi\.GIS\.Analytical\#2\.
+
+```csharp
+public const string OpeningSizeSource_1928 = "PL-1928";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_BN85'></a>
+
+## Create\.OpeningSizeSource\_BN85 Field
+
+The source tag of a value from the catalogue of typical windows and balcony doors BN\-85/7153\-02 \(40 window and 12 balcony\-door types\), read through its reproduction on kb\.pl \(2023\) and muratorplus; the BN text itself was not read\. Frame sizes are on a 300 mm module less a 35 mm fitting gap in width and 65 mm in height\.
+
+```csharp
+public const string OpeningSizeSource_BN85 = "PL-BN85";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_Default'></a>
+
+## Create\.OpeningSizeSource\_Default Field
+
+The source tag of an uncited value, to be calibrated \(façade imagery, DiGi\-Organization/DiGi\.GIS\.Analytical\#2\)\.
+
+```csharp
+public const string OpeningSizeSource_Default = "DEFAULT";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_ITB'></a>
+
+## Create\.OpeningSizeSource\_ITB Field
+
+The source tag of a value from ITB, "Diagnostyka budynków wielkopłytowych", training materials, 2019: modules, axis spacing and storey heights of the W\-70, Wk\-70, Szczecin, OWT\-67, OWT\-75 and WUF\-T large\-panel systems\.
+
+```csharp
+public const string OpeningSizeSource_ITB = "PL-ITB";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_OWT'></a>
+
+## Create\.OpeningSizeSource\_OWT Field
+
+The source tag of the OWT\-67 gross storey height of 270 cm, from pl\.wikipedia\.org "OWT\-67" \(rev\. 72638965, 2024\-01\-21\); ITB gives only the 280 cm of OWT\-75\.
+
+```csharp
+public const string OpeningSizeSource_OWT = "PL-OWT";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_ROG'></a>
+
+## Create\.OpeningSizeSource\_ROG Field
+
+The source tag of a pane layout from J\. Roguska, "Okna i ich oprawa architektoniczna w warszawskich kamienicach w drugiej połowie XIX i na początku XX wieku", Kwartalnik Architektury i Urbanistyki 56\(1\), 2011: two casements below a fixed transom with a top light, box windows from about 1900\. The article gives no dimensions\.
+
+```csharp
+public const string OpeningSizeSource_ROG = "PL-ROG";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_WAW'></a>
+
+## Create\.OpeningSizeSource\_WAW Field
+
+The source tag of a value from Fundacja Hereditas, "Warszawskie kamienice przełomu XIX i XX w\." \(2024\): the Warsaw building rules required residential storeys of at least 340 cm \(p\. 22\)\.
+
+```csharp
+public const string OpeningSizeSource_WAW = "PL-WAW";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_WT'></a>
+
+## Create\.OpeningSizeSource\_WT Field
+
+The source tag of a value from the technical conditions, Dz\.U\. 2022 poz\. 1225: § 62 \(an entrance door at least 0\.9 × 2\.0 m in the clear\) and § 223 \(a 0\.8 m interstorey strip\)\.
+
+```csharp
+public const string OpeningSizeSource_WT = "PL-WT";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 ### Methods
 
 <a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL()'></a>
@@ -60,6 +190,98 @@ public static DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary Co
 #### Returns
 [ConstructionLibrary](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionLibrary')  
 The Polish construction library\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.DoorConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double)'></a>
+
+## Create\.DoorConstruction\(this OpeningSize, string, double\) Method
+
+Creates the door construction of an opening size: its frame outline, with the panes of [Panes\(this OpeningSize\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.Panes(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize) 'DiGi\.Analytical\.Building\.Regulation\.Query\.Panes\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\)') as holes when the door is glazed and as a plain outline when it is opaque \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+The construction has the geometry only. The thermal values are those of the door construction of the building's construction set, which the caller copies onto it.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.DoorConstruction? DoorConstruction(this DiGi.Analytical.Building.Regulation.Classes.OpeningSize? openingSize, string? name=null, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Create.DoorConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).openingSize'></a>
+
+`openingSize` [OpeningSize](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSize 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize')
+
+The opening size\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.DoorConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the construction; null gives [ConstructionName\(this OpeningSize\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionName(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize) 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionName\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\)')\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.DoorConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[DiGi\.Analytical\.Building\.Classes\.DoorConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.doorconstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction')  
+The [DiGi\.Analytical\.Building\.Classes\.DoorConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.doorconstruction 'DiGi\.Analytical\.Building\.Classes\.DoorConstruction'), or null when [openingSize](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.DoorConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).openingSize 'DiGi\.Analytical\.Building\.Regulation\.Create\.DoorConstruction\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize, string, double\)\.openingSize') is null or its outline and panes do not make a valid face\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeLibrary_PL()'></a>
+
+## Create\.OpeningSizeLibrary\_PL\(\) Method
+
+Creates the Polish opening size library: window and door sizes and glazing layouts of residential buildings per building type, date range and large\-panel system \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+<b>Ranges.</b> The TABULA construction periods of [ConstructionPeriod\(Nullable&lt;short&gt;\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionPeriod(System.Nullable_short_) 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionPeriod\(System\.Nullable\<short\>\)'), with "until 1945" split at 1918 into tenements (tall box windows, storeys of 3.40 m and more) and inter-war modernism. TABULA has no apartment block before 1967, so those ranges repeat the multi-family sizes; terraced houses repeat the single-family sizes.
+
+<b>Large-panel systems.</b> Apartment blocks of 1967-1985 have one set per system - W-70 (the default a lookup without a system returns), Wk-70, Szczecin, OWT-67, OWT-75 and WUF-T - with the storey height and module of the system. Window widths plus the 35 mm fitting gap of the catalogue are multiples of the system's module, and the OWT-67 window height is its 1.50 m band between the 1.20 m spandrel elements less the 65 mm gap.
+
+<b>Sources.</b> Every [Source](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSize.Source 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\.Source') and [Source](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSizeSet.Source 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSizeSet\.Source') is a list of "Quantity: TAG detail" items separated by "; ", with the tags [OpeningSizeSource\_BN85](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_BN85 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_BN85'), [OpeningSizeSource\_ITB](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_ITB 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_ITB'), [OpeningSizeSource\_OWT](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_OWT 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_OWT'), [OpeningSizeSource\_WAW](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_WAW 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_WAW'), [OpeningSizeSource\_ROG](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_ROG 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_ROG'), [OpeningSizeSource\_1928](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_1928 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_1928'), [OpeningSizeSource\_WT](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_WT 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_WT') and [OpeningSizeSource\_Default](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.OpeningSizeSource_Default 'DiGi\.Analytical\.Building\.Regulation\.Create\.OpeningSizeSource\_Default'). The catalogue sizes are tagged BN-85 even where they are used before 1985, when the set's source says so. Frame and divider widths, sill heights and the pre-1946 dimensions are defaults to calibrate.
+
+The library is built from constants only, so it serializes to the same text each time it is created.
+
+```csharp
+public static DiGi.Analytical.Building.Regulation.Classes.OpeningSizeLibrary OpeningSizeLibrary_PL();
+```
+
+#### Returns
+[OpeningSizeLibrary](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSizeLibrary 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSizeLibrary')  
+The Polish opening size library\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.WindowConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double)'></a>
+
+## Create\.WindowConstruction\(this OpeningSize, string, double\) Method
+
+Creates the window construction of an opening size: its frame outline as a face whose holes are the panes of [Panes\(this OpeningSize\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.Panes(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize) 'DiGi\.Analytical\.Building\.Regulation\.Query\.Panes\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\)') \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+The construction has the geometry only. The thermal and optical values (U, g, τv) are those of the window construction of the building's construction set, which the caller copies onto it.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.WindowConstruction? WindowConstruction(this DiGi.Analytical.Building.Regulation.Classes.OpeningSize? openingSize, string? name=null, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Create.WindowConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).openingSize'></a>
+
+`openingSize` [OpeningSize](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSize 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize')
+
+The opening size\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.WindowConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the construction; null gives [ConstructionName\(this OpeningSize\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionName(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize) 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionName\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\)')\.
+
+<a name='DiGi.Analytical.Building.Regulation.Create.WindowConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[DiGi\.Analytical\.Building\.Classes\.WindowConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.windowconstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction')  
+The [DiGi\.Analytical\.Building\.Classes\.WindowConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.windowconstruction 'DiGi\.Analytical\.Building\.Classes\.WindowConstruction'), or null when [openingSize](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.WindowConstruction(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize,string,double).openingSize 'DiGi\.Analytical\.Building\.Regulation\.Create\.WindowConstruction\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize, string, double\)\.openingSize') is null or its outline and panes do not make a valid face\.
 
 <a name='DiGi.Analytical.Building.Regulation.Query'></a>
 
@@ -114,6 +336,27 @@ The number of years between design and completion\.
 #### Returns
 [BuildingRegulation](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.BuildingRegulation 'DiGi\.Analytical\.Building\.Regulation\.Enums\.BuildingRegulation')  
 The regime, or [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.BuildingRegulation.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.BuildingRegulation\.Undefined') when [year](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.BuildingRegulation(System.Nullable_short_,int).year 'DiGi\.Analytical\.Building\.Regulation\.Query\.BuildingRegulation\(System\.Nullable\<short\>, int\)\.year') is null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.ConstructionName(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize)'></a>
+
+## Query\.ConstructionName\(this OpeningSize\) Method
+
+Gets the default name of the window or door construction made from an opening size: the opening kind and the frame outline in millimetres, for example "Window 1465x1435" \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+```csharp
+public static string? ConstructionName(this DiGi.Analytical.Building.Regulation.Classes.OpeningSize? openingSize);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Query.ConstructionName(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize).openingSize'></a>
+
+`openingSize` [OpeningSize](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSize 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize')
+
+The opening size\.
+
+#### Returns
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')  
+The name, or null when [openingSize](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionName(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize).openingSize 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionName\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\)\.openingSize') is null\.
 
 <a name='DiGi.Analytical.Building.Regulation.Query.ConstructionPeriod(System.Nullable_short_)'></a>
 
@@ -188,6 +431,50 @@ The tolerance by which U may exceed U\(max\)\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if U ≤ U\(max\) \+ [tolerance](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.IsCompliant(thisdouble,double,double).tolerance 'DiGi\.Analytical\.Building\.Regulation\.Query\.IsCompliant\(this double, double, double\)\.tolerance'); otherwise, false, also when either value is NaN\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.OpeningConstructionRole(thisDiGi.Analytical.Building.Regulation.Enums.OpeningKind)'></a>
+
+## Query\.OpeningConstructionRole\(this OpeningKind\) Method
+
+Gets the role of the construction an opening of the specified kind takes from a construction set \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\. A staircase window takes the window construction\.
+
+```csharp
+public static DiGi.Analytical.Building.Regulation.Enums.ConstructionRole OpeningConstructionRole(this DiGi.Analytical.Building.Regulation.Enums.OpeningKind openingKind);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Query.OpeningConstructionRole(thisDiGi.Analytical.Building.Regulation.Enums.OpeningKind).openingKind'></a>
+
+`openingKind` [OpeningKind](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.OpeningKind 'DiGi\.Analytical\.Building\.Regulation\.Enums\.OpeningKind')
+
+The opening kind\.
+
+#### Returns
+[ConstructionRole](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole')  
+The [ConstructionRole](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole'), or [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.Undefined') for [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.OpeningKind.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.OpeningKind\.Undefined')\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.Panes(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize)'></a>
+
+## Query\.Panes\(this OpeningSize\) Method
+
+Gets the glazing panes of an opening size, in the local coordinates of its frame outline with \(0, 0\) at the lower left corner \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+Inside a uniform frame, the sashes or leaves sit side by side with a divider between each two; a top light, when there is one, spans the full inner width above a transom of the divider width. Panes are separated by the frame or a divider of non-zero width, which is what `Create.WindowConstruction(name, outline, panes)` requires.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Geometry.Planar.Classes.Polygon2D>? Panes(this DiGi.Analytical.Building.Regulation.Classes.OpeningSize? openingSize);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Query.Panes(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize).openingSize'></a>
+
+`openingSize` [OpeningSize](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.OpeningSize 'DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize')
+
+The opening size\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Planar\.Classes\.Polygon2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygon2d 'DiGi\.Geometry\.Planar\.Classes\.Polygon2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The panes from left to right, then the top light, or an empty list when the opening is not glazed or its layout leaves no positive pane; null when [openingSize](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.Panes(thisDiGi.Analytical.Building.Regulation.Classes.OpeningSize).openingSize 'DiGi\.Analytical\.Building\.Regulation\.Query\.Panes\(this DiGi\.Analytical\.Building\.Regulation\.Classes\.OpeningSize\)\.openingSize') is null\.
 
 <a name='DiGi.Analytical.Building.Regulation.Query.RegulatedHeatTransferCoefficient(thisDiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients,DiGi.Analytical.Building.Regulation.Enums.ConstructionRole,DiGi.Analytical.Building.Regulation.Enums.BuildingType,DiGi.Analytical.Building.Regulation.Enums.ClimateZone,bool)'></a>
 

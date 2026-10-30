@@ -368,3 +368,117 @@ A door between heated and unheated spaces\.
 `GarageDoor` 15
 
 A garage door or gate\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind'></a>
+
+## OpeningKind Enum
+
+Specifies the kind of a window or door of an opening size set \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+Finer than [ConstructionRole](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole'): a staircase window has its own size but the construction of a window, which [OpeningConstructionRole\(this OpeningKind\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.OpeningConstructionRole(thisDiGi.Analytical.Building.Regulation.Enums.OpeningKind) 'DiGi\.Analytical\.Building\.Regulation\.Query\.OpeningConstructionRole\(this DiGi\.Analytical\.Building\.Regulation\.Enums\.OpeningKind\)') maps it to.
+
+```csharp
+public enum OpeningKind
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.Undefined'></a>
+
+`Undefined` 0
+
+Undefined opening kind\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.Window'></a>
+
+`Window` 1
+
+Window of a room, with a sill\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.StaircaseWindow'></a>
+
+`StaircaseWindow` 2
+
+Window of a staircase, usually between storeys\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.BalconyDoor'></a>
+
+`BalconyDoor` 3
+
+Balcony or loggia door: door\-sized and reaching the floor, but glazed and under the window limits, so no sill rule applies\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.RoofWindow'></a>
+
+`RoofWindow` 4
+
+Roof window\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.EntranceDoor'></a>
+
+`EntranceDoor` 5
+
+Entrance door of a single\-family or terraced house\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.StaircaseEntranceDoor'></a>
+
+`StaircaseEntranceDoor` 6
+
+Entrance door of the staircase of a multi\-family building, usually two leaves\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.DoorToUnheatedSpace'></a>
+
+`DoorToUnheatedSpace` 7
+
+Door to an unheated space \(cellar, garage, attic\)\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.OpeningKind.GarageDoor'></a>
+
+`GarageDoor` 8
+
+Garage door\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse'></a>
+
+## RoomUse Enum
+
+Specifies the use of the room an opening of an opening size set serves \(DiGi\-Organization/DiGi\.GIS\.Analytical\#6\)\.
+
+```csharp
+public enum RoomUse
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse.Undefined'></a>
+
+`Undefined` 0
+
+Undefined room use\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse.LivingRoom'></a>
+
+`LivingRoom` 1
+
+Living room or bedroom: a room for the permanent stay of people\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse.Kitchen'></a>
+
+`Kitchen` 2
+
+Kitchen\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse.Bathroom'></a>
+
+`Bathroom` 3
+
+Bathroom or WC\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse.Staircase'></a>
+
+`Staircase` 4
+
+Staircase\.
+
+<a name='DiGi.Analytical.Building.Regulation.Enums.RoomUse.Other'></a>
+
+`Other` 5
+
+Any other room, and the fallback of a lookup by room use\.
