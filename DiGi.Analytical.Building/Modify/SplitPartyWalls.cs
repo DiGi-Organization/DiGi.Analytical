@@ -16,13 +16,13 @@ namespace DiGi.Analytical.Building
         /// <summary>
         /// Splits every wall of a building model into the parts it shares with adjacent buildings and the rest, and marks the shared parts as party walls (DiGi-Organization/DiGi.GIS.Analytical#4).
         /// <para>For each space bounded by a wall named in <paramref name="partyWallResults"/>, the shell of the space is rebuilt with the face of that wall replaced by its pieces - first the part no neighbour shares, then one piece per shared part - all carrying the reference of the wall, and written back with <see cref="BuildingModelShellsUpdater"/>. The first piece keeps the identifier of the wall, so the wall keeps its identity on its external part, or on its first shared part when it is shared whole; the other pieces become walls of the same type and construction. Every shared piece gets <see cref="ComponentParameter.PartyWall"/>, the identifier of the neighbour's building model. A shared part overlapping one already taken for the same wall is reduced to the part not yet taken, so the pieces never overlap.</para>
-        /// <para>The split is opt-in and is not applied to stored models: the pieces meet the edges of the roof, the floor and the other walls in T-junctions, and an envelope whose edges must pair up to close (<c>ClosingTolerance</c>) may no longer close. Areas by party wall can be had without a split, from <see cref="Query.PartyWalls"/>.</para>
+        /// <para>The split is opt-in and is not applied to stored models: the pieces meet the edges of the roof, the floor and the other walls in T-junctions, and an envelope whose edges must pair up to close (<c>ClosingTolerance</c>) may no longer close. Areas by party wall can be had without a split, from <see cref="Query.PartyWalls(BuildingModel?, IEnumerable{BuildingModel?}?, double, double, double, double)"/>.</para>
         /// </summary>
         /// <remarks>
         /// Openings hosted by a split wall stay assigned to the piece that keeps the identifier of the wall, as in <see cref="TrySplit(BuildingModel, double, double, IFloorConstruction, IEnumerable{ISpace}, double)"/>; they are not moved to the piece that contains them.
         /// </remarks>
         /// <param name="buildingModel">The building model to split, in place. This value can be null.</param>
-        /// <param name="partyWallResults">The party walls of the model, as returned by <see cref="Query.PartyWalls"/>. This value can be null.</param>
+        /// <param name="partyWallResults">The party walls of the model, as returned by <see cref="Query.PartyWalls(BuildingModel?, IEnumerable{BuildingModel?}?, double, double, double, double)"/>. This value can be null.</param>
         /// <param name="tolerance">The distance tolerance.</param>
         /// <returns>True if at least one wall was split or marked; otherwise, false.</returns>
         public static bool SplitPartyWalls(this BuildingModel? buildingModel, IEnumerable<PartyWallResult?>? partyWallResults, double tolerance = Core.Constants.Tolerance.Distance)
@@ -55,7 +55,31 @@ namespace DiGi.Analytical.Building
                 }
             }
 
-            if (dictionary_Shared.Count == 0 || buildingModel.GetSpaces<ISpace>() is not List<ISpace> spaces)
+            if (dictionary_Shared.Count == 0 || buildingModel.GetComponents<IWall>() is not List<IWall> walls)
+            {
+                return false;
+            }
+
+            // Only the spaces a shared wall bounds are rebuilt: the shell of every other space stays as it is, and is not even built.
+            List<ISpace> spaces = [];
+            HashSet<Guid> guids_Space = [];
+            foreach (IWall wall in walls)
+            {
+                if (wall is null || !dictionary_Shared.ContainsKey(wall.Guid) || buildingModel.GetSpaces(wall) is not List<ISpace> spaces_Wall)
+                {
+                    continue;
+                }
+
+                foreach (ISpace space_Wall in spaces_Wall)
+                {
+                    if (space_Wall is not null && guids_Space.Add(space_Wall.Guid))
+                    {
+                        spaces.Add(space_Wall);
+                    }
+                }
+            }
+
+            if (spaces.Count == 0)
             {
                 return false;
             }
@@ -94,20 +118,10 @@ namespace DiGi.Analytical.Building
                             continue;
                         }
 
-                        List<PolygonalFace2D> polygonalFace2Ds_Shared = [polygonalFace2D_Shared];
-                        foreach (PolygonalFace2D polygonalFace2D_Taken in polygonalFace2Ds_Taken)
+                        List<PolygonalFace2D>? polygonalFace2Ds_Shared = polygonalFace2Ds_Taken.Count == 0 ? [polygonalFace2D_Shared] : Geometry.Planar.Query.Difference(polygonalFace2D_Shared, polygonalFace2Ds_Taken, tolerance);
+                        if (polygonalFace2Ds_Shared is null)
                         {
-                            List<PolygonalFace2D> polygonalFace2Ds_Remaining = [];
-                            foreach (PolygonalFace2D polygonalFace2D_Temp in polygonalFace2Ds_Shared)
-                            {
-                                List<PolygonalFace2D>? polygonalFace2Ds_Difference = Geometry.Planar.Query.Difference(polygonalFace2D_Temp, polygonalFace2D_Taken);
-                                if (polygonalFace2Ds_Difference is not null)
-                                {
-                                    polygonalFace2Ds_Remaining.AddRange(polygonalFace2Ds_Difference);
-                                }
-                            }
-
-                            polygonalFace2Ds_Shared = polygonalFace2Ds_Remaining;
+                            continue;
                         }
 
                         foreach (PolygonalFace2D polygonalFace2D_Temp in polygonalFace2Ds_Shared)
@@ -129,21 +143,7 @@ namespace DiGi.Analytical.Building
                     }
 
                     // The part no neighbour shares comes first, so it keeps the identifier of the wall.
-                    List<PolygonalFace2D> polygonalFace2Ds_External = [polygonalFace2D];
-                    foreach (PolygonalFace2D polygonalFace2D_Taken in polygonalFace2Ds_Taken)
-                    {
-                        List<PolygonalFace2D> polygonalFace2Ds_Remaining = [];
-                        foreach (PolygonalFace2D polygonalFace2D_Temp in polygonalFace2Ds_External)
-                        {
-                            List<PolygonalFace2D>? polygonalFace2Ds_Difference = Geometry.Planar.Query.Difference(polygonalFace2D_Temp, polygonalFace2D_Taken);
-                            if (polygonalFace2Ds_Difference is not null)
-                            {
-                                polygonalFace2Ds_Remaining.AddRange(polygonalFace2Ds_Difference);
-                            }
-                        }
-
-                        polygonalFace2Ds_External = polygonalFace2Ds_Remaining;
-                    }
+                    List<PolygonalFace2D> polygonalFace2Ds_External = Geometry.Planar.Query.Difference(polygonalFace2D, polygonalFace2Ds_Taken, tolerance) ?? [];
 
                     foreach (PolygonalFace2D polygonalFace2D_External in polygonalFace2Ds_External)
                     {
