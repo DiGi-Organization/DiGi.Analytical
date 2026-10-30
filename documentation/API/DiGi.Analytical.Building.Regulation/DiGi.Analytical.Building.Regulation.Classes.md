@@ -66,6 +66,41 @@ The version of the library\. This value can be null\.
 
 The description of the library\. This value can be null\.
 
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary.ConstructionLibrary(System.Guid,string,string,string)'></a>
+
+## ConstructionLibrary\(Guid, string, string, string\) Constructor
+
+Initializes a new instance of the [ConstructionLibrary](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionLibrary') class with the specified identifier, so that a library generated more than once keeps the same identity\.
+
+```csharp
+public ConstructionLibrary(System.Guid guid, string? name, string? version, string? description);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary.ConstructionLibrary(System.Guid,string,string,string).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the library\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary.ConstructionLibrary(System.Guid,string,string,string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the library\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary.ConstructionLibrary(System.Guid,string,string,string).version'></a>
+
+`version` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The version of the library\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary.ConstructionLibrary(System.Guid,string,string,string).description'></a>
+
+`description` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The description of the library\. This value can be null\.
+
 <a name='DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary.ConstructionLibrary(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## ConstructionLibrary\(JsonObject\) Constructor

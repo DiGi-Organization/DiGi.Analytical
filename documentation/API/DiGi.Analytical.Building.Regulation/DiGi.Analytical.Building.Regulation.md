@@ -3,6 +3,64 @@
 ## DiGi\.Analytical\.Building\.Regulation Namespace
 ### Classes
 
+<a name='DiGi.Analytical.Building.Regulation.Create'></a>
+
+## Create Class
+
+```csharp
+public static class Create
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Create
+### Fields
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_RetrievalDate'></a>
+
+## Create\.ConstructionLibrary\_PL\_RetrievalDate Field
+
+The date the TABULA values of [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') were read from the TABULA web tool\.
+
+```csharp
+public const string ConstructionLibrary_PL_RetrievalDate = "2026-10-30";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_Version'></a>
+
+## Create\.ConstructionLibrary\_PL\_Version Field
+
+The version of the library [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') creates\. Raise it whenever a value changes\.
+
+```csharp
+public const string ConstructionLibrary_PL_Version = "1.0.0";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+### Methods
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL()'></a>
+
+## Create\.ConstructionLibrary\_PL\(\) Method
+
+Creates the Polish construction library: declared\-U constructions of residential buildings, chosen per building type and date by [ConstructionSet](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionSet 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionSet')s \(DiGi\-Organization/DiGi\.Analytical\#15\)\.
+
+[TypicalAsBuilt](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour.TypicalAsBuilt 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionFlavour\.TypicalAsBuilt') sets hold the constructions of the Polish national typology of the TABULA web tool (webtool.building-typology.eu), one set per TABULA building: 7 construction periods for single-family, terraced and multi-family buildings, 5 for apartment blocks. TABULA has no apartment block before 1967, so for those periods the set holds the multi-family constructions. The values are those published, read on [ConstructionLibrary\_PL\_RetrievalDate](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_RetrievalDate 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_RetrievalDate'); each construction's description names its TABULA code.
+
+[Regulation](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour.Regulation 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionFlavour\.Regulation') sets hold, for every stage of the technical conditions in [DiGi\.Analytical\.Building\.HVAC\.Create\.RegulatedHeatTransferCoefficientsManager](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.hvac.create.regulatedheattransfercoefficientsmanager 'DiGi\.Analytical\.Building\.HVAC\.Create\.RegulatedHeatTransferCoefficientsManager') (1998-04-29 onwards), one construction per role whose declared U is the U(max) of [RegulatedHeatTransferCoefficient\(this IRegulatedHeatTransferCoefficients, ConstructionRole, BuildingType, ClimateZone, bool\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.RegulatedHeatTransferCoefficient(thisDiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients,DiGi.Analytical.Building.Regulation.Enums.ConstructionRole,DiGi.Analytical.Building.Regulation.Enums.BuildingType,DiGi.Analytical.Building.Regulation.Enums.ClimateZone,bool) 'DiGi\.Analytical\.Building\.Regulation\.Query\.RegulatedHeatTransferCoefficient\(this DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients, DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole, DiGi\.Analytical\.Building\.Regulation\.Enums\.BuildingType, DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone, bool\)'). A role with no limit has no construction, and the set's source says why. Until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III windows) plus sets for zones IV and V.
+
+The constructions carry declared values only: no layers, and window and door constructions have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)') is this method's output.
+
+```csharp
+public static DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary ConstructionLibrary_PL();
+```
+
+#### Returns
+[ConstructionLibrary](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionLibrary')  
+The Polish construction library\.
+
 <a name='DiGi.Analytical.Building.Regulation.Query'></a>
 
 ## Query Class
@@ -12,6 +70,20 @@ public static class Query
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Query
+### Fields
+
+<a name='DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL_ResourceName'></a>
+
+## Query\.EmbeddedConstructionLibrary\_PL\_ResourceName Field
+
+The manifest name of the embedded copy of the Polish construction library read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)')\.
+
+```csharp
+public const string EmbeddedConstructionLibrary_PL_ResourceName = "DiGi.Analytical.Building.Regulation.Resources.ConstructionLibrary_PL.json";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 ### Methods
 
 <a name='DiGi.Analytical.Building.Regulation.Query.BuildingRegulation(System.Nullable_short_,int)'></a>
@@ -65,6 +137,22 @@ The year built\. This value can be null\.
 #### Returns
 [ConstructionPeriod](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionPeriod 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionPeriod')  
 The construction period, or [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionPeriod.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionPeriod\.Undefined') when [year](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionPeriod(System.Nullable_short_).year 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionPeriod\(System\.Nullable\<short\>\)\.year') is null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL()'></a>
+
+## Query\.EmbeddedConstructionLibrary\_PL\(\) Method
+
+Reads the Polish construction library embedded in this assembly \(DiGi\-Organization/DiGi\.Analytical\#15\)\.
+
+The embedded file is the serialized output of [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)'), kept beside the code so that a consumer reads one versioned file rather than rebuilding the library. The `ConstructionLibrary_PL_Resource` fact fails whenever the two differ.
+
+```csharp
+public static DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary? EmbeddedConstructionLibrary_PL();
+```
+
+#### Returns
+[ConstructionLibrary](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionLibrary')  
+A new [ConstructionLibrary](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary 'DiGi\.Analytical\.Building\.Regulation\.Classes\.ConstructionLibrary') read from the embedded file, or null when the file is missing or cannot be read\.
 
 <a name='DiGi.Analytical.Building.Regulation.Query.IsCompliant(thisdouble,double,double)'></a>
 

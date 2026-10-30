@@ -47,6 +47,21 @@ namespace DiGi.Analytical.Building.Regulation.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ConstructionLibrary"/> class with the specified identifier, so that a library generated more than once keeps the same identity.
+        /// </summary>
+        /// <param name="guid">The identifier of the library.</param>
+        /// <param name="name">The name of the library. This value can be null.</param>
+        /// <param name="version">The version of the library. This value can be null.</param>
+        /// <param name="description">The description of the library. This value can be null.</param>
+        public ConstructionLibrary(Guid guid, string? name, string? version, string? description)
+            : base(guid)
+        {
+            this.name = name;
+            this.version = version;
+            this.description = description;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ConstructionLibrary"/> class by copying another instance, its constructions and its sets.
         /// </summary>
         /// <param name="constructionLibrary">The source <see cref="ConstructionLibrary"/> to copy from. This value can be null.</param>
