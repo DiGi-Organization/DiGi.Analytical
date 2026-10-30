@@ -728,6 +728,8 @@ Represents a material with fluid\-specific properties, extending the functionali
 
 Describes a gas filling a cavity, such as the air or argon of a glazing unit or an air layer in a wall. A property that is not set is 0 (DiGi-Organization/DiGi.Analytical#8).
 
+[Conductivity](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.Conductivity 'DiGi\.Analytical\.Classes\.FluidMaterial\.Conductivity'), [Density](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.Density 'DiGi\.Analytical\.Classes\.FluidMaterial\.Density'), [DynamicViscosity](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.DynamicViscosity 'DiGi\.Analytical\.Classes\.FluidMaterial\.DynamicViscosity') and [SpecificHeat](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.SpecificHeat 'DiGi\.Analytical\.Classes\.FluidMaterial\.SpecificHeat') are the values at [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature') (283 K, the mean temperature of the EN 673 glazing calculation). For the temperature-dependent properties of ISO 15099 (and EnergyPlus WindowMaterial:Gas, property = A + B·T), the temperature coefficients give the change per kelvin: value(T) = value + coefficient · (T − [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature')). A gas mixture is built with `Create.FluidMaterial`.
+
 ```csharp
 public class FluidMaterial : DiGi.Analytical.Classes.Material
 ```
@@ -785,16 +787,43 @@ public FluidMaterial(System.Text.Json.Nodes.JsonObject? jsonObject);
 `jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
 
 The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the material properties to initialize the instance\.
+### Fields
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature'></a>
+
+## FluidMaterial\.ReferenceTemperature Field
+
+The temperature \[K\] the conductivity, density, dynamic viscosity and specific heat of a fluid material are given at: 283 K, the mean temperature of the EN 673 glazing calculation\.
+
+```csharp
+public const double ReferenceTemperature = 283;
+```
+
+#### Field Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 ### Properties
 
 <a name='DiGi.Analytical.Classes.FluidMaterial.Conductivity'></a>
 
 ## FluidMaterial\.Conductivity Property
 
-Gets or sets the thermal conductivity of the fluid \[W/\(mK\)\]\.
+Gets or sets the thermal conductivity of the fluid at [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature') \[W/\(mK\)\]\.
 
 ```csharp
 public double Conductivity { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.ConductivityTemperatureCoefficient'></a>
+
+## FluidMaterial\.ConductivityTemperatureCoefficient Property
+
+Gets or sets the change of the thermal conductivity per kelvin \[W/\(mK²\)\] \(ISO 15099\)\.
+
+```csharp
+public double ConductivityTemperatureCoefficient { get; set; }
 ```
 
 #### Property Value
@@ -804,7 +833,7 @@ public double Conductivity { get; set; }
 
 ## FluidMaterial\.Density Property
 
-Gets or sets the density of the fluid \[kg/m3\]\.
+Gets or sets the density of the fluid at [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature') and atmospheric pressure \[kg/m3\]\.
 
 ```csharp
 public double Density { get; set; }
@@ -817,10 +846,36 @@ public double Density { get; set; }
 
 ## FluidMaterial\.DynamicViscosity Property
 
-Gets or sets the dynamic viscosity of the fluid \[kg/\(ms\)\]\.
+Gets or sets the dynamic viscosity of the fluid at [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature') \[kg/\(ms\)\]\.
 
 ```csharp
 public double DynamicViscosity { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.DynamicViscosityTemperatureCoefficient'></a>
+
+## FluidMaterial\.DynamicViscosityTemperatureCoefficient Property
+
+Gets or sets the change of the dynamic viscosity per kelvin \[kg/\(msK\)\] \(ISO 15099\)\.
+
+```csharp
+public double DynamicViscosityTemperatureCoefficient { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.MolarMass'></a>
+
+## FluidMaterial\.MolarMass Property
+
+Gets or sets the molar mass of the fluid \[kg/kmol\] \(ISO 15099; 28\.97 for air, 39\.948 for argon\)\.
+
+```csharp
+public double MolarMass { get; set; }
 ```
 
 #### Property Value
@@ -830,10 +885,36 @@ public double DynamicViscosity { get; set; }
 
 ## FluidMaterial\.SpecificHeat Property
 
-Gets or sets the specific heat capacity of the fluid \[J/\(kgK\)\]\.
+Gets or sets the specific heat capacity of the fluid at [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature') \[J/\(kgK\)\]\.
 
 ```csharp
 public double SpecificHeat { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.SpecificHeatRatio'></a>
+
+## FluidMaterial\.SpecificHeatRatio Property
+
+Gets or sets the ratio of the specific heats cp/cv of the fluid \[\-\] \(ISO 15099; 1\.4 for air\)\.
+
+```csharp
+public double SpecificHeatRatio { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.SpecificHeatTemperatureCoefficient'></a>
+
+## FluidMaterial\.SpecificHeatTemperatureCoefficient Property
+
+Gets or sets the change of the specific heat capacity per kelvin \[J/\(kgK²\)\] \(ISO 15099\)\.
+
+```csharp
+public double SpecificHeatTemperatureCoefficient { get; set; }
 ```
 
 #### Property Value
@@ -2069,12 +2150,29 @@ public double Conductivity { get; set; }
 
 Gets or sets the hemispherical emissivity of the front \([External](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.External 'DiGi\.Analytical\.Classes\.SurfaceValue\.External')\) and back \([Internal](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue.Internal 'DiGi\.Analytical\.Classes\.SurfaceValue\.Internal')\) faces\.
 
+This is the corrected emissivity the EN 673 glazing calculation uses (0.837 for uncoated soda-lime glass; a low-e coating is far lower).
+
 ```csharp
 public DiGi.Analytical.Classes.SurfaceValue? Emissivity { get; set; }
 ```
 
 #### Property Value
 [SurfaceValue](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SurfaceValue 'DiGi\.Analytical\.Classes\.SurfaceValue')
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.InfraredTransmittance'></a>
+
+## TransparentMaterial\.InfraredTransmittance Property
+
+Gets or sets the thermal infrared transmittance at normal incidence, between 0 and 1 \(EnergyPlus WindowMaterial:Glazing; ISO 15099\)\.
+
+Glass is opaque to thermal infrared, so the value is 0 for it. A layer that transmits infrared (a plastic film) needs the ISO 15099 net-radiation method; the EN 673 glazing calculation does not apply to it.
+
+```csharp
+public double InfraredTransmittance { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 <a name='DiGi.Analytical.Classes.TransparentMaterial.LightReflectance'></a>
 

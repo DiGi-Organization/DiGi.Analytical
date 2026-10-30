@@ -35,5 +35,10 @@ namespace DiGi.Analytical.Building.Enums
         /// The total solar energy transmittance of the glazing at normal incidence, g [-].
         /// </summary>
         [ParameterProperties("bad49deb-1b5f-408c-aab3-4d9f4bc5318a", "Total solar energy transmittance", "Total solar energy transmittance g [-]"), DoubleParameterValue(0.0, 1.0)] TotalSolarEnergyTransmittance,
+
+        /// <summary>
+        /// The light (visible) transmittance of the glazing at normal incidence, τv [-] - with Uw and g, the third value a glazing is declared by (EnergyPlus WindowMaterial:SimpleGlazingSystem: U-factor, SHGC, visible transmittance).
+        /// </summary>
+        [ParameterProperties("263436cd-47c8-4e27-aa5a-17ca7ad998c9", "Light transmittance", "Light transmittance τv [-]"), DoubleParameterValue(0.0, 1.0)] LightTransmittance,
     }
 }

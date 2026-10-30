@@ -104,6 +104,12 @@ The linear thermal transmittance of the junction between glazing and frame \(spa
 
 The total solar energy transmittance of the glazing at normal incidence, g \[\-\]\.
 
+<a name='DiGi.Analytical.Building.Enums.OpeningConstructionParameter.LightTransmittance'></a>
+
+`LightTransmittance` 5
+
+The light \(visible\) transmittance of the glazing at normal incidence, τv \[\-\] \- with Uw and g, the third value a glazing is declared by \(EnergyPlus WindowMaterial:SimpleGlazingSystem: U\-factor, SHGC, visible transmittance\)\.
+
 <a name='DiGi.Analytical.Building.Enums.OpeningConstructionPart'></a>
 
 ## OpeningConstructionPart Enum

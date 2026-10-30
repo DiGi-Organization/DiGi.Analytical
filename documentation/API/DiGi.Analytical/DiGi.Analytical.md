@@ -112,6 +112,35 @@ The calendar year to evaluate\.
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The index of the first hour of the year that falls on the specified day of the week\.
 
+<a name='DiGi.Analytical.Query.FluidProperties(thisDiGi.Analytical.Classes.FluidMaterial,double)'></a>
+
+## Query\.FluidProperties\(this FluidMaterial, double\) Method
+
+Gets the properties of a fluid material at the specified temperature \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+Conductivity, dynamic viscosity and specific heat follow the linear temperature dependence of ISO 15099: value(T) = value + coefficient · (T − [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature')). The density follows the ideal gas at constant pressure: ρ(T) = ρ · [ReferenceTemperature](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial.ReferenceTemperature 'DiGi\.Analytical\.Classes\.FluidMaterial\.ReferenceTemperature') / T. At the reference temperature, 283 K, the stored values are returned as they are.
+
+```csharp
+public static (double Conductivity,double Density,double DynamicViscosity,double SpecificHeat) FluidProperties(this DiGi.Analytical.Classes.FluidMaterial? fluidMaterial, double temperature);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Query.FluidProperties(thisDiGi.Analytical.Classes.FluidMaterial,double).fluidMaterial'></a>
+
+`fluidMaterial` [FluidMaterial](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial 'DiGi\.Analytical\.Classes\.FluidMaterial')
+
+The fluid material\. This value can be null\.
+
+<a name='DiGi.Analytical.Query.FluidProperties(thisDiGi.Analytical.Classes.FluidMaterial,double).temperature'></a>
+
+`temperature` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The temperature \[K\]\.
+
+#### Returns
+[&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')  
+The conductivity \[W/\(mK\)\], density \[kg/m3\], dynamic viscosity \[kg/\(ms\)\] and specific heat \[J/\(kgK\)\] at the temperature, or NaN for each when the material is null or the temperature is NaN or not above 0 K\.
+
 <a name='DiGi.Analytical.Query.HourOfYear(thisSystem.DateTime)'></a>
 
 ## Query\.HourOfYear\(this DateTime\) Method

@@ -14,8 +14,9 @@ namespace DiGi.Analytical.Building
     {
         /// <summary>
         /// Calculates the thermal transmittance U of a layered construction per PN-EN ISO 6946: U = 1 / (Rsi + Σ R + Rse) (DiGi-Organization/DiGi.Analytical#8).
-        /// <para>The resistance R of a layer is d/λ for an <see cref="OpaqueMaterial"/> or a <see cref="TransparentMaterial"/>, and the tabulated resistance of an unventilated air layer for a <see cref="FluidMaterial"/> (<see cref="AirLayerThermalResistance(double, HeatFlowDirection)"/>). Rsi and Rse follow <see cref="SurfaceResistance(HeatFlowDirection, bool)"/>; a face in contact with the ground has no external surface resistance. Ground heat transfer (PN-EN ISO 13370) is not modelled.</para>
-        /// <para>The result is <see cref="double.NaN"/> - never an optimistic value - when there is no layer, a layer has no material, a material has no conductivity (0 or less), a thickness is NaN or negative, or the direction is undefined.</para>
+        /// <para>The resistance R of a layer is d/λ for an <see cref="OpaqueMaterial"/>, and the tabulated resistance of an unventilated air layer for a <see cref="FluidMaterial"/> (<see cref="AirLayerThermalResistance(double, HeatFlowDirection)"/>). Rsi and Rse follow <see cref="SurfaceResistance(HeatFlowDirection, bool)"/>; a face in contact with the ground has no external surface resistance. Ground heat transfer (PN-EN ISO 13370) is not modelled.</para>
+        /// <para>PN-EN ISO 6946 excludes windows and other glazed units, and its air-layer table assumes faces of emissivity 0.8 or more, which a low-e coating is not. A layer of <see cref="TransparentMaterial"/> therefore gives NaN here: glazing is calculated per EN 673 by <c>Query.GlazingThermalTransmittance</c>.</para>
+        /// <para>The result is <see cref="double.NaN"/> - never an optimistic value - when there is no layer, a layer has no material or a transparent one, a material has no conductivity (0 or less), a thickness is NaN or negative, or the direction is undefined.</para>
         /// </summary>
         /// <param name="structureLayers">The layers of the construction with their materials. This value can be null.</param>
         /// <param name="heatFlowDirection">The direction of the heat flow through the construction.</param>
@@ -42,7 +43,6 @@ namespace DiGi.Analytical.Building
                 double thermalResistance_Layer = material switch
                 {
                     OpaqueMaterial opaqueMaterial when opaqueMaterial.Conductivity > 0 => thickness / opaqueMaterial.Conductivity,
-                    TransparentMaterial transparentMaterial when transparentMaterial.Conductivity > 0 => thickness / transparentMaterial.Conductivity,
                     FluidMaterial => AirLayerThermalResistance(thickness, heatFlowDirection),
                     _ => double.NaN,
                 };
@@ -138,12 +138,76 @@ namespace DiGi.Analytical.Building
                 return double.NaN;
             }
 
+            return ThermalTransmittance(openingConstruction, openingConstruction.TryGetValue(new EnumParameterDefinition(OpeningConstructionParameter.GlazingThermalTransmittance), out double value) ? value : double.NaN);
+        }
+
+        /// <summary>
+        /// Determines the thermal transmittance Uw of a window or door construction held by a construction relation cluster, calculating the glazing Ug from the pane layers when it is not declared (DiGi-Organization/DiGi.Analytical#8).
+        /// <para>A declared <see cref="OpeningConstructionParameter.GlazingThermalTransmittance"/> is used as it stands. Otherwise Ug is calculated per EN 673 from the construction's <see cref="OpeningConstructionPart.Pane"/> layers and their materials (<c>Query.GlazingThermalTransmittance</c>). Uw then follows <see cref="ThermalTransmittance(IOpeningConstruction?, double)"/>.</para>
+        /// </summary>
+        /// <param name="constructionRelationCluster">The cluster holding the construction's layers and materials. This value can be null.</param>
+        /// <param name="openingConstruction">The window or door construction. This value can be null.</param>
+        /// <param name="heatFlowDirection">The direction of the heat flow through the glazing: <see cref="HeatFlowDirection.Horizontal"/> for a vertical window.</param>
+        /// <returns>The thermal transmittance Uw [W/(m2K)], or <see cref="double.NaN"/> when it cannot be determined.</returns>
+        public static double ThermalTransmittance(this ConstructionRelationCluster? constructionRelationCluster, IOpeningConstruction? openingConstruction, HeatFlowDirection heatFlowDirection = HeatFlowDirection.Horizontal)
+        {
+            if (openingConstruction is null)
+            {
+                return double.NaN;
+            }
+
+            if (!openingConstruction.TryGetValue(new EnumParameterDefinition(OpeningConstructionParameter.GlazingThermalTransmittance), out double glazingThermalTransmittance) || double.IsNaN(glazingThermalTransmittance))
+            {
+                List<IStructureLayer>? structureLayers = constructionRelationCluster?.GetStructureLayers(openingConstruction, OpeningConstructionPart.Pane);
+                glazingThermalTransmittance = structureLayers is null ? double.NaN : GlazingThermalTransmittance(structureLayers.ConvertAll(x => (x, constructionRelationCluster!.GetMaterial(x))), heatFlowDirection);
+            }
+
+            return ThermalTransmittance(openingConstruction, glazingThermalTransmittance);
+        }
+
+        /// <summary>
+        /// Determines the thermal transmittance Uw of a window or door construction held by a building model, calculating the glazing Ug from the pane layers when it is not declared (DiGi-Organization/DiGi.Analytical#8).
+        /// <para>A declared <see cref="OpeningConstructionParameter.GlazingThermalTransmittance"/> is used as it stands. Otherwise Ug is calculated per EN 673 from the construction's <see cref="OpeningConstructionPart.Pane"/> layers and their materials in the model (<c>Query.GlazingThermalTransmittance</c>). Uw then follows <see cref="ThermalTransmittance(IOpeningConstruction?, double)"/>.</para>
+        /// </summary>
+        /// <param name="buildingModel">The building model holding the construction's layers and materials. This value can be null.</param>
+        /// <param name="openingConstruction">The window or door construction. This value can be null.</param>
+        /// <param name="heatFlowDirection">The direction of the heat flow through the glazing: <see cref="HeatFlowDirection.Horizontal"/> for a vertical window.</param>
+        /// <returns>The thermal transmittance Uw [W/(m2K)], or <see cref="double.NaN"/> when it cannot be determined.</returns>
+        public static double ThermalTransmittance(this BuildingModel? buildingModel, IOpeningConstruction? openingConstruction, HeatFlowDirection heatFlowDirection = HeatFlowDirection.Horizontal)
+        {
+            if (openingConstruction is null)
+            {
+                return double.NaN;
+            }
+
+            if (!openingConstruction.TryGetValue(new EnumParameterDefinition(OpeningConstructionParameter.GlazingThermalTransmittance), out double glazingThermalTransmittance) || double.IsNaN(glazingThermalTransmittance))
+            {
+                List<IStructureLayer>? structureLayers = buildingModel?.GetStructureLayers(openingConstruction, OpeningConstructionPart.Pane);
+                glazingThermalTransmittance = structureLayers is null ? double.NaN : GlazingThermalTransmittance(structureLayers.ConvertAll(x => (x, buildingModel!.GetMaterial(x))), heatFlowDirection);
+            }
+
+            return ThermalTransmittance(openingConstruction, glazingThermalTransmittance);
+        }
+
+        /// <summary>
+        /// Determines the thermal transmittance Uw of a window or door construction for the given glazing thermal transmittance Ug (DiGi-Organization/DiGi.Analytical#8).
+        /// <para>When the outline has at least one hole and <paramref name="glazingThermalTransmittance"/>, the declared frame Uf and the declared glazing-edge Ψg are known, Uw = (Ag·Ug + Af·Uf + lg·Ψg) / (Ag + Af) per PN-EN ISO 10077-1. Otherwise the declared <see cref="OpeningConstructionParameter.ThermalTransmittance"/> is returned, and <see cref="double.NaN"/> when there is none.</para>
+        /// </summary>
+        /// <param name="openingConstruction">The window or door construction. This value can be null.</param>
+        /// <param name="glazingThermalTransmittance">The glazing thermal transmittance Ug [W/(m2K)], declared or calculated per EN 673; NaN when unknown.</param>
+        /// <returns>The thermal transmittance Uw [W/(m2K)], or <see cref="double.NaN"/> when it cannot be determined.</returns>
+        public static double ThermalTransmittance(this IOpeningConstruction? openingConstruction, double glazingThermalTransmittance)
+        {
+            if (openingConstruction is null)
+            {
+                return double.NaN;
+            }
+
             double Value(OpeningConstructionParameter openingConstructionParameter)
             {
                 return openingConstruction.TryGetValue(new EnumParameterDefinition(openingConstructionParameter), out double value) ? value : double.NaN;
             }
 
-            double glazingThermalTransmittance = Value(OpeningConstructionParameter.GlazingThermalTransmittance);
             double frameThermalTransmittance = Value(OpeningConstructionParameter.FrameThermalTransmittance);
             double glazingLinearThermalTransmittance = Value(OpeningConstructionParameter.GlazingLinearThermalTransmittance);
 

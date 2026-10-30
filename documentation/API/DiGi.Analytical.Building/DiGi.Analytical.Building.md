@@ -1241,6 +1241,41 @@ True for the internal surface resistance Rsi, false for the external one Rse\.
 [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
 The surface resistance \[\(m2K\)/W\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when [heatFlowDirection](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.SurfaceResistance(thisDiGi.Analytical.Building.Enums.HeatFlowDirection,bool).heatFlowDirection 'DiGi\.Analytical\.Building\.Query\.SurfaceResistance\(this DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection, bool\)\.heatFlowDirection') is [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection.Undefined 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection\.Undefined')\.
 
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection)'></a>
+
+## Query\.ThermalTransmittance\(this BuildingModel, IOpeningConstruction, HeatFlowDirection\) Method
+
+Determines the thermal transmittance Uw of a window or door construction held by a building model, calculating the glazing Ug from the pane layers when it is not declared \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+A declared [GlazingThermalTransmittance](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionParameter.GlazingThermalTransmittance 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionParameter\.GlazingThermalTransmittance') is used as it stands. Otherwise Ug is calculated per EN 673 from the construction's [Pane](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Pane 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane') layers and their materials in the model (`Query.GlazingThermalTransmittance`). Uw then follows [ThermalTransmittance\(this IOpeningConstruction, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction,double) 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(this DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, double\)').
+
+```csharp
+public static double ThermalTransmittance(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.HeatFlowDirection heatFlowDirection=DiGi.Analytical.Building.Enums.HeatFlowDirection.Horizontal);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model holding the construction's layers and materials\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The window or door construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection).heatFlowDirection'></a>
+
+`heatFlowDirection` [HeatFlowDirection](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection')
+
+The direction of the heat flow through the glazing: [Horizontal](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection.Horizontal 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection\.Horizontal') for a vertical window\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal transmittance Uw \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
+
 <a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool)'></a>
 
 ## Query\.ThermalTransmittance\(this BuildingModel, IPhysicalComponentConstruction, HeatFlowDirection, bool\) Method
@@ -1281,6 +1316,41 @@ True when the external face is in contact with the ground, so that it has no sur
 #### Returns
 [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
 The thermal transmittance U \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection)'></a>
+
+## Query\.ThermalTransmittance\(this ConstructionRelationCluster, IOpeningConstruction, HeatFlowDirection\) Method
+
+Determines the thermal transmittance Uw of a window or door construction held by a construction relation cluster, calculating the glazing Ug from the pane layers when it is not declared \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+A declared [GlazingThermalTransmittance](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionParameter.GlazingThermalTransmittance 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionParameter\.GlazingThermalTransmittance') is used as it stands. Otherwise Ug is calculated per EN 673 from the construction's [Pane](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart.Pane 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane') layers and their materials (`Query.GlazingThermalTransmittance`). Uw then follows [ThermalTransmittance\(this IOpeningConstruction, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction,double) 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(this DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, double\)').
+
+```csharp
+public static double ThermalTransmittance(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.HeatFlowDirection heatFlowDirection=DiGi.Analytical.Building.Enums.HeatFlowDirection.Horizontal);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection).constructionRelationCluster'></a>
+
+`constructionRelationCluster` [ConstructionRelationCluster](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster')
+
+The cluster holding the construction's layers and materials\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The window or door construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection).heatFlowDirection'></a>
+
+`heatFlowDirection` [HeatFlowDirection](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection')
+
+The direction of the heat flow through the glazing: [Horizontal](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.HeatFlowDirection.Horizontal 'DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection\.Horizontal') for a vertical window\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal transmittance Uw \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
 
 <a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Building.Enums.HeatFlowDirection,bool)'></a>
 
@@ -1343,6 +1413,35 @@ public static double ThermalTransmittance(this DiGi.Analytical.Building.Interfac
 `openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
 
 The window or door construction\. This value can be null\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The thermal transmittance Uw \[W/\(m2K\)\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when it cannot be determined\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction,double)'></a>
+
+## Query\.ThermalTransmittance\(this IOpeningConstruction, double\) Method
+
+Determines the thermal transmittance Uw of a window or door construction for the given glazing thermal transmittance Ug \(DiGi\-Organization/DiGi\.Analytical\#8\)\.
+
+When the outline has at least one hole and [glazingThermalTransmittance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).glazingThermalTransmittance 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(this DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction, double\)\.glazingThermalTransmittance'), the declared frame Uf and the declared glazing-edge Ψg are known, Uw = (Ag·Ug + Af·Uf + lg·Ψg) / (Ag + Af) per PN-EN ISO 10077-1. Otherwise the declared [ThermalTransmittance](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionParameter.ThermalTransmittance 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionParameter\.ThermalTransmittance') is returned, and [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') when there is none.
+
+```csharp
+public static double ThermalTransmittance(this DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, double glazingThermalTransmittance);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The window or door construction\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.ThermalTransmittance(thisDiGi.Analytical.Building.Interfaces.IOpeningConstruction,double).glazingThermalTransmittance'></a>
+
+`glazingThermalTransmittance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The glazing thermal transmittance Ug \[W/\(m2K\)\], declared or calculated per EN 673; NaN when unknown\.
 
 #### Returns
 [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  

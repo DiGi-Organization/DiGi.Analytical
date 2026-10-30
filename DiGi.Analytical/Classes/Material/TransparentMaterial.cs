@@ -16,6 +16,9 @@ namespace DiGi.Analytical.Classes
         [JsonInclude, JsonPropertyName(nameof(Emissivity)), Description("Emissivity")]
         private SurfaceValue? emissivity;
 
+        [JsonInclude, JsonPropertyName(nameof(InfraredTransmittance)), Description("Infrared Transmittance")]
+        private double infraredTransmittance;
+
         [JsonInclude, JsonPropertyName(nameof(LightReflectance)), Description("Light Reflectance")]
         private SurfaceValue? lightReflectance;
 
@@ -52,6 +55,7 @@ namespace DiGi.Analytical.Classes
                 solarReflectance = Core.Query.Clone(transparentMaterial.solarReflectance);
                 lightReflectance = Core.Query.Clone(transparentMaterial.lightReflectance);
                 emissivity = Core.Query.Clone(transparentMaterial.emissivity);
+                infraredTransmittance = transparentMaterial.infraredTransmittance;
             }
         }
 
@@ -83,6 +87,7 @@ namespace DiGi.Analytical.Classes
 
         /// <summary>
         /// Gets or sets the hemispherical emissivity of the front (<see cref="SurfaceValue.External"/>) and back (<see cref="SurfaceValue.Internal"/>) faces.
+        /// <para>This is the corrected emissivity the EN 673 glazing calculation uses (0.837 for uncoated soda-lime glass; a low-e coating is far lower).</para>
         /// </summary>
         [JsonIgnore]
         public SurfaceValue? Emissivity
@@ -95,6 +100,24 @@ namespace DiGi.Analytical.Classes
             set
             {
                 emissivity = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the thermal infrared transmittance at normal incidence, between 0 and 1 (EnergyPlus WindowMaterial:Glazing; ISO 15099).
+        /// <para>Glass is opaque to thermal infrared, so the value is 0 for it. A layer that transmits infrared (a plastic film) needs the ISO 15099 net-radiation method; the EN 673 glazing calculation does not apply to it.</para>
+        /// </summary>
+        [JsonIgnore]
+        public double InfraredTransmittance
+        {
+            get
+            {
+                return infraredTransmittance;
+            }
+
+            set
+            {
+                infraredTransmittance = value;
             }
         }
 
