@@ -470,6 +470,11 @@ The enumeration type used to define the keys for the heat transfer coefficient v
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → RegulatedHeatTransferCoefficients\<TEnum\>
 
 Derived  
+↳ [RegulatedHeatTransferCoefficients\_1957](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1957')  
+↳ [RegulatedHeatTransferCoefficients\_1964](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1964')  
+↳ [RegulatedHeatTransferCoefficients\_1974](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1974')  
+↳ [RegulatedHeatTransferCoefficients\_1982](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1982')  
+↳ [RegulatedHeatTransferCoefficients\_1991](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1991')  
 ↳ [RegulatedHeatTransferCoefficients\_1997](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1997 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1997')  
 ↳ [RegulatedHeatTransferCoefficients\_2002](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_2002 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_2002')  
 ↳ [RegulatedHeatTransferCoefficients\_2009](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_2009 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_2009')  
@@ -930,6 +935,336 @@ The specific type of regulated heat transfer coefficients to retrieve, which mus
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TRegulatedHeatTransferCoefficients](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.RegulatedHeatTransferCoefficients_TRegulatedHeatTransferCoefficients_().TRegulatedHeatTransferCoefficients 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager\.RegulatedHeatTransferCoefficients\<TRegulatedHeatTransferCoefficients\>\(\)\.TRegulatedHeatTransferCoefficients')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of all instances that match the specified type [TRegulatedHeatTransferCoefficients](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager.RegulatedHeatTransferCoefficients_TRegulatedHeatTransferCoefficients_().TRegulatedHeatTransferCoefficients 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficientsManager\.RegulatedHeatTransferCoefficients\<TRegulatedHeatTransferCoefficients\>\(\)\.TRegulatedHeatTransferCoefficients')\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957'></a>
+
+## RegulatedHeatTransferCoefficients\_1957 Class
+
+Represents the regulated heat transfer coefficients k\(max\) of PN\-53/B\-02405 and PN\-57/B\-02405 for external partition types, the first Polish thermal requirement norms, in force from 1 January 1955 until PN\-64/B\-03404 applies from 1 January 1966 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm text is not available online: the values are those of the secondary tables that reproduce it, and the stage's [Description](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct.Description 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct\.Description') names them, records every candidate in-force date and gives the reason for the date chosen. Values the norm gave in kcal/(m2·h·°C) are converted with 1.163 W/(m2K) per kcal/(m2·h·°C).
+
+```csharp
+public class RegulatedHeatTransferCoefficients_1957 : DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients<DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957>
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients&lt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')[ExternalPartitionType\_1957](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957 'DiGi\.Analytical\.Building\.HVAC\.Enums\.ExternalPartitionType\_1957')[&gt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>') → RegulatedHeatTransferCoefficients\_1957
+### Constructors
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957.RegulatedHeatTransferCoefficients_1957(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957)'></a>
+
+## RegulatedHeatTransferCoefficients\_1957\(RegulatedHeatTransferCoefficients\_1957\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1957](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1957') class using another instance of the same type\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1957(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957 regulatedHeatTransferCoefficients_1957);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957.RegulatedHeatTransferCoefficients_1957(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957).regulatedHeatTransferCoefficients_1957'></a>
+
+`regulatedHeatTransferCoefficients_1957` [RegulatedHeatTransferCoefficients\_1957](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1957')
+
+The source instance to copy from\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957.RegulatedHeatTransferCoefficients_1957(DiGi.Analytical.Building.HVAC.Classes.RegulationAct)'></a>
+
+## RegulatedHeatTransferCoefficients\_1957\(RegulationAct\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1957](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1957') class\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1957(DiGi.Analytical.Building.HVAC.Classes.RegulationAct? regulationAct);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957.RegulatedHeatTransferCoefficients_1957(DiGi.Analytical.Building.HVAC.Classes.RegulationAct).regulationAct'></a>
+
+`regulationAct` [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct')
+
+The regulation act used to initialize the heat transfer coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957.RegulatedHeatTransferCoefficients_1957(System.Text.Json.Nodes.JsonObject)'></a>
+
+## RegulatedHeatTransferCoefficients\_1957\(JsonObject\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1957](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1957') class using the specified JSON object\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1957(System.Text.Json.Nodes.JsonObject jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1957.RegulatedHeatTransferCoefficients_1957(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964'></a>
+
+## RegulatedHeatTransferCoefficients\_1964 Class
+
+Represents the regulated heat transfer coefficients k\(max\) of PN\-64/B\-03404 for external partition types, in force from 1 January 1966 until PN\-74/B\-03404 applies from 1 January 1976 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm text is not available online: the values are those of the secondary tables that reproduce it, and the stage's [Description](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct.Description 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct\.Description') names them, records every candidate in-force date and gives the reason for the date chosen. Values the norm gave in kcal/(m2·h·°C) are converted with 1.163 W/(m2K) per kcal/(m2·h·°C).
+
+```csharp
+public class RegulatedHeatTransferCoefficients_1964 : DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients<DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964>
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients&lt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')[ExternalPartitionType\_1964](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964 'DiGi\.Analytical\.Building\.HVAC\.Enums\.ExternalPartitionType\_1964')[&gt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>') → RegulatedHeatTransferCoefficients\_1964
+### Constructors
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964.RegulatedHeatTransferCoefficients_1964(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964)'></a>
+
+## RegulatedHeatTransferCoefficients\_1964\(RegulatedHeatTransferCoefficients\_1964\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1964](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1964') class using another instance of the same type\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1964(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964 regulatedHeatTransferCoefficients_1964);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964.RegulatedHeatTransferCoefficients_1964(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964).regulatedHeatTransferCoefficients_1964'></a>
+
+`regulatedHeatTransferCoefficients_1964` [RegulatedHeatTransferCoefficients\_1964](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1964')
+
+The source instance to copy from\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964.RegulatedHeatTransferCoefficients_1964(DiGi.Analytical.Building.HVAC.Classes.RegulationAct)'></a>
+
+## RegulatedHeatTransferCoefficients\_1964\(RegulationAct\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1964](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1964') class\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1964(DiGi.Analytical.Building.HVAC.Classes.RegulationAct? regulationAct);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964.RegulatedHeatTransferCoefficients_1964(DiGi.Analytical.Building.HVAC.Classes.RegulationAct).regulationAct'></a>
+
+`regulationAct` [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct')
+
+The regulation act used to initialize the heat transfer coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964.RegulatedHeatTransferCoefficients_1964(System.Text.Json.Nodes.JsonObject)'></a>
+
+## RegulatedHeatTransferCoefficients\_1964\(JsonObject\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1964](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1964') class using the specified JSON object\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1964(System.Text.Json.Nodes.JsonObject jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1964.RegulatedHeatTransferCoefficients_1964(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974'></a>
+
+## RegulatedHeatTransferCoefficients\_1974 Class
+
+Represents the regulated heat transfer coefficients k\(max\) of PN\-74/B\-03404 for external partition types, in force from 1 January 1976 until PN\-82/B\-02020 applies from 1 January 1983 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm text is not available online: the values are those of the secondary tables that reproduce it, and the stage's [Description](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct.Description 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct\.Description') names them, records every candidate in-force date and gives the reason for the date chosen. Values the norm gave in kcal/(m2·h·°C) are converted with 1.163 W/(m2K) per kcal/(m2·h·°C).
+
+```csharp
+public class RegulatedHeatTransferCoefficients_1974 : DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients<DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974>
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients&lt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')[ExternalPartitionType\_1974](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974 'DiGi\.Analytical\.Building\.HVAC\.Enums\.ExternalPartitionType\_1974')[&gt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>') → RegulatedHeatTransferCoefficients\_1974
+### Constructors
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974.RegulatedHeatTransferCoefficients_1974(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974)'></a>
+
+## RegulatedHeatTransferCoefficients\_1974\(RegulatedHeatTransferCoefficients\_1974\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1974](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1974') class using another instance of the same type\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1974(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974 regulatedHeatTransferCoefficients_1974);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974.RegulatedHeatTransferCoefficients_1974(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974).regulatedHeatTransferCoefficients_1974'></a>
+
+`regulatedHeatTransferCoefficients_1974` [RegulatedHeatTransferCoefficients\_1974](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1974')
+
+The source instance to copy from\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974.RegulatedHeatTransferCoefficients_1974(DiGi.Analytical.Building.HVAC.Classes.RegulationAct)'></a>
+
+## RegulatedHeatTransferCoefficients\_1974\(RegulationAct\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1974](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1974') class\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1974(DiGi.Analytical.Building.HVAC.Classes.RegulationAct? regulationAct);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974.RegulatedHeatTransferCoefficients_1974(DiGi.Analytical.Building.HVAC.Classes.RegulationAct).regulationAct'></a>
+
+`regulationAct` [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct')
+
+The regulation act used to initialize the heat transfer coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974.RegulatedHeatTransferCoefficients_1974(System.Text.Json.Nodes.JsonObject)'></a>
+
+## RegulatedHeatTransferCoefficients\_1974\(JsonObject\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1974](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1974') class using the specified JSON object\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1974(System.Text.Json.Nodes.JsonObject jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1974.RegulatedHeatTransferCoefficients_1974(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982'></a>
+
+## RegulatedHeatTransferCoefficients\_1982 Class
+
+Represents the regulated heat transfer coefficients k\(max\) of PN\-82/B\-02020 for external partition types, in force from 1 January 1983 until PN\-91/B\-02020 applies from 1 January 1992 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm text is not available online: the values are those of the secondary tables that reproduce it, and the stage's [Description](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct.Description 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct\.Description') names them, records every candidate in-force date and gives the reason for the date chosen. Values the norm gave in kcal/(m2·h·°C) are converted with 1.163 W/(m2K) per kcal/(m2·h·°C).
+
+```csharp
+public class RegulatedHeatTransferCoefficients_1982 : DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients<DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982>
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients&lt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')[ExternalPartitionType\_1982](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982 'DiGi\.Analytical\.Building\.HVAC\.Enums\.ExternalPartitionType\_1982')[&gt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>') → RegulatedHeatTransferCoefficients\_1982
+### Constructors
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982.RegulatedHeatTransferCoefficients_1982(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982)'></a>
+
+## RegulatedHeatTransferCoefficients\_1982\(RegulatedHeatTransferCoefficients\_1982\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1982](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1982') class using another instance of the same type\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1982(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982 regulatedHeatTransferCoefficients_1982);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982.RegulatedHeatTransferCoefficients_1982(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982).regulatedHeatTransferCoefficients_1982'></a>
+
+`regulatedHeatTransferCoefficients_1982` [RegulatedHeatTransferCoefficients\_1982](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1982')
+
+The source instance to copy from\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982.RegulatedHeatTransferCoefficients_1982(DiGi.Analytical.Building.HVAC.Classes.RegulationAct)'></a>
+
+## RegulatedHeatTransferCoefficients\_1982\(RegulationAct\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1982](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1982') class\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1982(DiGi.Analytical.Building.HVAC.Classes.RegulationAct? regulationAct);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982.RegulatedHeatTransferCoefficients_1982(DiGi.Analytical.Building.HVAC.Classes.RegulationAct).regulationAct'></a>
+
+`regulationAct` [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct')
+
+The regulation act used to initialize the heat transfer coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982.RegulatedHeatTransferCoefficients_1982(System.Text.Json.Nodes.JsonObject)'></a>
+
+## RegulatedHeatTransferCoefficients\_1982\(JsonObject\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1982](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1982') class using the specified JSON object\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1982(System.Text.Json.Nodes.JsonObject jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1982.RegulatedHeatTransferCoefficients_1982(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991'></a>
+
+## RegulatedHeatTransferCoefficients\_1991 Class
+
+Represents the regulated heat transfer coefficients k\(max\) of PN\-91/B\-02020 for external partition types, in force from 1 January 1992 until the k\(max\) annex of Dz\.U\. 1997 nr 132 poz\. 878 applies from 29 April 1998 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm text is not available online: the values are those of the secondary tables that reproduce it, and the stage's [Description](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct.Description 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct\.Description') names them, records every candidate in-force date and gives the reason for the date chosen. Values the norm gave in kcal/(m2·h·°C) are converted with 1.163 W/(m2K) per kcal/(m2·h·°C).
+
+```csharp
+public class RegulatedHeatTransferCoefficients_1991 : DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients<DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991>
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients&lt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>')[ExternalPartitionType\_1991](DiGi.Analytical.Building.HVAC.Enums.md#DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991 'DiGi\.Analytical\.Building\.HVAC\.Enums\.ExternalPartitionType\_1991')[&gt;](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_TEnum_ 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\<TEnum\>') → RegulatedHeatTransferCoefficients\_1991
+### Constructors
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991.RegulatedHeatTransferCoefficients_1991(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991)'></a>
+
+## RegulatedHeatTransferCoefficients\_1991\(RegulatedHeatTransferCoefficients\_1991\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1991](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1991') class using another instance of the same type\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1991(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991 regulatedHeatTransferCoefficients_1991);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991.RegulatedHeatTransferCoefficients_1991(DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991).regulatedHeatTransferCoefficients_1991'></a>
+
+`regulatedHeatTransferCoefficients_1991` [RegulatedHeatTransferCoefficients\_1991](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1991')
+
+The source instance to copy from\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991.RegulatedHeatTransferCoefficients_1991(DiGi.Analytical.Building.HVAC.Classes.RegulationAct)'></a>
+
+## RegulatedHeatTransferCoefficients\_1991\(RegulationAct\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1991](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1991') class\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1991(DiGi.Analytical.Building.HVAC.Classes.RegulationAct? regulationAct);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991.RegulatedHeatTransferCoefficients_1991(DiGi.Analytical.Building.HVAC.Classes.RegulationAct).regulationAct'></a>
+
+`regulationAct` [RegulationAct](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulationAct 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulationAct')
+
+The regulation act used to initialize the heat transfer coefficients\.
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991.RegulatedHeatTransferCoefficients_1991(System.Text.Json.Nodes.JsonObject)'></a>
+
+## RegulatedHeatTransferCoefficients\_1991\(JsonObject\) Constructor
+
+Initializes a new instance of the [RegulatedHeatTransferCoefficients\_1991](DiGi.Analytical.Building.HVAC.Classes.md#DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991 'DiGi\.Analytical\.Building\.HVAC\.Classes\.RegulatedHeatTransferCoefficients\_1991') class using the specified JSON object\.
+
+```csharp
+public RegulatedHeatTransferCoefficients_1991(System.Text.Json.Nodes.JsonObject jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1991.RegulatedHeatTransferCoefficients_1991(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
 
 <a name='DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficients_1997'></a>
 

@@ -124,6 +124,8 @@ The internal condition, or null when [usageProfile](DiGi.Analytical.Building.HVA
 
 Creates and initializes a new instance of the [RegulatedHeatTransferCoefficientsManager\(\)](DiGi.Analytical.Building.HVAC.md#DiGi.Analytical.Building.HVAC.Create.RegulatedHeatTransferCoefficientsManager() 'DiGi\.Analytical\.Building\.HVAC\.Create\.RegulatedHeatTransferCoefficientsManager\(\)') class populated with predefined regulatory heat transfer coefficients\.
 
+The first stages are the norms in force before the technical conditions set U(max): PN-53/57 from 1955-01-01, PN-64/B-03404 from 1966-01-01, PN-74/B-03404 from 1976-01-01, PN-82/B-02020 from 1983-01-01 and PN-91/B-02020 from 1992-01-01 (DiGi-Organization/DiGi.Analytical#20). A design date before 1955-01-01 has no stage.
+
 ```csharp
 public static DiGi.Analytical.Building.HVAC.Classes.RegulatedHeatTransferCoefficientsManager RegulatedHeatTransferCoefficientsManager();
 ```

@@ -10,7 +10,8 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// Gets the maximum heat transfer coefficient U(max) a stage of the technical conditions sets for a construction role of a residential building (DiGi-Organization/DiGi.Analytical#8).
         /// <para>A <see cref="BuildingType.SingleFamily"/> or <see cref="BuildingType.Terraced"/> building takes the single-family limits, a <see cref="BuildingType.MultiFamily"/> building or an <see cref="BuildingType.ApartmentBlock"/> the residential or multi-family ones. The 1997 annex has no table for a multi-family building at all, and the 2002 regulation none for its walls, roof and basement ceiling: such a building met the act by its seasonal heat demand indicator E ≤ E0, so no limit is returned.</para>
-        /// <para>Until 2013 the window limits depend on the climatic zone (I-III against IV-V), and in 1997 and 2002 the external wall limit on whether the wall is layered with insulation of λ ≤ 0.05 W/(mK) (<paramref name="insulatedLayered"/>). A floor on ground was limited by a minimum thermal resistance until 2008, not by a U(max). Walls and floors inside the building, party walls and garage doors have no limit here.</para>
+        /// <para>The norm stages before 1998-04-29 (PN-53/57 to PN-91/B-02020, DiGi-Organization/DiGi.Analytical#20) apply to every building type alike. They limit a ceiling under an unheated attic (<see cref="ConstructionRole.Roof"/>) and a flat roof (<see cref="ConstructionRole.FlatRoof"/>) separately; until 1975 the wall limit depends on the climatic zone (I-III against IV-V), and windows and doors have limits only from 1983.</para>
+        /// <para>From 1983 until 2013 the window limits depend on the climatic zone (I-III against IV-V), and in 1997 and 2002 the external wall limit on whether the wall is layered with insulation of λ ≤ 0.05 W/(mK) (<paramref name="insulatedLayered"/>). A floor on ground was limited by a minimum thermal resistance until 2008, not by a U(max). Walls and floors inside the building, party walls and garage doors have no limit here.</para>
         /// </summary>
         /// <param name="regulatedHeatTransferCoefficients">The stage of the technical conditions, as returned by the regulated heat transfer coefficients manager. This value can be null.</param>
         /// <param name="constructionRole">The role of the construction.</param>
@@ -40,6 +41,60 @@ namespace DiGi.Analytical.Building.Regulation
 
             switch (regulatedHeatTransferCoefficients)
             {
+                case RegulatedHeatTransferCoefficients_1957 regulatedHeatTransferCoefficients_1957:
+                    return Value(regulatedHeatTransferCoefficients_1957, constructionRole switch
+                    {
+                        ConstructionRole.ExternalWall when zoneA is bool zoneA_1957 => zoneA_1957 ? ExternalPartitionType_1957.Wall_ZoneA : ExternalPartitionType_1957.Wall_ZoneB,
+                        ConstructionRole.Roof => ExternalPartitionType_1957.Roof_TopCeiling,
+                        ConstructionRole.FlatRoof => ExternalPartitionType_1957.Roof_Flat,
+                        ConstructionRole.FloorOverUnheated => ExternalPartitionType_1957.Floor_OverUnheatedSpaces,
+                        _ => (ExternalPartitionType_1957?)null,
+                    });
+
+                case RegulatedHeatTransferCoefficients_1964 regulatedHeatTransferCoefficients_1964:
+                    return Value(regulatedHeatTransferCoefficients_1964, constructionRole switch
+                    {
+                        ConstructionRole.ExternalWall when zoneA is bool zoneA_1964 => zoneA_1964 ? ExternalPartitionType_1964.Wall_ZoneA : ExternalPartitionType_1964.Wall_ZoneB,
+                        ConstructionRole.Roof => ExternalPartitionType_1964.Roof_TopCeiling,
+                        ConstructionRole.FlatRoof => ExternalPartitionType_1964.Roof_Flat,
+                        ConstructionRole.FloorOverUnheated => ExternalPartitionType_1964.Floor_OverUnheatedSpaces,
+                        _ => (ExternalPartitionType_1964?)null,
+                    });
+
+                case RegulatedHeatTransferCoefficients_1974 regulatedHeatTransferCoefficients_1974:
+                    return Value(regulatedHeatTransferCoefficients_1974, constructionRole switch
+                    {
+                        ConstructionRole.ExternalWall => ExternalPartitionType_1974.Wall,
+                        ConstructionRole.Roof => ExternalPartitionType_1974.Roof_TopCeiling,
+                        ConstructionRole.FlatRoof => ExternalPartitionType_1974.Roof_Flat,
+                        ConstructionRole.FloorOverUnheated => ExternalPartitionType_1974.Floor_OverUnheatedSpaces,
+                        _ => (ExternalPartitionType_1974?)null,
+                    });
+
+                case RegulatedHeatTransferCoefficients_1982 regulatedHeatTransferCoefficients_1982:
+                    return Value(regulatedHeatTransferCoefficients_1982, constructionRole switch
+                    {
+                        ConstructionRole.ExternalWall => ExternalPartitionType_1982.Wall,
+                        ConstructionRole.Roof => ExternalPartitionType_1982.Roof_TopCeiling,
+                        ConstructionRole.FlatRoof => ExternalPartitionType_1982.Roof_Flat,
+                        ConstructionRole.FloorOverUnheated => ExternalPartitionType_1982.Floor_OverUnheatedSpaces,
+                        ConstructionRole.Window or ConstructionRole.RoofWindow or ConstructionRole.BalconyDoor when zoneA is bool zoneA_1982 => zoneA_1982 ? ExternalPartitionType_1982.Window_ZoneA : ExternalPartitionType_1982.Window_ZoneB,
+                        ConstructionRole.ExternalDoor or ConstructionRole.StaircaseEntranceDoor => ExternalPartitionType_1982.Door,
+                        _ => (ExternalPartitionType_1982?)null,
+                    });
+
+                case RegulatedHeatTransferCoefficients_1991 regulatedHeatTransferCoefficients_1991:
+                    return Value(regulatedHeatTransferCoefficients_1991, constructionRole switch
+                    {
+                        ConstructionRole.ExternalWall => ExternalPartitionType_1991.Wall,
+                        ConstructionRole.Roof => ExternalPartitionType_1991.Roof_TopCeiling,
+                        ConstructionRole.FlatRoof => ExternalPartitionType_1991.Roof_Flat,
+                        ConstructionRole.FloorOverUnheated => ExternalPartitionType_1991.Floor_OverUnheatedSpaces,
+                        ConstructionRole.Window or ConstructionRole.RoofWindow or ConstructionRole.BalconyDoor when zoneA is bool zoneA_1991 => zoneA_1991 ? ExternalPartitionType_1991.Window_ZoneA : ExternalPartitionType_1991.Window_ZoneB,
+                        ConstructionRole.ExternalDoor or ConstructionRole.StaircaseEntranceDoor => ExternalPartitionType_1991.Door,
+                        _ => (ExternalPartitionType_1991?)null,
+                    });
+
                 case RegulatedHeatTransferCoefficients_1997 regulatedHeatTransferCoefficients_1997:
                     if (!singleFamily)
                     {

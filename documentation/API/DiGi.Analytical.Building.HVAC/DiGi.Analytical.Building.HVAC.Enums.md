@@ -3,6 +3,251 @@
 ## DiGi\.Analytical\.Building\.HVAC\.Enums Namespace
 ### Enums
 
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957'></a>
+
+## ExternalPartitionType\_1957 Enum
+
+Specifies the types of external partition elements limited by the k\(max\) of PN\-53/B\-02405 and PN\-57/B\-02405, the first Polish thermal requirement norms, in force from 1 January 1955 until PN\-64/B\-03404 applies from 1 January 1966 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm sets one k(max) per partition for every building type; a floor on ground has no requirement.
+
+Only the wall limit depends on the climatic zone; the norm's zones are mapped onto the I-III and IV-V grouping of the later regulations.
+
+Windows and doors have no limit: the reproduced tables give none before PN-82/B-02020.
+
+```csharp
+public enum ExternalPartitionType_1957
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957.Wall_ZoneA'></a>
+
+`Wall_ZoneA` 0
+
+Represents an external wall in climatic zones I, II and III: the looser k\(max\) the norm set for the milder west of Poland\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957.Wall_ZoneB'></a>
+
+`Wall_ZoneB` 1
+
+Represents an external wall in climatic zones IV and V: the stricter k\(max\) the norm set for central and eastern Poland\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957.Roof_TopCeiling'></a>
+
+`Roof_TopCeiling` 2
+
+Represents a ceiling under an unheated attic \(strop pod poddaszem\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957.Roof_Flat'></a>
+
+`Roof_Flat` 3
+
+Represents a flat roof over heated rooms \(stropodach\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1957.Floor_OverUnheatedSpaces'></a>
+
+`Floor_OverUnheatedSpaces` 4
+
+Represents a ceiling over an unheated cellar or a closed underfloor space\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964'></a>
+
+## ExternalPartitionType\_1964 Enum
+
+Specifies the types of external partition elements limited by the k\(max\) of PN\-64/B\-03404, in force from 1 January 1966 until PN\-74/B\-03404 applies from 1 January 1976 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm sets one k(max) per partition for every building type; a floor on ground has no requirement.
+
+Only the wall limit depends on the climatic zone; the norm's zones are mapped onto the I-III and IV-V grouping of the later regulations.
+
+Windows and doors have no limit: the reproduced tables give none before PN-82/B-02020.
+
+```csharp
+public enum ExternalPartitionType_1964
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964.Wall_ZoneA'></a>
+
+`Wall_ZoneA` 0
+
+Represents an external wall in climatic zones I, II and III: the looser k\(max\) the norm set for the milder west of Poland\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964.Wall_ZoneB'></a>
+
+`Wall_ZoneB` 1
+
+Represents an external wall in climatic zones IV and V: the stricter k\(max\) the norm set for central and eastern Poland\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964.Roof_TopCeiling'></a>
+
+`Roof_TopCeiling` 2
+
+Represents a ceiling under an unheated attic \(strop pod poddaszem\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964.Roof_Flat'></a>
+
+`Roof_Flat` 3
+
+Represents a flat roof over heated rooms \(stropodach\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1964.Floor_OverUnheatedSpaces'></a>
+
+`Floor_OverUnheatedSpaces` 4
+
+Represents a ceiling over an unheated cellar or a closed underfloor space\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974'></a>
+
+## ExternalPartitionType\_1974 Enum
+
+Specifies the types of external partition elements limited by the k\(max\) of PN\-74/B\-03404, in force from 1 January 1976 until PN\-82/B\-02020 applies from 1 January 1983 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm sets one k(max) per partition for every building type; a floor on ground has no requirement.
+
+The norm dropped the climatic zones of PN-64/B-03404.
+
+Windows and doors have no limit: the reproduced tables give none before PN-82/B-02020.
+
+```csharp
+public enum ExternalPartitionType_1974
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974.Wall'></a>
+
+`Wall` 0
+
+Represents an external wall\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974.Roof_TopCeiling'></a>
+
+`Roof_TopCeiling` 1
+
+Represents a ceiling under an unheated attic \(strop pod poddaszem\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974.Roof_Flat'></a>
+
+`Roof_Flat` 2
+
+Represents a flat roof over heated rooms \(stropodach\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1974.Floor_OverUnheatedSpaces'></a>
+
+`Floor_OverUnheatedSpaces` 3
+
+Represents a ceiling over an unheated cellar or a closed underfloor space\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982'></a>
+
+## ExternalPartitionType\_1982 Enum
+
+Specifies the types of external partition elements limited by the k\(max\) of PN\-82/B\-02020, in force from 1 January 1983 until PN\-91/B\-02020 applies from 1 January 1992 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm sets one k(max) per partition for every building type; a floor on ground has no requirement.
+
+```csharp
+public enum ExternalPartitionType_1982
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Wall'></a>
+
+`Wall` 0
+
+Represents an external wall\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Roof_TopCeiling'></a>
+
+`Roof_TopCeiling` 1
+
+Represents a ceiling under an unheated attic \(strop pod poddaszem\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Roof_Flat'></a>
+
+`Roof_Flat` 2
+
+Represents a flat roof over heated rooms \(stropodach\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Floor_OverUnheatedSpaces'></a>
+
+`Floor_OverUnheatedSpaces` 3
+
+Represents a ceiling over an unheated cellar or a closed underfloor space\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Window_ZoneA'></a>
+
+`Window_ZoneA` 4
+
+Represents a window or balcony door in climatic zones I, II and III; the norm has no separate roof window row, so a roof window takes this limit too\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Window_ZoneB'></a>
+
+`Window_ZoneB` 5
+
+Represents a window or balcony door in climatic zones IV and V; the norm has no separate roof window row, so a roof window takes this limit too\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1982.Door'></a>
+
+`Door` 6
+
+Represents an external entrance door\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991'></a>
+
+## ExternalPartitionType\_1991 Enum
+
+Specifies the types of external partition elements limited by the k\(max\) of PN\-91/B\-02020, in force from 1 January 1992 until the k\(max\) annex of Dz\.U\. 1997 nr 132 poz\. 878 applies from 29 April 1998 \(DiGi\-Organization/DiGi\.Analytical\#20\)\.
+
+The norm sets one k(max) per partition for every building type; a floor on ground has no requirement.
+
+```csharp
+public enum ExternalPartitionType_1991
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Wall'></a>
+
+`Wall` 0
+
+Represents an external wall\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Roof_TopCeiling'></a>
+
+`Roof_TopCeiling` 1
+
+Represents a ceiling under an unheated attic \(strop pod poddaszem\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Roof_Flat'></a>
+
+`Roof_Flat` 2
+
+Represents a flat roof over heated rooms \(stropodach\)\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Floor_OverUnheatedSpaces'></a>
+
+`Floor_OverUnheatedSpaces` 3
+
+Represents a ceiling over an unheated cellar or a closed underfloor space\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Window_ZoneA'></a>
+
+`Window_ZoneA` 4
+
+Represents a window or balcony door in climatic zones I, II and III; the norm has no separate roof window row, so a roof window takes this limit too\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Window_ZoneB'></a>
+
+`Window_ZoneB` 5
+
+Represents a window or balcony door in climatic zones IV and V; the norm has no separate roof window row, so a roof window takes this limit too\.
+
+<a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1991.Door'></a>
+
+`Door` 6
+
+Represents an external entrance door\.
+
 <a name='DiGi.Analytical.Building.HVAC.Enums.ExternalPartitionType_1997'></a>
 
 ## ExternalPartitionType\_1997 Enum

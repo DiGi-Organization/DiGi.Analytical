@@ -22,13 +22,13 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// The version of the library <see cref="ConstructionLibrary_PL"/> creates. Raise it whenever a value changes.
         /// </summary>
-        public const string ConstructionLibrary_PL_Version = "1.1.0";
+        public const string ConstructionLibrary_PL_Version = "1.2.0";
 
         /// <summary>
         /// Creates the Polish construction library: declared-U constructions of residential buildings, chosen per building type and date by <see cref="ConstructionSet"/>s (DiGi-Organization/DiGi.Analytical#15).
         /// <para><see cref="ConstructionFlavour.TypicalAsBuilt"/> sets hold the constructions of the Polish national typology of the TABULA web tool (webtool.building-typology.eu), one set per TABULA building: 7 construction periods for single-family, terraced and multi-family buildings, 5 for apartment blocks. TABULA has no apartment block before 1967, so for those periods the set holds the multi-family constructions. The values are those published, read on <see cref="ConstructionLibrary_PL_RetrievalDate"/>. There is one construction per TABULA construction code, and its description names the code.</para>
         /// <para>Each TypicalAsBuilt set also carries the building's <see cref="TypologyData"/> (DiGi-Organization/DiGi.Analytical#17): frame area fraction, thermal bridging surcharge, floor boundary, the additional resistance of an unheated cellar, roof type, b_tr,floor, F_w and the attached neighbours. A floor construction carries the construction's own U. TABULA publishes the floor U of a building over an unheated cellar with R = 0.3 m2K/W included, so the same construction code appeared with two U-values; since version 1.1.0 that resistance is <see cref="TypologyData.AdditionalFloorResistance"/> instead.</para>
-        /// <para><see cref="ConstructionFlavour.Regulation"/> sets hold, for every stage of the technical conditions in <see cref="HVAC.Create.RegulatedHeatTransferCoefficientsManager"/> (1998-04-29 onwards), one construction per role whose declared U is the U(max) of <see cref="Query.RegulatedHeatTransferCoefficient"/>. A role with no limit has no construction, and the set's source says why. Until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III windows) plus sets for zones IV and V.</para>
+        /// <para><see cref="ConstructionFlavour.Regulation"/> sets hold, for every stage of the technical conditions in <see cref="HVAC.Create.RegulatedHeatTransferCoefficientsManager"/> (from the PN-53/57 norm stage of 1955-01-01 onwards, DiGi-Organization/DiGi.Analytical#20), one construction per role whose declared U is the U(max) of <see cref="Query.RegulatedHeatTransferCoefficient"/>. A role with no limit has no construction, and the set's source says why. Until 1975 the wall limit and from 1983 until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III limits) plus sets for zones IV and V.</para>
         /// <para>The constructions carry declared values only: no layers, and window and door constructions have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by <see cref="Query.EmbeddedConstructionLibrary_PL"/> is this method's output.</para>
         /// </summary>
         /// <returns>The Polish construction library.</returns>
@@ -36,7 +36,7 @@ namespace DiGi.Analytical.Building.Regulation
         {
             const string webTool = "webtool.building-typology.eu";
 
-            ConstructionLibrary result = new(Core.Create.Guid("PL.ConstructionLibrary"), "PL", ConstructionLibrary_PL_Version, string.Format(CultureInfo.InvariantCulture, "Polish construction library of declared U-values (DiGi-Organization/DiGi.Analytical#15). TypicalAsBuilt: the Polish national typology of the TABULA web tool ({0}), retrieved {1}. Regulation: the U(max) of the technical conditions from 1998-04-29 onwards (RegulatedHeatTransferCoefficientsManager).", webTool, ConstructionLibrary_PL_RetrievalDate));
+            ConstructionLibrary result = new(Core.Create.Guid("PL.ConstructionLibrary"), "PL", ConstructionLibrary_PL_Version, string.Format(CultureInfo.InvariantCulture, "Polish construction library of declared U-values (DiGi-Organization/DiGi.Analytical#15). TypicalAsBuilt: the Polish national typology of the TABULA web tool ({0}), retrieved {1}. Regulation: the k(max) of the norms PN-53/57 to PN-91/B-02020 from 1955-01-01 and the U(max) of the technical conditions from 1998-04-29 onwards (RegulatedHeatTransferCoefficientsManager).", webTool, ConstructionLibrary_PL_RetrievalDate));
 
             Dictionary<Guid, IConstruction> constructions = [];
 
@@ -336,7 +336,10 @@ namespace DiGi.Analytical.Building.Regulation
                         List<string> notes = [];
                         if (zoneDependent)
                         {
-                            notes.Add(climateZone is null ? "Windows take the limit of zones I-III, which also applies in a zone without its own set." : string.Format(CultureInfo.InvariantCulture, "Windows take the limit of zone {0}.", climateZone));
+                            int index_Wall = constructionRoles_Regulation.IndexOf(ConstructionRole.ExternalWall);
+                            bool wallZoneDependent = !values_III[index_Wall].Equals(values_IV[index_Wall]) || !values_III[index_Wall].Equals(values_V[index_Wall]);
+                            string subject = wallZoneDependent ? "External walls" : "Windows";
+                            notes.Add(climateZone is null ? string.Format(CultureInfo.InvariantCulture, "{0} take the limit of zones I-III, which also applies in a zone without its own set.", subject) : string.Format(CultureInfo.InvariantCulture, "{0} take the limit of zone {1}.", subject, climateZone));
                         }
 
                         if (stage_1997_2002 && singleFamily)
