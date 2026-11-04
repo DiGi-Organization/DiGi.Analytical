@@ -1060,6 +1060,31 @@ public Material(string? name);
 
 The name of the material\.
 
+<a name='DiGi.Analytical.Classes.Material.Material(System.Guid,string)'></a>
+
+## Material\(Guid, string\) Constructor
+
+Initializes a new instance of the [Material](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.Material 'DiGi\.Analytical\.Classes\.Material') class with the specified identifier and name\.
+
+A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#18).
+
+```csharp
+public Material(System.Guid guid, string? name);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Classes.Material.Material(System.Guid,string).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the material\.
+
+<a name='DiGi.Analytical.Classes.Material.Material(System.Guid,string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the material\.
+
 <a name='DiGi.Analytical.Classes.Material.Material(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## Material\(JsonObject\) Constructor
@@ -1272,6 +1297,31 @@ public OpaqueMaterial(string? name);
 #### Parameters
 
 <a name='DiGi.Analytical.Classes.OpaqueMaterial.OpaqueMaterial(string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the opaque material\.
+
+<a name='DiGi.Analytical.Classes.OpaqueMaterial.OpaqueMaterial(System.Guid,string)'></a>
+
+## OpaqueMaterial\(Guid, string\) Constructor
+
+Initializes a new instance of the [OpaqueMaterial](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.OpaqueMaterial 'DiGi\.Analytical\.Classes\.OpaqueMaterial') class with the specified identifier and name\.
+
+A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#18).
+
+```csharp
+public OpaqueMaterial(System.Guid guid, string? name);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Classes.OpaqueMaterial.OpaqueMaterial(System.Guid,string).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the material\.
+
+<a name='DiGi.Analytical.Classes.OpaqueMaterial.OpaqueMaterial(System.Guid,string).name'></a>
 
 `name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
@@ -1836,6 +1886,29 @@ public SolidMaterial(string? name);
 #### Parameters
 
 <a name='DiGi.Analytical.Classes.SolidMaterial.SolidMaterial(string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the solid material\.
+
+<a name='DiGi.Analytical.Classes.SolidMaterial.SolidMaterial(System.Guid,string)'></a>
+
+## SolidMaterial\(Guid, string\) Constructor
+
+Initializes a new instance of the [SolidMaterial](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SolidMaterial 'DiGi\.Analytical\.Classes\.SolidMaterial') class with the specified identifier and name\.
+
+```csharp
+public SolidMaterial(System.Guid guid, string? name);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Classes.SolidMaterial.SolidMaterial(System.Guid,string).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the material\.
+
+<a name='DiGi.Analytical.Classes.SolidMaterial.SolidMaterial(System.Guid,string).name'></a>
 
 `name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 

@@ -19,6 +19,21 @@ namespace DiGi.Analytical.Building
         /// <returns>A new <see cref="T:DiGi.Analytical.Building.Classes.StructureLayer"/> instance if successfully created and added; otherwise, <c>null</c>.</returns>
         public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IPhysicalComponentConstruction? physicalComponentConstruction, IMaterial? material, double thickness)
         {
+            return StructureLayer(constructionRelationCluster, physicalComponentConstruction, material, thickness, System.Guid.NewGuid());
+        }
+
+        /// <summary>
+        /// Creates and adds a new <see cref="T:DiGi.Analytical.Building.Classes.StructureLayer"/> with the specified identifier to the specified construction relation cluster.
+        /// <para>The layer is appended after the construction's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards. A library that must serialize to the same text every time it is created passes an identifier derived from a stable key (DiGi-Organization/DiGi.Analytical#18).</para>
+        /// </summary>
+        /// <param name="constructionRelationCluster">The construction relation cluster where the structure layer will be created and stored.</param>
+        /// <param name="physicalComponentConstruction">The physical component construction associated with the structure layer.</param>
+        /// <param name="material">The material to be assigned to the structure layer.</param>
+        /// <param name="thickness">The thickness of the structure layer.</param>
+        /// <param name="guid">The identifier of the new structure layer.</param>
+        /// <returns>A new <see cref="T:DiGi.Analytical.Building.Classes.StructureLayer"/> instance if successfully created and added; otherwise, <c>null</c>.</returns>
+        public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IPhysicalComponentConstruction? physicalComponentConstruction, IMaterial? material, double thickness, System.Guid guid)
+        {
             if (constructionRelationCluster is null || physicalComponentConstruction is null || material is null || double.IsNaN(thickness))
             {
                 return null;
@@ -35,7 +50,7 @@ namespace DiGi.Analytical.Building
                 return null;
             }
 
-            StructureLayer result = new(index, thickness);
+            StructureLayer result = new(guid, index, thickness);
             if (!constructionRelationCluster.Add(result))
             {
                 return null;

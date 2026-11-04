@@ -58,6 +58,37 @@ The index of the structure layer\.
 
 The thickness of the structure layer\.
 
+<a name='DiGi.Analytical.Classes.StructureLayer.StructureLayer(System.Guid,int,double)'></a>
+
+## StructureLayer\(Guid, int, double\) Constructor
+
+Initializes a new instance of the [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') class with the specified identifier, index and thickness\.
+
+A library that must serialize to the same text every time it is created gives its layers identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#18).
+
+```csharp
+public StructureLayer(System.Guid guid, int index, double thickness);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Classes.StructureLayer.StructureLayer(System.Guid,int,double).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the structure layer\.
+
+<a name='DiGi.Analytical.Classes.StructureLayer.StructureLayer(System.Guid,int,double).index'></a>
+
+`index` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The index of the structure layer\.
+
+<a name='DiGi.Analytical.Classes.StructureLayer.StructureLayer(System.Guid,int,double).thickness'></a>
+
+`thickness` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The thickness of the structure layer\.
+
 <a name='DiGi.Analytical.Classes.StructureLayer.StructureLayer(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## StructureLayer\(JsonObject\) Constructor

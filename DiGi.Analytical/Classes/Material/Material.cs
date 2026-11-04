@@ -28,6 +28,18 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Material"/> class with the specified identifier and name.
+        /// <para>A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#18).</para>
+        /// </summary>
+        /// <param name="guid">The identifier of the material.</param>
+        /// <param name="name">The name of the material.</param>
+        public Material(System.Guid guid, string? name)
+            : base(guid)
+        {
+            this.name = name;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Material"/> class using another <see cref="Material"/> instance.
         /// </summary>
         /// <param name="material">The source material instance from which to copy values. This value can be null.</param>

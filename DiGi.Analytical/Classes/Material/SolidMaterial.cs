@@ -17,6 +17,16 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="SolidMaterial"/> class with the specified identifier and name.
+        /// </summary>
+        /// <param name="guid">The identifier of the material.</param>
+        /// <param name="name">The name of the solid material.</param>
+        public SolidMaterial(System.Guid guid, string? name)
+            : base(guid, name)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SolidMaterial"/> class using an existing <see cref="SolidMaterial"/> object.
         /// </summary>
         /// <param name="solidMaterial">The source <see cref="SolidMaterial"/> instance to copy from.</param>

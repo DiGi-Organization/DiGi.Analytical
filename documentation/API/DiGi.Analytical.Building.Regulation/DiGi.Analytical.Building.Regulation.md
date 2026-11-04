@@ -14,6 +14,45 @@ public static class Create
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Create
 ### Fields
 
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Absolute'></a>
+
+## Create\.ConstructionLibrary\_PL\_LayerTolerance\_Absolute Field
+
+The absolute part of the tolerance within which the U of a TypicalAsBuilt layered assembly, calculated per PN\-EN ISO 6946, reproduces its declared U \[W/\(m2K\)\]: \|U\_calc \- U\_declared\| ≤ max\([ConstructionLibrary\_PL\_LayerTolerance\_Absolute](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Absolute 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_LayerTolerance\_Absolute'), [ConstructionLibrary\_PL\_LayerTolerance\_Relative](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Relative 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_LayerTolerance\_Relative') · U\_declared\) \(DiGi\-Organization/DiGi\.Analytical\#18\)\.
+
+```csharp
+public const double ConstructionLibrary_PL_LayerTolerance_Absolute = 0.02;
+```
+
+#### Field Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Relative'></a>
+
+## Create\.ConstructionLibrary\_PL\_LayerTolerance\_Relative Field
+
+The relative part of the tolerance within which the U of a TypicalAsBuilt layered assembly reproduces its declared U: \|U\_calc \- U\_declared\| ≤ max\([ConstructionLibrary\_PL\_LayerTolerance\_Absolute](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Absolute 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_LayerTolerance\_Absolute'), [ConstructionLibrary\_PL\_LayerTolerance\_Relative](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Relative 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_LayerTolerance\_Relative') · U\_declared\) \(DiGi\-Organization/DiGi\.Analytical\#18\)\.
+
+```csharp
+public const double ConstructionLibrary_PL_LayerTolerance_Relative = 0.05;
+```
+
+#### Field Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_MaterialRetrievalDate'></a>
+
+## Create\.ConstructionLibrary\_PL\_MaterialRetrievalDate Field
+
+The date the material values of [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') were read from their secondary sources \(DiGi\-Organization/DiGi\.Analytical\#18\)\.
+
+```csharp
+public const string ConstructionLibrary_PL_MaterialRetrievalDate = "2026-11-04";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
 <a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_RetrievalDate'></a>
 
 ## Create\.ConstructionLibrary\_PL\_RetrievalDate Field
@@ -34,7 +73,7 @@ public const string ConstructionLibrary_PL_RetrievalDate = "2026-10-30";
 The version of the library [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') creates\. Raise it whenever a value changes\.
 
 ```csharp
-public const string ConstructionLibrary_PL_Version = "1.2.0";
+public const string ConstructionLibrary_PL_Version = "1.3.0";
 ```
 
 #### Field Value
@@ -183,7 +222,11 @@ Each TypicalAsBuilt set also carries the building's [TypologyData](DiGi.Analytic
 
 [Regulation](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionFlavour.Regulation 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionFlavour\.Regulation') sets hold, for every stage of the technical conditions in [DiGi\.Analytical\.Building\.HVAC\.Create\.RegulatedHeatTransferCoefficientsManager](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.hvac.create.regulatedheattransfercoefficientsmanager 'DiGi\.Analytical\.Building\.HVAC\.Create\.RegulatedHeatTransferCoefficientsManager') (from the PN-53/57 norm stage of 1955-01-01 onwards, DiGi-Organization/DiGi.Analytical#20), one construction per role whose declared U is the U(max) of [RegulatedHeatTransferCoefficient\(this IRegulatedHeatTransferCoefficients, ConstructionRole, BuildingType, ClimateZone, bool\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.RegulatedHeatTransferCoefficient(thisDiGi.Analytical.Building.HVAC.Interfaces.IRegulatedHeatTransferCoefficients,DiGi.Analytical.Building.Regulation.Enums.ConstructionRole,DiGi.Analytical.Building.Regulation.Enums.BuildingType,DiGi.Analytical.Building.Regulation.Enums.ClimateZone,bool) 'DiGi\.Analytical\.Building\.Regulation\.Query\.RegulatedHeatTransferCoefficient\(this DiGi\.Analytical\.Building\.HVAC\.Interfaces\.IRegulatedHeatTransferCoefficients, DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole, DiGi\.Analytical\.Building\.Regulation\.Enums\.BuildingType, DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone, bool\)'). A role with no limit has no construction, and the set's source says why. Until 1975 the wall limit and from 1983 until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III limits) plus sets for zones IV and V.
 
-The constructions carry declared values only: no layers, and window and door constructions have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)') is this method's output.
+<b>Layers</b> (DiGi-Organization/DiGi.Analytical#18). Every wall, roof and floor construction also has layers (index 0 outermost; a floor's outer face is the ground or cellar side) of [DiGi\.Analytical\.Classes\.OpaqueMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.opaquematerial 'DiGi\.Analytical\.Classes\.OpaqueMaterial')s whose λ, ρ and c are tagged with the norm table and the secondary source that reproduces it, retrieved [ConstructionLibrary\_PL\_MaterialRetrievalDate](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_MaterialRetrievalDate 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_MaterialRetrievalDate'). A TypicalAsBuilt assembly has one fitted layer whose thickness (rounded to 1 mm) makes its PN-EN ISO 6946 U reproduce the declared TABULA U within [ConstructionLibrary\_PL\_LayerTolerance\_Absolute](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Absolute 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_LayerTolerance\_Absolute') / [ConstructionLibrary\_PL\_LayerTolerance\_Relative](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Relative 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_LayerTolerance\_Relative'); walls take horizontal, roofs upward and floors downward heat flow, floors without ground contact. A Regulation assembly has its insulation in whole centimetres, the least that keeps its U at or below U(max). InternalWall, PartyWall and IntermediateFloor of the TypicalAsBuilt sets are layered DEFAULT assemblies with no declared U, for thermal mass.
+
+The declared U stays on every TABULA and Regulation construction, and [DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster,DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction,DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection,System\.Boolean\)](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.query.thermaltransmittance#digi-analytical-building-query-thermaltransmittance(digi-analytical-building-classes-constructionrelationcluster-digi-analytical-building-interfaces-iphysicalcomponentconstruction-digi-analytical-building-enums-heatflowdirection-system-boolean) 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster,DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction,DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection,System\.Boolean\)') returns it as it stands; the U of the layers alone is `Building.Query.ThermalTransmittance(IEnumerable<(IStructureLayer, IMaterial?)>, HeatFlowDirection, bool)` of `GetStructureLayers` and `GetMaterial`, which is also the route to a floor's ground-contact U.
+
+Window and door constructions carry declared values only and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)') is this method's output.
 
 ```csharp
 public static DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary ConstructionLibrary_PL();

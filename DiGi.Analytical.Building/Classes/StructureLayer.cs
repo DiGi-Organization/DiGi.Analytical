@@ -31,6 +31,20 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="StructureLayer"/> class with the specified identifier, index and thickness.
+        /// <para>A library that must serialize to the same text every time it is created gives its layers identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#18).</para>
+        /// </summary>
+        /// <param name="guid">The identifier of the structure layer.</param>
+        /// <param name="index">The index of the structure layer.</param>
+        /// <param name="thickness">The thickness of the structure layer.</param>
+        public StructureLayer(System.Guid guid, int index, double thickness)
+            : base(guid)
+        {
+            Index = index;
+            Thickness = thickness;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="StructureLayer"/> class using the specified <see cref="JsonObject"/>.
         /// </summary>
         /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data used to initialize this instance.</param>
