@@ -230,7 +230,7 @@ The [DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D](https://learn.microsoft.
 
 ## CoplanarFaceSplitEventArgs\.Outputs Property
 
-Gets the list of resulting [DiGi\.Geometry\.Spatial\.Classes\.Face](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.face 'DiGi\.Geometry\.Spatial\.Classes\.Face') objects produced by the coplanar face split operation\.
+Gets the list of resulting [Face](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.Face 'DiGi\.Analytical\.Classes\.Face') objects produced by the coplanar face split operation\.
 
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Classes.Face>? Outputs { get; }

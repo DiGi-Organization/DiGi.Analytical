@@ -70,7 +70,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Gets the axis-aligned bounding box of the surface roof.
         /// </summary>
-        /// <returns>The <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> encompassing the surface roof, or null if it cannot be determined.</returns>
+        /// <returns>The <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> encompassing the surface roof, or null if it cannot be determined.</returns>
         public override BoundingBox3D? GetBoundingBox()
         {
             return Geometry?.GetBoundingBox();

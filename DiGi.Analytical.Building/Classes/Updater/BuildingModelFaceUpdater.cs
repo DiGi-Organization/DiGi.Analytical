@@ -98,7 +98,7 @@ namespace DiGi.Analytical.Building.Classes
             return component != null;
         }
 
-        private IComponent? Update_Air(IAir? air = null)
+        private SurfaceAir? Update_Air(IAir? air = null)
         {
             if (Value is null)
             {
@@ -154,7 +154,7 @@ namespace DiGi.Analytical.Building.Classes
             return surfaceAir;
         }
 
-        private IComponent? Update_Floor(IFloor? floor)
+        private FaceFloor? Update_Floor(IFloor? floor)
         {
             if (Value is null)
             {
@@ -217,7 +217,7 @@ namespace DiGi.Analytical.Building.Classes
             return faceFloor;
         }
 
-        private IComponent? Update_Roof(IRoof? roof)
+        private SurfaceRoof? Update_Roof(IRoof? roof)
         {
             if (Value is null)
             {
@@ -280,7 +280,7 @@ namespace DiGi.Analytical.Building.Classes
             return surfaceRoof;
         }
 
-        private IComponent? Update_Wall(IWall? wall)
+        private SurfaceWall? Update_Wall(IWall? wall)
         {
             if (Value is null)
             {

@@ -22,7 +22,7 @@ namespace DiGi.Analytical.Classes
             this.outputs = outputs is null ? null : [.. outputs];
         }
 
-        /// <summary>Gets the list of resulting <see cref="T:DiGi.Geometry.Spatial.Classes.Face" /> objects produced by the coplanar face split operation.</summary>
+        /// <summary>Gets the list of resulting <see cref="Face" /> objects produced by the coplanar face split operation.</summary>
         public List<Face>? Outputs
         {
             get

@@ -71,7 +71,7 @@ namespace DiGi.Analytical.Urban.Classes
         /// <summary>
         /// Gets the axis-aligned bounding box encompassing all building models within the urban model.
         /// </summary>
-        /// <returns>The <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> representing the combined bounding box of all buildings, or null if no valid bounding boxes could be determined.</returns>
+        /// <returns>The <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> representing the combined bounding box of all buildings, or null if no valid bounding boxes could be determined.</returns>
         public BoundingBox3D? GetBoundingBox()
         {
             if (urbanRelationCluster.GetValues<BuildingModel>() is not List<BuildingModel> buildingModels || buildingModels.Count == 0)

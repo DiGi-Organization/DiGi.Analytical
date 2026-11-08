@@ -51,7 +51,7 @@ namespace DiGi.Analytical.Classes
         /// <summary>
         /// Executes the face splitting operation based on the provided faces and input criteria.
         /// </summary>
-        /// <returns>A <see cref="T:System.Boolean" /> value indicating whether the split operation was successfully completed; returns <see langword="false" /> if the faces list is null or the input data is invalid.</returns>
+        /// <returns>A <see cref="System.Boolean" /> value indicating whether the split operation was successfully completed; returns <see langword="false" /> if the faces list is null or the input data is invalid.</returns>
         public override bool Solve()
         {
             outputs = null;

@@ -42,13 +42,13 @@ namespace DiGi.Analytical.Building.Classes
         /// Gets or sets the components created during the update process, grouped by the <see cref="IUniqueReference"/> of the component they originate from and keyed by the internal point of the face they were created from.
         /// <para>Populated by the update and shared by all the shells; supply an existing cache to continue an update started by another instance of this updater.</para>
         /// </summary>
-        public Dictionary<IUniqueReference, List<Tuple<Point3D, IComponent>>>? UpdatedComponents { get; set; } = null;
+        public Dictionary<IUniqueReference, List<Tuple<Point3D, IComponent>>>? UpdatedComponents { get; set; }
 
         /// <summary>
         /// Gets or sets the spaces assigned to the components during the update process, keyed by the unique identifier of the component.
         /// <para>Populated by the update and shared by all the shells, so that a component bounding two of the updated spaces keeps both assignments.</para>
         /// </summary>
-        public Dictionary<Guid, List<ISpace>>? UpdatedComponentSpaces { get; set; } = null;
+        public Dictionary<Guid, List<ISpace>>? UpdatedComponentSpaces { get; set; }
 
         /// <summary>
         /// Writes <see cref="Shells"/> into the building model as spaces bounded by components.

@@ -60,7 +60,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Gets the axis-aligned bounding box of the surface air's geometry.
         /// </summary>
-        /// <returns>The <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> encompassing the geometry, or null if no geometry is defined.</returns>
+        /// <returns>The <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> encompassing the geometry, or null if no geometry is defined.</returns>
         public override BoundingBox3D? GetBoundingBox()
         {
             return Geometry?.GetBoundingBox();

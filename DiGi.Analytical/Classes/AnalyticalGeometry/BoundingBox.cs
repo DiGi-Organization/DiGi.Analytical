@@ -18,9 +18,9 @@ namespace DiGi.Analytical.Classes
         private readonly IUniqueReference? uniqueReference;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:DiGi.Analytical.Classes.BoundingBox" /> class using the specified <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" />.
+        /// Initializes a new instance of the <see cref="DiGi.Analytical.Classes.BoundingBox" /> class using the specified <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D" />.
         /// </summary>
-        /// <param name="boundingBox3D">The optional <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> used to initialize the bounding box.</param>
+        /// <param name="boundingBox3D">The optional <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> used to initialize the bounding box.</param>
         public BoundingBox(Geometry.Spatial.Classes.BoundingBox3D? boundingBox3D)
             : base(boundingBox3D)
         {
@@ -66,10 +66,10 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:DiGi.Analytical.Classes.BoundingBox"/> class using the specified unique reference and 3D bounding box.
+        /// Initializes a new instance of the <see cref="DiGi.Analytical.Classes.BoundingBox"/> class using the specified unique reference and 3D bounding box.
         /// </summary>
-        /// <param name="uniqueReference">The <see cref="T:DiGi.Core.Interfaces.IUniqueReference"/> that uniquely identifies this bounding box.</param>
-        /// <param name="boundingBox3D">The <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D"/> used to initialize the spatial boundaries of the bounding box.</param>
+        /// <param name="uniqueReference">The <see cref="DiGi.Core.Interfaces.IUniqueReference"/> that uniquely identifies this bounding box.</param>
+        /// <param name="boundingBox3D">The <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D"/> used to initialize the spatial boundaries of the bounding box.</param>
         public BoundingBox(IUniqueReference? uniqueReference, Geometry.Spatial.Classes.BoundingBox3D? boundingBox3D)
             : base(boundingBox3D)
         {
@@ -116,7 +116,7 @@ namespace DiGi.Analytical.Classes
         /// Creates a duplicate of the current bounding box, optionally with a new GUID.
         /// </summary>
         /// <param name="guid">The optional GUID to assign to the duplicated object.</param>
-        /// <returns>A duplicate of the current object as an <see cref="T:DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
+        /// <returns>A duplicate of the current object as an <see cref="DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)

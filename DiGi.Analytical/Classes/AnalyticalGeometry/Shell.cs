@@ -120,7 +120,7 @@ namespace DiGi.Analytical.Classes
         /// Creates a duplicate of the current object, optionally with a new GUID.
         /// </summary>
         /// <param name="guid">The optional GUID to assign to the duplicated object.</param>
-        /// <returns>A duplicate of the current object as an <see cref="T:DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
+        /// <returns>A duplicate of the current object as an <see cref="DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)

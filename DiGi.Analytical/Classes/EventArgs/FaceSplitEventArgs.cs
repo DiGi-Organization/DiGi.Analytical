@@ -27,7 +27,7 @@ namespace DiGi.Analytical.Classes
         /// <summary>
         /// Gets or sets a value indicating whether the face split event has been handled.
         /// </summary>
-        public bool Handled { get; set; } = false;
+        public bool Handled { get; set; }
 
         /// <summary>
         /// Gets the input face used in the split operation.
@@ -35,7 +35,7 @@ namespace DiGi.Analytical.Classes
         public Face? Input { get; }
 
         /// <summary>
-        /// Gets the <see cref="T:DiGi.Geometry.Spatial.Classes.PolygonalFace3D" /> representing a planar polygonal face in 3D space associated with the face split event.
+        /// Gets the <see cref="DiGi.Geometry.Spatial.Classes.PolygonalFace3D" /> representing a planar polygonal face in 3D space associated with the face split event.
         /// </summary>
         public PolygonalFace3D? PolygonalFace3D { get; }
 

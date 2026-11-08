@@ -19,10 +19,10 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="T:DiGi.Geometry.Spatial.Classes.Plane" /> used to split the face.
+        /// Gets or sets the <see cref="DiGi.Geometry.Spatial.Classes.Plane" /> used to split the face.
         /// </summary>
         /// <value>
-        /// The <see cref="T:DiGi.Geometry.Spatial.Classes.Plane" /> instance used for splitting, or <c>null</c> if no plane is defined.
+        /// The <see cref="DiGi.Geometry.Spatial.Classes.Plane" /> instance used for splitting, or <c>null</c> if no plane is defined.
         /// </value>
         public Plane? Plane
         {
@@ -40,7 +40,7 @@ namespace DiGi.Analytical.Classes
         /// <summary>
         /// Attempts to solve the face splitting operation using a specified plane.
         /// </summary>
-        /// <returns>A <see cref="T:System.Boolean" /> value indicating whether the face was successfully split; returns <see langword="false" /> if the plane is not defined.</returns>
+        /// <returns>A <see cref="System.Boolean" /> value indicating whether the face was successfully split; returns <see langword="false" /> if the plane is not defined.</returns>
         public override bool Solve()
         {
             outputs = null;

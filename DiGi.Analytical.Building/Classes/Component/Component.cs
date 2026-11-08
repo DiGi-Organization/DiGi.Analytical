@@ -56,7 +56,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Gets the axis-aligned bounding box of the component.
         /// </summary>
-        /// <returns>The <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> encompassing the component, or null if it cannot be determined.</returns>
+        /// <returns>The <see cref="DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> encompassing the component, or null if it cannot be determined.</returns>
         public abstract BoundingBox3D? GetBoundingBox();
     }
 }

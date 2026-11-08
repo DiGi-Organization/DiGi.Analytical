@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Classes
         /// <summary>
         /// Gets or sets a value indicating whether the shell split event has been handled.
         /// </summary>
-        public bool Handled { get; set; } = false;
+        public bool Handled { get; set; }
 
         /// <summary>
         /// Gets the <see cref="Shell" /> used as the input for the split operation.

@@ -316,13 +316,13 @@ The thickness of the structure layer\.
 
 #### Returns
 [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  
-The created [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') if successful; otherwise, `null`\.
+The created [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') if successful; otherwise, `null`\.
 
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Interfaces.IMaterial,double)'></a>
 
 ## Create\.StructureLayer\(this ConstructionRelationCluster, IPhysicalComponentConstruction, IMaterial, double\) Method
 
-Creates and adds a new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') to the specified construction relation cluster\.
+Creates and adds a new [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') to the specified construction relation cluster\.
 
 The layer is appended after the construction's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.
 
@@ -357,13 +357,13 @@ The thickness of the structure layer\.
 
 #### Returns
 [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  
-A new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') instance if successfully created and added; otherwise, `null`\.
+A new [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') instance if successfully created and added; otherwise, `null`\.
 
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid)'></a>
 
 ## Create\.StructureLayer\(this ConstructionRelationCluster, IPhysicalComponentConstruction, IMaterial, double, Guid\) Method
 
-Creates and adds a new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') with the specified identifier to the specified construction relation cluster\.
+Creates and adds a new [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') with the specified identifier to the specified construction relation cluster\.
 
 The layer is appended after the construction's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards. A library that must serialize to the same text every time it is created passes an identifier derived from a stable key (DiGi-Organization/DiGi.Analytical#18).
 
@@ -404,7 +404,7 @@ The identifier of the new structure layer\.
 
 #### Returns
 [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  
-A new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') instance if successfully created and added; otherwise, `null`\.
+A new [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') instance if successfully created and added; otherwise, `null`\.
 
 <a name='DiGi.Analytical.Building.Create.SurfaceAir(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
 

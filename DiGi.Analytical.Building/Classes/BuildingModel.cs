@@ -12,6 +12,7 @@ using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
@@ -997,7 +998,7 @@ namespace DiGi.Analytical.Building.Classes
 
             if (faces.Count == 0)
             {
-                throw new InvalidOperationException(string.Format("The space {0} yields no shell face - none of its components carries a polygonal face geometry.", space.Guid));
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "The space {0} yields no shell face - none of its components carries a polygonal face geometry.", space.Guid));
             }
 
             Shell shell = new(new GuidReference(space), faces);

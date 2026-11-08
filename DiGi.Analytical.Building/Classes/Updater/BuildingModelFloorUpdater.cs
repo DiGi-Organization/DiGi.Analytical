@@ -36,7 +36,7 @@ namespace DiGi.Analytical.Building.Classes
         /// Gets or sets the construction assigned to the floors created on the cutting planes.
         /// <para>When null an air component is created on every cutting plane instead of a floor.</para>
         /// </summary>
-        public IFloorConstruction? FloorConstruction { get; set; } = null;
+        public IFloorConstruction? FloorConstruction { get; set; }
 
         /// <summary>
         /// Gets or sets the minimal height of the part of a space above a cutting plane.

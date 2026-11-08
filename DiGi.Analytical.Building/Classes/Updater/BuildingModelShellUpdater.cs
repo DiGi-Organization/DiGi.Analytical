@@ -46,20 +46,20 @@ namespace DiGi.Analytical.Building.Classes
         /// <para>Sharing the same instance across several shells makes a component that bounds more than one space be created once and reused, instead of being duplicated for every shell. It also decides which fragment of a split component keeps the identifier of that component: the first one added for a given reference.</para>
         /// <para>Left null a private cache is created for the single shell, which is enough when the shells are updated one by one and none of their components is shared.</para>
         /// </summary>
-        public Dictionary<IUniqueReference, List<Tuple<Point3D, IComponent>>>? UpdatedComponents { get; set; } = null;
+        public Dictionary<IUniqueReference, List<Tuple<Point3D, IComponent>>>? UpdatedComponents { get; set; }
 
         /// <summary>
         /// Gets or sets the spaces assigned to the components during the shell update process, keyed by the unique identifier of the component.
         /// <para>Sharing the same instance across several shells lets a component bounding two spaces keep both assignments, instead of the second shell overwriting the assignment made by the first one.</para>
         /// </summary>
-        public Dictionary<Guid, List<ISpace>>? UpdatedComponentSpaces { get; set; } = null;
+        public Dictionary<Guid, List<ISpace>>? UpdatedComponentSpaces { get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifiers of the spaces that are rebuilt during the current update process.
         /// <para>Assignments of a component to any of those spaces are treated as outdated and are replaced by the assignments derived from the updated shells; assignments to spaces outside this set are preserved, which keeps neighbouring spaces that are not part of the update untouched.</para>
         /// <para>The set has to be complete BEFORE the first shell is processed, otherwise the outcome depends on the order the shells are updated in. <see cref="BuildingModelShellsUpdater"/> seeds it from all its shells upfront.</para>
         /// </summary>
-        public HashSet<Guid>? ProcessedSpaceGuids { get; set; } = null;
+        public HashSet<Guid>? ProcessedSpaceGuids { get; set; }
 
         /// <summary>
         /// Writes <see cref="Shell"/> into the building model as a space bounded by components.

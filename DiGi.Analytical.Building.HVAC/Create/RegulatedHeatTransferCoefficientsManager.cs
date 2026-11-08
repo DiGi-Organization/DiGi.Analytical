@@ -107,7 +107,7 @@ namespace DiGi.Analytical.Building.HVAC
             // published 28 October 1997 and in force six months later (§ 3) (DiGi-Organization/DiGi.Analytical#14).
             regulationAct = new(new DateTime(1997, 10, 28), new DateTime(1998, 04, 29), "Dz.U. 1997 nr 132 poz. 878", "Rozporządzenie Ministra Spraw Wewnętrznych i Administracji z dnia 30 września 1997 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 
-            RegulatedHeatTransferCoefficients_1997 regulatedHeatTransferCoefficients_1997 = new RegulatedHeatTransferCoefficients_1997(regulationAct);
+            RegulatedHeatTransferCoefficients_1997 regulatedHeatTransferCoefficients_1997 = new(regulationAct);
             regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Wall_Multilayer] = 0.3;
             regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Wall_Solid] = 0.5;
             regulatedHeatTransferCoefficients_1997[ExternalPartitionType_1997.ResidentialBuilding_Roof] = 0.3;
@@ -134,7 +134,7 @@ namespace DiGi.Analytical.Building.HVAC
             regulationAct = new(new DateTime(2002, 06, 15), new DateTime(2002, 12, 16), "Dz.U. 2002 nr 75 poz. 690", "Rozporządzenie Ministra Infrastruktury z dnia 12 kwietnia 2002 r. w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 
             // The wall, roof and basement ceiling limits are those of the single-family building table; a multi-family building has none.
-            RegulatedHeatTransferCoefficients_2002 regulatedHeatTransferCoefficients_2002 = new RegulatedHeatTransferCoefficients_2002(regulationAct);
+            RegulatedHeatTransferCoefficients_2002 regulatedHeatTransferCoefficients_2002 = new(regulationAct);
             regulatedHeatTransferCoefficients_2002[ExternalPartitionType_2002.ResidentialBuilding_Wall_Multilayer] = 0.3;
             regulatedHeatTransferCoefficients_2002[ExternalPartitionType_2002.ResidentialBuilding_Wall_Solid] = 0.5;
             regulatedHeatTransferCoefficients_2002[ExternalPartitionType_2002.ResidentialBuilding_Roof] = 0.3;
@@ -161,7 +161,7 @@ namespace DiGi.Analytical.Building.HVAC
 
             regulationAct = new(new DateTime(2008, 11, 13), new DateTime(2009, 01, 01), "Dz.U. 2008 nr 201 poz. 1238", "Rozporządzenie Ministra Infrastruktury z dnia 6 listopada 2008 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 
-            RegulatedHeatTransferCoefficients_2009 regulatedHeatTransferCoefficients_2009 = new RegulatedHeatTransferCoefficients_2009(regulationAct);
+            RegulatedHeatTransferCoefficients_2009 regulatedHeatTransferCoefficients_2009 = new(regulationAct);
             regulatedHeatTransferCoefficients_2009[ExternalPartitionType_2009.ResidentialBuilding_Wall] = 0.3;
             regulatedHeatTransferCoefficients_2009[ExternalPartitionType_2009.ResidentialBuilding_Roof] = 0.25;
             regulatedHeatTransferCoefficients_2009[ExternalPartitionType_2009.ResidentialBuilding_Floor_OverUnheatedSpaces] = 0.45;
@@ -183,7 +183,7 @@ namespace DiGi.Analytical.Building.HVAC
 
             regulationAct = new(new DateTime(2013, 08, 13), new DateTime(2014, 01, 01), "Dz.U. 2013 poz. 926", "Rozporządzenie Ministra Transportu, Budownictwa i Gospodarki Morskiej z dnia 5 lipca 2013 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 
-            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2014 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
+            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2014 = new(regulationAct);
             regulatedHeatTransferCoefficients_2014[ExternalPartitionType_2014.Wall] = 0.25;
             regulatedHeatTransferCoefficients_2014[ExternalPartitionType_2014.Roof] = 0.20;
             regulatedHeatTransferCoefficients_2014[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;
@@ -198,7 +198,7 @@ namespace DiGi.Analytical.Building.HVAC
             // not from the date of a later act (DiGi-Organization/DiGi.Analytical#11).
             regulationAct = new(new DateTime(2013, 08, 13), new DateTime(2017, 01, 01), "Dz.U. 2013 poz. 926", "Rozporządzenie Ministra Transportu, Budownictwa i Gospodarki Morskiej z dnia 5 lipca 2013 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", "Annex 2, stage from 1 January 2017");
 
-            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2017 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
+            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2017 = new(regulationAct);
             regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Wall] = 0.23;
             regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Roof] = 0.18;
             regulatedHeatTransferCoefficients_2017[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;
@@ -214,7 +214,7 @@ namespace DiGi.Analytical.Building.HVAC
             // (Dz.U. 2022 poz. 1225) sets no new limits.
             regulationAct = new(new DateTime(2017, 12, 08), new DateTime(2020, 12, 31), new DateTime(2019, 01, 01), "Dz.U. 2017 poz. 2285", "Rozporządzenie Ministra Infrastruktury i Budownictwa z dnia 14 listopada 2017 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", "Annex 2, stage from 31 December 2020 (from 1 January 2019 for public-authority buildings)");
 
-            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2021 = new RegulatedHeatTransferCoefficients_2014(regulationAct);
+            RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2021 = new(regulationAct);
             regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Wall] = 0.20;
             regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Roof] = 0.15;
             regulatedHeatTransferCoefficients_2021[ExternalPartitionType_2014.Floor_OverUnheatedSpaces] = 0.25;

@@ -66,10 +66,10 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:DiGi.Analytical.Classes.Face" /> class using the specified unique reference and polygonal face data.
+        /// Initializes a new instance of the <see cref="DiGi.Analytical.Classes.Face" /> class using the specified unique reference and polygonal face data.
         /// </summary>
-        /// <param name="uniqueReference">The <see cref="T:DiGi.Core.Interfaces.IUniqueReference" /> used to uniquely identify the face. This value can be null.</param>
-        /// <param name="polygonalFace3D">The <see cref="T:DiGi.Geometry.Spatial.Classes.PolygonalFace3D" /> instance providing the geometric data for the face. This value can be null.</param>
+        /// <param name="uniqueReference">The <see cref="DiGi.Core.Interfaces.IUniqueReference" /> used to uniquely identify the face. This value can be null.</param>
+        /// <param name="polygonalFace3D">The <see cref="DiGi.Geometry.Spatial.Classes.PolygonalFace3D" /> instance providing the geometric data for the face. This value can be null.</param>
         public Face(IUniqueReference? uniqueReference, Geometry.Spatial.Classes.PolygonalFace3D? polygonalFace3D)
             : base(polygonalFace3D)
         {
@@ -128,7 +128,7 @@ namespace DiGi.Analytical.Classes
         /// Creates a duplicate of the current face, optionally with a specified GUID.
         /// </summary>
         /// <param name="guid">The optional GUID to assign to the duplicated object.</param>
-        /// <returns>A duplicate of the current object as an <see cref="T:DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
+        /// <returns>A duplicate of the current object as an <see cref="DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)
