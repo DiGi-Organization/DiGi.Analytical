@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// The version of the library <see cref="ConstructionLibrary_PL"/> creates. Raise it whenever a value changes.
         /// </summary>
-        public const string ConstructionLibrary_PL_Version = "1.6.0";
+        public const string ConstructionLibrary_PL_Version = "1.7.0";
 
         /// <summary>
         /// The date the material values of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#18).
@@ -65,6 +65,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <para><b>Layers</b> (DiGi-Organization/DiGi.Analytical#18). Every wall, roof and floor construction also has layers (index 0 outermost; a floor's outer face is the ground or cellar side) of <see cref="OpaqueMaterial"/>s whose λ, ρ and c are tagged with the norm table and the secondary source that reproduces it, retrieved <see cref="ConstructionLibrary_PL_MaterialRetrievalDate"/>. A TypicalAsBuilt assembly has one fitted layer whose thickness (rounded to 1 mm) makes its PN-EN ISO 6946 U reproduce the declared TABULA U within <see cref="ConstructionLibrary_PL_LayerTolerance_Absolute"/> / <see cref="ConstructionLibrary_PL_LayerTolerance_Relative"/>; walls take horizontal, roofs upward and floors downward heat flow, floors without ground contact. A Regulation assembly has its insulation in whole centimetres, the least that keeps its U at or below U(max). InternalWall, PartyWall and IntermediateFloor of the TypicalAsBuilt sets are layered DEFAULT assemblies with no declared U, for thermal mass.</para>
         /// <para>The declared U stays on every TABULA and Regulation construction, and <see cref="Building.Query.ThermalTransmittance(ConstructionRelationCluster?, IPhysicalComponentConstruction?, HeatFlowDirection, bool)"/> returns it as it stands; the U of the layers alone is <c>Building.Query.ThermalTransmittance(IEnumerable&lt;(IStructureLayer, IMaterial?)&gt;, HeatFlowDirection, bool)</c> of <c>GetStructureLayers</c> and <c>GetMaterial</c>, which is also the route to a floor's ground-contact U.</para>
         /// <para><b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has <see cref="OpeningConstructionPart.Pane"/> layers (index 0 outermost) of <see cref="TransparentMaterial"/> glass and <see cref="FluidMaterial"/> gas, one glazing type per TABULA window name, from which <c>Building.Query.GlazingThermalTransmittance</c> gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved <see cref="ConstructionLibrary_PL_GlazingRetrievalDate"/>; a value with no source is DEFAULT. Each window construction also declares the frame Uf and the glazing-edge Ψg of its frame generation (PN-EN ISO 10077-1 Annex D and Table E.1, through secondary sources; a PVC window from 2003 on has the modern frame and warm-edge values that ITB gives instead). At the reference size 1.23 x 1.48 m with the frame width of its living-room window layout, the Uw of these values reproduces the TABULA Uw within <see cref="ConstructionLibrary_PL_WindowTolerance_Absolute"/> / <see cref="ConstructionLibrary_PL_WindowTolerance_Relative"/>. The declared Uw and g stay on the construction, so the construction without an outline keeps its TABULA Uw; one cloned with an outline whose holes are the panes gets Uw from Ug, Uf, Ψg and its geometry.</para>
+        /// <para><b>Doors TABULA lacks</b> (DiGi-Organization/DiGi.Analytical#19). In a TypicalAsBuilt set the TABULA door construction also serves <see cref="ConstructionRole.DoorToUnheatedSpace"/> (DEFAULT), and <see cref="ConstructionRole.GarageDoor"/> is an uninsulated steel door until 2002 and an insulated sectional door from 2003, with the default U-factors of the Washington State Energy Code (WAC 51-11C-610714). A Regulation set holds a DoorToUnheatedSpace construction where the stage limits doors; no stage limits a garage door, so a Regulation set has none and its source says so.</para>
         /// <para>Window and door constructions carry declared values and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by <see cref="Query.EmbeddedConstructionLibrary_PL"/> is this method's output.</para>
         /// </summary>
         /// <returns>The Polish construction library.</returns>
@@ -391,6 +392,18 @@ namespace DiGi.Analytical.Building.Regulation
                 }
             }
 
+            // GarageDoor (DiGi-Organization/DiGi.Analytical#19). TABULA has none and no Polish source gives a garage door U, so the default U-factors of the
+            // Washington State Energy Code stand in: an uninsulated steel door until 2002, an insulated sectional door from 2003 (the period split is DEFAULT).
+            // 1 Btu/(h·ft2·°F) = 5.678263 W/(m2K).
+            string source_GarageDoor = string.Format(CultureInfo.InvariantCulture, "the Washington State Energy Code (adoption of the 2021 IECC), WAC 51-11C-610714, Table A107.1(4) \"Default U-factors for steel garage and hangar doors\" (lawfilesext.leg.wa.gov, certified 2023-02-20, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+            IConstruction GarageDoor(bool insulated)
+            {
+                const double factor = 5.678263;
+                return insulated
+                    ? Construction(ConstructionRole.GarageDoor, "PL.Default.GarageDoor.InsulatedSectional", "Garage door, insulated steel sectional (DEFAULT)", string.Format(CultureInfo.InvariantCulture, "Insulated double-skin steel sectional garage door, built from 2003 (DiGi-Organization/DiGi.Analytical#19): U = 0.31 Btu/(h·ft2·°F) = {0} W/(m2K), sectional tilt-up 9 ft x 7 ft, 1-3/8 in EPS with steel ribs, thermally broken, of {1}. The row is the nearest to the 40 mm foam panels of the doors sold in Poland; DEFAULT: no Polish source gives a garage door U, and the year from which insulated doors are taken is the TABULA period boundary.", Text(Math.Round(0.31 * factor, 2)), source_GarageDoor), Math.Round(0.31 * factor, 2), double.NaN)
+                    : Construction(ConstructionRole.GarageDoor, "PL.Default.GarageDoor.UninsulatedSteel", "Garage door, uninsulated steel (DEFAULT)", string.Format(CultureInfo.InvariantCulture, "Uninsulated steel garage door, built until 2002 (DiGi-Organization/DiGi.Analytical#19): U = 1.15 Btu/(h·ft2·°F) = {0} W/(m2K), \"Uninsulated, all products\", of {1}. DEFAULT: no Polish source gives a garage door U, and the year until which uninsulated doors are taken is the TABULA period boundary.", Text(Math.Round(1.15 * factor, 2)), source_GarageDoor), Math.Round(1.15 * factor, 2), double.NaN);
+            }
+
             // A layered construction with no declared U (InternalWall, PartyWall, IntermediateFloor): DEFAULT layers representative of the period's practice.
             IConstruction DefaultConstruction(ConstructionRole constructionRole, string variant, string name, List<(string MaterialKey, double Thickness)> layerSpecifications)
             {
@@ -677,6 +690,7 @@ namespace DiGi.Analytical.Building.Regulation
                 IConstruction construction_Floor = Element(ConstructionRole.GroundFloor, building.Floor, " of the construction itself; over an unheated cellar TABULA publishes it with the cellar's additional resistance included, which the set's TypologyData.AdditionalFloorResistance holds instead", double.NaN);
                 IConstruction construction_Window = Element(ConstructionRole.Window, building.Window, string.Format(CultureInfo.InvariantCulture, " as published, g_gl,n = {0} at normal incidence", Text(building.TotalSolarEnergyTransmittance)), building.TotalSolarEnergyTransmittance);
                 IConstruction construction_Door = Element(ConstructionRole.ExternalDoor, building.Door, " as published", double.NaN);
+                IConstruction construction_GarageDoor = GarageDoor(building.ConstructionPeriod is Enums.ConstructionPeriod.From2003To2008 or Enums.ConstructionPeriod.From2009);
                 IConstruction construction_InternalWall = InternalConstruction(ConstructionRole.InternalWall, building.ConstructionPeriod, buildingType);
                 IConstruction construction_PartyWall = InternalConstruction(ConstructionRole.PartyWall, building.ConstructionPeriod, buildingType);
                 IConstruction construction_IntermediateFloor = InternalConstruction(ConstructionRole.IntermediateFloor, building.ConstructionPeriod, buildingType);
@@ -694,7 +708,7 @@ namespace DiGi.Analytical.Building.Regulation
                     building.AttachedNeighbours,
                     typologySource.Trim());
 
-                string source = string.Format(CultureInfo.InvariantCulture, "TABULA building {0}, Polish national typology ({1}, retrieved {2}). {3}{4}The frame area fraction, thermal bridging surcharge, floor boundary and cellar resistance, roof type, b_tr,floor, F_w and attached neighbours are in TypologyData; g_gl,n is on the window construction. The roof construction serves Roof and FlatRoof, the floor construction GroundFloor and FloorOverUnheated, the window construction Window, RoofWindow and BalconyDoor, the door construction ExternalDoor and StaircaseEntranceDoor. TABULA has no InternalWall, PartyWall or IntermediateFloor construction: those three are DEFAULT layered assemblies with no source and no declared U, for thermal mass ({5}, {6}, {7}). TABULA has no DoorToUnheatedSpace or GarageDoor construction.", building.Code, webTool, ConstructionLibrary_PL_RetrievalDate, note, roofNote, construction_InternalWall.Name, construction_PartyWall.Name, construction_IntermediateFloor.Name);
+                string source = string.Format(CultureInfo.InvariantCulture, "TABULA building {0}, Polish national typology ({1}, retrieved {2}). {3}{4}The frame area fraction, thermal bridging surcharge, floor boundary and cellar resistance, roof type, b_tr,floor, F_w and attached neighbours are in TypologyData; g_gl,n is on the window construction. The roof construction serves Roof and FlatRoof, the floor construction GroundFloor and FloorOverUnheated, the window construction Window, RoofWindow and BalconyDoor, the door construction ExternalDoor and StaircaseEntranceDoor. TABULA has no InternalWall, PartyWall or IntermediateFloor construction: those three are DEFAULT layered assemblies with no source and no declared U, for thermal mass ({5}, {6}, {7}). TABULA has no DoorToUnheatedSpace or GarageDoor construction (DiGi-Organization/DiGi.Analytical#19): the door construction also serves DoorToUnheatedSpace (DEFAULT: a door to an unheated staircase, cellar or attic taken as the building's external door), and GarageDoor is {8}, whose description gives its source.", building.Code, webTool, ConstructionLibrary_PL_RetrievalDate, note, roofNote, construction_InternalWall.Name, construction_PartyWall.Name, construction_IntermediateFloor.Name, construction_GarageDoor.Name);
 
                 ConstructionSet constructionSet = new(ConstructionFlavour.TypicalAsBuilt, buildingType, null, startDate, endDate, source, typologyData);
                 constructionSet.SetConstruction(ConstructionRole.ExternalWall, construction_Wall);
@@ -707,6 +721,8 @@ namespace DiGi.Analytical.Building.Regulation
                 constructionSet.SetConstruction(ConstructionRole.BalconyDoor, construction_Window);
                 constructionSet.SetConstruction(ConstructionRole.ExternalDoor, construction_Door);
                 constructionSet.SetConstruction(ConstructionRole.StaircaseEntranceDoor, construction_Door);
+                constructionSet.SetConstruction(ConstructionRole.DoorToUnheatedSpace, construction_Door);
+                constructionSet.SetConstruction(ConstructionRole.GarageDoor, construction_GarageDoor);
                 constructionSet.SetConstruction(ConstructionRole.InternalWall, construction_InternalWall);
                 constructionSet.SetConstruction(ConstructionRole.PartyWall, construction_PartyWall);
                 constructionSet.SetConstruction(ConstructionRole.IntermediateFloor, construction_IntermediateFloor);
@@ -739,6 +755,7 @@ namespace DiGi.Analytical.Building.Regulation
                 ConstructionRole.ExternalDoor,
                 ConstructionRole.StaircaseEntranceDoor,
                 ConstructionRole.DoorToUnheatedSpace,
+                ConstructionRole.GarageDoor,
             ];
 
             List<BuildingType> buildingTypes = [BuildingType.SingleFamily, BuildingType.Terraced, BuildingType.MultiFamily, BuildingType.ApartmentBlock];
