@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// The version of the library <see cref="ConstructionLibrary_PL"/> creates. Raise it whenever a value changes.
         /// </summary>
-        public const string ConstructionLibrary_PL_Version = "1.4.0";
+        public const string ConstructionLibrary_PL_Version = "1.5.0";
 
         /// <summary>
         /// The date the material values of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#18).
@@ -53,7 +53,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <para><see cref="ConstructionFlavour.Regulation"/> sets hold, for every stage of the technical conditions in <see cref="HVAC.Create.RegulatedHeatTransferCoefficientsManager"/> (from the PN-53/57 norm stage of 1955-01-01 onwards, DiGi-Organization/DiGi.Analytical#20), one construction per role whose declared U is the U(max) of <see cref="Query.RegulatedHeatTransferCoefficient"/>. A role with no limit has no construction, and the set's source says why. Until 1975 the wall limit and from 1983 until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III limits) plus sets for zones IV and V.</para>
         /// <para><b>Layers</b> (DiGi-Organization/DiGi.Analytical#18). Every wall, roof and floor construction also has layers (index 0 outermost; a floor's outer face is the ground or cellar side) of <see cref="OpaqueMaterial"/>s whose λ, ρ and c are tagged with the norm table and the secondary source that reproduces it, retrieved <see cref="ConstructionLibrary_PL_MaterialRetrievalDate"/>. A TypicalAsBuilt assembly has one fitted layer whose thickness (rounded to 1 mm) makes its PN-EN ISO 6946 U reproduce the declared TABULA U within <see cref="ConstructionLibrary_PL_LayerTolerance_Absolute"/> / <see cref="ConstructionLibrary_PL_LayerTolerance_Relative"/>; walls take horizontal, roofs upward and floors downward heat flow, floors without ground contact. A Regulation assembly has its insulation in whole centimetres, the least that keeps its U at or below U(max). InternalWall, PartyWall and IntermediateFloor of the TypicalAsBuilt sets are layered DEFAULT assemblies with no declared U, for thermal mass.</para>
         /// <para>The declared U stays on every TABULA and Regulation construction, and <see cref="Building.Query.ThermalTransmittance(ConstructionRelationCluster?, IPhysicalComponentConstruction?, HeatFlowDirection, bool)"/> returns it as it stands; the U of the layers alone is <c>Building.Query.ThermalTransmittance(IEnumerable&lt;(IStructureLayer, IMaterial?)&gt;, HeatFlowDirection, bool)</c> of <c>GetStructureLayers</c> and <c>GetMaterial</c>, which is also the route to a floor's ground-contact U.</para>
-        /// <para><b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has <see cref="OpeningConstructionPart.Pane"/> layers (index 0 outermost) of <see cref="TransparentMaterial"/> glass and <see cref="FluidMaterial"/> gas, one glazing type per TABULA window name, from which <c>Building.Query.GlazingThermalTransmittance</c> gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved <see cref="ConstructionLibrary_PL_GlazingRetrievalDate"/>; a value with no source is DEFAULT. The declared Uw and g stay on the construction.</para>
+        /// <para><b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has <see cref="OpeningConstructionPart.Pane"/> layers (index 0 outermost) of <see cref="TransparentMaterial"/> glass and <see cref="FluidMaterial"/> gas, one glazing type per TABULA window name, from which <c>Building.Query.GlazingThermalTransmittance</c> gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved <see cref="ConstructionLibrary_PL_GlazingRetrievalDate"/>; a value with no source is DEFAULT. Each window construction also declares the frame Uf and the glazing-edge Ψg of its frame generation (PN-EN ISO 10077-1 Annex D and Table E.1, through secondary sources). The declared Uw and g stay on the construction, so the construction without an outline keeps its TABULA Uw; one cloned with an outline whose holes are the panes gets Uw from Ug, Uf, Ψg and its geometry.</para>
         /// <para>Window and door constructions carry declared values and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by <see cref="Query.EmbeddedConstructionLibrary_PL"/> is this method's output.</para>
         /// </summary>
         /// <returns>The Polish construction library.</returns>
@@ -251,6 +251,22 @@ namespace DiGi.Analytical.Building.Regulation
                 ["wood frame, double glazed air filled (7,5 mm gap)"] = ("Double_Air_7.5", [("FloatGlass", 0.004), ("Air", 0.0075), ("FloatGlass", 0.004)], "the 7.5 mm air gap is the TABULA name's; the 4 mm panes are DEFAULT"),
                 ["plastic frame, glass unit (one cell)"] = ("Unit_Air_LowE", [("FloatGlass", 0.004), ("Air", 0.012), ("FloatGlass_LowE", 0.004)], string.Format(CultureInfo.InvariantCulture, "a 4/12/4 air-filled unit with the low-e coating on face 3, the build-up of {0}, type 5 (Ug 1.62). An uncoated unit, Ug = 3.2 - 2.8 per {1}, cannot give the TABULA Uw of 1.4 - 1.6, so the unit is taken as coated", source_Ift, source_Pressglass)),
                 ["plastic frame, glass unit ( (one cell gas filled)"] = ("Unit_Argon_LowE", [("FloatGlass", 0.004), ("Argon90", 0.016), ("FloatGlass_LowE", 0.004)], string.Format(CultureInfo.InvariantCulture, "a 4/16/4 unit, 90 % argon, with the low-e coating on face 3; the 16 mm gap is DEFAULT. {0}, type 16, gives Ug 1.28 for the 12 mm gap; {1} gives Ug = 1.0 - 1.1 for a current one-cell unit", source_Ift, source_Pressglass)),
+            };
+
+            // Frames (DiGi-Organization/DiGi.Analytical#19): the declared Uf and Ψg of each frame generation, one per TABULA window name.
+            // PN-EN ISO 10077-1 is not readable online: Uf is read from its Annex D as reproduced by Cornwall Glass, Ψg from its Table E.1 as reproduced by Pressglass.
+            string source_AnnexD = string.Format(CultureInfo.InvariantCulture, "BS EN ISO 10077-1:2006 Annex D as reproduced in Cornwall Glass, \"Determination of whole window U-value using tabulated values in BS EN ISO 10077-1:2006\" (cornwallglass.co.uk, 2017, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+            string source_TableE1 = string.Format(CultureInfo.InvariantCulture, "PN-EN ISO 10077-1 Table E.1 (aluminium and steel spacers) as reproduced in Pressglass, \"Uw a współczynnik Ψ\" of 2006-08-14, Tabela 1 (pressglass.com, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+            string source_FigureD2 = string.Format(CultureInfo.InvariantCulture, "Figure D.2, softwood (500 kg/m3, λ = 0.13 W/(mK)) curve, read to 0.1 W/(m2K), of {0}", source_AnnexD);
+            const string noSpacer = "Ψg = 0: the panes are not a sealed unit and have no spacer, so there is no glazing-edge term (DEFAULT; Table E.1 covers sealed double and triple units only)";
+
+            Dictionary<string, (string Key, double FrameThermalTransmittance, double GlazingLinearThermalTransmittance, string Note)> frames = new(StringComparer.Ordinal)
+            {
+                ["single glazed, wood frame"] = ("TimberSingle", 2.0, 0.0, string.Format(CultureInfo.InvariantCulture, "a single-glazed softwood casement window. Uf = 2.0 at a frame thickness d_f = 50 mm (DEFAULT), {0}. {1}. TABULA's single glazing is a one-pane window, so it is not modelled as a box window (two panes) and d_f is that of one sash on one frame", source_FigureD2, noSpacer)),
+                ["French window"] = ("TimberCoupled", 1.8, 0.0, string.Format(CultureInfo.InvariantCulture, "a softwood coupled window, two sashes on one frame. Uf = 1.8 at d_f = (d1 + d2 + d3) / 2 = (60 + 40 + 40) / 2 = 70 mm per Figure D.3 d) (thicknesses DEFAULT), {0}. {1}", source_FigureD2, noSpacer)),
+                ["wood frame, double glazed air filled (7,5 mm gap)"] = ("TimberDouble", 1.9, 0.04, string.Format(CultureInfo.InvariantCulture, "a softwood window with an uncoated sealed unit. Uf = 1.9 at d_f = 60 mm (DEFAULT), {0}. Ψg = 0.04 W/(mK), wood frame, uncoated double glazing, {1}", source_FigureD2, source_TableE1)),
+                ["plastic frame, glass unit (one cell)"] = ("PVC", 2.0, 0.06, string.Format(CultureInfo.InvariantCulture, "a reinforced three-chamber PVC window. Uf = 2.0 W/(m2K), PVC hollow profiles, three hollow chambers, reinforced, clause D.2 of {0}. Ψg = 0.06 W/(mK), plastic frame, low-e double glazing, {1}; the Pilkington leaflet \"TGI-Spacer\" gives 0.077 for an aluminium spacer in a PVC frame (Uf 1.2, Ug 1.1) per ift guideline WA-17/1, and 0.06 is used", source_AnnexD, source_TableE1)),
+                ["plastic frame, glass unit ( (one cell gas filled)"] = ("PVC", 2.0, 0.06, string.Format(CultureInfo.InvariantCulture, "a reinforced three-chamber PVC window. Uf = 2.0 W/(m2K), PVC hollow profiles, three hollow chambers, reinforced, clause D.2 of {0}. Ψg = 0.06 W/(mK), plastic frame, low-e double glazing, {1}; the Pilkington leaflet \"TGI-Spacer\" gives 0.077 for an aluminium spacer in a PVC frame (Uf 1.2, Ug 1.1) per ift guideline WA-17/1, and 0.06 is used", source_AnnexD, source_TableE1)),
             };
 
             static string PaneLayersText(List<(IMaterial Material, double Thickness)> layers)
@@ -606,7 +622,19 @@ namespace DiGi.Analytical.Building.Regulation
                         description = string.Format(CultureInfo.InvariantCulture, "{0} Pane layers, outside to inside (DiGi-Organization/DiGi.Analytical#19): {1}; they give Ug = {2} W/(m2K) per PN-EN 673, vertical glazing, Tm = 283 K, ΔT = 15 K. Glazing type {3}: {4}.", description, PaneLayersText(paneLayers), Text(Math.Round(glazingThermalTransmittance, 3)), glazing.Key, glazing.Note);
                     }
 
+                    (string Key, double FrameThermalTransmittance, double GlazingLinearThermalTransmittance, string Note) frame = default;
+                    bool hasFrame = constructionRole == ConstructionRole.Window && frames.TryGetValue(element.Name, out frame);
+                    if (hasFrame)
+                    {
+                        description = string.Format(CultureInfo.InvariantCulture, "{0} Frame {1} (DiGi-Organization/DiGi.Analytical#19): Uf = {2} W/(m2K), Ψg = {3} W/(mK) declared; {4}. Not checked against the original norm.", description, frame.Key, Text(frame.FrameThermalTransmittance), Text(frame.GlazingLinearThermalTransmittance), frame.Note);
+                    }
+
                     IConstruction construction = Construction(constructionRole, key, name, description, element.ThermalTransmittance, totalSolarEnergyTransmittance);
+                    if (hasFrame && construction is WindowConstruction windowConstruction)
+                    {
+                        windowConstruction.SetValue(OpeningConstructionParameter.FrameThermalTransmittance, frame.FrameThermalTransmittance);
+                        windowConstruction.SetValue(OpeningConstructionParameter.GlazingLinearThermalTransmittance, frame.GlazingLinearThermalTransmittance);
+                    }
                     if (layers is not null)
                     {
                         AddLayers(construction, key, layers);
