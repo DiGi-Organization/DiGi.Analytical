@@ -14,6 +14,19 @@ public static class Create
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Create
 ### Fields
 
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_GlazingRetrievalDate'></a>
+
+## Create\.ConstructionLibrary\_PL\_GlazingRetrievalDate Field
+
+The date the glass and gas values and the glazing build\-ups of [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') were read from their secondary sources \(DiGi\-Organization/DiGi\.Analytical\#19\)\.
+
+```csharp
+public const string ConstructionLibrary_PL_GlazingRetrievalDate = "2026-11-16";
+```
+
+#### Field Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
 <a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_LayerTolerance_Absolute'></a>
 
 ## Create\.ConstructionLibrary\_PL\_LayerTolerance\_Absolute Field
@@ -73,7 +86,7 @@ public const string ConstructionLibrary_PL_RetrievalDate = "2026-10-30";
 The version of the library [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') creates\. Raise it whenever a value changes\.
 
 ```csharp
-public const string ConstructionLibrary_PL_Version = "1.3.0";
+public const string ConstructionLibrary_PL_Version = "1.4.0";
 ```
 
 #### Field Value
@@ -226,7 +239,9 @@ Each TypicalAsBuilt set also carries the building's [TypologyData](DiGi.Analytic
 
 The declared U stays on every TABULA and Regulation construction, and [DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster,DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction,DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection,System\.Boolean\)](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.query.thermaltransmittance#digi-analytical-building-query-thermaltransmittance(digi-analytical-building-classes-constructionrelationcluster-digi-analytical-building-interfaces-iphysicalcomponentconstruction-digi-analytical-building-enums-heatflowdirection-system-boolean) 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster,DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction,DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection,System\.Boolean\)') returns it as it stands; the U of the layers alone is `Building.Query.ThermalTransmittance(IEnumerable<(IStructureLayer, IMaterial?)>, HeatFlowDirection, bool)` of `GetStructureLayers` and `GetMaterial`, which is also the route to a floor's ground-contact U.
 
-Window and door constructions carry declared values only and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)') is this method's output.
+<b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has [DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.enums.openingconstructionpart.pane 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane') layers (index 0 outermost) of [DiGi\.Analytical\.Classes\.TransparentMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.transparentmaterial 'DiGi\.Analytical\.Classes\.TransparentMaterial') glass and [DiGi\.Analytical\.Classes\.FluidMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.fluidmaterial 'DiGi\.Analytical\.Classes\.FluidMaterial') gas, one glazing type per TABULA window name, from which `Building.Query.GlazingThermalTransmittance` gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved [ConstructionLibrary\_PL\_GlazingRetrievalDate](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_GlazingRetrievalDate 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_GlazingRetrievalDate'); a value with no source is DEFAULT. The declared Uw and g stay on the construction.
+
+Window and door constructions carry declared values and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)') is this method's output.
 
 ```csharp
 public static DiGi.Analytical.Building.Regulation.Classes.ConstructionLibrary ConstructionLibrary_PL();

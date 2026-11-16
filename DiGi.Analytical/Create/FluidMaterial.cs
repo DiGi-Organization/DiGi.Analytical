@@ -16,12 +16,26 @@ namespace DiGi.Analytical
         /// <returns>The <see cref="Classes.FluidMaterial"/> of the mixture, or <see langword="null"/> when there is no gas, a gas is null, a fraction is not between 0 and 1, or the fractions do not add up to 1.</returns>
         public static FluidMaterial? FluidMaterial(string? name, IEnumerable<(FluidMaterial FluidMaterial, double VolumeFraction)>? fluidMaterials, double tolerance = Core.Constants.Tolerance.Distance)
         {
+            return FluidMaterial(Guid.NewGuid(), name, fluidMaterials, tolerance);
+        }
+
+        /// <summary>
+        /// Creates the fluid material of a gas mixture with the specified identifier, such as the 90 % argon / 10 % air fill of a glazing unit (DiGi-Organization/DiGi.Analytical#8).
+        /// <para>Every property of the mixture is the volume-fraction weighted sum of the properties of its gases, as for the overload without an identifier. A library that must serialize to the same text every time it is created passes an identifier derived from a stable key (DiGi-Organization/DiGi.Analytical#19).</para>
+        /// </summary>
+        /// <param name="guid">The identifier of the mixture.</param>
+        /// <param name="name">The name of the mixture. This value can be null.</param>
+        /// <param name="fluidMaterials">The gases of the mixture with their volume fractions. This value can be null.</param>
+        /// <param name="tolerance">The tolerance within which the volume fractions must add up to 1.</param>
+        /// <returns>The <see cref="Classes.FluidMaterial"/> of the mixture, or <see langword="null"/> when there is no gas, a gas is null, a fraction is not between 0 and 1, or the fractions do not add up to 1.</returns>
+        public static FluidMaterial? FluidMaterial(Guid guid, string? name, IEnumerable<(FluidMaterial FluidMaterial, double VolumeFraction)>? fluidMaterials, double tolerance = Core.Constants.Tolerance.Distance)
+        {
             if (fluidMaterials is null)
             {
                 return null;
             }
 
-            FluidMaterial result = new(name);
+            FluidMaterial result = new(guid, name);
 
             int count = 0;
             double volumeFraction_Sum = 0;

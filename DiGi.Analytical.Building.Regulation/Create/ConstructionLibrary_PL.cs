@@ -7,6 +7,7 @@ using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Building.Regulation.Classes;
 using DiGi.Analytical.Building.Regulation.Enums;
 using DiGi.Analytical.Classes;
+using DiGi.Analytical.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -23,12 +24,17 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// The version of the library <see cref="ConstructionLibrary_PL"/> creates. Raise it whenever a value changes.
         /// </summary>
-        public const string ConstructionLibrary_PL_Version = "1.3.0";
+        public const string ConstructionLibrary_PL_Version = "1.4.0";
 
         /// <summary>
         /// The date the material values of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#18).
         /// </summary>
         public const string ConstructionLibrary_PL_MaterialRetrievalDate = "2026-11-04";
+
+        /// <summary>
+        /// The date the glass and gas values and the glazing build-ups of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#19).
+        /// </summary>
+        public const string ConstructionLibrary_PL_GlazingRetrievalDate = "2026-11-16";
 
         /// <summary>
         /// The absolute part of the tolerance within which the U of a TypicalAsBuilt layered assembly, calculated per PN-EN ISO 6946, reproduces its declared U [W/(m2K)]: |U_calc - U_declared| ≤ max(<see cref="ConstructionLibrary_PL_LayerTolerance_Absolute"/>, <see cref="ConstructionLibrary_PL_LayerTolerance_Relative"/> · U_declared) (DiGi-Organization/DiGi.Analytical#18).
@@ -47,7 +53,8 @@ namespace DiGi.Analytical.Building.Regulation
         /// <para><see cref="ConstructionFlavour.Regulation"/> sets hold, for every stage of the technical conditions in <see cref="HVAC.Create.RegulatedHeatTransferCoefficientsManager"/> (from the PN-53/57 norm stage of 1955-01-01 onwards, DiGi-Organization/DiGi.Analytical#20), one construction per role whose declared U is the U(max) of <see cref="Query.RegulatedHeatTransferCoefficient"/>. A role with no limit has no construction, and the set's source says why. Until 1975 the wall limit and from 1983 until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III limits) plus sets for zones IV and V.</para>
         /// <para><b>Layers</b> (DiGi-Organization/DiGi.Analytical#18). Every wall, roof and floor construction also has layers (index 0 outermost; a floor's outer face is the ground or cellar side) of <see cref="OpaqueMaterial"/>s whose λ, ρ and c are tagged with the norm table and the secondary source that reproduces it, retrieved <see cref="ConstructionLibrary_PL_MaterialRetrievalDate"/>. A TypicalAsBuilt assembly has one fitted layer whose thickness (rounded to 1 mm) makes its PN-EN ISO 6946 U reproduce the declared TABULA U within <see cref="ConstructionLibrary_PL_LayerTolerance_Absolute"/> / <see cref="ConstructionLibrary_PL_LayerTolerance_Relative"/>; walls take horizontal, roofs upward and floors downward heat flow, floors without ground contact. A Regulation assembly has its insulation in whole centimetres, the least that keeps its U at or below U(max). InternalWall, PartyWall and IntermediateFloor of the TypicalAsBuilt sets are layered DEFAULT assemblies with no declared U, for thermal mass.</para>
         /// <para>The declared U stays on every TABULA and Regulation construction, and <see cref="Building.Query.ThermalTransmittance(ConstructionRelationCluster?, IPhysicalComponentConstruction?, HeatFlowDirection, bool)"/> returns it as it stands; the U of the layers alone is <c>Building.Query.ThermalTransmittance(IEnumerable&lt;(IStructureLayer, IMaterial?)&gt;, HeatFlowDirection, bool)</c> of <c>GetStructureLayers</c> and <c>GetMaterial</c>, which is also the route to a floor's ground-contact U.</para>
-        /// <para>Window and door constructions carry declared values only and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by <see cref="Query.EmbeddedConstructionLibrary_PL"/> is this method's output.</para>
+        /// <para><b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has <see cref="OpeningConstructionPart.Pane"/> layers (index 0 outermost) of <see cref="TransparentMaterial"/> glass and <see cref="FluidMaterial"/> gas, one glazing type per TABULA window name, from which <c>Building.Query.GlazingThermalTransmittance</c> gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved <see cref="ConstructionLibrary_PL_GlazingRetrievalDate"/>; a value with no source is DEFAULT. The declared Uw and g stay on the construction.</para>
+        /// <para>Window and door constructions carry declared values and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by <see cref="Query.EmbeddedConstructionLibrary_PL"/> is this method's output.</para>
         /// </summary>
         /// <returns>The Polish construction library.</returns>
         public static ConstructionLibrary ConstructionLibrary_PL()
@@ -176,6 +183,95 @@ namespace DiGi.Analytical.Building.Regulation
             Material("CementScreed", "Cement screed", 2000, 840, 1.00, Row("row 211 \"Tynk lub gładź cementowa\""));
             Material("RoofingFelt", "Bituminous roofing felt", 1000, 1460, 0.18, Row("row 163 \"Papa asfaltowa\""));
             Material("ClayPugging", "Clay pugging", 1800, 840, 0.85, Row("row 72 \"Glina\"; the table has no row for pugging (polepa), so the clay row stands in for it"));
+
+            // Glass and gas (DiGi-Organization/DiGi.Analytical#19). PN-EN 673, PN-EN 12898 and ISO 15099 are not readable online either, so every value is read
+            // from a secondary source, tagged with it and listed on the wiki page Required Standards, or marked DEFAULT.
+            string source_Ift = string.Format(CultureInfo.InvariantCulture, "PN-EN 673 and PN-EN 12898 as reproduced in ift Rosenheim, test report 11-003309-PR01 \"Guardian ClimaGuard Premium\" of 2011-12-07, sheet 6 (Świat Szkła library, glass.effector.pl, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+            string source_Pressglass = string.Format(CultureInfo.InvariantCulture, "Pressglass, \"Szklane fiszki cz. 1\", p. 5 (pressglass.com, 2021, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+
+            Dictionary<string, IMaterial> glazingMaterials = [];
+            void Glass(string key, string name, double emissivity_External, string note)
+            {
+                // SurfaceValue(internal, external): the external face is the front of the pane, towards the outside.
+                TransparentMaterial transparentMaterial = new(Core.Create.Guid(string.Concat("PL.Material.", key)), name)
+                {
+                    Conductivity = 1.0,
+                    Emissivity = new SurfaceValue(0.837, emissivity_External),
+                    LightTransmittance = 0.90,
+                    SolarTransmittance = 0.83,
+                    Description = string.Format(CultureInfo.InvariantCulture, "λ = 1 W/(mK), ε = {0} (front) / 0.837 (back), τv = 0.9, τe = 0.83: {1}. λ, τv and τe are DEFAULT: the PN-EN 673 conductivity of glass and the transmittances of clear 4 mm float glass were not found in a readable secondary source; g is declared on the window construction. Not checked against the original norm.", Text(emissivity_External), note),
+                };
+
+                glazingMaterials[key] = transparentMaterial;
+                result.ConstructionRelationCluster.Add(transparentMaterial);
+            }
+
+            Glass("FloatGlass", "Clear float glass", 0.837, string.Format(CultureInfo.InvariantCulture, "ε = 0.837 is the corrected emissivity of uncoated glass (normal emissivity 0.89), {0}", source_Ift));
+            Glass("FloatGlass_LowE", "Float glass with a low-e coating on its front face", 0.03, string.Format(CultureInfo.InvariantCulture, "ε = 0.03 is the coating of the ift report's units (εn 0.03, measured per PN-EN 12898), ε = 0.837 the uncoated back, {0}; the pane is the inner pane of a unit, the coating on face 3", source_Ift));
+
+            // ISO 15099 gives conductivity, dynamic viscosity and specific heat as a + b·T; the stored values are those at the reference temperature, 283 K,
+            // with b as the temperature coefficient, and the density is that of the ideal gas at 101325 Pa and 283 K.
+            void Gas(string key, string name, string record, double molarMass, (double A, double B) conductivity, (double A, double B) dynamicViscosity, (double A, double B) specificHeat)
+            {
+                const double pressure = 101325.0;
+                const double gasConstant = 8314.462618;
+                double temperature = FluidMaterial.ReferenceTemperature;
+                FluidMaterial fluidMaterial = new(Core.Create.Guid(string.Concat("PL.Material.", key)), name)
+                {
+                    Conductivity = conductivity.A + (conductivity.B * temperature),
+                    ConductivityTemperatureCoefficient = conductivity.B,
+                    DynamicViscosity = dynamicViscosity.A + (dynamicViscosity.B * temperature),
+                    DynamicViscosityTemperatureCoefficient = dynamicViscosity.B,
+                    SpecificHeat = specificHeat.A + (specificHeat.B * temperature),
+                    SpecificHeatTemperatureCoefficient = specificHeat.B,
+                    MolarMass = molarMass,
+                    Density = pressure * molarMass / (gasConstant * temperature),
+                    Description = string.Format(CultureInfo.InvariantCulture, "λ = {0} + {1}·T W/(mK), μ = {2} + {3}·T Pa·s, cp = {4} + {5}·T J/(kgK), M = {6} kg/kmol: ISO 15099:2003 as reproduced in the Modelica Buildings library 2.0.0, record Buildings.HeatTransfer.Data.Gases.{7} (simulationresearch.lbl.gov, retrieved {8}). The stored values are those at 283 K; ρ is the ideal-gas density at 101325 Pa and 283 K (R = 8314.462618 J/(kmolK)). Not checked against the original norm.", Text(conductivity.A), Text(conductivity.B), Text(dynamicViscosity.A), Text(dynamicViscosity.B), Text(specificHeat.A), Text(specificHeat.B), Text(molarMass), record, ConstructionLibrary_PL_GlazingRetrievalDate),
+                };
+
+                glazingMaterials[key] = fluidMaterial;
+                result.ConstructionRelationCluster.Add(fluidMaterial);
+            }
+
+            Gas("Air", "Air", "Air", 28.97, (2.873e-3, 7.760e-5), (3.723e-6, 4.940e-8), (1002.737, 1.2324e-2));
+            Gas("Argon", "Argon", "Argon", 39.948, (2.285e-3, 5.149e-5), (3.379e-6, 6.451e-8), (521.9285, 0.0));
+
+            if (Analytical.Create.FluidMaterial(Core.Create.Guid("PL.Material.Argon90"), "Argon 90 %, air 10 %", [((FluidMaterial)glazingMaterials["Argon"], 0.9), ((FluidMaterial)glazingMaterials["Air"], 0.1)]) is FluidMaterial fluidMaterial_Argon90)
+            {
+                fluidMaterial_Argon90.Description = string.Format(CultureInfo.InvariantCulture, "90 % argon and 10 % air by volume, the fill of the \"90 Argon\" units of {0}; every property is the volume-fraction weighted sum of those of Argon and Air (the PN-EN 673 simple mixing rule). Not checked against the original norm.", source_Ift);
+                glazingMaterials["Argon90"] = fluidMaterial_Argon90;
+                result.ConstructionRelationCluster.Add(fluidMaterial_Argon90);
+            }
+
+            // One glazing type per TABULA window name: its key, the pane layers outside to inside (material key, thickness [m]) and where the build-up comes from.
+            Dictionary<string, (string Key, List<(string MaterialKey, double Thickness)> Layers, string Note)> glazings = new(StringComparer.Ordinal)
+            {
+                ["single glazed, wood frame"] = ("Single", [("FloatGlass", 0.004)], string.Format(CultureInfo.InvariantCulture, "one pane; the 4 mm thickness is DEFAULT. {0} gives Ug = 5.6 - 5.8 for one pane or two single panes", source_Pressglass)),
+                ["French window"] = ("Coupled", [("FloatGlass", 0.004), ("Air", 0.04), ("FloatGlass", 0.004)], "a coupled window, two single panes in coupled sashes; the 40 mm space between them and the 4 mm panes are DEFAULT, no readable source gives them"),
+                ["wood frame, double glazed air filled (7,5 mm gap)"] = ("Double_Air_7.5", [("FloatGlass", 0.004), ("Air", 0.0075), ("FloatGlass", 0.004)], "the 7.5 mm air gap is the TABULA name's; the 4 mm panes are DEFAULT"),
+                ["plastic frame, glass unit (one cell)"] = ("Unit_Air_LowE", [("FloatGlass", 0.004), ("Air", 0.012), ("FloatGlass_LowE", 0.004)], string.Format(CultureInfo.InvariantCulture, "a 4/12/4 air-filled unit with the low-e coating on face 3, the build-up of {0}, type 5 (Ug 1.62). An uncoated unit, Ug = 3.2 - 2.8 per {1}, cannot give the TABULA Uw of 1.4 - 1.6, so the unit is taken as coated", source_Ift, source_Pressglass)),
+                ["plastic frame, glass unit ( (one cell gas filled)"] = ("Unit_Argon_LowE", [("FloatGlass", 0.004), ("Argon90", 0.016), ("FloatGlass_LowE", 0.004)], string.Format(CultureInfo.InvariantCulture, "a 4/16/4 unit, 90 % argon, with the low-e coating on face 3; the 16 mm gap is DEFAULT. {0}, type 16, gives Ug 1.28 for the 12 mm gap; {1} gives Ug = 1.0 - 1.1 for a current one-cell unit", source_Ift, source_Pressglass)),
+            };
+
+            static string PaneLayersText(List<(IMaterial Material, double Thickness)> layers)
+            {
+                List<string> texts = layers.ConvertAll(x => string.Format(CultureInfo.InvariantCulture, "{0} {1} mm", x.Material.Name, Text(Math.Round(x.Thickness * 1000.0, 1))));
+                return string.Join(", ", texts);
+            }
+
+            // Adds the pane layers to a window construction that has none yet; a construction shared by several sets gets its layers once.
+            void AddPaneLayers(IConstruction construction, string key, List<(IMaterial Material, double Thickness)> layers)
+            {
+                if (construction is not IOpeningConstruction openingConstruction || result.ConstructionRelationCluster.GetStructureLayers(openingConstruction, OpeningConstructionPart.Pane) is { Count: > 0 })
+                {
+                    return;
+                }
+
+                for (int i = 0; i < layers.Count; i++)
+                {
+                    Building.Create.StructureLayer(result.ConstructionRelationCluster, openingConstruction, OpeningConstructionPart.Pane, layers[i].Material, layers[i].Thickness, Core.Create.Guid(string.Format(CultureInfo.InvariantCulture, "{0}.Pane.{1}", key, i)));
+                }
+            }
 
             static HeatFlowDirection Direction(ConstructionRole constructionRole)
             {
@@ -496,10 +592,29 @@ namespace DiGi.Analytical.Building.Regulation
                         description = string.Format(CultureInfo.InvariantCulture, "{0} Layers, outside to inside (DiGi-Organization/DiGi.Analytical#18): {1}. The {2} thickness is fitted to the declared U: the layers give U = {3} W/(m2K) per PN-EN ISO 6946, {4} heat flow, no ground contact{5}. The composition follows the TABULA name and the period's practice; it has no source.", description, LayersText(layers), materialName_Fitted.ToLowerInvariant(), Text(Math.Round(LayersThermalTransmittance(layers, heatFlowDirection), 3)), heatFlowDirection.ToString().ToLowerInvariant(), elementLayer.Note is null ? string.Empty : string.Concat("; ", elementLayer.Note));
                     }
 
+                    List<(IMaterial Material, double Thickness)>? paneLayers = null;
+                    if (constructionRole == ConstructionRole.Window && glazings.TryGetValue(element.Name, out (string Key, List<(string MaterialKey, double Thickness)> Layers, string Note) glazing))
+                    {
+                        paneLayers = glazing.Layers.ConvertAll(x => (glazingMaterials[x.MaterialKey], x.Thickness));
+                        List<(IStructureLayer StructureLayer, IMaterial? Material)> structureLayers = [];
+                        for (int i = 0; i < paneLayers.Count; i++)
+                        {
+                            structureLayers.Add((new StructureLayer(i, paneLayers[i].Thickness), paneLayers[i].Material));
+                        }
+
+                        double glazingThermalTransmittance = Building.Query.GlazingThermalTransmittance(structureLayers);
+                        description = string.Format(CultureInfo.InvariantCulture, "{0} Pane layers, outside to inside (DiGi-Organization/DiGi.Analytical#19): {1}; they give Ug = {2} W/(m2K) per PN-EN 673, vertical glazing, Tm = 283 K, ΔT = 15 K. Glazing type {3}: {4}.", description, PaneLayersText(paneLayers), Text(Math.Round(glazingThermalTransmittance, 3)), glazing.Key, glazing.Note);
+                    }
+
                     IConstruction construction = Construction(constructionRole, key, name, description, element.ThermalTransmittance, totalSolarEnergyTransmittance);
                     if (layers is not null)
                     {
                         AddLayers(construction, key, layers);
+                    }
+
+                    if (paneLayers is not null)
+                    {
+                        AddPaneLayers(construction, key, paneLayers);
                     }
 
                     return construction;
