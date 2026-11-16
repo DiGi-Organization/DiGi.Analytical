@@ -86,11 +86,39 @@ public const string ConstructionLibrary_PL_RetrievalDate = "2026-10-30";
 The version of the library [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') creates\. Raise it whenever a value changes\.
 
 ```csharp
-public const string ConstructionLibrary_PL_Version = "1.5.0";
+public const string ConstructionLibrary_PL_Version = "1.6.0";
 ```
 
 #### Field Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Absolute'></a>
+
+## Create\.ConstructionLibrary\_PL\_WindowTolerance\_Absolute Field
+
+The absolute part of the tolerance within which the Uw of a TypicalAsBuilt window, calculated per PN\-EN ISO 10077\-1 from its pane layers, declared Uf and Ψg at the reference size 1\.23 x 1\.48 m, reproduces its declared TABULA Uw \[W/\(m2K\)\]: \|Uw\_calc \- Uw\_declared\| ≤ max\([ConstructionLibrary\_PL\_WindowTolerance\_Absolute](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Absolute 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_WindowTolerance\_Absolute'), [ConstructionLibrary\_PL\_WindowTolerance\_Relative](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Relative 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_WindowTolerance\_Relative') · Uw\_declared\) \(DiGi\-Organization/DiGi\.Analytical\#19\)\.
+
+```csharp
+public const double ConstructionLibrary_PL_WindowTolerance_Absolute = 0.1;
+```
+
+#### Field Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Relative'></a>
+
+## Create\.ConstructionLibrary\_PL\_WindowTolerance\_Relative Field
+
+The relative part of the tolerance within which the Uw of a TypicalAsBuilt window reproduces its declared TABULA Uw: \|Uw\_calc \- Uw\_declared\| ≤ max\([ConstructionLibrary\_PL\_WindowTolerance\_Absolute](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Absolute 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_WindowTolerance\_Absolute'), [ConstructionLibrary\_PL\_WindowTolerance\_Relative](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Relative 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_WindowTolerance\_Relative') · Uw\_declared\) \(DiGi\-Organization/DiGi\.Analytical\#19\)\.
+
+Set from the measured deviations (2026-11-16): the cited Uf and Ψg give a Uw up to 18.6 % above TABULA's, for the 2009 argon unit whose TABULA Uw (1.1) is lower than that of the same unit in 2003 ... 2008 (1.2), and 17.2 % for the 1993 ... 2002 PVC window on the PN-EN ISO 10077-1 defaults. The timber windows are within -5 ... +11.3 %.
+
+```csharp
+public const double ConstructionLibrary_PL_WindowTolerance_Relative = 0.2;
+```
+
+#### Field Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 <a name='DiGi.Analytical.Building.Regulation.Create.OpeningSizeLibrary_PL_RetrievalDate'></a>
 
@@ -239,7 +267,7 @@ Each TypicalAsBuilt set also carries the building's [TypologyData](DiGi.Analytic
 
 The declared U stays on every TABULA and Regulation construction, and [DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster,DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction,DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection,System\.Boolean\)](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.query.thermaltransmittance#digi-analytical-building-query-thermaltransmittance(digi-analytical-building-classes-constructionrelationcluster-digi-analytical-building-interfaces-iphysicalcomponentconstruction-digi-analytical-building-enums-heatflowdirection-system-boolean) 'DiGi\.Analytical\.Building\.Query\.ThermalTransmittance\(DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster,DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction,DiGi\.Analytical\.Building\.Enums\.HeatFlowDirection,System\.Boolean\)') returns it as it stands; the U of the layers alone is `Building.Query.ThermalTransmittance(IEnumerable<(IStructureLayer, IMaterial?)>, HeatFlowDirection, bool)` of `GetStructureLayers` and `GetMaterial`, which is also the route to a floor's ground-contact U.
 
-<b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has [DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.enums.openingconstructionpart.pane 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane') layers (index 0 outermost) of [DiGi\.Analytical\.Classes\.TransparentMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.transparentmaterial 'DiGi\.Analytical\.Classes\.TransparentMaterial') glass and [DiGi\.Analytical\.Classes\.FluidMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.fluidmaterial 'DiGi\.Analytical\.Classes\.FluidMaterial') gas, one glazing type per TABULA window name, from which `Building.Query.GlazingThermalTransmittance` gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved [ConstructionLibrary\_PL\_GlazingRetrievalDate](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_GlazingRetrievalDate 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_GlazingRetrievalDate'); a value with no source is DEFAULT. Each window construction also declares the frame Uf and the glazing-edge Ψg of its frame generation (PN-EN ISO 10077-1 Annex D and Table E.1, through secondary sources). The declared Uw and g stay on the construction, so the construction without an outline keeps its TABULA Uw; one cloned with an outline whose holes are the panes gets Uw from Ug, Uf, Ψg and its geometry.
+<b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has [DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.enums.openingconstructionpart.pane 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart\.Pane') layers (index 0 outermost) of [DiGi\.Analytical\.Classes\.TransparentMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.transparentmaterial 'DiGi\.Analytical\.Classes\.TransparentMaterial') glass and [DiGi\.Analytical\.Classes\.FluidMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.fluidmaterial 'DiGi\.Analytical\.Classes\.FluidMaterial') gas, one glazing type per TABULA window name, from which `Building.Query.GlazingThermalTransmittance` gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved [ConstructionLibrary\_PL\_GlazingRetrievalDate](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_GlazingRetrievalDate 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_GlazingRetrievalDate'); a value with no source is DEFAULT. Each window construction also declares the frame Uf and the glazing-edge Ψg of its frame generation (PN-EN ISO 10077-1 Annex D and Table E.1, through secondary sources; a PVC window from 2003 on has the modern frame and warm-edge values that ITB gives instead). At the reference size 1.23 x 1.48 m with the frame width of its living-room window layout, the Uw of these values reproduces the TABULA Uw within [ConstructionLibrary\_PL\_WindowTolerance\_Absolute](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Absolute 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_WindowTolerance\_Absolute') / [ConstructionLibrary\_PL\_WindowTolerance\_Relative](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL_WindowTolerance_Relative 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\_WindowTolerance\_Relative'). The declared Uw and g stay on the construction, so the construction without an outline keeps its TABULA Uw; one cloned with an outline whose holes are the panes gets Uw from Ug, Uf, Ψg and its geometry.
 
 Window and door constructions carry declared values and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by [EmbeddedConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Query\.EmbeddedConstructionLibrary\_PL\(\)') is this method's output.
 

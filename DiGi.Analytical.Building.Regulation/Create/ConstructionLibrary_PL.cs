@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// The version of the library <see cref="ConstructionLibrary_PL"/> creates. Raise it whenever a value changes.
         /// </summary>
-        public const string ConstructionLibrary_PL_Version = "1.5.0";
+        public const string ConstructionLibrary_PL_Version = "1.6.0";
 
         /// <summary>
         /// The date the material values of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#18).
@@ -35,6 +35,17 @@ namespace DiGi.Analytical.Building.Regulation
         /// The date the glass and gas values and the glazing build-ups of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#19).
         /// </summary>
         public const string ConstructionLibrary_PL_GlazingRetrievalDate = "2026-11-16";
+
+        /// <summary>
+        /// The absolute part of the tolerance within which the Uw of a TypicalAsBuilt window, calculated per PN-EN ISO 10077-1 from its pane layers, declared Uf and Ψg at the reference size 1.23 x 1.48 m, reproduces its declared TABULA Uw [W/(m2K)]: |Uw_calc - Uw_declared| ≤ max(<see cref="ConstructionLibrary_PL_WindowTolerance_Absolute"/>, <see cref="ConstructionLibrary_PL_WindowTolerance_Relative"/> · Uw_declared) (DiGi-Organization/DiGi.Analytical#19).
+        /// </summary>
+        public const double ConstructionLibrary_PL_WindowTolerance_Absolute = 0.1;
+
+        /// <summary>
+        /// The relative part of the tolerance within which the Uw of a TypicalAsBuilt window reproduces its declared TABULA Uw: |Uw_calc - Uw_declared| ≤ max(<see cref="ConstructionLibrary_PL_WindowTolerance_Absolute"/>, <see cref="ConstructionLibrary_PL_WindowTolerance_Relative"/> · Uw_declared) (DiGi-Organization/DiGi.Analytical#19).
+        /// <para>Set from the measured deviations (2026-11-16): the cited Uf and Ψg give a Uw up to 18.6 % above TABULA's, for the 2009 argon unit whose TABULA Uw (1.1) is lower than that of the same unit in 2003 ... 2008 (1.2), and 17.2 % for the 1993 ... 2002 PVC window on the PN-EN ISO 10077-1 defaults. The timber windows are within -5 ... +11.3 %.</para>
+        /// </summary>
+        public const double ConstructionLibrary_PL_WindowTolerance_Relative = 0.2;
 
         /// <summary>
         /// The absolute part of the tolerance within which the U of a TypicalAsBuilt layered assembly, calculated per PN-EN ISO 6946, reproduces its declared U [W/(m2K)]: |U_calc - U_declared| ≤ max(<see cref="ConstructionLibrary_PL_LayerTolerance_Absolute"/>, <see cref="ConstructionLibrary_PL_LayerTolerance_Relative"/> · U_declared) (DiGi-Organization/DiGi.Analytical#18).
@@ -53,7 +64,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <para><see cref="ConstructionFlavour.Regulation"/> sets hold, for every stage of the technical conditions in <see cref="HVAC.Create.RegulatedHeatTransferCoefficientsManager"/> (from the PN-53/57 norm stage of 1955-01-01 onwards, DiGi-Organization/DiGi.Analytical#20), one construction per role whose declared U is the U(max) of <see cref="Query.RegulatedHeatTransferCoefficient"/>. A role with no limit has no construction, and the set's source says why. Until 1975 the wall limit and from 1983 until 2013 the window limits depend on the climatic zone, so those stages have a set for every zone (the zone I-III limits) plus sets for zones IV and V.</para>
         /// <para><b>Layers</b> (DiGi-Organization/DiGi.Analytical#18). Every wall, roof and floor construction also has layers (index 0 outermost; a floor's outer face is the ground or cellar side) of <see cref="OpaqueMaterial"/>s whose λ, ρ and c are tagged with the norm table and the secondary source that reproduces it, retrieved <see cref="ConstructionLibrary_PL_MaterialRetrievalDate"/>. A TypicalAsBuilt assembly has one fitted layer whose thickness (rounded to 1 mm) makes its PN-EN ISO 6946 U reproduce the declared TABULA U within <see cref="ConstructionLibrary_PL_LayerTolerance_Absolute"/> / <see cref="ConstructionLibrary_PL_LayerTolerance_Relative"/>; walls take horizontal, roofs upward and floors downward heat flow, floors without ground contact. A Regulation assembly has its insulation in whole centimetres, the least that keeps its U at or below U(max). InternalWall, PartyWall and IntermediateFloor of the TypicalAsBuilt sets are layered DEFAULT assemblies with no declared U, for thermal mass.</para>
         /// <para>The declared U stays on every TABULA and Regulation construction, and <see cref="Building.Query.ThermalTransmittance(ConstructionRelationCluster?, IPhysicalComponentConstruction?, HeatFlowDirection, bool)"/> returns it as it stands; the U of the layers alone is <c>Building.Query.ThermalTransmittance(IEnumerable&lt;(IStructureLayer, IMaterial?)&gt;, HeatFlowDirection, bool)</c> of <c>GetStructureLayers</c> and <c>GetMaterial</c>, which is also the route to a floor's ground-contact U.</para>
-        /// <para><b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has <see cref="OpeningConstructionPart.Pane"/> layers (index 0 outermost) of <see cref="TransparentMaterial"/> glass and <see cref="FluidMaterial"/> gas, one glazing type per TABULA window name, from which <c>Building.Query.GlazingThermalTransmittance</c> gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved <see cref="ConstructionLibrary_PL_GlazingRetrievalDate"/>; a value with no source is DEFAULT. Each window construction also declares the frame Uf and the glazing-edge Ψg of its frame generation (PN-EN ISO 10077-1 Annex D and Table E.1, through secondary sources). The declared Uw and g stay on the construction, so the construction without an outline keeps its TABULA Uw; one cloned with an outline whose holes are the panes gets Uw from Ug, Uf, Ψg and its geometry.</para>
+        /// <para><b>Glazing</b> (DiGi-Organization/DiGi.Analytical#19). The window construction of every TypicalAsBuilt set also has <see cref="OpeningConstructionPart.Pane"/> layers (index 0 outermost) of <see cref="TransparentMaterial"/> glass and <see cref="FluidMaterial"/> gas, one glazing type per TABULA window name, from which <c>Building.Query.GlazingThermalTransmittance</c> gives Ug per PN-EN 673. The glass emissivities and the gas coefficients (ISO 15099) are tagged with the secondary source that reproduces them, retrieved <see cref="ConstructionLibrary_PL_GlazingRetrievalDate"/>; a value with no source is DEFAULT. Each window construction also declares the frame Uf and the glazing-edge Ψg of its frame generation (PN-EN ISO 10077-1 Annex D and Table E.1, through secondary sources; a PVC window from 2003 on has the modern frame and warm-edge values that ITB gives instead). At the reference size 1.23 x 1.48 m with the frame width of its living-room window layout, the Uw of these values reproduces the TABULA Uw within <see cref="ConstructionLibrary_PL_WindowTolerance_Absolute"/> / <see cref="ConstructionLibrary_PL_WindowTolerance_Relative"/>. The declared Uw and g stay on the construction, so the construction without an outline keeps its TABULA Uw; one cloned with an outline whose holes are the panes gets Uw from Ug, Uf, Ψg and its geometry.</para>
         /// <para>Window and door constructions carry declared values and have no outline, so they are cloned with one where an opening needs it. Every identifier is derived from a stable key, so the library serializes to the same text each time it is created: the embedded copy read by <see cref="Query.EmbeddedConstructionLibrary_PL"/> is this method's output.</para>
         /// </summary>
         /// <returns>The Polish construction library.</returns>
@@ -268,6 +279,12 @@ namespace DiGi.Analytical.Building.Regulation
                 ["plastic frame, glass unit (one cell)"] = ("PVC", 2.0, 0.06, string.Format(CultureInfo.InvariantCulture, "a reinforced three-chamber PVC window. Uf = 2.0 W/(m2K), PVC hollow profiles, three hollow chambers, reinforced, clause D.2 of {0}. Ψg = 0.06 W/(mK), plastic frame, low-e double glazing, {1}; the Pilkington leaflet \"TGI-Spacer\" gives 0.077 for an aluminium spacer in a PVC frame (Uf 1.2, Ug 1.1) per ift guideline WA-17/1, and 0.06 is used", source_AnnexD, source_TableE1)),
                 ["plastic frame, glass unit ( (one cell gas filled)"] = ("PVC", 2.0, 0.06, string.Format(CultureInfo.InvariantCulture, "a reinforced three-chamber PVC window. Uf = 2.0 W/(m2K), PVC hollow profiles, three hollow chambers, reinforced, clause D.2 of {0}. Ψg = 0.06 W/(mK), plastic frame, low-e double glazing, {1}; the Pilkington leaflet \"TGI-Spacer\" gives 0.077 for an aluminium spacer in a PVC frame (Uf 1.2, Ug 1.1) per ift guideline WA-17/1, and 0.06 is used", source_AnnexD, source_TableE1)),
             };
+
+            // From the 2003 ... 2008 period on (TABULA window codes PL.Window.ReEx.06.* and .07.*), a PVC window is a modern multi-chamber frame with a warm-edge
+            // spacer: with the PN-EN ISO 10077-1 defaults above its Uw would be 29 - 41 % above the TABULA Uw (DiGi-Organization/DiGi.Analytical#19, decision of 2026-11-16).
+            string source_Itb = string.Format(CultureInfo.InvariantCulture, "K. Kasperkiewicz, R. Geryło (ITB), \"Przegrody przezroczyste\", Budujemy Dom 6/2007, pp. 50 - 51 (budujemydom.pl, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+            string source_Tgi = string.Format(CultureInfo.InvariantCulture, "Pilkington Polska, leaflet \"TGI-Spacer\" (pilkington.com, retrieved {0})", ConstructionLibrary_PL_GlazingRetrievalDate);
+            (string Key, double FrameThermalTransmittance, double GlazingLinearThermalTransmittance, string Note) frame_PvcModern = ("PVC_WarmEdge", 1.4, 0.04, string.Format(CultureInfo.InvariantCulture, "a modern multi-chamber PVC window with a warm-edge spacer, from 2003 on. Uf = 1.4 W/(m2K), the lower bound of the 1.4 - 2.1 that {0} gives for PVC frames of current systems; TABULA's Uw implies a frame of that class, and a sourced default (2.0, clause D.2 of {1}) gives a Uw 29 - 41 % above it. Ψg = 0.04 W/(mK), a warm-edge spacer: 0.040 - 0.045 per {0}, and 0.04 for the TGI spacer in a PVC frame (Uf 1.2, Ug 1.1) per ift guideline WA-17/1 in {2}. Neither is a norm value", source_Itb, source_AnnexD, source_Tgi));
 
             static string PaneLayersText(List<(IMaterial Material, double Thickness)> layers)
             {
@@ -626,6 +643,11 @@ namespace DiGi.Analytical.Building.Regulation
                     bool hasFrame = constructionRole == ConstructionRole.Window && frames.TryGetValue(element.Name, out frame);
                     if (hasFrame)
                     {
+                        if (frame.Key == "PVC" && (element.Code.StartsWith("PL.Window.ReEx.06.", StringComparison.Ordinal) || element.Code.StartsWith("PL.Window.ReEx.07.", StringComparison.Ordinal)))
+                        {
+                            frame = frame_PvcModern;
+                        }
+
                         description = string.Format(CultureInfo.InvariantCulture, "{0} Frame {1} (DiGi-Organization/DiGi.Analytical#19): Uf = {2} W/(m2K), Ψg = {3} W/(mK) declared; {4}. Not checked against the original norm.", description, frame.Key, Text(frame.FrameThermalTransmittance), Text(frame.GlazingLinearThermalTransmittance), frame.Note);
                     }
 
