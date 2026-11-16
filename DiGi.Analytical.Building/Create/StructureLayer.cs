@@ -76,24 +76,40 @@ namespace DiGi.Analytical.Building
         /// <para>The layer is appended after the part's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.</para>
         /// </summary>
         /// <param name="constructionRelationCluster">The construction relation cluster to which the structure layer and its relations are added.</param>
-        /// <param name="openinigConstruction">The opening construction associated with the new structure layer.</param>
+        /// <param name="openingConstruction">The opening construction associated with the new structure layer.</param>
         /// <param name="openingConstructionPart">The specific part of the opening construction for the structure layer.</param>
         /// <param name="material">The material to be assigned to the structure layer.</param>
         /// <param name="thickness">The thickness of the structure layer.</param>
         /// <returns>The created <see cref="DiGi.Analytical.Classes.StructureLayer"/> if successful; otherwise, <c>null</c>.</returns>
-        public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IOpeningConstruction? openinigConstruction, OpeningConstructionPart openingConstructionPart, IMaterial? material, double thickness)
+        public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IOpeningConstruction? openingConstruction, OpeningConstructionPart openingConstructionPart, IMaterial? material, double thickness)
         {
-            if (constructionRelationCluster is null || openinigConstruction is null || material is null || double.IsNaN(thickness))
+            return StructureLayer(constructionRelationCluster, openingConstruction, openingConstructionPart, material, thickness, System.Guid.NewGuid());
+        }
+
+        /// <summary>
+        /// Creates a new structure layer with the specified identifier and associates it with an opening construction part and a material within the specified relation cluster.
+        /// <para>The layer is appended after the part's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards. A library that must serialize to the same text every time it is created passes an identifier derived from a stable key (DiGi-Organization/DiGi.Analytical#19).</para>
+        /// </summary>
+        /// <param name="constructionRelationCluster">The construction relation cluster to which the structure layer and its relations are added.</param>
+        /// <param name="openingConstruction">The opening construction associated with the new structure layer.</param>
+        /// <param name="openingConstructionPart">The specific part of the opening construction for the structure layer.</param>
+        /// <param name="material">The material to be assigned to the structure layer.</param>
+        /// <param name="thickness">The thickness of the structure layer.</param>
+        /// <param name="guid">The identifier of the new structure layer.</param>
+        /// <returns>The created <see cref="DiGi.Analytical.Classes.StructureLayer"/> if successful; otherwise, <c>null</c>.</returns>
+        public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IOpeningConstruction? openingConstruction, OpeningConstructionPart openingConstructionPart, IMaterial? material, double thickness, System.Guid guid)
+        {
+            if (constructionRelationCluster is null || openingConstruction is null || material is null || double.IsNaN(thickness))
             {
                 return null;
             }
 
-            if (!constructionRelationCluster.Contains(new Core.Classes.GuidReference(openinigConstruction)) || !constructionRelationCluster.Contains(new Core.Classes.GuidReference(material)))
+            if (!constructionRelationCluster.Contains(new Core.Classes.GuidReference(openingConstruction)) || !constructionRelationCluster.Contains(new Core.Classes.GuidReference(material)))
             {
                 return null;
             }
 
-            int index = Query.NextStructureLayerIndex(constructionRelationCluster, openinigConstruction, openingConstructionPart);
+            int index = Query.NextStructureLayerIndex(constructionRelationCluster, openingConstruction, openingConstructionPart);
             if (index == -1)
             {
                 return null;
@@ -101,13 +117,13 @@ namespace DiGi.Analytical.Building
 
             // The layer itself must be held by the cluster, as for a physical component construction; without it the
             // relations point at an object the cluster cannot return (DiGi-Organization/DiGi.Analytical#8).
-            StructureLayer result = new(index, thickness);
+            StructureLayer result = new(guid, index, thickness);
             if (!constructionRelationCluster.Add(result))
             {
                 return null;
             }
 
-            OpeningConstructionStructureLayersRelation? openingConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(openinigConstruction, openingConstructionPart, result);
+            OpeningConstructionStructureLayersRelation? openingConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(openingConstruction, openingConstructionPart, result);
             if (openingConstructionStructureLayersRelation is null)
             {
                 return null;

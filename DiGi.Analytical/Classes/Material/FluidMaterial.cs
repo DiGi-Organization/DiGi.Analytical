@@ -53,6 +53,17 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FluidMaterial"/> class with the specified identifier and name.
+        /// <para>A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#19).</para>
+        /// </summary>
+        /// <param name="guid">The identifier of the material.</param>
+        /// <param name="name">The name of the fluid material. This value can be null.</param>
+        public FluidMaterial(System.Guid guid, string? name)
+            : base(guid, name)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="FluidMaterial"/> class using another <see cref="FluidMaterial"/> instance.
         /// </summary>
         /// <param name="fluidMaterial">The source <see cref="FluidMaterial"/> object to copy from.</param>

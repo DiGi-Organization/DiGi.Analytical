@@ -280,7 +280,7 @@ Creates a new structure layer and associates it with an opening construction par
 The layer is appended after the part's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards.
 
 ```csharp
-public static DiGi.Analytical.Classes.StructureLayer? StructureLayer(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openinigConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart, DiGi.Analytical.Interfaces.IMaterial? material, double thickness);
+public static DiGi.Analytical.Classes.StructureLayer? StructureLayer(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart, DiGi.Analytical.Interfaces.IMaterial? material, double thickness);
 ```
 #### Parameters
 
@@ -290,9 +290,9 @@ public static DiGi.Analytical.Classes.StructureLayer? StructureLayer(this DiGi.A
 
 The construction relation cluster to which the structure layer and its relations are added\.
 
-<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double).openinigConstruction'></a>
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double).openingConstruction'></a>
 
-`openinigConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
 
 The opening construction associated with the new structure layer\.
 
@@ -313,6 +313,59 @@ The material to be assigned to the structure layer\.
 `thickness` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 The thickness of the structure layer\.
+
+#### Returns
+[StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  
+The created [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer') if successful; otherwise, `null`\.
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid)'></a>
+
+## Create\.StructureLayer\(this ConstructionRelationCluster, IOpeningConstruction, OpeningConstructionPart, IMaterial, double, Guid\) Method
+
+Creates a new structure layer with the specified identifier and associates it with an opening construction part and a material within the specified relation cluster\.
+
+The layer is appended after the part's existing layers: index 0 is the outermost layer (DiGi-Organization/DiGi.Analytical#8), so add the layers from the outside inwards. A library that must serialize to the same text every time it is created passes an identifier derived from a stable key (DiGi-Organization/DiGi.Analytical#19).
+
+```csharp
+public static DiGi.Analytical.Classes.StructureLayer? StructureLayer(this DiGi.Analytical.Building.Classes.ConstructionRelationCluster? constructionRelationCluster, DiGi.Analytical.Building.Interfaces.IOpeningConstruction? openingConstruction, DiGi.Analytical.Building.Enums.OpeningConstructionPart openingConstructionPart, DiGi.Analytical.Interfaces.IMaterial? material, double thickness, System.Guid guid);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid).constructionRelationCluster'></a>
+
+`constructionRelationCluster` [ConstructionRelationCluster](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.ConstructionRelationCluster 'DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster')
+
+The construction relation cluster to which the structure layer and its relations are added\.
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid).openingConstruction'></a>
+
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+
+The opening construction associated with the new structure layer\.
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid).openingConstructionPart'></a>
+
+`openingConstructionPart` [OpeningConstructionPart](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.OpeningConstructionPart 'DiGi\.Analytical\.Building\.Enums\.OpeningConstructionPart')
+
+The specific part of the opening construction for the structure layer\.
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid).material'></a>
+
+`material` [DiGi\.Analytical\.Interfaces\.IMaterial](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.imaterial 'DiGi\.Analytical\.Interfaces\.IMaterial')
+
+The material to be assigned to the structure layer\.
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid).thickness'></a>
+
+`thickness` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The thickness of the structure layer\.
+
+<a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double,System.Guid).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the new structure layer\.
 
 #### Returns
 [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  

@@ -771,6 +771,31 @@ public FluidMaterial(string? name);
 
 The name of the fluid material\. This value can be null\.
 
+<a name='DiGi.Analytical.Classes.FluidMaterial.FluidMaterial(System.Guid,string)'></a>
+
+## FluidMaterial\(Guid, string\) Constructor
+
+Initializes a new instance of the [FluidMaterial](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FluidMaterial 'DiGi\.Analytical\.Classes\.FluidMaterial') class with the specified identifier and name\.
+
+A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#19).
+
+```csharp
+public FluidMaterial(System.Guid guid, string? name);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.FluidMaterial(System.Guid,string).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the material\.
+
+<a name='DiGi.Analytical.Classes.FluidMaterial.FluidMaterial(System.Guid,string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the fluid material\. This value can be null\.
+
 <a name='DiGi.Analytical.Classes.FluidMaterial.FluidMaterial(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## FluidMaterial\(JsonObject\) Constructor
@@ -2181,6 +2206,31 @@ public TransparentMaterial(string? name);
 #### Parameters
 
 <a name='DiGi.Analytical.Classes.TransparentMaterial.TransparentMaterial(string).name'></a>
+
+`name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The name of the transparent material\.
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.TransparentMaterial(System.Guid,string)'></a>
+
+## TransparentMaterial\(Guid, string\) Constructor
+
+Initializes a new instance of the [TransparentMaterial](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.TransparentMaterial 'DiGi\.Analytical\.Classes\.TransparentMaterial') class with the specified identifier and name\.
+
+A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#19).
+
+```csharp
+public TransparentMaterial(System.Guid guid, string? name);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.TransparentMaterial(System.Guid,string).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The identifier of the material\.
+
+<a name='DiGi.Analytical.Classes.TransparentMaterial.TransparentMaterial(System.Guid,string).name'></a>
 
 `name` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 

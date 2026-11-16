@@ -41,6 +41,17 @@ namespace DiGi.Analytical.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TransparentMaterial"/> class with the specified identifier and name.
+        /// <para>A library that must serialize to the same text every time it is created gives its materials identifiers derived from stable keys (DiGi-Organization/DiGi.Analytical#19).</para>
+        /// </summary>
+        /// <param name="guid">The identifier of the material.</param>
+        /// <param name="name">The name of the transparent material.</param>
+        public TransparentMaterial(System.Guid guid, string? name)
+            : base(guid, name)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransparentMaterial"/> class using an existing <see cref="TransparentMaterial"/> instance.
         /// </summary>
         /// <param name="transparentMaterial">The source <see cref="TransparentMaterial"/> instance to copy from.</param>
