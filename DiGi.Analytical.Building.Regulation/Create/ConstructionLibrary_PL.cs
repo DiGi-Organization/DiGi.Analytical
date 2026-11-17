@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Building.Regulation
         /// <summary>
         /// The version of the library <see cref="ConstructionLibrary_PL"/> creates. Raise it whenever a value changes.
         /// </summary>
-        public const string ConstructionLibrary_PL_Version = "1.7.0";
+        public const string ConstructionLibrary_PL_Version = "1.7.1";
 
         /// <summary>
         /// The date the material values of <see cref="ConstructionLibrary_PL"/> were read from their secondary sources (DiGi-Organization/DiGi.Analytical#18).
@@ -867,7 +867,9 @@ namespace DiGi.Analytical.Building.Regulation
                             }
                         }
 
-                        string source = string.Format(CultureInfo.InvariantCulture, "{0}: {1}. In force from {2}. Each construction carries the U(max) of the stage for a {3} building as its declared U. {4}{5}", regulationAct.Reference, regulationAct.Name, DateText(startDate), buildingType, string.Join(" ", notes), constructionRoles_Missing.Count == 0 ? string.Empty : string.Concat(" No limit, so no construction: ", string.Join(", ", constructionRoles_Missing), "."));
+                        // Every role a set leaves empty is named in its source (DiGi-Organization/DiGi.Analytical#16): the internal roles are
+                        // not modelled as limits here, and a consumer takes them from the TypicalAsBuilt set (DiGi-Organization/DiGi.Analytical#18).
+                        string source = string.Format(CultureInfo.InvariantCulture, "{0}: {1}. In force from {2}. Each construction carries the U(max) of the stage for a {3} building as its declared U. {4}{5} Not modelled in a Regulation set, taken from the TypicalAsBuilt set: InternalWall, PartyWall, IntermediateFloor.", regulationAct.Reference, regulationAct.Name, DateText(startDate), buildingType, string.Join(" ", notes), constructionRoles_Missing.Count == 0 ? string.Empty : string.Concat(" No limit, so no construction: ", string.Join(", ", constructionRoles_Missing), "."));
 
                         ConstructionSet constructionSet = new(ConstructionFlavour.Regulation, buildingType, climateZone, startDate, endDate, source.Trim(), null);
                         for (int j = 0; j < constructionRoles_Regulation.Count; j++)

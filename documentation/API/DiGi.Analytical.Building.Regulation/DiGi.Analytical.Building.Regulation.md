@@ -86,7 +86,7 @@ public const string ConstructionLibrary_PL_RetrievalDate = "2026-10-30";
 The version of the library [ConstructionLibrary\_PL\(\)](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Create.ConstructionLibrary_PL() 'DiGi\.Analytical\.Building\.Regulation\.Create\.ConstructionLibrary\_PL\(\)') creates\. Raise it whenever a value changes\.
 
 ```csharp
-public const string ConstructionLibrary_PL_Version = "1.7.0";
+public const string ConstructionLibrary_PL_Version = "1.7.1";
 ```
 
 #### Field Value
