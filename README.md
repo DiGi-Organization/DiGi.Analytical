@@ -7,7 +7,9 @@
 ## 🏗️ Project Architecture & Assemblies
 
 The repository contains the following core components and assemblies:
+* **[DiGi.Analytical.Building.Energy](DiGi.Analytical.Building.Energy)** (Path: `DiGi.Analytical\DiGi.Analytical.Building.Energy`)
 * **[DiGi.Analytical.Building.HVAC](DiGi.Analytical.Building.HVAC)** (Path: `DiGi.Analytical\DiGi.Analytical.Building.HVAC`)
+* **[DiGi.Analytical.Building.Regulation](DiGi.Analytical.Building.Regulation)** (Path: `DiGi.Analytical\DiGi.Analytical.Building.Regulation`)
 * **[DiGi.Analytical.Building.Solar](DiGi.Analytical.Building.Solar)** (Path: `DiGi.Analytical\DiGi.Analytical.Building.Solar`)
 * **[DiGi.Analytical.Building](DiGi.Analytical.Building)** (Path: `DiGi.Analytical\DiGi.Analytical.Building`)
 * **[DiGi.Analytical.Urban](DiGi.Analytical.Urban)** (Path: `DiGi.Analytical\DiGi.Analytical.Urban`)

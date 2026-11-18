@@ -398,6 +398,29 @@ public const string EmbeddedConstructionLibrary_PL_ResourceName = "DiGi.Analytic
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 ### Methods
 
+<a name='DiGi.Analytical.Building.Regulation.Query.AnnualMeanOutdoorTemperature(thisDiGi.Analytical.Building.Regulation.Enums.ClimateZone)'></a>
+
+## Query\.AnnualMeanOutdoorTemperature\(this ClimateZone\) Method
+
+Gets the mean annual outdoor temperature θ\_m,e of a Polish climate zone of PN\-82/B\-02403, which the ground correction f\_g2 of the design heat load uses \(DiGi\-Organization/DiGi\.Analytical\#21\)\.
+
+7.7, 7.9, 7.6, 6.9 and 5.5 °C for zones I to V: PN-EN 12831:2006 as reproduced in Strzeszewski and Wereszczyński (Purmo 2009), Table 2.1. Not checked against the original.
+
+```csharp
+public static double AnnualMeanOutdoorTemperature(this DiGi.Analytical.Building.Regulation.Enums.ClimateZone climateZone);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Query.AnnualMeanOutdoorTemperature(thisDiGi.Analytical.Building.Regulation.Enums.ClimateZone).climateZone'></a>
+
+`climateZone` [ClimateZone](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ClimateZone 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone')
+
+The climate zone\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The mean annual outdoor temperature \[°C\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') for [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ClimateZone.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone\.Undefined')\.
+
 <a name='DiGi.Analytical.Building.Regulation.Query.BuildingRegulation(System.Nullable_short_,int)'></a>
 
 ## Query\.BuildingRegulation\(Nullable\<short\>, int\) Method
@@ -470,6 +493,70 @@ The year built\. This value can be null\.
 #### Returns
 [ConstructionPeriod](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionPeriod 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionPeriod')  
 The construction period, or [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionPeriod.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionPeriod\.Undefined') when [year](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionPeriod(System.Nullable_short_).year 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionPeriod\(System\.Nullable\<short\>\)\.year') is null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.ConstructionRoles(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double)'></a>
+
+## Query\.ConstructionRoles\(this BuildingModel, FloorBoundary, double\) Method
+
+Classifies the walls, roofs and floors of a building model by the construction role a construction set gives them \(DiGi\-Organization/DiGi\.Analytical\#21\)\. These are the rules of DiGi\.GIS\.Analytical `Modify.GenerateOpenings` \(DiGi\-Organization/DiGi\.GIS\.Analytical\#11, phase D\), made public so that the opening generator and the heat\-demand calculation classify a model alike\.
+
+<b>Walls.</b> A wall carrying [DiGi\.Analytical\.Building\.Enums\.ComponentParameter\.PartyWall](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.enums.componentparameter.partywall 'DiGi\.Analytical\.Building\.Enums\.ComponentParameter\.PartyWall') is [PartyWall](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.PartyWall 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.PartyWall'), a wall the external shell carries is [ExternalWall](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.ExternalWall 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.ExternalWall') and any other wall is [InternalWall](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.InternalWall 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.InternalWall').
+
+<b>Roofs.</b> A roof whose external-shell face stands less than [FlatRoofTilt](DiGi.Analytical.Building.Regulation.Constants.md#DiGi.Analytical.Building.Regulation.Constants.Default.FlatRoofTilt 'DiGi\.Analytical\.Building\.Regulation\.Constants\.Default\.FlatRoofTilt') degrees off the world up axis is [FlatRoof](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.FlatRoof 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.FlatRoof'), any other roof [Roof](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.Roof 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.Roof'). A roof the external shell does not carry has no outward normal to read a tilt from and gets no role: it is absent from the result.
+
+<b>Floors.</b> The floor whose geometry reaches lowest is [FloorOverUnheated](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.FloorOverUnheated 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.FloorOverUnheated') when [floorBoundary](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionRoles(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double).floorBoundary 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionRoles\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Regulation\.Enums\.FloorBoundary, double\)\.floorBoundary') is [Cellar](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.FloorBoundary.Cellar 'DiGi\.Analytical\.Building\.Regulation\.Enums\.FloorBoundary\.Cellar') and [GroundFloor](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.GroundFloor 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.GroundFloor') otherwise; every other floor is [IntermediateFloor](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole.IntermediateFloor 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole\.IntermediateFloor').
+
+The external shell is [DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetExternalShell\(System\.Nullable\{DiGi\.Geometry\.Core\.Enums\.Side\},System\.Nullable\{DiGi\.Geometry\.Core\.Enums\.Orientation\},System\.Nullable\{DiGi\.Geometry\.Core\.Enums\.Orientation\},System\.Double\)](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.buildingmodel.getexternalshell#digi-analytical-building-classes-buildingmodel-getexternalshell(system-nullable{digi-geometry-core-enums-side}-system-nullable{digi-geometry-core-enums-orientation}-system-nullable{digi-geometry-core-enums-orientation}-system-double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetExternalShell\(System\.Nullable\{DiGi\.Geometry\.Core\.Enums\.Side\},System\.Nullable\{DiGi\.Geometry\.Core\.Enums\.Orientation\},System\.Nullable\{DiGi\.Geometry\.Core\.Enums\.Orientation\},System\.Double\)') with outward normals, so a component is external when it bounds exactly one space.
+
+```csharp
+public static System.Collections.Generic.Dictionary<System.Guid,DiGi.Analytical.Building.Regulation.Enums.ConstructionRole>? ConstructionRoles(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, DiGi.Analytical.Building.Regulation.Enums.FloorBoundary floorBoundary, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Query.ConstructionRoles(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double).buildingModel'></a>
+
+`buildingModel` [DiGi\.Analytical\.Building\.Classes\.BuildingModel](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.buildingmodel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model whose components are classified\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.ConstructionRoles(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double).floorBoundary'></a>
+
+`floorBoundary` [FloorBoundary](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.FloorBoundary 'DiGi\.Analytical\.Building\.Regulation\.Enums\.FloorBoundary')
+
+What the lowest floor borders, as the TypicalAsBuilt [TypologyData](DiGi.Analytical.Building.Regulation.Classes.md#DiGi.Analytical.Building.Regulation.Classes.TypologyData 'DiGi\.Analytical\.Building\.Regulation\.Classes\.TypologyData') of the building records it\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.ConstructionRoles(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance of the external shell\.
+
+#### Returns
+[System\.Collections\.Generic\.Dictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[ConstructionRole](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ConstructionRole 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ConstructionRole')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')  
+The role of each classified component keyed by its identifier, or null when [buildingModel](DiGi.Analytical.Building.Regulation.md#DiGi.Analytical.Building.Regulation.Query.ConstructionRoles(thisDiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Building.Regulation.Enums.FloorBoundary,double).buildingModel 'DiGi\.Analytical\.Building\.Regulation\.Query\.ConstructionRoles\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, DiGi\.Analytical\.Building\.Regulation\.Enums\.FloorBoundary, double\)\.buildingModel') is null\.
+
+<a name='DiGi.Analytical.Building.Regulation.Query.DesignOutdoorTemperature(thisDiGi.Analytical.Building.Regulation.Enums.ClimateZone)'></a>
+
+## Query\.DesignOutdoorTemperature\(this ClimateZone\) Method
+
+Gets the design outdoor temperature θ\_e of a Polish climate zone of PN\-82/B\-02403, the external temperature of the design heat load \(DiGi\-Organization/DiGi\.Analytical\#21\)\.
+
+-16, -18, -20, -22 and -24 °C for zones I to V: PN-EN 12831:2006 as reproduced in Strzeszewski and Wereszczyński (Purmo 2009), Table 2.1, the source the zone map of DiGi.GIS.Analytical `Query.ClimateZone` is digitised from. Not checked against the original.
+
+```csharp
+public static double DesignOutdoorTemperature(this DiGi.Analytical.Building.Regulation.Enums.ClimateZone climateZone);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Regulation.Query.DesignOutdoorTemperature(thisDiGi.Analytical.Building.Regulation.Enums.ClimateZone).climateZone'></a>
+
+`climateZone` [ClimateZone](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ClimateZone 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone')
+
+The climate zone\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The design outdoor temperature \[°C\], or [System\.Double\.NaN](https://learn.microsoft.com/en-us/dotnet/api/system.double.nan 'System\.Double\.NaN') for [Undefined](DiGi.Analytical.Building.Regulation.Enums.md#DiGi.Analytical.Building.Regulation.Enums.ClimateZone.Undefined 'DiGi\.Analytical\.Building\.Regulation\.Enums\.ClimateZone\.Undefined')\.
 
 <a name='DiGi.Analytical.Building.Regulation.Query.EmbeddedConstructionLibrary_PL()'></a>
 
