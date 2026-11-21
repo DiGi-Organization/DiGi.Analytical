@@ -33,7 +33,7 @@ namespace DiGi.Analytical.Building.Energy
         /// <param name="typologyData">The TABULA typology data of the TypicalAsBuilt set of the year built. This value can be null.</param>
         /// <param name="heatDemandOptions">The options; null uses the defaults of <see cref="Constants.Default"/>.</param>
         /// <param name="tolerance">The distance tolerance of the external shell and the footprint.</param>
-        /// <returns>The <see cref="Classes.HeatDemandResult"/>, or null when the model or the climate is null, the climate has not 12 external temperatures, no space with a floor carries an internal condition with a heating set-point, or the model has no heat-loss element.</returns>
+        /// <returns>The <see cref="Classes.HeatDemandResult"/> of method <see cref="Enums.HeatDemandMethod.Monthly"/>, version <see cref="Constants.Default.HeatDemandMethodVersion"/>, or null when the model or the climate is null, the climate has not 12 external temperatures, no space with a floor carries an internal condition with a heating set-point, or the model has no heat-loss element.</returns>
         public static Classes.HeatDemandResult? HeatDemandResult(this BuildingModel? buildingModel, MonthlyClimate? monthlyClimate, TypologyData? typologyData, HeatDemandOptions? heatDemandOptions = null, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (buildingModel is null || monthlyClimate is null)
@@ -568,6 +568,7 @@ namespace DiGi.Analytical.Building.Energy
                 designTransmissionHeatLoss,
                 designVentilationHeatLoss,
                 Constants.Source.Method,
+                Enums.HeatDemandMethod.Monthly,
                 Constants.Default.HeatDemandMethodVersion,
                 sources,
                 excludedComponents,

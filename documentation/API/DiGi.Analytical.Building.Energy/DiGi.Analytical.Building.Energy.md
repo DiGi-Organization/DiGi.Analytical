@@ -67,7 +67,7 @@ The distance tolerance of the external shell and the footprint\.
 
 #### Returns
 [HeatDemandResult](DiGi.Analytical.Building.Energy.Classes.md#DiGi.Analytical.Building.Energy.Classes.HeatDemandResult 'DiGi\.Analytical\.Building\.Energy\.Classes\.HeatDemandResult')  
-The [HeatDemandResult](DiGi.Analytical.Building.Energy.Classes.md#DiGi.Analytical.Building.Energy.Classes.HeatDemandResult 'DiGi\.Analytical\.Building\.Energy\.Classes\.HeatDemandResult'), or null when the model or the climate is null, the climate has not 12 external temperatures, no space with a floor carries an internal condition with a heating set\-point, or the model has no heat\-loss element\.
+The [HeatDemandResult](DiGi.Analytical.Building.Energy.Classes.md#DiGi.Analytical.Building.Energy.Classes.HeatDemandResult 'DiGi\.Analytical\.Building\.Energy\.Classes\.HeatDemandResult') of method [Monthly](DiGi.Analytical.Building.Energy.Enums.md#DiGi.Analytical.Building.Energy.Enums.HeatDemandMethod.Monthly 'DiGi\.Analytical\.Building\.Energy\.Enums\.HeatDemandMethod\.Monthly'), version [HeatDemandMethodVersion](DiGi.Analytical.Building.Energy.Constants.md#DiGi.Analytical.Building.Energy.Constants.Default.HeatDemandMethodVersion 'DiGi\.Analytical\.Building\.Energy\.Constants\.Default\.HeatDemandMethodVersion'), or null when the model or the climate is null, the climate has not 12 external temperatures, no space with a floor carries an internal condition with a heating set\-point, or the model has no heat\-loss element\.
 
 <a name='DiGi.Analytical.Building.Energy.Query'></a>
 

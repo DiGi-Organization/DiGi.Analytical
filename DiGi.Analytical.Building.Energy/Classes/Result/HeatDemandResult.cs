@@ -1,3 +1,4 @@
+using DiGi.Analytical.Building.Energy.Enums;
 using DiGi.Analytical.Building.Energy.Interfaces;
 using DiGi.Core.Classes;
 using System.Collections.Generic;
@@ -38,6 +39,10 @@ namespace DiGi.Analytical.Building.Energy.Classes
 
         [JsonInclude, JsonPropertyName(nameof(HeatBalanceRatios))]
         private readonly List<double>? heatBalanceRatios;
+
+        // A result serialized before the method was recorded reads as Monthly, the only method there was (DiGi-Organization/DiGi.Analytical#23).
+        [JsonInclude, JsonPropertyName(nameof(HeatDemandMethod))]
+        private readonly HeatDemandMethod heatDemandMethod = HeatDemandMethod.Monthly;
 
         [JsonInclude, JsonPropertyName(nameof(HeatedVolume))]
         private readonly double heatedVolume = double.NaN;
@@ -126,8 +131,9 @@ namespace DiGi.Analytical.Building.Energy.Classes
         /// <param name="designHeatLoad">The design heat load Φ_HL = Φ_T + Φ_V [W].</param>
         /// <param name="designTransmissionHeatLoss">The design transmission heat loss Φ_T [W].</param>
         /// <param name="designVentilationHeatLoss">The design ventilation heat loss Φ_V [W].</param>
-        /// <param name="method">The method the result was calculated by. This value can be null.</param>
-        /// <param name="methodVersion">The version of the method, <see cref="Constants.Default.HeatDemandMethodVersion"/> when the result was calculated.</param>
+        /// <param name="method">The source of the method the result was calculated by, as text. This value can be null.</param>
+        /// <param name="heatDemandMethod">The method the result was calculated by, which identifies it together with <paramref name="methodVersion"/>.</param>
+        /// <param name="methodVersion">The revision within <paramref name="heatDemandMethod"/>; for <see cref="HeatDemandMethod.Monthly"/>, <see cref="Constants.Default.HeatDemandMethodVersion"/> when the result was calculated.</param>
         /// <param name="sources">The source of each value, keyed by the name of the value. This value can be null.</param>
         /// <param name="excludedComponents">The identifiers, in the "D" format, of the components and openings excluded because their thermal transmittance is not known. This value can be null.</param>
         /// <param name="glazingFallbackCount">The number of glazed openings whose glazed area was taken as (1 − F_f)·A_w because their construction has no panes.</param>
@@ -157,6 +163,7 @@ namespace DiGi.Analytical.Building.Energy.Classes
             double designTransmissionHeatLoss,
             double designVentilationHeatLoss,
             string? method,
+            HeatDemandMethod heatDemandMethod,
             int methodVersion,
             IDictionary<string, string>? sources,
             IEnumerable<string>? excludedComponents,
@@ -188,6 +195,7 @@ namespace DiGi.Analytical.Building.Energy.Classes
             this.designTransmissionHeatLoss = designTransmissionHeatLoss;
             this.designVentilationHeatLoss = designVentilationHeatLoss;
             this.method = method;
+            this.heatDemandMethod = heatDemandMethod;
             this.methodVersion = methodVersion;
             this.sources = sources is null ? null : new Dictionary<string, string>(sources);
             this.excludedComponents = excludedComponents is null ? null : [.. excludedComponents];
@@ -228,6 +236,7 @@ namespace DiGi.Analytical.Building.Energy.Classes
                 designTransmissionHeatLoss = heatDemandResult.designTransmissionHeatLoss;
                 designVentilationHeatLoss = heatDemandResult.designVentilationHeatLoss;
                 method = heatDemandResult.method;
+                heatDemandMethod = heatDemandResult.heatDemandMethod;
                 methodVersion = heatDemandResult.methodVersion;
                 sources = heatDemandResult.sources is null ? null : new Dictionary<string, string>(heatDemandResult.sources);
                 excludedComponents = heatDemandResult.excludedComponents is null ? null : [.. heatDemandResult.excludedComponents];
@@ -438,7 +447,19 @@ namespace DiGi.Analytical.Building.Energy.Classes
         }
 
         /// <summary>
-        /// Gets the method the result was calculated by.
+        /// Gets the method the result was calculated by (DiGi-Organization/DiGi.Analytical#23). With <see cref="MethodVersion"/> it identifies the result: results of different methods are stored side by side and compared, never mixed.
+        /// </summary>
+        [JsonIgnore]
+        public HeatDemandMethod HeatDemandMethod
+        {
+            get
+            {
+                return heatDemandMethod;
+            }
+        }
+
+        /// <summary>
+        /// Gets the source of the method the result was calculated by, as text (<see cref="Constants.Source.Method"/> for <see cref="HeatDemandMethod.Monthly"/>); the method itself is <see cref="HeatDemandMethod"/>.
         /// </summary>
         [JsonIgnore]
         public string? Method
@@ -450,7 +471,7 @@ namespace DiGi.Analytical.Building.Energy.Classes
         }
 
         /// <summary>
-        /// Gets the version of the method, <see cref="Constants.Default.HeatDemandMethodVersion"/> when the result was calculated.
+        /// Gets the revision of the method within <see cref="HeatDemandMethod"/> - not a method identifier: every method counts its own versions from 1. For <see cref="HeatDemandMethod.Monthly"/> it is <see cref="Constants.Default.HeatDemandMethodVersion"/> when the result was calculated.
         /// </summary>
         [JsonIgnore]
         public int MethodVersion

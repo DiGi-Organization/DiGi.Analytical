@@ -98,7 +98,7 @@ public const double GroundWallThickness = 0.3;
 
 ## Default\.HeatDemandMethodVersion Field
 
-The version of the heat\-demand method that stored results are keyed by \(`building_data.heat_demand_method_version`\)\. Bump it whenever the method, a default or an input rule changes, so that results of an older version are recomputed\.
+The version of the [Monthly](DiGi.Analytical.Building.Energy.Enums.md#DiGi.Analytical.Building.Energy.Enums.HeatDemandMethod.Monthly 'DiGi\.Analytical\.Building\.Energy\.Enums\.HeatDemandMethod\.Monthly') method, the revision stored results of that method are keyed by together with the method \(`building_data.heat_demand_method_version`\)\. Bump it whenever the monthly method, a default or an input rule changes, so that results of an older version are recomputed\. It counts revisions within the monthly method only: another method is another [HeatDemandMethod](DiGi.Analytical.Building.Energy.Enums.md#DiGi.Analytical.Building.Energy.Enums.HeatDemandMethod 'DiGi\.Analytical\.Building\.Energy\.Enums\.HeatDemandMethod') member with its own version constant, starting at 1 \(DiGi\-Organization/DiGi\.Analytical\#23\)\.
 
 ```csharp
 public const int HeatDemandMethodVersion = 1;

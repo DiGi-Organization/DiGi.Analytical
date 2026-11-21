@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building.Energy.Constants
     public static class Default
     {
         /// <summary>
-        /// The version of the heat-demand method that stored results are keyed by (<c>building_data.heat_demand_method_version</c>). Bump it whenever the method, a default or an input rule changes, so that results of an older version are recomputed.
+        /// The version of the <see cref="Enums.HeatDemandMethod.Monthly"/> method, the revision stored results of that method are keyed by together with the method (<c>building_data.heat_demand_method_version</c>). Bump it whenever the monthly method, a default or an input rule changes, so that results of an older version are recomputed. It counts revisions within the monthly method only: another method is another <see cref="Enums.HeatDemandMethod"/> member with its own version constant, starting at 1 (DiGi-Organization/DiGi.Analytical#23).
         /// </summary>
         public const int HeatDemandMethodVersion = 1;
 
